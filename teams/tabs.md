@@ -2,7 +2,7 @@
 
 You can build a Microsoft Teams tab from scratch or by adapting your existing web app.
 
->**Don't have Microsoft Teams? Get a one-year trial subscription of Office 365 Developer at no charge** To get started developing for Microsoft Teams, you'll need an Office 365 account, and to turn on Teams for your organization. [Here's how](setup.md).
+> **Don't have Microsoft Teams? Get a free one-year Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
 
 ## Overview of building a Microsoft Teams tab
 

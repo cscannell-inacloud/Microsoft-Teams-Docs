@@ -2,7 +2,7 @@
 
 Microsoft Teams is a service within Office 365. To get started developing extensions for Microsoft Teams, you'll first need an Office 365 account. You'll then need to turn on the Microsoft Teams service for your Office 365 organization. Lastly, to develop bots, you'll need to turn on bots and enable side-loading of bots for testing.
 
-## Sign up for an Office 365 trial, or use an existing account
+## Sign up for a free Office 365 Developer subscription, or use an existing account
 
 To develop extensions for Microsoft Teams, you need to be an [Office 365 commercial customer with one of the following plans](https://products.office.com/en-us/business/compare-more-office-365-for-business-plans). 
 
