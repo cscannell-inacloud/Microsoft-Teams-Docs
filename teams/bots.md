@@ -31,7 +31,7 @@ The [Terms of use](https://aka.ms/bf-terms) contains Sample Terms you can use to
 
 ## Testing your bot in Microsoft Teams
 
-> **If you haven't already, you'll need to enable side-loading of bots for your organization. [Here's how](setup.md#Enable-side-loading-of-your-bots).**
+> **If you haven't already, you'll need to enable side-loading of bots for your organization. [Here's how](setup.md).**
 
 There are two ways to test your bot in Microsoft Teams:
 

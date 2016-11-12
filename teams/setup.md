@@ -44,8 +44,8 @@ To develop and test bots, you need to enable bots in Microsoft Teams, and also e
 
 1. [Sign in to Office 365](https://login.microsoftonline.com) with your work or school account.
 2. Select **Admin** to go to the Office 365 Admin Center.
-3. From **Settings**, select  **Services & add-ins**.
-4. From the list of services and add-ins, select **Teams**.
+3. From **Settings**, select  **Services & add-ins** or **Apps**.
+4. From the list of services and add-ins, or apps, select **Teams**.
 5. On the **Teams** settings screen, toggle both **Enable bots in Teams** and **Enable side loading of external Bots** to **On**, and then select **Save**.
 
 	!["Screenshot of the Bots section, with the 'Enable side loading of external Bots' option toggled on.](images/setup_sideload_bots.png)
