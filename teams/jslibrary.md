@@ -81,7 +81,7 @@ Registers a handler for when the user attempts to save the settings. This handle
     * The handler to invoke when the user selects the save button.
 
 ### `setSettings(settings: `[`Settings`](#settings.Settings)`): void`
-Sets the settings for the current instance. Note that this is an asynchronous operation so there are no guarentees as to when calls to getSettings will reflect the changed state.
+Sets the settings for the current instance. Note that this is an asynchronous operation so there are no guarantees as to when calls to getSettings will reflect the changed state.
 
 #### Parameters
 * `settings: `[`Settings`](#settings.Settings)
