@@ -14,7 +14,7 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Include the [Microsoft Teams Tab library](jslibrary.md) in your page as a script source.
 
-	`<script src="https://statics.teams.microsoft.com/sdk/v0.2/js/MicrosoftTeams.js" />`
+	`<script src="https://statics.teams.microsoft.com/sdk/v0.2/js/MicrosoftTeams.min.js" />`
 
 * Once your page has successfully loaded, call `microsoftTeams.initialize()` to display your page. Microsoft Teams will not display your page unless you do so.
 
