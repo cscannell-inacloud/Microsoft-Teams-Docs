@@ -6,7 +6,7 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Make sure that the page can be hosted in an iframe:
 	
-	* Set header `Content-Security-Policy: child-src *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
+	* Set header `Content-Security-Policy: frame-ancestors *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
 
 		* For Internet Explorer 11 compatability, Set X-Content-Security-Policy as well.
 
