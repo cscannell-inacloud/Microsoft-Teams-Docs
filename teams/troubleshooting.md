@@ -1,5 +1,11 @@
 # Troubleshooting the Microsoft Teams (Preview) tabs
 
+## Tabs disappear
+
+During the developer preview, any tabs that you create, and upload to a team, will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type that you, or the team, have added to channels will be removed from the team's channels.  Follow the [instructions](createpackage.md) to re-upload your tab to the team and re-add the tab to channels, as needed.
+
+> Note: There is also a bug that causes expiry to happen immediately if you re-upload a tab of the same type.  We'll be fixing this soon.       
+
 ## Error while reading manifest.json
 Most manifest errors will provide a hint at what specific field is missing or invalid. However, if the json file cannot be read as json at all, this generic error message is used.
 
