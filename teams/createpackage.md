@@ -64,11 +64,9 @@ Upload your zip file to a team to make your app available as a tab.
 
 4. Navigate to your zip file and select it.
 
-> **Note:** To re-upload an updated package, click the **Replace** icon at the end of the tab's table row.  Don't click **Upload** again; Microsoft Teams will say the tab already exists.
-
-> Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).
 
 Now, when team members add a new tab to a channel in this team, they will be able to add your tab via the tab gallery.
+
 
 1. Go to any channel in the team.  Click **+** to the right of the existing tabs.
 2. Select your tab from the gallery that appears.
@@ -77,7 +75,11 @@ Now, when team members add a new tab to a channel in this team, they will be abl
 
 ![The Add a tab dialog box, featuring a gallery of available tabs.](images/tab_gallery.png)
 
-> **Note:** By default, all team members can add tabs.  But team admins can restrict this privilege to themselves if they so wish, via an option in the team settings.
+> **Notes:**
+> * During the developer preview, each tab that you upload will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type will be removed from the team's channels.  Follow the above instructions again to re-upload your tab to the team and re-add the tab to channels.
+> * To re-upload an updated package, click the **Replace** icon at the end of the tab's row in the table of uploaded tab packages.  (Don't click **Upload** again; Microsoft Teams will say the tab already exists.)  When you re-upload, there is a bug that also causes any tabs of this type to be removed from the team's channels.  We'll be fixing this soon.       
+> * By default, all team members can add tabs.  But team admins can restrict this privilege to themselves if they so wish, via an option in the team settings.
+> * Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).
 
 ## Next step
 
