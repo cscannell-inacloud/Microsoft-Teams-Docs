@@ -13,9 +13,7 @@ To develop extensions for Microsoft Teams, you need to be an [Office 365 commerc
 
 Microsoft Teams will also be available to customers who purchased E4 prior to its retirement.
 
-If you don't currently have an Office 365 account, you can sign up for an Office 365 Developer subscription for no charge for one year.
-
->**Update on November 23 2016: Developer subscriptions are temporarily unavailable. Please don't attempt to sign up online: it will appear to succeed, but the activation email will not be sent.  Instead, please ask [Microsoft Teams developer support](mailto:microsoftteamsdev@microsoft.com) to assist, providing your company name and a brief summary of your interest in the platform.**
+If you don't currently have an Office 365 account, you can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) for no charge for one year.
 
 ## Turn on Microsoft Teams for your organization
 
