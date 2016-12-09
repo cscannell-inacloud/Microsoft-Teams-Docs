@@ -15,6 +15,8 @@ Microsoft Teams will also be available to customers who purchased E4 prior to it
 
 If you don't currently have an Office 365 account, you can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) for no charge for one year.
 
+>**Note:** If you are having issues receiving your activation email, please contact [Microsoft Teams developer support](mailto:microsoftteamsdev@microsoft.com).
+
 ## Turn on Microsoft Teams for your organization
 
 During the preview period, for Microsoft Teams to be available in Office 365 for your organization, someone with administrative rights in your organization must turn on the Microsoft Teams service. If you are working with an Office 365 Developer subscription, then by default you are an administrator of that organization.
