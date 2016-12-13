@@ -1,10 +1,10 @@
 ﻿# Microsoft Teams (preview) tab manifest schema reference
 
-Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.3/manifest/MicrosoftTeams.schema.json` .
+Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json` .
 
 > **Tip** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
 > 
-> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.3/manifest/MicrosoftTeams.schema.json",`
+> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json",`
 
 The schema defines the following properties:
 
