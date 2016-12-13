@@ -47,7 +47,7 @@ With this as a simple example, let's walk through the steps your removal page ne
 	<a href='https://maps.bing.com' target='_blank'>https://maps.bing.com</a>
 </form> 
 
-<script src="https://teamspacewusprodms.blob.core.windows.net/tabframework/0.2/MicrosoftTeams.min.js">
+<script src="https://teamspacewusprodms.blob.core.windows.net/tabframework/0.3/MicrosoftTeams.min.js">
 </script>
  
 <script type="text/javascript">  

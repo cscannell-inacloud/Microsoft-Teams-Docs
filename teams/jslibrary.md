@@ -1,8 +1,8 @@
 ﻿# Microsoft Teams (preview) JavaScript Library API reference
 
-Your [configuration](createconfigpage.md), [content](createcontentpage.md) and [removal options](updateremove.md#removing-a-tab) pages must include the library hosted at: `https://statics.teams.microsoft.com/sdk/v0.2/js/MicrosoftTeams.min.js`.
+Your [configuration](createconfigpage.md), [content](createcontentpage.md) and [removal options](updateremove.md#removing-a-tab) pages must include the library hosted at: `https://statics.teams.microsoft.com/sdk/v0.3/js/MicrosoftTeams.min.js`.
 
->**Tip:** For developers using TypeScript, Microsoft Teams provides a definition file at `https://statics.teams.microsoft.com/sdk/v0.2/types/MicrosoftTeams.d.ts`.  Use this to enable IntelliSense or similar support from your code editor as well as compile-type type checking as part of your build.
+>**Tip:** For developers using TypeScript, Microsoft Teams provides a definition file at `https://statics.teams.microsoft.com/sdk/v0.3/types/MicrosoftTeams.d.ts`.  Use this to enable IntelliSense or similar support from your code editor as well as compile-type type checking as part of your build.
 >**Note:** This source for this library is available at `https://github.com/OfficeDev/microsoft-teams-library-js`.
 
 ## `microsoftTeams`
@@ -33,6 +33,7 @@ Registers a handler for when the user changes their theme. Only one handler may 
     * The handler to invoke when the user changes their theme.
 
 ## `microsoftTeams.authentication`
+Namespace to interact with the authentication-specific part of the SDK. This object is used for starting or completing authentication flows.
 
 ### `authenticate(authenticateParameters: `[`AuthenticateParameters`](#authentication.AuthenticateParameters)`): void`
 Initiates an authentication request which pops up a new windows with the specified settings.
