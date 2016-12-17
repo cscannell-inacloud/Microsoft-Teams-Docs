@@ -13,15 +13,15 @@ To develop extensions for Microsoft Teams, you need to be an [Office 365 commerc
 
 Microsoft Teams will also be available to customers who purchased E4 prior to its retirement.
 
-If you don't currently have an Office 365 account, you can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) for no charge for one year.
-
->**Note:** If you are having issues receiving your activation email, please contact [Microsoft Teams developer support](mailto:microsoftteamsdev@microsoft.com).
+If you don't currently have an Office 365 account, you can sign up for [an Office 365 Developer subscription](https://aka.ms/devprogramsignup) for no charge for one year.  This test account will allow you to enable Teams for your group for testing purposes.  See [here](https://support.office.com/en-us/article/Add-users-individually-or-in-bulk-to-Office-365-Admin-Help-1970f7d6-03b5-442f-b385-5880b9c256ec?ui=en-US&rs=en-US&ad=US) for more information on assigning user licenses.
+ 
+>**Note:** If you are having issues receiving your Developer subscription activation email, please contact [Microsoft Teams developer support](mailto:microsoftteamsdev@microsoft.com).
 
 ## Turn on Microsoft Teams for your organization
 
 During the preview period, for Microsoft Teams to be available in Office 365 for your organization, someone with administrative rights in your organization must turn on the Microsoft Teams service. If you are working with an Office 365 Developer subscription, then by default you are an administrator of that organization.
 
-Administrators need to use the Office 365 Admin Portal to enable Microsoft Teams for your organization.
+Administrators need to use the Office 365 Admin Portal to enable Microsoft Teams for your organization.  Please note all users must have a valid license assigned to access the product.  
 
 1. [Sign in to Office 365](https://login.microsoftonline.com) with your work or school account.
 2. Select **Admin** to go to the Office 365 Admin Center.
@@ -55,4 +55,3 @@ For more information on bots, including how to side load them for testing purpos
 ## Next steps
 
 * [Microsoft Teams developer preview](index.md)
-	
