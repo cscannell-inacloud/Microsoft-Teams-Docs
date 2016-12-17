@@ -12,6 +12,8 @@ This will likely only be true if your tenant admin has configured your app in Az
 * any additional authentication beyond that needed for Microsoft Teams: for example, does need additional two-factor authentication
 * any consent by the user.
 
+>**Please Note:** Silent authentication may not work currently in the Desktop.  This is a known issue.
+
 ## Authentication using a pop-up window
 
 If your app cannot silently authenticate the user against Azure AD, or if your app uses a identity provider other than Azure AD, it will need to explicitly authenticate the user in a pop up window.  You must use the [Microsoft Teams Tab Library](jslibrary.md) to do this, so that it works successfully in both the web and desktop apps for Microsoft Teams.  

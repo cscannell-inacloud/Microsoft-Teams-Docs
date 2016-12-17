@@ -4,13 +4,13 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Host the page on a secure https:// endpoint.  Microsoft Teams will not display insecure http:// content.
 
-* Make sure that the page can be hosted in an iframe:
+* Make sure that the page can be hosted in an iframe. By default web pages can be iframed by anyone. You may optionally set these headers if you wish to only allow your page to be iframed by Microsoft Teams for extra security:
 	
 	* Set header `Content-Security-Policy: frame-ancestors *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
 
 		* For Internet Explorer 11 compatability, Set X-Content-Security-Policy as well.
 
-	* Alternately, set header `X-Frame-Options: ALLOW-FROM *.teams.microsoft.com`. This header is deprecated but still respected by most browsers.
+	* Alternately, set header `X-Frame-Options: ALLOW-FROM https://teams.microsoft.com/`. This header is deprecated but still respected by most browsers.
 
 * Include the [Microsoft Teams Tab library](jslibrary.md) in your page as a script source.
 
