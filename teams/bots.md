@@ -4,11 +4,13 @@ Build and connect intelligent bots to interact with Microsoft Teams users natura
 
 > **Don't have Microsoft Teams? Get a free one-year Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
 
-> **Note:** At this time, Microsoft Teams bots support 1:1 chat. They do not yet support channels or group chats.
+> **Note:** At this time, Microsoft Teams bots support 1:1 chat. They do not yet support channels or group chats. 
 
 ## Creating a Microsoft Teams bot
 
 All bots created using the Microsoft Bot Framework are automatically configured and ready to work in Microsoft Teams.
+
+> **Note:** During Preview, only sideloading of bots is allowed, and only if enabled in the Office Admin portal. [More Information](setup.md). 
 
 See the [Microsoft Bot Framework Overview](https://docs.botframework.com/en-us/) to learn how to:
 
@@ -31,7 +33,7 @@ The [Terms of use](https://aka.ms/bf-terms) contains Sample Terms you can use to
 
 ## Testing your bot in Microsoft Teams
 
-> **If you haven't already, you'll need to enable side-loading of bots for your organization. [Here's how](setup.md).**
+> **During Preview, your tentant administrator will need to enable side-loading of bots for your organization. [Here's how](setup.md).**
 
 There are two ways to test your bot in Microsoft Teams:
 
@@ -87,7 +89,7 @@ Microsoft Teams supports the following formatting options
 
 ### Welcome messages
 
-To send a welcome message to a user listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html) activity.
+To send a welcome message to a user listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
 
 > **Note:** At this time, a user must first send a message to your bot in order to trigger the conversationUpdate event.
 
@@ -99,7 +101,7 @@ Pictures can be PNG, JPEG or GIF up to 20Mb.
 
 ## Cards and buttons
 
-Microsoft Teams supports the following cards which may have several properties and attachments. You can find information on how to use cards in the [.NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#richcards) and [Node.js SDK](https://docs.botframework.com/en-us/node/builder/guides/examples/#demo-skype-calling) docs.
+Microsoft Teams supports the following cards which may have several properties and attachments. You can find information on how to use cards in the [.NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#richcards) and [Node.js SDK](https://docs.botframework.com/en-us/node/builder/guides/examples/#demo-skype-calling) docs.
 
 * Hero card
 * Thumbnail card
@@ -135,7 +137,7 @@ Buttons are shown stacked at the bottom of the card. Button text is always on a 
 
 ### Hero card
 
-The [hero card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#herocard) renders a title, subtitle, text, large image and buttons.
+The [hero card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#herocard) renders a title, subtitle, text, large image and buttons.
 
 !["Example of a hero-card"](images/Bots_HeroCarExample.PNG)
 
@@ -150,7 +152,7 @@ The [hero card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/
 
 ### Thumbnail card
 
-The [thumbnail card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#thumbnailcard) renders a title, subtitle, text, small thumbmail image and buttons.
+The [thumbnail card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#thumbnailcard) renders a title, subtitle, text, small thumbmail image and buttons.
 
 !["Example of a thumbnail-card"](images/Bots_ThumbnailExample.png)
 
