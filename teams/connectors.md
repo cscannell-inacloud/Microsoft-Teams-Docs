@@ -4,7 +4,7 @@ Office 365 Connectors are a great way to get useful information and content into
 
 Office 365 Connectors also provide a way for developers to integrate with Microsoft Teams by building custom incoming webhooks Connectors to generate rich cards within channels.
 
-> **Don't have Microsoft Teams? Get a free one-year Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
+> **Don't have Microsoft Teams? Get a free Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
 
 >**Note:** Currently, Microsoft Teams does not support registering and building an Office 365 Connector and adding a **Connect to Office 365** button to your app. 
 
