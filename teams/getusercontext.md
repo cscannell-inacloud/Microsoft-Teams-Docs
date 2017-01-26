@@ -18,12 +18,11 @@ There are two ways to access user context information:
 
 ## Getting user context through inserting URL placeholder values
 
-Use placeholders in your configuration or content URLs. Microsoft Teams replaces the placeholders with the relevant values when determining the actual configuration or content URL to navigate to. The available placeholders include:
+Use placeholders in your configuration or content URLs. Microsoft Teams replaces the placeholders with the relevant values when determining the actual configuration or content URL to navigate to. The available placeholders include all fields on the [Context](jslibrary.md#Context) object. Common placeholders include:
 
 * {upn}: The user name
 * {groupId}: The ID of an Office 365 group
 * {tid}: The company ID, i.e., tenant ID
-* {theme}: Display theme, such as 'default' or 'dark'
 * {locale}: The user locale, such as 'en-us'
 
 For example, suppose in your tab manifest you set the `configURL` attribute to:
@@ -46,13 +45,3 @@ When they select your tab, they will be navigated to:
 You can also retrieve the information listed above using the [Microsoft Teams Tab library](jslibrary.md), by calling `microsoftTeams.getContext(function(context) { /* ... */ })`.
 
 In addition, you can also register your app to be told if the theme changes by calling `microsoftTeams.registerOnThemeChangeHandler(function(theme) { /* ... */ })`.
-
-
-
-
-
-
-
-
-
-

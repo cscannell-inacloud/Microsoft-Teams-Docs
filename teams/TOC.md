@@ -10,6 +10,7 @@
 ### [Get user context for a tab](getusercontext.md)
 ### [Authenticating within a tab page](auth.md)
 ### [Redirecting a tab across domains](crossdomain.md)
+### [Creating deep links to a tab](deeplinks.md)
 ### [Tab manifest schema reference](schema.md)
 ### [Tab JavaScript library API reference](jslibrary.md)
 ### [Tab sample apps](samples.md)

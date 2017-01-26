@@ -11,10 +11,10 @@ Below is a sample manifest for a simple tab.
 
 ```JSON
 {
-    "$schema": "https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json",
-    "manifestVersion": "0.2",
+    "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
+    "manifestVersion": "0.4",
     "id": "com.example.microsoftteamstabs.maps",
-    "version": "0.2",
+    "version": "1.0",
     "name": "Maps",
     "developer": {
         "name": "Example company",   
@@ -44,7 +44,7 @@ The manifest you create for your tab must adhere to the schema. For more informa
 
 > **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
 > 
-> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json",`
+> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
 
 ## Uploading your tab package to Microsoft Teams
 
