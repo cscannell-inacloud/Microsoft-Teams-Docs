@@ -51,24 +51,6 @@ Initiates an authentication request which pops up a new windows with the specifi
 * `authenticateParameters: `[`AuthenticateParameters`](#authentication.AuthenticateParameters)
     * A set of values that configure the authentication popup.
 
-### `getAuthToken(authTokenRequest: `[`AuthTokenRequest`](#authentication.AuthTokenRequest)`): void`
-_Introduced in v0.4_
-
-Requests an AAD token to be issued on behalf of the app. The token is acquired from the cache if it is not expired. Otherwise a request will be sent to AAD to obtain a new token.
-
-#### Parameters
-* `authTokenRequest: `[`AuthTokenRequest`](#authentication.AuthTokenRequest)
-
-A set of values that configure the token request.
-
-### `getUser(userRequest: `[`UserRequest`](#authentication.UserRequest)`): void`
-_Introduced in v0.4_
-
-Requests the decoded AAD user identity on behalf of the app.
-
-#### Parameters
-* `userRequest`: [`UserRequest`](#authentication.UserRequest)
-
 ### `notifyFailure(reason?: string): void`
 Notifies the frame that initiated this authentication request that the request failed. This function is only usable on the authentication window. This call causes the authentication window to be closed.
 
