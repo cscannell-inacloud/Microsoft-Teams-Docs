@@ -1,6 +1,6 @@
 ﻿# Sending and receiving messages
 
-Many but not all of the functionality supported by the Bot Framework is supported in Bots on Microsoft teams.  For more information about core messaging functionality of the Bot Framework, please review the [documentation](https://docs.botframework.com/en-us/core-concepts/messages/#navtitle).
+Much but not all of the functionality supported by the Bot Framework is supported in Bots on Microsoft teams.  For more information about core messaging functionality of the Bot Framework, please review the [documentation](https://docs.botframework.com/en-us/core-concepts/messages/#navtitle).
 
 ##Messages
 Your bot can send rich text, pictures and cards. Users can send rich text and pictures to your bot. You can specify the type of content your bot can handle in the Microsoft Teams settings page for your bot.

@@ -18,5 +18,6 @@ Microsoft Teams supports much of the common BotFramework functionality.  Follow 
 - Create and register your bot in the BotFramework:  Take advantage of the great tools, documentation, and community provided by the BotFramework team.
 - Develop your bot: Add basic conversation flow and leverage channel-specific functionality. 
 - Add your bot to Microsoft teams:  Whether invoking in a 1:1 conversation, or adding it as a team member, it's easy to get your bot into Teams.
+- Publish your bot: _Coming soon_
 
 >**Note:** We are looking for developers to build great bots for inclusion in Microsoft Teams app gallery.  Submit your proposal [here](https://aka.ms/microsoftteamsdeveloperpreviewinterestform).
