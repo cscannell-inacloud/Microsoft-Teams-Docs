@@ -1,6 +1,6 @@
 ﻿# Creating and Testing a bot for Microsoft Teams (preview)
 
-All bots created using the Microsoft Bot Framework are automatically configured and ready to work in Microsoft Teams.
+All bots created using the Microsoft Bot Framework are configured and ready to work in Microsoft Teams.
 
 > **Note:** During Preview, only sideloading of bots is allowed, and only if enabled in the Office Admin portal. [More Information](setup.md). 
 
