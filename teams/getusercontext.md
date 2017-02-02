@@ -16,7 +16,7 @@ There are two ways to access user context information:
 * Inserting URL placeholder values
 * Using the [Microsoft Teams Tab library](jslibrary.md)
 
-## Getting user context through inserting URL placeholder values
+## Getting context through inserting URL placeholder values
 
 Use placeholders in your configuration or content URLs. Microsoft Teams replaces the placeholders with the relevant values when determining the actual configuration or content URL to navigate to. The available placeholders include all fields on the [Context](jslibrary.md#Context) object. Common placeholders include:
 
@@ -40,7 +40,7 @@ When they select your tab, they will be navigated to:
 `https://www.contoso.com/config?name=user@example.com&tenant=e2653c-etc&group=test`
 
 
-## Getting user information through using the Microsoft Teams Tab library
+## Getting context through using the Microsoft Teams Tab library
 
 You can also retrieve the information listed above using the [Microsoft Teams Tab library](jslibrary.md), by calling `microsoftTeams.getContext(function(context) { /* ... */ })`.
 

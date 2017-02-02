@@ -41,14 +41,16 @@ microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
          contentUrl: "https://www.bing.com/maps/embed",
          suggestedDisplayName: "Bing Map",
          websiteUrl: "https://www.bing.com/maps",
-         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html"
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
+         entityId: "bing"
       });
     } else {
        microsoftTeams.settings.setSettings({
          contentUrl: "https://www.google.com/maps/embed",
          suggestedDisplayName: "Google Map",
          websiteUrl: "https://www.google.com/maps",
-         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html"
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
+         entityId: "google"
       });
     }
     
