@@ -1,12 +1,12 @@
 ﻿# Starting a conversation
 
-Bots in Microsoft teams allow private conversations with a single user or a group conversation in a Teams channel.
+Bots in Microsoft Teams allow private conversations with a single user or a group conversation in a Teams channel.
 
 ## Initiating conversation
 
 Bots can interact in three contexts:
-* One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name in the To: box on a new chat.
-* In Channel Response - Bots can also be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
+* One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
+* In Channel Response - A bot can also be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
 * In Channel Conversation Creation - Bots can initiate new channel conversations via the CreateConversation method.
 
 ## Receiving messages
@@ -17,10 +17,10 @@ Of note:
 * From user id in "from" -> "id" - This is a unique and encrypted id for that user for your bot, and is suitable as a key should your app wish to store user data.  Note, though, that this is unique for your bot and cannot be directly used outside your bot instance in any meaningful way to identify that user.
 
 For a bot in a channel, in addition to the regular message schema, your bot will also receive the following properties:
-•	Teams ID - The id for the Team is in the "channelData" -> "teamsTeamId" property.
-•	Teams channel ID – The id for the Teams channel is in the “channelData” -> “teamsChannelId” property.  
-•	Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the “conversation” -> “id” property.
-•	Detailed info about the mentioned bots/users – That will be included in the “entities” section with "type" = "mention". The “text” will match the mentioned text in the top level “text”, which will be wrapped with <at></at>.
+* Teams ID - The id for the Team is in the "channelData" -> "teamsTeamId" property.
+* Teams channel ID – The id for the Teams channel is in the “channelData” -> “teamsChannelId” property.  
+* Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the “conversation” -> “id” property.
+* Detailed info about the mentioned bots/users – That will be included in the “entities” section with "type" = "mention". The “text” will match the mentioned text in the top level “text”, which will be wrapped with <at></at>.
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
@@ -95,7 +95,7 @@ for (int i = 0;i < m.Length;i++)
 ```
 
 ## Replying to message
-In order to reply to an existing message, you simply need to call the `ReplyToActivity()` [C#]()/[Node.JS]() method in the BotBuilder SDK, or call the [/conversations/{conversationId}/activities/{activityId}`]() Connector REST API endpoint.
+In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  You can also call the [/conversations/{conversationId}/activities/{activityId}`]() Connector REST API endpoint.
 Because channel messages are contained with reply chains, you will want to post the message back to an existing reply chain ID. To do this, make sure the conversation ID contains the “;messageid=xxx” portion.
 
 ### Outbound Schema example
