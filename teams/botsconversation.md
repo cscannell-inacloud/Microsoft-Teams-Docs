@@ -32,10 +32,12 @@ If you choose to use the REST API, you can also call the [/conversations/{conver
 ### Receiving messages
 
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity) , your bot will also receive the following properties:
-* Teams ID - The id for the Team is in the "channelData" -> "teamsTeamId" property.
-* Teams channel ID – The id for the Teams channel is in the “channelData” -> “teamsChannelId” property.  
+* Teams ID - The id for the team is in the "channelData" -> "teamsTeamId" property.
+* Channel ID – The id for the team channel is in the “channelData” -> “teamsChannelId” property.  
 * Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the “conversation” -> “id” property.
 * Detailed info about the mentioned bots/users – That will be included in the “entities” section with "type" = "mention". The “text” will match the mentioned text in the top level “text”, which will be wrapped with <at></at>.
+
+Please note that channelData should be used as the definitive information for team and channel Ids, for your use in cacheing and utilizing as key local storage.
 
 ### Replying to message
 Replying to a message in a channel is the same as in 1:1.  Note that replying to a message in a channel shows as a reply to the initiating reply chain - for bots in channels, the conversationId contains channel and the top level message id.  While the BotFramework takes care of the details, you may cache that conversationId for future replies to that conversation thread as needed.
@@ -43,12 +45,13 @@ Replying to a message in a channel is the same as in 1:1.  Note that replying to
 
 ### Mentions
 
-You can retrieve all menions in the message by calling the `GetMentions()` function in the BotFramework C# SDK.  This should return an array of all the @mentions sent in the "entities" section of the schema.
+You can retrieve all mentions in the message by calling the `GetMentions()` function in the BotFramework C# SDK.  This should return an array of all the @mentions sent in the "entities" section of the schema.
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
 ```
 Mention[] m = sourceMessage.GetMentions();
+var messageText = sourceMessage.Text;
 
 for (int i = 0;i < m.Length;i++)
 {

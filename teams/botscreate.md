@@ -11,4 +11,4 @@ See the [Microsoft Bot Framework Overview](https://docs.botframework.com/en-us/)
 
 3. Test it using the [Bot Framework Emulator](https://docs.botframework.com/en-us/tools/bot-framework-emulator/)
 4. Deploy the bot to a cloud service, such as [Microsoft Azure](https://azure.microsoft.com/)
-5. [Add the bot](#testing-your-bot-in-microsoft-teams) to a Microsoft Teams 1:1 chat, and test.
+5. [Add the bot](#testing-your-bot-in-microsoft-teams) to a Microsoft Teams 1:1 chat or channel, and test.
