@@ -36,7 +36,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-### Full inboud Schema example
+### Full inbound Schema example
 ```
 {
     "type": "message",
@@ -150,4 +150,9 @@ Because channel messages are contained with reply chains, you will want to post 
 
 
 ## Creating a new reply chain
-Your bot can also post into a channel to create a new reply chain via the `CreateConversation()` [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple)/[Node.JS]() method of the BotBuilder SDK. Alternatively, you can issue a POST request to the [`/conversations/{conversationId}/activities/`]() resource.
+Your bot can also post into a channel to create a new reply chain.  With the BotBuilder SDK, call  `CreateConversation()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  
+
+Alternatively, you can issue a POST request to the [`/conversations/{conversationId}/activities/`]() resource.
+
+
+Note: at this point, bots in Microsoft Teams cannot initiate 1:1 / direct or 1:many / group conversations.
