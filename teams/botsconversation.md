@@ -87,6 +87,14 @@ ConversationParameters conversationParams = new ConversationParameters(
 var result = await connector.Conversations.CreateConversationAsync(conversationParams);
 ```
 
+## Fetching the team roster
+Your bot application can now query for the list of team members. With the BotBuilder SDK, call  `GetConversationMembersAsync()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of userIds for the `teamId` retrieved from the `channelData` of the inbound schema.
+
+Alternatively, you can issue a GET request to the [`/conversations/{teamId}/members/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_GetConversationMembers) resource, using `teamId` in the `conversationId` field in the API call.
+
+Currently, this only returns the userIds but we will be including profile information in the future.
+
+
 ## Full inbound Schema example (bot in a channel)
 ```
 {
