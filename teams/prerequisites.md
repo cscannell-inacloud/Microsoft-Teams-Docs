@@ -14,13 +14,13 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Include the [Microsoft Teams Tab library](jslibrary.md) in your page as a script source.
 
-	`<script src="https://statics.teams.microsoft.com/sdk/v0.2/js/MicrosoftTeams.min.js" />`
+	`<script src="https://statics.teams.microsoft.com/sdk/v0.4/js/MicrosoftTeams.min.js" />`
 
 * Once your page has successfully loaded, call `microsoftTeams.initialize()` to display your page. Microsoft Teams will not display your page unless you do so.
 
 > Hitting problems?  See the [troubleshooting guide](troubleshooting.md).
 
->**Tip:** For developers using TypeScript, Microsoft Teams provides a [definition file](https://statics.teams.microsoft.com/sdk/v0.2/types/MicrosoftTeams.d.ts) to enable IntelliSense or similar support from your code editor as well as compile-type type checking as part of your build.
+>**Tip:** For developers using TypeScript, Microsoft Teams provides a [definition file](https://statics.teams.microsoft.com/sdk/v0.4/types/MicrosoftTeams.d.ts) to enable IntelliSense or similar support from your code editor as well as compile-type type checking as part of your build.
 
 ## Next steps
 

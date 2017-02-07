@@ -1,6 +1,6 @@
 ﻿# Create the configuration page for your Microsoft Teams (preview) tab
 
-The configuration page is an HTML page that you host. When a user chooses to add your tab, Microsoft Teams will load the 'configUrl' (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
+The configuration page is an HTML page that you host. When a user chooses to add - or update - your tab, Microsoft Teams will load the 'configUrl' (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
 
 In this page, you present options and gather information from the user about what they want in your tab. For example, you may let the user select existing app resources (such as files or task lists) or even create new such resources just for this tab.
 
@@ -28,7 +28,7 @@ With this as a simple example, let's walk through the steps your configuration p
   <input type="radio" name="maptype" value="google" onclick="onClick()"> Google Maps
 </form> 
 
-<script src="https://statics.teams.microsoft.com/sdk/v0.2/js/MicrosoftTeams.min.js"></script>
+<script src="https://statics.teams.microsoft.com/sdk/v0.4/js/MicrosoftTeams.min.js"></script>
  
 <script type="text/javascript">  
 
@@ -38,17 +38,19 @@ microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
     var radios = document.getElementsByName("maptype");
     if (radios[0].checked) {
        microsoftTeams.settings.setSettings({
+         entityId: "bing"
          contentUrl: "https://www.bing.com/maps/embed",
          suggestedDisplayName: "Bing Map",
          websiteUrl: "https://www.bing.com/maps",
-         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html"
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
       });
     } else {
        microsoftTeams.settings.setSettings({
+         entityId: "google"
          contentUrl: "https://www.google.com/maps/embed",
          suggestedDisplayName: "Google Map",
          websiteUrl: "https://www.google.com/maps",
-         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html"
+         removeUrl: "https://teams-get-started-sample.azurewebsites.net/tabremove.html",
       });
     }
     
@@ -74,9 +76,9 @@ For your configuration page to display within Microsoft Teams, make sure it meet
 
 Your configuration page needs to perform the following steps:
 
-### Obtain user context and authenticate
+### Obtain context and authenticate
 
-If your page requires user context, see [Get user context, locale, or theme information](getusercontext.md). If it needs to authenticate the user, see [Authenticating in your Microsoft Teams tab pages](auth.md).
+If your page requires context about the user or environment, see [Get context information](getusercontext.md). If it needs to authenticate the user, see [Authenticating in your Microsoft Teams tab pages](auth.md).
 
 ### Determine when the user has specified all required information
  
@@ -84,20 +86,23 @@ By default, the **Save** button on the configuration dialog box is disabled. Whe
 
 ### Determine the content to display in the tab
 
-Use `microsoftTeams.settings.setSettings({contentUrl, suggestedTabName, websiteUrl, removeUrl, customSettings})` to specify the URL of the [content page](createcontentpage.md) Microsoft Teams should host in the tab. Things to keep in mind:
+Use `microsoftTeams.settings.setSettings({entityId, contentUrl, suggestedTabName, websiteUrl, removeUrl})` to specify the URL of the [content page](createcontentpage.md) Microsoft Teams should host in the tab. Things to keep in mind:
 
 * This call may be made at any time the configuration page is displayed, including before or after the user selects the **Save** button (see below).
+* The `entityID` uniquely identifies the item that is displayed in the tab.
+  * Microsoft Teams uses this when creating [deep links to your tab](deeplinks.md).
+  * You can also use it to help obtain context when [displaying your content page](createcontentpage.md) or when [updating or removing a tab](updateremove.md).
+  * You can use the the same value as the `contentUrl` if you wish.
 * The `contentUrl` is a required field which specifies the URL of the content Microsoft Teams should host in the tab.
-* If `contentUrl` resides in a different domain from the configuration page, make sure you have added that domain to the `validDomains` element in the tab manifest file. For more information, see [Microsoft Teams tab schema](schema.md) and [Redirecting across domains within a Microsoft Teams tab](crossdomain.md).
+  * If `contentUrl` resides in a different domain from the configuration page, make sure you have added that domain to the `validDomains` element in the tab manifest file. For more information, see [Microsoft Teams tab schema](schema.md) and [Redirecting across domains within a Microsoft Teams tab](crossdomain.md).
 *  The other parameters further customize how your tab works in Microsoft Teams:
 	* The optional `suggestedTabName` parameter sets the initial tab name. Users can rename the tab. The default value is the name specified in the manifest.
 	* The optional `websiteUrl` parameter sets where the user is taken if they click the **Go to website** button. Typically, this is a link to the same content as displayed on the tab, but within your main web app with its regular chrome and navigation.
 	* The optional `removeUrl` parameter sets the URL for your [removal options page](updateremove.md#removing-a-tab).
-	* The optional `customSettings` string parameter can be used to store additional information that helps your tab page regain context when [updating or removing a tab](updateremove.md).
 
 ### React when the user clicks the Save button
 
-Often you may not be able to determine the `contentUrl` immediately.  For example, you may first need create a new resource (a document or a task), and you only want to do this once the user selects **Save**. To be notified when the user selects **Save**, you must call
+Often you may not be able to determine the `entityId` or `contentUrl` immediately.  For example, you may first need create a new resource (a document or a task), and you only want to do this once the user selects **Save**. To be notified when the user selects **Save**, you must call
 `microsoftTeams.settings.registerOnSaveHandler(function(saveEvent) { /* ... */ })`. Once this is done, when the user selects **Save**, Microsoft Teams calls the save event handler you registered.
 
 You can return the settings asynchronously if, for example, the user has requested a new resource which will take time for you to create. To do this, store `saveEvent` for later. If you do not notify the outcome within 30 seconds, Microsoft Teams terminates the operation and displays an error.

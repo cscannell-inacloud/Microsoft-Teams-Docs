@@ -1,10 +1,10 @@
 ﻿# Microsoft Teams (preview) tab manifest schema reference
 
-Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json` .
+Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json` .
 
 > **Tip** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
 > 
-> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.2/manifest/MicrosoftTeams.schema.json",`
+> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
 
 The schema defines the following properties:
 
@@ -12,17 +12,13 @@ The schema defines the following properties:
 
 The version of the manifest schema this manifest is using.
 
-## `id` (string, required)
-
-A unique identifier for this extension. The id must use reverse domain name notation.
-
 ## `version` (string, required)
 
-The extension version. Changes to the extension should cause a version change. This version string must follow the semver standard.
+The app version. Changes to the app should cause a version change. This version string must follow the semver standard.
 
-## `name` (string, required)
+## `id` (string)
 
-The display name of the extension.
+A unique identifier for this app. The id must use reverse domain name notation.
 
 ## `developer` (object, required)
 
@@ -30,7 +26,7 @@ Properties of the `developer` object:
 
 ### `name` (string, required)
 
-The display name for the developer
+The display name for the developer.
 
 ### `websiteUrl` (string, required)
 
@@ -44,45 +40,63 @@ The url to the developer's privacy policy.
 
 The url to the developer's terms of use.
 
-## `description` (object, required)
+## `tabs` (array)
+
+The object is an array with all elements of the type `object`.
+
+The array object has the following properties:
+
+### `id` (string, required)
+
+A unique identifier for this extension. The id must use reverse domain name notation.
+
+### `name` (string, required)
+
+The display name of the extension.
+
+### `description` (object, required)
 
 Properties of the `description` object:
 
-### `short` (string, required)
+#### `short` (string, required)
 
 A short description of the extension used when space is limited. Maximum length is 80 characters.
 
-### `full` (string, required)
+#### `full` (string, required)
 
 The full description of the extension. Maximum length is 256 characters.
 
-## `icons` (object, required)
+### `icons` (object, required)
 
 Each icon image file must be a transparent PNG, with a white or light-colored background.
 
 Properties of the `icons` object:
 
-### `44` (string, required)
+#### `44` (string, required)
 
 An icon for the extension sized to 44x44.
 
-### `88` (string, required)
+#### `88` (string, required)
 
 An icon for the extension sized to 88x88.
 
-## `accentColor` (string, required)
+### `accentColor` (string, required)
 
 A color to use in conjunction with the extension's icons. The value must be a valid HTML color code starting with '#', for example `#4464ee`.
 
-## `configUrl` (string, required)
+### `configUrl` (string, required)
 
 The url to use when configuring the extension.
 
-## `canUpdateConfig` (boolean)
+### `canUpdateConfig` (boolean)
 
 A value indicating whether an instance of the extension's config can be updated by the user after creation.
 
 Default: `true`
+
+## `bots` (array)
+
+_This field is reserved for future use_
 
 ## `needsIdentity` (boolean)
 
