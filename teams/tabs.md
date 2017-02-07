@@ -14,6 +14,7 @@ Follow these steps to build a tab:
 	*  You can also [enable users to update a tab](updateremove.md#updating-an-existing-tab-instance) after they add it. 
 *  [Create the content page:](createcontentpage.md) Microsoft Teams displays this content page when the user visits your tab. This is also an HTML page which you host and Microsoft Teams displays within an iframe.
 	* You can also provide a page for users to specify [what happens to content when they remove a tab](updateremove.md#removing-a-tab).
+	* You can enable users to create and share [deep links to items within your tab](deeplinks.md) - such as links an individual task within a tab that contains a task list.
 
 >**Note:** We are looking for developers to build great tabs for inclusion in Microsoft Teams app gallery.  Submit your proposal [here](https://aka.ms/microsoftteamsdeveloperpreviewinterestform) and review the [tab publisher agreement](https://aka.ms/microsoftteamstabsdeveloperagreement) that will apply if you are accepted.
 
