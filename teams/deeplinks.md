@@ -2,13 +2,13 @@
 
 For every tab, Microsoft Teams adds a 'Copy link to tab' menu action.  This generates a deep link that points to this tab, which users can share.
 
-You can also enable team members to create and share links to items _within_ your tab - such as an individual task within a tab that contains a task list.  When clicked, the link will navigate to your tab, which focuses on the specific item.  To implement this, you add a 'copy link' action to each item, in whatever way best suits your UI.  When clicked, you call `shareDeepLink()` that displays a dialog containing a link that the user can copy to the clipboard.  When you make this call, you also pass in an ID for your item, which you get back in the [context](usercontext.md) when the link is followed and your tab is reloaded.
+You can also enable team members to create and share links to items _within_ your tab - such as an individual task within a tab that contains a task list.  When clicked, the link will navigate to your tab, which focuses on the specific item.  To implement this, you add a 'copy link' action to each item, in whatever way best suits your UI.  When the user takes this action, you call `shareDeepLink()` that displays a dialog containing a link that the user can copy to the clipboard.  When you make this call, you also pass in an ID for your item, which you get back in the [context](getusercontext.md) when the link is followed and your tab is reloaded.
 
 Further, you can generate deeplinks programmatically, using the format specified below.  You may want to use these in [bot](bots.md) and [connector](connectors.md) messages that inform users about changes to your tab, or to items within it.
 
->**Note:** Deep links only work properly if the tab was configured using the v0.4 library and thus has an entity id. Deep links to tabs without entity ids will still navigate to the tab but not be able to provide the sub-entity id to the tab.
+>**Note:** Deep links only work properly if the tab was configured using the v0.4 library and thus has an entity ID. Deep links to tabs without entity IDs will still navigate to the tab but not be able to provide the sub-entity ID to the tab.
 
-## Showing a dialog with a deep link to an item within your tab
+## Showing a dialog that contains a deep link to an item within your tab
 
 To show a dialog that contains a deep link to an item within your tab, call: `microsoftTeams.shareDeepLink({ subEntityId: <subEntityId>, subEntityLabel: <subEntityLabel>, subEntityWebUrl: <subEntityWebUrl> })`
 
@@ -20,7 +20,7 @@ The fields to provide are:
 ## Generating a deep link to your tab (for use in a bot or connector message)
 
 The format for a deep link is as follows:
-`https://teams.microsoft.com/l/entity/<appId>/<entityId>?webUrl=<EntityWebUrl>&label=<EntityLabel>&context=<context>`
+`https://teams.microsoft.com/l/entity/<appId>/<entityId>?webUrl=<entityWebUrl>&label=<entityLabel>&context=<context>`
 
 The query parameters are:
 * `appId` - the ID from your manifest.  For example, "fe4a8eba-2a31-4737-8e33-e5fae6fee194"
@@ -40,6 +40,6 @@ Examples:
 
 ## Consuming a deep link from a tab
 
-When navigating to a deep link, Microsoft Teams simply navigates to the tab and provides a mechanism via the JavaScript library to retrieve the sub-entity id (if it exists).
+When navigating to a deep link, Microsoft Teams simply navigates to the tab and provides a mechanism via the Microsoft Teams Tab library to retrieve the sub-entity id (if it exists).
 
 The [`microsoftTeams.getContext`](jslibrary.md#getcontextcallback-context-contextcontext--void-void) call returns a context which will have the `subEntityId` field if the tab was navigated to via deep link.
