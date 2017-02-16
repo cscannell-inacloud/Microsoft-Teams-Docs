@@ -73,7 +73,7 @@ Note: at this point, bots in Microsoft Teams cannot initiate 1:1 / direct or 1:m
 ### Example
 ```
 var channelData = new Dictionary<string, string>();
-channelData["teamsChannelId"] = "19:dc5ba12695be4eb7bf457cad6b4709eb@thread.skype";
+channelData["teamsChannelId"] = yourTeamsChannelID;
 IMessageActivity newMessage = Activity.CreateMessageActivity();
 newMessage.Type = ActivityTypes.Message;
 newMessage.Text = answer;
@@ -115,14 +115,14 @@ Currently, this only returns the userIds but we will be including profile inform
     "serviceUrl": "https://smba.trafficmanager.net/amer-client-ss.msg/",
     "channelId": "msteams",
     "from": {
-        "id": "29:1XJKJMvc5GBtc2JwZq0oj8tHZmzrQgFmB39ATiQWA85gQtHieVkHilBZ9XHoq9j7Zaqt7CZ-NJWi7me2kHTL3Bw",
+        "id": "29:1XJKJMvc5GBtc2JwZq0oj8tHZmzrQgFmB39ATiQWA85gQtHieVkKilBZ9XHoq9j7Zaqt7CZ-NJWi7me2kHTL3Bw",
         "name": "Richard Moe"
     },
     "conversation": {
-        "id": "19:253b1f341670408fb6fe51050b6e5ceb@thread.skype;messageid=1485983194839"
+        "id": "19:253b1f341670408fb6fe51050b6e6ceb@thread.skype;messageid=1485983194839"
     },
     "recipient": {
-        "id": "28:c9e8c047-2a74-40a2-b28a-b162d5f5327c",
+        "id": "28:c9e8c047-2a74-40a2-b28b-b262d5f5327c",
         "name": "Teams TestBot"
     },
     "textFormat": "plain",
@@ -137,7 +137,7 @@ Currently, this only returns the userIds but we will be including profile inform
     {
         "type": "mention",
         "mentioned": {
-            "id": "28:c9e8c047-2a74-40a2-b28a-b162d5f5327c",
+            "id": "28:c9e8c047-2a74-40a2-b28b-b262d5f5327c",
             "name": "Teams TestBot"
         },
         "text": "<at>Teams TestBot</at>"
@@ -145,7 +145,7 @@ Currently, this only returns the userIds but we will be including profile inform
     {
     "type": "mention",
     "mentioned": {
-            "id": "29:1jnFbZYs0qXMLH-O4S9-sDLNc3NVEIMWMnC-q0tVdEa-8BRosfojI35QdNoB-yW8iutWLJzHUm_mqEZSSU8si0Q",
+            "id": "29:1jnFbZYs0qXMLH-O4S9-sDLNc3NVEIMWWnC-q0tVdEa-8BRosfojI35QdNoB-yW8iutWLJzHUm_mqEZSSU8si0Q",
             "name": "Jingjing Xia"
         },
         "text": "<at>Jingjing Xia</at>"
@@ -158,8 +158,8 @@ Currently, this only returns the userIds but we will be including profile inform
     }
     ],
     "channelData": {
-        "teamsChannelId": "19:253b1f341670408fb6fe51050b6e5ceb@thread.skype",
-        "teamsTeamId": "19:712c61d0ef384e5fa681ba90ca943398@thread.skype"
+        "teamsChannelId": "19:253b1f352670408fb6fe51050b6e5ceb@thread.skype",
+        "teamsTeamId": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype"
     }
 }
 ```
