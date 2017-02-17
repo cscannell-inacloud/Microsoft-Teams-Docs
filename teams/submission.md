@@ -18,17 +18,16 @@ For details, see: [Submit Office and SharePoint Add-ins and Office 365 web apps 
 
 The current Manifest schema is [here](schema.md) but amended per the below.  
 * Your manifest file must be named `manifest.json`
-* You must place your manifest in the top level a zip file, along with the two required icons.
-* Your zip file must use the following naming convention: _pubname_-_appname_-_versionnum_.zip.  
+* Your manifest must be at the top level of the Submission Package.
 
 Your manifest for Preview must contain the following amended information:
 | Field  | Required   | Description   | 
 |-------------------------------|---|----------------------------------------------------------------------------|
-|	id	|	*	|	Unique identifier for the experience.  Note: Must be a guid for Preview.	|	
+|	id	|	*	|	Unique identifier for the experience.  Note: Must be a guid for Preview.  [GUID generator](https://guidgenerator.com/)	|	
 |	tabs	|		|	This section is required if you are providing an interactive Teams tab as part of your solution.	|	
 |	bots	|		|	This section, previously marked _reserved for future use_ will be used for your optional bot submission.	|
 |	bots->mri	|	*	|	This must be the Bot Framework ID for your registered bot solution.	|
-|	bots->pinnedTabs	|	  | Your bot may optionally provide a static tab, shown in direct chat.	|
+|	bots->pinnedTabs	|	  | (Coming soon) Your bot may optionally provide a static tab, shown in direct chat.	|
 |	bots->pinnedTabs->id	|	*	|	User defined ID for the tab	|
 |	bots->pinnedTabs->definitionId	|	*	|	Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.	|
 |	bots->pinnedTabs->displayName	|	*	|	Name to show on the Tab UX	|
@@ -91,20 +90,24 @@ Sample manifest:
 
 
 
-### 2. Fill out the [Test Submission form](URL)
+### 2. Fill out the [Test Submission form]("TeamsAppSubmission.docx")
 
 This simple document is used to inform our validation team what your app does and how best to test it.  We will look at the experience from the perspective of a new user - does the app work, what value does it provide, is it clear how to create any necessary accounts? We would also like to experience your app as an experienced user. If applicable, please create a test user account, ideally with appropriate data to highlight your key scenarios, and submit the account information and simple test plan in this form.  
 
 ### 3. Provide supplemental marketing materials
-TBD Julie
+
+Per the terms of our agreement, we may user your Publisher Marks and offering information for marketing and promotional purposes.  In order to best facilitate this, please provide us the following:
+* Hi-res logo of your product
+* Hi-res logo of your company logo
+* Marketing / promotional copy of your app experience (1-3 sentences, please use text box in the Test Submission form)
 
 ### 4. Build the Submission Package
 
-Create a zip file containing: the Manifest package, the Test Submission form, and all supplemental marketing material.  You must use the following naming convention: _date_-_pubname_-_appname_-_versionnum_.zip  
+Create a zip file containing: the Manifest json file, the Test Submission form, and all supplemental marketing material.  You must use the following naming convention: _date_-_pubname_-_appname_-_versionnum_.zip  
 
 ### 5. Send it to us
 
-Email the Submission Package to: TBD pending IT Support from AMTWeb
+Email the Submission Package to: TeamsSubSupport@microsoft.com
 
 
 ## Teams app approval process
@@ -113,9 +116,8 @@ In order for your Teams app to be approved:
 * It must not contain inadmissible or offensive material.
 * It must be stable and functional.
 * Any material that you associate with your Teams app, such as descriptions and support documentation, must be accurate. Use correct spelling, capitalization, punctuation, and grammar in your descriptions and materials.
+* It must pass all [Validation policies for Teams apps](TeamsAppValidation.pdf), which is based off of the Office Store validation policies found [here](https://msdn.microsoft.com/en-us/library/office/jj220035.aspx).  Please note, like the Office Store validation policies, these are subject to change.
 
->**Note** For more information, see [Validation policies for Teams apps](URL) Pending closure with Office Store Testing team.
-
-When the validation process is complete, you will receive a message to let you know that either your Teams app is approved, or you need to make changes and resubmit it. 
+When the validation process is complete, you will receive a message to let you know that either your Teams app is approved, or you need to make changes and resubmit it.  For resubmission, please follow the above process.  Do not change version number, but do change the date in the file name.
 
 >**Note** If you make changes to an approved Teams app, specifically as it relates to the Manifest, it must go through the approval process again.
