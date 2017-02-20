@@ -2,11 +2,11 @@
 
 Microsoft Teams provides a Tab and Bot gallery to showcase experiences you deliver to end users. Here's how to submit your Teams app for consideration for inclusion in the appropriate gallery.
 
->**Note** At this time, Teams Apps submission is a closed program, by invitation only.
+>**Note** At this time, Teams apps submission is a closed program, by invitation only.  If you have a great idea for a Teams experience, submit your proposal [here](https://aka.ms/microsoftteamsdeveloperpreviewinterestform).
 
 ## Create a Microsoft Seller Dashboard account (optional)
 
-As Microsoft Teams migrates to the Office Store for Teams Apps distribution later this year, all submissions will go through the [Microsoft Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  If you have not already done so, you should create a developer account, which will allow you to submit apps and add-ins to Microsoft marketplaces, including Windows Store, Office Store, Azure Marketplace, and more to come.  This process ensures you establish your identity in the Microsoft Marketplace ecosystem, and triggers the appropriate validation checks by our Marketplace team to ensure you are who you say you are.
+As Microsoft Teams migrates to the Office Store for Teams apps distribution later this year, all submissions will go through the [Microsoft Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  If you have not already done so, you should create a developer account, which will allow you to submit apps and add-ins to Microsoft marketplaces, including Windows Store, Office Store, Azure Marketplace, and more to come.  This process ensures you establish your identity in the Microsoft Marketplace ecosystem, and triggers the appropriate validation checks by our Marketplace team to ensure you are who you say you are.
 
 Identity in the Microsoft Store ecosystem relies on your [Microsoft Account](https://account.microsoft.com/account).  You'll need to create a new Microsoft account or use an existing one.  Note that this identity will be the main administrator of the Store experience.  For more information, please review the [Developer program FAQ](https://developer.microsoft.com/en-us/store/register/faq).
 
@@ -32,6 +32,13 @@ Your manifest for Preview must contain the following amended information:
 | tabs->description |  | Both the short and full descriptions must accurately and adequately explain your experience. |
 |	bots	|		|	This section, previously marked _reserved for future use_ will be used for your optional bot submission.	|
 |	bots->mri	|	*	|	This must be the Bot Framework ID for your registered bot solution.	|
+| _Note: The following will be supported by launch._ | | _Included so you can craft your manifest in preparation:_ | 
+|	bots->pinnedTabs	|	  | Your bot may optionally provide a static tab, shown in direct chat.	|
+|	bots->pinnedTabs->id	|	*	|	User defined ID for the tab	|
+|	bots->pinnedTabs->definitionId	|	*	|	Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.	|
+|	bots->pinnedTabs->displayName	|	*	|	Name to show on the Tab UX	|
+|	bots->pinnedTabs->url	|	*	|	The url for the content to show in the tab	|
+|	bots->pinnedTabs->websiteUrl | * 	|	A fallback URL for the user to view in browser 	|
 
 Sample manifest - note this example shows a Tab and a Bot in a single package.  Include only the section relevant to your solution:
 
@@ -66,6 +73,15 @@ Sample manifest - note this example shows a Tab and a Bot in a single package.  
   "bots": [
     {
       "mri": "9a346a73-fe93-484c-8236-6bc7203830e1", 
+      "pinnedTabs": [
+        {
+          "id": "personal_todolist",  
+          "definitionId": "com.skype.teams.samples.todolist",
+          "displayName": "Personal todo list",
+          "url": "https://todolistsample.azurewebsites.net?version=0.4",  
+          "websiteUrl": "https://todolistsample.azurewebsites.net" 
+        }
+      ]
     }
   ]
 }
@@ -112,3 +128,13 @@ For approved apps, no more action is needed on your side; your solution will be 
 Failures will be explained and have appropriate policy violation references. All failures must be addressed before resubmission.  For resubmission, please follow the above process.  Do not change version number, but do change the date in the file name.
 
 >**Note** If you make changes to an approved Teams app, specifically as it relates to core functionality or the Manifest, it must go through the approval process again.  For all other changes to your service, for example addressing issues or adding new features, resubmission is not required.
+
+## Tips for rapid approval
+
+* Make sure you include detailed testing notes and a valid working test account with appropriate prepopulated data.
+* If your product requires an account on your or another service, list that in the description.
+* If your product requires additional purchases to properly function, list that in the description.
+* For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
+* Check your manifest for completeness and accuracy.  Then check it again.
+* Follow the file naming conventions and package contents from above.
+* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 convesations.
