@@ -9,37 +9,44 @@ For your tab to be available within Microsoft Teams, you need to create a tab pa
 
 Below is a sample manifest for a simple tab.
 
-```JSON
+```json
 {
-    "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
-    "manifestVersion": "0.4",
-    "id": "com.example.microsoftteamstabs.maps",
-    "version": "1.0",
-    "name": "Maps",
-    "developer": {
-        "name": "Example company",   
-        "websiteUrl": "http://www.example.com",
-        "privacyUrl": "http://www.example.com/privacy",
-        "termsOfUseUrl": "http://www.example.com/termsofuse"
-    },
-    "description" : {
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
+  "manifestVersion": "0.4",
+  "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",
+  "version": "1.0",
+  "name": "Maps",
+  "developer": {
+      "name": "Example company",   
+      "websiteUrl": "http://www.example.com",
+      "privacyUrl": "http://www.example.com/privacy",
+      "termsOfUseUrl": "http://www.example.com/termsofuse"
+  },
+  "tabs": [
+    {
+      "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",
+      "name": "Maps",  
+      "description" : {
             "short": "Host a map as a tab.",
             "full": "Host a map as a tab.  Give your tab a name, select Bing Maps or Google Maps, and click save."
-    },
-    "icons": {
+      },
+      "icons": {
             "44": "maps44.png",
             "88": "maps88.png"
-    },
-    "accentColor" : "#223344",
-    "configUrl": "https://teams-get-started-sample.azurewebsites.net/tabconfig.html",
-    "canUpdateConfig": true,
-    "needsIdentity": false,
-    "validDomains": [
-        "*.bing.com",
-        "*.google.com"
-    ]
+      },
+      "accentColor" : "#223344",
+      "configUrl": "https://teams-get-started-sample.azurewebsites.net/tabconfig.html",
+      "canUpdateConfig": true,
+      "needsIdentity": false
+    }
+  ],
+  "validDomains": [
+     "*.bing.com",
+     "*.google.com"
+  ]
 }
 ```
+
 The manifest you create for your tab must adhere to the schema. For more information, see the [Microsoft Teams manifest schema](schema.md).
 
 > **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:

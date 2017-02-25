@@ -44,7 +44,7 @@ Sample manifest - note this example shows a Tab and a Bot in a single package.  
 
 ```json
 {
-  "$schema": "https://teamspacewusprodms.blob.core.windows.net/tabframework/0.4/tab-manifest-schema.json", 
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 
   "manifestVersion": "0.4",
   "version": "1.0",
   "developer": {
@@ -62,8 +62,8 @@ Sample manifest - note this example shows a Tab and a Bot in a single package.  
         "full": "Create Simple Personal ToDo lists in Microsoft Teams.  Sign in with your favorite service, and start creating your own personal ToDo lists."
       },
       "icons": {
-        "44": "icon44x44.png", 
-        "88": "icon88x88.png"
+        "44": "https://todolistsample.azurewebsites.net/icon44x44.png", 
+        "88": "https://todolistsample.azurewebsites.net/icon88x88.png"
       },
       "accentColor": "#ff6a00",
       "configUrl": "https://todolistsample.azurewebsites.net/config?version=0.4",

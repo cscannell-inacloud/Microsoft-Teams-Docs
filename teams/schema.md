@@ -18,7 +18,7 @@ The app version. Changes to the app should cause a version change. This version 
 
 ## `id` (string)
 
-A unique identifier for this app. The id must use reverse domain name notation.
+A unique identifier for this app. The id must be a GUID.
 
 ## `developer` (object, required)
 
