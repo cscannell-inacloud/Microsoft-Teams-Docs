@@ -2,7 +2,7 @@
 
 Your manifest file must be named `manifest.json` and be at the top level of the submission package (zip file)
 
-The current manifest schema is [here](/schema.md) but amended per the below.  
+The current manifest schema is [here](../schema.md) but amended per the below.  
 
 Your manifest for Preview must contain the following amended information:
 | Field  | Required   | Description   | 
