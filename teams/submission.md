@@ -22,7 +22,7 @@ By submitting your tab or bot for inclusion in the Teams gallery, you accept the
 
 You should make sure you're in our developer ring (ask us if you're not)
 
-General documentation for the platform is [here](index.md).  There are also additional features for bots explained in [these](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) and [document](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
+General documentation for the platform is [here](index.md).  There are also additional features for bots explained in [these](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) [documents](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
 
 To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
 
