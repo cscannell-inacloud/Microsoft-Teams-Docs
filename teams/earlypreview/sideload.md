@@ -34,3 +34,7 @@ If the manifest doesn't load, please double-check you've followed all the instru
 
 In particular, for tabs, note the size limitations on icons included in your side-load package.
 
+## Submitting your manifest for consideration
+
+See the [instructions](../submission.md) for submitting your bot or tab for consideration.
+
