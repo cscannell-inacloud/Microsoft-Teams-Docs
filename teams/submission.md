@@ -22,7 +22,7 @@ By submitting your tab or bot for inclusion in the Teams gallery, you accept the
 
 You should make sure you're in our developer ring (ask us if you're not)
 
-General documentation for the platform is [here](index.md).  There are also additional features for bots explained in [these](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) [documents](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
+General documentation for the platform is [here](index.md).  There are also additional features for bots: the [new Invoke action type](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) and [Bots In Channels](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
 
 To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
 
@@ -41,7 +41,9 @@ Per the terms of our agreement, we may use your Publisher Marks and offer inform
 
 Create a zip file containing: 
 * manifest.json
-* Your 44x44 and 88x88 icons, less than ~1.5KB - if you're building a tab, and not referencing your icons via a publicly accessible URL.
+* Your 44x44 and 88x88 icons (PNG format)
+  * Only needed if you're submitting a tab, and not referencing its icons via a publicly accessible URL
+  * Icon must be less than ~1.5KB, transparent, with a single white/light foreground color
 * The Test Submission form
 * All supplemental marketing material.  
 
@@ -76,4 +78,5 @@ Failures will be explained and have appropriate policy violation references. All
 * For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
 * Check your manifest for completeness and accuracy.  Then check it again.
 * Follow the file naming conventions and package contents from above.
-* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 convesations.
+* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations.
+* Provide the requisite Terms and Privacy policy links in the manifest, that properly resolve to the correct documentation.

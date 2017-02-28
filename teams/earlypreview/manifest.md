@@ -7,15 +7,14 @@ The current manifest schema is [here](../schema.md) but amended per the below.
 Your manifest for Preview must contain the following amended information:
 | Field  | Required   | Description   | 
 |-------------------------------|---|----------------------------------------------------------------------------|
-|	id	|	*	|	Unique identifier for the experience.  Note: Must be a guid for Preview.  [GUID generator](https://guidgenerator.com/)	|	
+|	id	|	*	|	Unique GUID.  For a bot, you can re-use your Bot Framework GUID.  For a tab, you can can [generate a new GUID](https://guidgenerator.com/)	|	
 |	tabs	|		|	This section is required if you are providing a tab - for use in team channels - as part of your solution.	|	
 | tabs->description | * | Both the short and full descriptions must accurately and adequately explain your experience. |
-| tabs->icons | * | These must either reference icons in your package that are smaller than ~1.5KB or a URL on a publicly accessible server. |
+| tabs->icons | * | _See important notes below about icons_ |
 |	bots	|		|	This section, previously marked _reserved for future use_ will be used for your optional bot submission.	|
 |	bots->mri	|	*	|	This must be the Bot Framework ID for your registered bot solution.	|
-| _Note: The following will be supported by launch._ | | _Included so you can craft your manifest in preparation:_ | 
 |	bots->pinnedTabs	|	  | Your bot may optionally provide a static tab, shown in direct chat.	|
-|	bots->pinnedTabs->id	|	*	|	User defined ID for the tab	|
+|	bots->pinnedTabs->id	|	*	|	Developer defined ID for the tab	|
 |	bots->pinnedTabs->definitionId	|	*	|	Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.	|
 |	bots->pinnedTabs->displayName	|	*	|	Name to show on the Tab UX	|
 |	bots->pinnedTabs->url	|	*	|	The url for the content to show in the tab	|
@@ -88,6 +87,13 @@ Your manifest for Preview must contain the following amended information:
   ]
 }
 ```
+
+### Icons 
+
+Icons are are only needed if you are submitting a tab.  (If you're submitting a bot, your Bot Framework icon will be used.)
+* Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
+* The icons must be transparent PNGs, with a single white/light foreground color.
+
 
 ## Test your manifest
 
