@@ -91,4 +91,4 @@ Your manifest for Preview must contain the following amended information:
 
 ## Test your manifest
 
-Test your new manifest by zipping it up and following the [new method for side-loading](earlypreview/sideload.md).
+Test your new manifest by zipping it up and following the [new method for side-loading](sideload.md).

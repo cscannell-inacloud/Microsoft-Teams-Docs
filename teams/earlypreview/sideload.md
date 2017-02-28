@@ -4,19 +4,19 @@ With the latest release, you will need to side-load a zip package containing the
 
 1.	To start, navigate to the team, click on the overflow (“…”), and select View team.
 
-!["View team"](../images/viewteam.jpg)
+   !["View team"](../images/viewteam.jpg)
 
 2.	Click on the Bots tab at the top of the page.  (This is the rigth place to go even if you're building a tab.)
 
 3.	Click on Sideload a bot or tab.
 
-!["Sideload entry point"](../images/sideloadentrypoint.png)
+   !["Sideload entry point"](../images/sideloadentrypoint.png)
 
 4.	Browse to and select your zip package from your PC.
 
 5.	You will see your side loaded bot or tab in the list.
 
-!["Example of bot in list of side-loaded bots"](../images/botinlist.jpg)
+   !["Example of bot in list of side-loaded bots"](../images/botinlist.jpg)
 
 If you're adding a tab, it should now appear in the tab gallery as normal.
 
@@ -30,7 +30,7 @@ If you're adding a bot:
 
 ## Troubleshooting
 
-If the manifest doesn't load, please double-check you've followed all the instructions [here])(manifest.md).
+If the manifest doesn't load, please double-check you've followed all the instructions [here](manifest.md).
 
 In particular, for tabs, note the size limitations on icons included in your side-load package.
 
