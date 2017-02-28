@@ -78,4 +78,5 @@ Failures will be explained and have appropriate policy violation references. All
 * For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
 * Check your manifest for completeness and accuracy.  Then check it again.
 * Follow the file naming conventions and package contents from above.
-* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 convesations.
+* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations.
+* Provide the requisite Terms and Privacy policy links in the manifest, that properly resolve to the correct documentation.

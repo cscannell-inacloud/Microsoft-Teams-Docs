@@ -13,7 +13,6 @@ Your manifest for Preview must contain the following amended information:
 | tabs->icons | * | _See important notes below about icons_ |
 |	bots	|		|	This section, previously marked _reserved for future use_ will be used for your optional bot submission.	|
 |	bots->mri	|	*	|	This must be the Bot Framework ID for your registered bot solution.	|
-| _Note: The following will be supported by launch._ | | _Included so you can craft your manifest in preparation:_ | 
 |	bots->pinnedTabs	|	  | Your bot may optionally provide a static tab, shown in direct chat.	|
 |	bots->pinnedTabs->id	|	*	|	Developer defined ID for the tab	|
 |	bots->pinnedTabs->definitionId	|	*	|	Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.	|

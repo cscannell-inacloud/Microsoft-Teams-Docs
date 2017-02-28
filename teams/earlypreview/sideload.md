@@ -6,9 +6,9 @@ With the latest release, you will need to side-load a zip package containing the
 
    !["View team"](../images/viewteam.jpg)
 
-2.	Click on the Bots tab at the top of the page.  (This is the rigth place to go even if you're building a tab.)
+2.	Click on the Bots tab at the top of the page.  (This is the right place to go even if you're building a tab.)
 
-3.	Click on Sideload a bot or tab.
+3.	Click on "Sideload a bot or tab" on the lower right.
 
    !["Sideload entry point"](../images/sideloadentrypoint.png)
 
