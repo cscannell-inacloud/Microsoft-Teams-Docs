@@ -18,9 +18,13 @@ By submitting your tab or bot for inclusion in the Teams gallery, you accept the
 
 ## Send us your Teams submission 
 
-### 1. Create and test your manifest
+### 1. Create and test your bot or tab
 
-Learn how to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md) for testing.
+You should make sure you're in our developer ring (ask us if you're not)
+
+General documentation for the platform is [here](../index.md).  There are also additional features for bots explained in [these](earlypreview/Invoke.pdf) and [documents](earlypreview/BotsInChannels.pdf).
+
+To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
 
 ### 2. Fill out the [Test Submission form](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/TeamsAppSubmission.docx)
 
