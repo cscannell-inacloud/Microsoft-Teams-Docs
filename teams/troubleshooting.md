@@ -35,6 +35,6 @@ The other reason the settings may not be saved is if the call to `microsoftTeams
 
 Common problems with the settings object:
 
+* `settings.entityID` is missing. This field is required.
 * `settings.contentUrl` is missing. This field is required.
 * `settings.contentUrl` or the optional `settings.removeUrl`, or `settings.websiteUrl` are provided but not valid. The urls must be https urls and also must either be the same domain as the settings page or specified in the manifest's `validDomains` list.
-* `settings.customSettings` is provided but over the 1kb limit.

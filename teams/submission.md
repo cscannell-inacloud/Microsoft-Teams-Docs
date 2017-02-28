@@ -18,74 +18,13 @@ By submitting your tab or bot for inclusion in the Teams gallery, you accept the
 
 ## Send us your Teams submission 
 
-### 1. Create your manifest
+### 1. Create and test your bot or tab
 
-The current Manifest schema is [here](schema.md) but amended per the below.  
-* Your manifest file must be named `manifest.json`
-* Your manifest must be at the top level of the Submission Package.
+You should make sure you're in our developer ring (ask us if you're not)
 
-Your manifest for Preview must contain the following amended information:
-| Field  | Required   | Description   | 
-|-------------------------------|---|----------------------------------------------------------------------------|
-|	id	|	*	|	Unique identifier for the experience.  Note: Must be a guid for Preview.  [GUID generator](https://guidgenerator.com/)	|	
-|	tabs	|		|	This section is required if you are providing an interactive Teams tab as part of your solution.	|	
-| tabs->description |  | Both the short and full descriptions must accurately and adequately explain your experience. |
-|	bots	|		|	This section, previously marked _reserved for future use_ will be used for your optional bot submission.	|
-|	bots->mri	|	*	|	This must be the Bot Framework ID for your registered bot solution.	|
-| _Note: The following will be supported by launch._ | | _Included so you can craft your manifest in preparation:_ | 
-|	bots->pinnedTabs	|	  | Your bot may optionally provide a static tab, shown in direct chat.	|
-|	bots->pinnedTabs->id	|	*	|	User defined ID for the tab	|
-|	bots->pinnedTabs->definitionId	|	*	|	Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.	|
-|	bots->pinnedTabs->displayName	|	*	|	Name to show on the Tab UX	|
-|	bots->pinnedTabs->url	|	*	|	The url for the content to show in the tab	|
-|	bots->pinnedTabs->websiteUrl | * 	|	A fallback URL for the user to view in browser 	|
+General documentation for the platform is [here](index.md).  There are also additional features for bots explained in [these](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/Invoke.pdf) and [document](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/BotsInChannels.pdf).
 
-Sample manifest - note this example shows a Tab and a Bot in a single package.  Include only the section relevant to your solution:
-
-```json
-{
-  "$schema": "https://teamspacewusprodms.blob.core.windows.net/tabframework/0.4/tab-manifest-schema.json", 
-  "manifestVersion": "0.4",
-  "version": "1.0",
-  "developer": {
-    "name": "Yuri Dogandjiev",
-    "websiteUrl": "https://todolistsample.azurewebsites.net",
-    "privacyUrl": "https://todolistsample.azurewebsites.net/privacy",
-    "termsOfUseUrl": "https://todolistsample.azurewebsites.net/termsofuse"
-  },
-  "tabs": [
-    {
-      "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",  
-      "name": "ToDo Sample App",
-      "description": {
-        "short": "Create Simple Personal ToDo lists",
-        "full": "Create Simple Personal ToDo lists in Microsoft Teams.  Sign in with your favorite service, and start creating your own personal ToDo lists."
-      },
-      "icons": {
-        "44": "icon44x44.png", 
-        "88": "icon88x88.png"
-      },
-      "accentColor": "#ff6a00",
-      "configUrl": "https://todolistsample.azurewebsites.net/config?version=0.4",
-      "canUpdateConfig": true
-    }
-  ],
-  "bots": [
-    {
-      "mri": "9a346a73-fe93-484c-8236-6bc7203830e1", 
-      "pinnedTabs": [
-        {
-          "id": "personal_todolist",  
-          "definitionId": "com.skype.teams.samples.todolist",
-          "displayName": "Personal todo list",
-          "url": "https://todolistsample.azurewebsites.net?version=0.4",  
-          "websiteUrl": "https://todolistsample.azurewebsites.net" 
-        }
-      ]
-    }
-  ]
-}
-```
+To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
 
 ### 2. Fill out the [Test Submission form](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/TeamsAppSubmission.docx)
 
@@ -102,7 +41,7 @@ Per the terms of our agreement, we may use your Publisher Marks and offer inform
 
 Create a zip file containing: 
 * manifest.json
-* Your 44x44 and 88x88 icons
+* Your 44x44 and 88x88 icons, less than ~1.5KB - if you're building a tab, and not referencing your icons via a publicly accessible URL.
 * The Test Submission form
 * All supplemental marketing material.  
 
