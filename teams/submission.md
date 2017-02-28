@@ -22,7 +22,7 @@ By submitting your tab or bot for inclusion in the Teams gallery, you accept the
 
 You should make sure you're in our developer ring (ask us if you're not)
 
-General documentation for the platform is [here](../index.md).  There are also additional features for bots explained in [these](earlypreview/Invoke.pdf) and [documents](earlypreview/BotsInChannels.pdf).
+General documentation for the platform is [here](index.md).  There are also additional features for bots explained in [these](earlypreview/Invoke.pdf) and [documents](earlypreview/BotsInChannels.pdf).
 
 To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
 
@@ -41,7 +41,7 @@ Per the terms of our agreement, we may use your Publisher Marks and offer inform
 
 Create a zip file containing: 
 * manifest.json
-* Your 44x44 and 88x88 icons
+* Your 44x44 and 88x88 icons, less than ~1.5KB - if you're building a tab, and not referencing your icons via a publicly accessible URL.
 * The Test Submission form
 * All supplemental marketing material.  
 
