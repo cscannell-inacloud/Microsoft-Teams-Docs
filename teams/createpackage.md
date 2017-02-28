@@ -36,10 +36,10 @@ Below is a sample manifest for a simple tab.
       },
       "accentColor" : "#223344",
       "configUrl": "https://teams-get-started-sample.azurewebsites.net/tabconfig.html",
-      "canUpdateConfig": true,
-      "needsIdentity": false
+      "canUpdateConfig": true
     }
   ],
+  "needsIdentity": false,
   "validDomains": [
      "*.bing.com",
      "*.google.com"
