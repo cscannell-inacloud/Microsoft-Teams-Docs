@@ -2,7 +2,7 @@
 
 Add your bot to Microsoft Teams to test functionality.  Note that during Preview, end users must follow the side-load process below to use your bots.  A future Bots Gallery will allow new users to discover approved and published bots for Microsoft Teams.
 
-> **During Preview, your tentant administrator will need to enable side-loading of bots for your organization. [Here's how](setup.md).**
+> **During Preview, your tenant administrator will need to enable side-loading of bots for your organization. [Here's how](setup.md).**
 
 ## Adding a bot for 1:1 chat
 
