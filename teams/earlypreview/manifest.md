@@ -1,6 +1,6 @@
-# Manifest guidance (early preview)
+# Bot or tab package format (new change rolling out)
 
-Your manifest file must be named `manifest.json` and be at the top level of the submission package (zip file)
+Your manifest file must be named `manifest.json` and be at the top level of the zip package
 
 The current manifest schema is [here](../schema.md) but amended per the below.  
 
@@ -50,6 +50,8 @@ Your manifest for Preview must contain the following amended information:
 }
 ```
 
+> **Note**: the pinnedTabs section is optional.  It's only required if your bot displays tabs alongside its 1:1 conversations with users.
+
 ## Sample tab manifest:
 
 ```json
@@ -90,7 +92,7 @@ Your manifest for Preview must contain the following amended information:
 
 ### Icons 
 
-Icons are are only needed if you are submitting a tab.  (If you're submitting a bot, your Bot Framework icon will be used.)
+Icons are are only for tabs.  (For bots, your Bot Framework icon will be used.)
 * Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
 * The icons must be transparent PNGs, with a single white/light foreground color.
 

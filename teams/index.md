@@ -2,7 +2,9 @@
 
  Microsoft Teams is a chat-based workspace in Office 365 that integrates with apps and services that teams use to get work done together.  The Microsoft Teams Developer Preview makes it easy for you to integrate your own service, whether you develop custom apps for your enterprise or SaaS applications for teams around the world.
 
-> **Don't have Microsoft Teams? Get a free Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
+> **We are rolling out a change to how you test your bots and tabs.  Please see this [advisory](earlypreview/sideload.md)**
+
+> Don't have Microsoft Teams? Get a free Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).
 
 ## Tabs
 
