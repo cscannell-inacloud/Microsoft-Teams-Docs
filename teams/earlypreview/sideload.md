@@ -1,20 +1,24 @@
-# Side loading your bot or tab in a team (early preview)
+# Side loading your bot or tab in a team (new change rolling out)
 
-With the latest release, you will need to side-load a zip package containing the manifest for your bot or your tab.
+We are rolling out a new process for side-loading a bot or tab.
 
-1.	To start, navigate to the team, click on the overflow (“…”), and select View team.
+To determine if you need to use this, navigate to your test team (you must be an owner of it).  Click on the overflow (“…”), and select View team.
 
-   !["View team"](../images/viewteam.jpg)
+!["View team"](../images/viewteam.jpg)
 
-2.	Click on the Bots tab at the top of the page.  (This is the right place to go even if you're building a tab.)
+If you see a 'Developer (Preview)' tab, you should use the current process for side-loading a [bot](../botsadd.md) or a [tab](../createpackage.md)
 
-3.	Click on "Sideload a bot or tab" on the lower right.
+If you see a 'Bots' tab at the top of the page, you should use the following process - regardless of whether you are building a bot or a tab.
+
+1.  Create an updated manifest according to these [updated instructions](manifest.md).  **Note that you now need a manifest to side-load a bot as well as for a tab.**
+
+2.	Click on "Sideload a bot or tab" on the lower right.
 
    !["Sideload entry point"](../images/sideloadentrypoint.png)
 
-4.	Browse to and select your zip package from your PC.
+3.	Browse to and select your zip package from your PC.
 
-5.	You will see your side loaded bot or tab in the list.
+4.	You will see your side loaded bot or tab in the list.
 
    !["Example of bot in list of side-loaded bots"](../images/botinlist.jpg)
 
@@ -33,8 +37,3 @@ If you're adding a bot:
 If the manifest doesn't load, please double-check you've followed all the instructions [here](manifest.md).
 
 In particular, for tabs, note the size limitations on icons included in your side-load package.
-
-## Submitting your manifest for consideration
-
-See the [instructions](../submission.md) for submitting your bot or tab for consideration.
-
