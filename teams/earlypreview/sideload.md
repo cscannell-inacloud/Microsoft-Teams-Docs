@@ -10,6 +10,8 @@ If you see a 'Developer (Preview)' tab, you should use the current process for s
 
 If you see a 'Bots' tab at the top of the page, you should use the following process - regardless of whether you are building a bot or a tab.
 
+> **Note** - any existing side-loaded tabs will have disappeared as result of this roll out, so you'll need to side-load them again, using these steps.
+
 1.  Create an updated manifest according to these [updated instructions](manifest.md).  **Note that you now need a manifest to side-load a bot as well as for a tab.**
 
 2.	Click on "Sideload a bot or tab" on the lower right.
