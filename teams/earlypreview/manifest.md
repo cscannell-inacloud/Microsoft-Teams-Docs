@@ -20,7 +20,30 @@ Your manifest for Preview must contain the following amended information:
 |	bots->pinnedTabs->url	|	*	|	The url for the content to show in the tab	|
 |	bots->pinnedTabs->websiteUrl | * 	|	A fallback URL for the user to view in browser 	|
 
-## Sample bot manifest
+## Sample simple bot manifest
+```json
+{
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
+  "manifestVersion": "0.4",
+  "id": "%BOT-FRAMEWORK-APP-ID-HERE%",
+  "version": "1.0",
+  "developer": {
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
+  },
+  "bots": [
+    {
+      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%"
+    }
+  ],
+  "needsIdentity": true
+}
+```
+
+
+## Sample bot with pinned tab manifest
 
 ```json
 {
@@ -28,25 +51,26 @@ Your manifest for Preview must contain the following amended information:
   "manifestVersion": "0.4",
   "version": "1.0",
   "developer": {
-    "name": "Yuri Dogandjiev",
-    "websiteUrl": "https://todolistsample.azurewebsites.net",
-    "privacyUrl": "https://todolistsample.azurewebsites.net/privacy",
-    "termsOfUseUrl": "https://todolistsample.azurewebsites.net/termsofuse"
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
   },
   "bots": [
     {
-      "mri": "9a346a73-fe93-484c-8236-6bc7203830e1", 
+      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%", 
       "pinnedTabs": [
         {
-          "id": "personal_todolist",  
-          "definitionId": "com.skype.teams.samples.todolist",
-          "displayName": "Personal list",
-          "url": "https://todolistsample.azurewebsites.net?version=0.4",  
-          "websiteUrl": "https://todolistsample.azurewebsites.net" 
+          "id": "%USER-DEFINED-ID%",  
+          "definitionId": "%USER-DEFINED-ENTITY-ID%",
+          "displayName": "%TAB-NAME%",
+          "url": "http://taburl.com/teamsview",  
+          "websiteUrl": "http://taburl.com/webview" 
         }
       ]
     }
-  ]
+  ],
+  "needsIdentity": true
 }
 ```
 
@@ -60,32 +84,32 @@ Your manifest for Preview must contain the following amended information:
   "manifestVersion": "0.4",
   "version": "1.0",
   "developer": {
-    "name": "Yuri Dogandjiev",
-    "websiteUrl": "https://todolistsample.azurewebsites.net",
-    "privacyUrl": "https://todolistsample.azurewebsites.net/privacy",
-    "termsOfUseUrl": "https://todolistsample.azurewebsites.net/termsofuse"
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
   },
   "tabs": [
     {
-      "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",  
-      "name": "ToDo Sample App",
+      "id": "%UNIQUE-GUID%",  
+      "name": "%TAB-APP-NAME%",
       "description": {
-        "short": "Create Simple Personal ToDo lists",
-        "full": "Create Simple Personal ToDo lists in Microsoft Teams.  Sign in with your favorite service, and start creating your own personal ToDo lists."
+        "short": "Short description of your Tab",
+        "full": "Richer description of your Tab - 256 characters."
       },
       "icons": {
-        "44": "https://todolistsample.azurewebsites.net/icon44x44.png", 
-        "88": "https://todolistsample.azurewebsites.net/icon88x88.png"
+        "44": "%URL-OR-FILENAME-44x44px%", 
+        "88": "%URL-OR-FILENAME-88x88px%", 
       },
-      "accentColor": "#ff6a00",
-      "configUrl": "https://todolistsample.azurewebsites.net/config?version=0.4",
+      "accentColor": "%HEX-COLOR%",
+      "configUrl": "https://taburl.com/config.html",
       "canUpdateConfig": true
     }
   ],
   "needsIdentity": true,
   "validDomains": [
-     "*.bing.com",
-     "*.google.com"
+     "*.taburl.com",
+     "*.otherdomains.com"
   ]
 }
 ```
@@ -95,6 +119,7 @@ Your manifest for Preview must contain the following amended information:
 Icons are are only for tabs.  (For bots, your Bot Framework icon will be used.)
 * Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
 * The icons must be transparent PNGs, with a single white/light foreground color.
+* The icon itself will render over the "accentColor" provided in the manifest.
 
 
 ## Test your manifest
