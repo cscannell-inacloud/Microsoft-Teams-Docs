@@ -60,7 +60,9 @@ To test direct chats with your bot, you should first @mention it in a channel.  
 
 ## Removing or updating your app
 
-Should you wish to remove or refresh manifest information for your tab or bot, select the trash can icon next to the app name in the View Teams bots list.  You may readd the same package following the process above.  Note that code changes on your service do not require any reloads, unless those changes require manifest changes (e.g. URL or bot id changes). 
+Should you wish to remove your tab or bot, select the trash can icon next to the app name in the View Teams bots list.  
+
+If you change manifest information, you must first remove the solution and readd the new package per above.  Note that in general, code changes on your service do not require you to re-sideload your manifest, unless those changes require manifest updates (e.g. URL or bot id changes). 
 
 ## Troubleshooting Notes
 

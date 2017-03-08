@@ -1,4 +1,4 @@
-﻿# Microsoft Teams (preview) tab manifest schema reference
+﻿# Microsoft Teams (preview) manifest schema reference
 
 Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json` .
 

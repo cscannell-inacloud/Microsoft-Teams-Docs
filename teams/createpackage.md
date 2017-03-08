@@ -11,6 +11,10 @@ Your manifest file must be named `manifest.json` and be at the top level of the 
 
 The current manifest schema is [here](schema.md).  Note that you must create a manifest for both tabs and bots.
 
+> **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
+> 
+> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
+
 
 ### Sample simple bot manifest
 ```json
@@ -67,7 +71,7 @@ The current manifest schema is [here](schema.md).  Note that you must create a m
 
 > **Note**: the pinnedTabs section is optional.  It's only required if your bot displays tabs alongside its 1:1 conversations with users.
 
-## Sample tab manifest:
+### Sample tab manifest:
 
 ```json
 {
@@ -105,21 +109,16 @@ The current manifest schema is [here](schema.md).  Note that you must create a m
 }
 ```
 
-> **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
-> 
-> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
 
-### Icons 
+## Create or reference icons for your tab
 
-Icons are are only for tabs.  (For bots, your Bot Framework icon will be used.)
+Icons are are only used for tabs.  For bots, your Bot Framework icon will be used.
 * Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
 * The icons must be transparent PNGs, with a single white/light foreground color.
 * The icon itself will render over the "accentColor" provided in the manifest.
 
+## Create and uploading your package to Microsoft Teams
 
-
-## Uploading your package to Microsoft Teams
-
-Once you've created your manifest and image files, compress them into a zip file.  Your manifest must be at the top level of the zip.
+Once you've created your manifest and image files, compress them into a zip file.  Your manifest must be at the **top** level of the zip.
 
 Upload your zip file to a team to make your app available, via the sideloading process found[here](sideload.md).
