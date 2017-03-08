@@ -24,7 +24,7 @@ You should make sure you're in our developer ring (ask us if you're not)
 
 General documentation for the platform is [here](index.md).  There are also additional features for bots: the [new Invoke action type](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) and [Bots In Channels](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
 
-To test your bot or tab, you need to [create a manifest](earlypreview/manifest.md) and [side-load it into Microsoft Teams](earlypreview/sideload.md).
+To test your bot or tab, you need to [create a sideload package](createpackage.md) and [sideload it into Microsoft Teams](sideload.md).
 
 ### 2. Fill out the [Test Submission form](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/TeamsAppSubmission.docx)
 
@@ -48,6 +48,8 @@ Create a zip file containing:
 * All supplemental marketing material.  
 
 You must use the following naming convention: _date_-_pubname_-_appname_-_versionnum_.zip  
+
+Please note: this Submission Package should be properly formed for, and may be used as, a sideloadable package for testing.  Ensure the manifest is at the top level of the Package.
 
 ### 5. Send it to us
 

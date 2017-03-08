@@ -38,9 +38,9 @@ Administrators need to use the Office 365 Admin Portal to enable Microsoft Teams
 	!["Screenshot of the services listed under settings, with the Teams service selected"](images/setup_enable_teams.png)
 
 
-## Enable side-loading of your bots
+## Enable sideloading of bots and tabs
 
-To develop and test bots, you need to enable bots in Microsoft Teams, and also enable bots to be side loaded.
+To develop and test bots and tabs, you need to enable bots in Microsoft Teams, and also enable bots and tabs to be side loaded.
 
 1. [Sign in to Office 365](https://login.microsoftonline.com) with your work or school account.
 2. Select **Admin** to go to the Office 365 Admin Center.
@@ -50,7 +50,7 @@ To develop and test bots, you need to enable bots in Microsoft Teams, and also e
 
 	!["Screenshot of the Bots section, with the 'Enable side loading of external Bots' option toggled on.](images/setup_sideload_bots.png)
 
-For more information on bots, including how to side load them for testing purposes, see [Creating bots for Microsoft Teams](bots.md).
+For more information on sideloading, see [Sideloading your bot or tab in a team](sideload.md).
 
 ## Next steps
 
