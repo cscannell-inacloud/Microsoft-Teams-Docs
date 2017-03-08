@@ -4,15 +4,15 @@
 
 During the developer preview, any tabs that you create, and upload to a team, will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type that you, or the team, have added to channels will be removed from the team's channels.  
 
-Tabs may also disappear during the roll out of a new process for side-loading tabs.  Please check [here](earlypreview/sideload.md) to determine if you need to use this process.
+Tabs may also disappear during the roll out of a new process for side-loading tabs.  Please check [here](sideload.md) to determine if you need to use this process.
 
 ## Can't add bot as a member of a team
 
-We are rolling a change that means you can no longer side-load a bot by adding it as a team member, but by up-loading a bot definition package instead.  Please check [here](earlypreview/sideload.md) to determine if you need to use this process.
+We have rolled out a change that means you can no longer load a bot by adding it as a team member, but by sideloading a bot definition package instead.  Please check [here](sideload.md) for more information on this process.
 
 ## Error while reading manifest.json
 
-If you are using the [new side-loading process](earlypreview/sideload.md), the transparent .png icons that you reference in the manifest must now be smaller than ~1.5KB.  Alternatively, you can reference the icon using a URL on a publicly accessible server, instead of a local path to icons inside the zip package: the size limit does not apply in this case.
+With the [new side-loading process](sideload.md), the transparent .png icons that you reference in the manifest must now be smaller than ~1.5KB.  Alternatively, you can reference the icon using a URL on a publicly accessible server, instead of a local path to icons inside the zip package: the size limit does not apply in this case.
 
 Most other manifest errors will provide a hint at what specific field is missing or invalid. However, if the json file cannot be read as json at all, this generic error message is used.
 
