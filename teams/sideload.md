@@ -18,19 +18,19 @@ With your package created, you can now load it into a team of your choosing.  Th
 
 1.  On the team you wish to load it, click on the overflow (“…”), and select View team. 
 
-   !["View team"](../images/tab_view_team.png)
+   !["View team"](images/tab_view_team.png)
 
 > **Note** You must be the team owner, or the owner must allow users to add tabs for this functionality to appear.
 
 2.	Select the Bot tab, then click on "Sideload a bot or tab" on the lower right.
 
-   !["Sideload entry point"](../images/sideloadentrypoint.png)
+   !["Sideload entry point"](images/sideloadentrypoint.png)
 
 3.	Browse to and select your zip package from your PC.
 
 4.	You will see your sideloaded bot or tab in the list.
 
-   !["Example of bot in list of side-loaded bots"](../images/botinlist.jpg)
+   !["Example of bot in list of side-loaded bots"](images/botinlist.jpg)
 
 
 
@@ -68,6 +68,6 @@ Should you wish to remove or refresh manifest information for your tab or bot, s
 
 > * During the developer preview, each tab that you upload will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type will be removed from the team's channels.  Follow the above instructions again to re-upload your tab to the team and re-add the tab to channels.
 
-> * If the manifest doesn't load, please double-check you've followed all the instructions [here](manifest.md).  In particular, for tabs, note the size limitations on icons included in your sideload package (each under 1.5k)
+> * If the manifest doesn't load, please double-check you've followed all the instructions [here](createpackage.md).  In particular, for tabs, note the size limitations on icons included in your sideload package (each under 1.5k)
 
 > * Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).
