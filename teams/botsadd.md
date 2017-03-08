@@ -1,5 +1,7 @@
 ﻿# Adding and removing bots 
 
+** Deprecated as of 3/7/2017 **  Please see new [Create Package](createpackage.md) and [Sideloading](sideload.md) instructions.
+
 Add your bot to Microsoft Teams to test functionality.  Note that during Preview, end users must follow the side-load process below to use your bots.  A future Bots Gallery will allow new users to discover approved and published bots for Microsoft Teams.
 
 > **During Preview, your tenant administrator will need to enable side-loading of bots for your organization. [Here's how](setup.md).**

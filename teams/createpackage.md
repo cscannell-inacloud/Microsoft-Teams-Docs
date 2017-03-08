@@ -1,93 +1,124 @@
-﻿# Create the package for your Microsoft Teams (preview) tab
+﻿# Create the package for your Microsoft Teams (preview) tab or bot
 
-For your tab to be available within Microsoft Teams, you need to create a tab package and upload it to a team. The tab package is a zip file containing:
+For your tab or bot to be available within Microsoft Teams, you need to create a sideload package and upload it to a team. The package is a zip file containing:
 
-- A manifest file named `manifest.json`, which specifies attributes of your tab and points to required resources such the location of its configuration page.
-- Image files, to be used as icons for your tab.  These must be transparent PNG files, with white or light-colored foreground in both small (44 by 44 pixels) and large (88 by 88 pixels) sizes.  (The accompanying background or 'accent color' is specified in the manifest.)
+- A manifest file named `manifest.json`, which specifies attributes of your tab or bot and points to required resources for your experience, such the location of its tabs configuration page or bot id.
+- For tabs, image files, to be used as icons.  These must be transparent PNG files, with white or light-colored foreground in both small (44 by 44 pixels) and large (88 by 88 pixels) sizes.  (The accompanying background or 'accent color' is specified in the manifest.)
 
-## Creating a manifest for your tab 
+## Creating a manifest for your tab or bot
 
-Below is a sample manifest for a simple tab.
+Your manifest file must be named `manifest.json` and be at the top level of the sideload package.
 
-```json
-{
-  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
-  "manifestVersion": "0.4",
-  "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",
-  "version": "1.0",
-  "name": "Maps",
-  "developer": {
-      "name": "Example company",   
-      "websiteUrl": "http://www.example.com",
-      "privacyUrl": "http://www.example.com/privacy",
-      "termsOfUseUrl": "http://www.example.com/termsofuse"
-  },
-  "tabs": [
-    {
-      "id": "56E1A16C-DDB4-46C0-B4B1-FC634ED86DDD",
-      "name": "Maps",  
-      "description" : {
-            "short": "Host a map as a tab.",
-            "full": "Host a map as a tab.  Give your tab a name, select Bing Maps or Google Maps, and click save."
-      },
-      "icons": {
-            "44": "maps44.png",
-            "88": "maps88.png"
-      },
-      "accentColor" : "#223344",
-      "configUrl": "https://teams-get-started-sample.azurewebsites.net/tabconfig.html",
-      "canUpdateConfig": true
-    }
-  ],
-  "needsIdentity": false,
-  "validDomains": [
-     "*.bing.com",
-     "*.google.com"
-  ]
-}
-```
-
-The manifest you create for your tab must adhere to the schema. For more information, see the [Microsoft Teams manifest schema](schema.md).
+The current manifest schema is [here](schema.md).  Note that you must create a manifest for both tabs and bots.
 
 > **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
 > 
 > `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
 
-## Uploading your tab package to Microsoft Teams
 
-Once you've created your manifest and image files, compress them into a zip file.
+### Sample simple bot manifest
+```json
+{
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
+  "manifestVersion": "0.4",
+  "id": "%BOT-FRAMEWORK-APP-ID-HERE%",
+  "version": "1.0",
+  "developer": {
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
+  },
+  "bots": [
+    {
+      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%"
+    }
+  ],
+  "needsIdentity": true
+}
+```
 
-> **Tip:** [Download the example zip file](https://github.com/OfficeDev/microsoft-teams-sample-get-started/blob/master/package/MapsTab.zip) that contains the example manifest shown here, and use it with the following instructions. 
+### Sample bot with pinned tab manifest
 
-Upload your zip file to a team to make your app available as a tab.
+```json
+{
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 
+  "manifestVersion": "0.4",
+  "version": "1.0",
+  "developer": {
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
+  },
+  "bots": [
+    {
+      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%", 
+      "pinnedTabs": [
+        {
+          "id": "%USER-DEFINED-ID%",  
+          "definitionId": "%USER-DEFINED-ENTITY-ID%",
+          "displayName": "%TAB-NAME%",
+          "url": "http://taburl.com/teamsview",  
+          "websiteUrl": "http://taburl.com/webview" 
+        }
+      ]
+    }
+  ],
+  "needsIdentity": true
+}
+```
 
-1. Create a new team for testing, if necessary.  Click **Create team** at the bottom of the left-hand panel.
-2. Select the team from the left-hand panel, select **... (more options)** and then select **View Team**.
-	
-	![Screenshot of the more options menu, with the View Teams option selected.](images/tab_view_team.png)
-3. Select the **Developer (Preview)** tab, and then select **Upload**.
+> **Note**: the pinnedTabs section is optional.  It's only required if your bot displays tabs alongside its 1:1 conversations with users.
 
-	![Screenshot of the Developer pane, with tabs in development listed.](images/tab_sideload.png)
+### Sample tab manifest:
 
-4. Navigate to your zip file and select it.
+```json
+{
+  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 
+  "manifestVersion": "0.4",
+  "version": "1.0",
+  "developer": {
+    "name": "%NAME-OF-PUBLISHER%",
+    "websiteUrl": "https://website.com/",
+    "privacyUrl": "https://website.com/privacy",
+    "termsOfUseUrl": "https://website.com/app-tos"
+  },
+  "tabs": [
+    {
+      "id": "%UNIQUE-GUID%",  
+      "name": "%TAB-APP-NAME%",
+      "description": {
+        "short": "Short description of your Tab",
+        "full": "Richer description of your Tab - 256 characters."
+      },
+      "icons": {
+        "44": "%URL-OR-FILENAME-44x44px%", 
+        "88": "%URL-OR-FILENAME-88x88px%", 
+      },
+      "accentColor": "%HEX-COLOR%",
+      "configUrl": "https://taburl.com/config.html",
+      "canUpdateConfig": true
+    }
+  ],
+  "needsIdentity": true,
+  "validDomains": [
+     "*.taburl.com",
+     "*.otherdomains.com"
+  ]
+}
+```
 
 
-Now, when team members add a new tab to a channel in this team, they will be able to add your tab via the tab gallery.
+## Create or reference icons for your tab
 
+Icons are are only used for tabs.  For bots, your Bot Framework icon will be used.
+* Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
+* The icons must be transparent PNGs, with a single white/light foreground color.
+* The icon itself will render over the "accentColor" provided in the manifest.
 
-1. Go to any channel in the team.  Click **+** to the right of the existing tabs.
-2. Select your tab from the gallery that appears.
-3. Accept the consent prompt.
-4. Configure your tab via its [configuration page](createconfigpage.md) and click **Save**. 
+## Create and uploading your package to Microsoft Teams
 
-![The Add a tab dialog box, featuring a gallery of available tabs.](images/tab_gallery.png)
+Once you've created your manifest and image files, compress them into a zip file.  Your manifest must be at the **top** level of the zip.
 
-> **Notes:**
-> * During the developer preview, each tab that you upload will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type will be removed from the team's channels.  Follow the above instructions again to re-upload your tab to the team and re-add the tab to channels.
-> * To re-upload an updated package, click the **Replace** icon at the end of the tab's row in the table of uploaded tab packages.  (Don't click **Upload** again; Microsoft Teams will say the tab already exists.)  When you re-upload, there is a bug that also causes any tabs of this type to be removed from the team's channels.  We'll be fixing this soon.       
-> * By default, all team members can add tabs.  But team admins can restrict this privilege to themselves if they so wish, via an option in the team settings.
-> * Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).
-
-## Next step
-
-* [Create the configuration page](createconfigpage.md)
+Upload your zip file to a team to make your app available, via the sideloading process found[here](sideload.md).

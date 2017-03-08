@@ -1,4 +1,4 @@
-﻿# Microsoft Teams (preview) tab manifest schema reference
+﻿# Microsoft Teams (preview) manifest schema reference
 
 Your [manifest](createpackage.md) must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json` .
 
@@ -10,7 +10,7 @@ The schema defines the following properties:
 
 ## `manifestVersion` (string, required)
 
-The version of the manifest schema this manifest is using.
+The version of the manifest schema this manifest is using.  Should be "0.4"
 
 ## `version` (string, required)
 
@@ -18,7 +18,7 @@ The app version. Changes to the app should cause a version change. This version 
 
 ## `id` (string)
 
-A unique identifier for this app. The id must be a GUID.
+A unique identifier for this app. The id must be a GUID.  For a Bot, you may use the BotFramework Id.  For a tab, you can use this [online tool](https://guidgenerator.com/) to generate a GUID, or use one of your choosing.
 
 ## `developer` (object, required)
 
@@ -42,19 +42,21 @@ The url to the developer's terms of use.
 
 ## `tabs` (array)
 
-The object is an array with all elements of the type `object`.
+The object is an array with all elements of the type `object`.  This block is only required for solutions that provide a configurable channel Tab solution.
 
 The array object has the following properties:
 
 ### `id` (string, required)
 
-A unique identifier for this extension. The id must use reverse domain name notation.
+A unique identifier for this extension. The id must be a GUID.  You may use the same ID as at the parent level.
 
 ### `name` (string, required)
 
 The display name of the extension.
 
 ### `description` (object, required)
+
+The description information is displayed to users at various points in the UX.  The description you provide must adequately and accurately explain your experience, to new users or existing.
 
 Properties of the `description` object:
 
@@ -68,7 +70,7 @@ The full description of the extension. Maximum length is 256 characters.
 
 ### `icons` (object, required)
 
-Each icon image file must be a transparent PNG, with a white or light-colored background.
+Each icon image file must be a transparent PNG, with a white or light-colored background.  Note that you may use a URL to a hosted version of your icons.  If you choose to include an icon in your submission package, please make sure you follow the [guidelines](createpackage.md).
 
 Properties of the `icons` object:
 
@@ -82,7 +84,7 @@ An icon for the extension sized to 88x88.
 
 ### `accentColor` (string, required)
 
-A color to use in conjunction with the extension's icons. The value must be a valid HTML color code starting with '#', for example `#4464ee`.
+A color to use in conjunction with and as a background for the tab's icons. The value must be a valid HTML color code starting with '#', for example `#4464ee`.
 
 ### `configUrl` (string, required)
 
@@ -96,7 +98,37 @@ Default: `true`
 
 ## `bots` (array)
 
-_This field is reserved for future use_
+The object is an array with all elements of the type `object`.  This block is only required for solutions that provide a Bot experience.
+
+The array object has the following properties:
+
+### `mri` (string, required)
+
+This must be the Bot Framework ID for your registered bot.
+
+### `pinnedTabs` (object)
+
+Your bot may optionally provide a static tab, shown alongside the bot's direct chat view.
+
+#### `id` (string, required)
+
+Developer defined ID for the tab.
+
+#### `definitionId`	(string, required)
+
+Like an entity ID for a Teams tab, this can be used by you to identify the specific content on display.
+
+#### `displayName` (string, required)	
+
+Name to show on the Tab UX.
+
+#### `url` (string, required)	
+
+The url for the content to show in the tab
+
+#### `websiteUrl` (string, required)
+
+A fallback URL for the user to view in browser
 
 ## `needsIdentity` (boolean)
 
