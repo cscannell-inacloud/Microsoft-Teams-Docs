@@ -106,7 +106,43 @@ Your code should always verify the HMAC signature included in the request:
 
 #### Code example (C#)
 ```C#
-public class AuthProvider
+    /// <summary>
+    /// Encapsulates auth results.
+    /// </summary>
+    public class AuthResponse
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthResponse"/> class.
+        /// </summary>
+        /// <param name="authSuccessful">if set to <c>true</c> then [authentication was successful].</param>
+        /// <param name="errorMessage">The error message.</param>
+        public AuthResponse(bool authSuccessful, string errorMessage)
+        {
+            this.AuthSuccessful = authSuccessful;
+            this.ErrorMessage = errorMessage;
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether [authentication successful].
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if [authentication successful]; otherwise, <c>false</c>.
+        /// </value>
+        public bool AuthSuccessful { get; private set; }
+
+        /// <summary>
+        /// Gets the error message.
+        /// </summary>
+        /// <value>
+        /// The error message.
+        /// </value>
+        public string ErrorMessage { get; private set; }
+    }
+    
+    /// <summary>
+    /// Provides authentication results.
+    /// </summary>
+    public class AuthProvider
     {
         /// <summary>
         /// A dictionary for storing signing keys. Here, the look up key is based on the value of the query parameter 'id'.
@@ -130,7 +166,7 @@ public class AuthProvider
             string messageContent = await httpRequestMessage.Content.ReadAsStringAsync();
             AuthenticationHeaderValue authenticationHeaderValue = httpRequestMessage.Headers.Authorization;
 
-            // It is up to the custom bot ownwer to decide how to pass in the lookup id for the signing key.
+            // It is up to the custom bot owner to decide how to pass in the lookup id for the signing key.
             // Here, we have used the query parameter "id" as an example.
             string claimedSenderId = HttpUtility.ParseQueryString(httpRequestMessage.RequestUri.Query).Get("id");
 
