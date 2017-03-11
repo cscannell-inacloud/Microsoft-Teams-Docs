@@ -105,9 +105,97 @@ Your code should always verify the HMAC signature included in the request:
 
 
 #### Code example (C#)
+```C#
+public class AuthProvider
+    {
+        /// <summary>
+        /// A dictionary for storing signing keys. Here, the look up key is based on the value of the query parameter 'id'.
+        /// The signing keys must be valid 256 bit base64 encoded strings that are provided during custom bot registration in MS Teams client.
+        /// </summary>
+        private static readonly Dictionary<string, string> SigningKeyDictionary = new Dictionary<string, string>()
+            {
+                {"contoso", "vqF0En+Z0ucuRTM/01o2GuhMH3hKKk/N2bOmlM31zaA=" },
+                {"fabrikam", "QgyNSToQjf4p6+YzDpjKks1/tXeJQ7FhVHqRwTnugVI=" }
+            };
 
-*** To do ***
+        /// <summary>
+        /// Validates the specified authentication header value.
+        /// </summary>
+        /// <param name="httpRequestMessage">The HTTP request message.</param>
+        /// <returns>
+        /// Response containing result of validation.
+        /// </returns>
+        public static async Task<AuthResponse> Validate(HttpRequestMessage httpRequestMessage)
+        {
+            string messageContent = await httpRequestMessage.Content.ReadAsStringAsync();
+            AuthenticationHeaderValue authenticationHeaderValue = httpRequestMessage.Headers.Authorization;
 
+            // It is up to the custom bot ownwer to decide how to pass in the lookup id for the signing key.
+            // Here, we have used the query parameter "id" as an example.
+            string claimedSenderId = HttpUtility.ParseQueryString(httpRequestMessage.RequestUri.Query).Get("id");
+
+            if (string.IsNullOrEmpty(claimedSenderId))
+            {
+                return new AuthResponse(false, "Id not present on request.");
+            }
+
+            if (authenticationHeaderValue == null)
+            {
+                return new AuthResponse(false, "Authentication header not present on request.");
+            }
+
+            if (!string.Equals("HMAC", authenticationHeaderValue.Scheme))
+            {
+                return new AuthResponse(false, "Incorrect authorization header scheme.");
+            }
+
+            claimedSenderId = claimedSenderId.ToLower();
+            string signingKey = null;
+            if (!AuthProvider.SigningKeyDictionary.TryGetValue(claimedSenderId, out signingKey))
+            {
+                return new AuthResponse(false, string.Format("Signing key for {0} is not configured", claimedSenderId));
+            }
+
+            // Reject all empty messages
+            if (string.IsNullOrEmpty(messageContent))
+            {
+                return new AuthResponse(false, "Unable to validate authentication header for messages with empty body.");
+            }
+
+            string providedHmacValue = authenticationHeaderValue.Parameter;
+            string calculatedHmacValue = null;
+            try
+            {
+                byte[] serializedPayloadBytes = Encoding.UTF8.GetBytes(messageContent);
+
+                byte[] keyBytes = Convert.FromBase64String(signingKey);
+                using (HMACSHA256 hmacSHA256 = new HMACSHA256(keyBytes))
+                {
+                    byte[] hashBytes = hmacSHA256.ComputeHash(serializedPayloadBytes);
+                    calculatedHmacValue = Convert.ToBase64String(hashBytes);
+                }
+
+                if (string.Equals(providedHmacValue, calculatedHmacValue))
+                {
+                    return new AuthResponse(true, null);
+                }
+                else
+                {
+                    string errorMessage = string.Format(
+                        "AuthHeaderValueMismatch. Expected:'{0}' Provided:'{1}'",
+                        calculatedHmacValue,
+                        providedHmacValue);
+                    return new AuthResponse(false, errorMessage);
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("Exception occcured while verifying HMAC on the incoming request. Exception: {0}", ex);
+                return new AuthResponse(false, "Exception thrown while verifying MAC on incoming request.");
+            }
+        }
+    }
+```
 ### Sending a reply
 
 As with regular bots, replies from your custom bot will appear in the same reply chain as the original message. You can send a reply message that takes advantage of any of the Bot Framework’s activities, including rich cards and image attachments.
