@@ -1,14 +1,31 @@
 # Team update events 
 
-Teams will send events to your bot based on changes that happen within the teams they've been added to.  The following enumerate the events that your bot can receive and take action on.
+Teams will send events to your bot based on changes that happen in contexts where they are active.  The following enumerate the events that your bot can receive and take action on.
 
-## Bot added to team 
+## Adding and removing members
 
-When your bot is added to a team or by a user for 1:1 chat, it will receive a [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) event.  
+The [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) event is sent to your bot when it receives information on membership updates for teams where it has been added.  It will also receive an update when it has been added for the first time specifically for 1:1 conversations.
 
-For bots added to a team, the payload will include the `team` object in `channelData`, as well as the `"eventType": "teamMemberAdded"` in the `channelData` object.  You can tell that the event is for a team update by checking for that `team` object in channelData. 
+### Adding to a team
 
-### Schema example
+The `conversationUpdate` event with the `membersAdded` object in the payload will be sent when either a bot is added to a team, or a new user is added to a team where a bot has been added. Teams also adds the `"eventType": "teamMemberAdded"` in the `channelData` object.
+
+Since this event is sent in both cases, you should parse out the `membersAdded` object to determine if the addition was a user or the bot itself.  For the latter, it is a best practice to send a Welcome Message to the channel to users can understand what features your bot provides.
+
+#### Example code (C#)
+
+```
+    for (int i = 0; i < sourceMessage.MembersAdded.Count; i++)
+    {
+        if (sourceMessage.MembersAdded[i].Id == sourceMessage.Recipient.Id)
+        {
+            addedBot = true;
+            break;
+        }
+    }
+```
+
+#### Schema example - bot added to team
 ```json
 {     
     "membersAdded": [         
@@ -44,31 +61,16 @@ For bots added to a team, the payload will include the `team` object in `channel
 } 
 ```
 
-## Team member added/removed
+### Adding a bot for 1:1 context only
 
-Your bot will be notified when a team member is added or removed.  For added members, the payload will look similar to the bot addition.
+Your bot will also receive a `conversationUpdate` with `membersAdded` when a users adds it directly for 1:1 chat.  In this case, the payload that your bot receives will not contain the `channelData` `teams` object.  You may use this as a filter in case you wish your bot to offer a different Welcome depending on 1:1 or team addition.
+
+### Removing a team member
+
+The `conversationUpdate` event with the `membersRemoved` object in the payload will be sent when either your bot is removed from a team, or a user is removed from a team where a bot has been added. Teams also adds the `"eventType": "teamMemberRemoved"` in the `channelData` object.  Once again, you should parse the `membersRemoved` object for your bot id to determine who was removed.
 
 
-### Schema example - TeamMemberAdd 
-```json 
-{     
-    "membersAdded": [         
-        {             
-            "id": "29:1_LCi5Up14pAy65yZuaJzG1uIT7ujYhjjSTsUNqjORsZHjLHKiQIBJa4cX2XsAsRoaY7va2w6ZymA9-1VtSY_g"         
-        }     
-    ],     
-    "type": "conversationUpdate",     
-    "timestamp": "2017-02-23T19:37:33.092Z", 
-    "id": "f:9ffc452e",     
-    "channelId": "msteams",     
-    "conversation": {
-        "isGroup": true,         
-        "id": "19:efa9296d959346209fea44151c742e73@thread.skype"     
-    }
-}
-```
- 
-### Schema example - Team Member Removed
+#### Schema example - Team Member Removed
 ```json
 {     
     "membersRemoved": [         
@@ -105,11 +107,11 @@ Your bot will be notified when a team member is added or removed.  For added mem
 }
 ``` 
  
-## Channel created (new) 
+## Channel updates
 
-Your bot will be notified when a channel is created. 
+Your bot will be notified when a channel is created, renamed, or deleted, in a team where it has been added.  Once again, the `conversationUpdate` event will be received, and Teams-specific message will be sent as part of the `channelData` `eventType` object, with the channel data is the `channelData` `channel` object - `id` is the GUID for the channel, and `name` contains the channel name itself.  
 
-### Schema example 
+### Full schema example (channelCreated)
 ```json
 {     
     "type": "conversationUpdate",     
@@ -144,82 +146,42 @@ Your bot will be notified when a channel is created.
 } 
 ```
 
-## Channel renamed (new) 
-
-Your bot will be notified when a channel is renamed. 
-
-### Schema example 
+### Schema snippet - channelData for channelRenamed 
 ```json
-{     
-    "type": "conversationUpdate",     
-    "timestamp": "2017-02-23T19:25:10.172Z",     
-    "id": "f:c7eaddbe",     
-    "channelId": "msteams",     
-    "serviceUrl": "https://smba.trafficmanager.net/amer-client-ss.msg/",     
-    "from": {         
-        "id": "29:1wR7IdIRIoerMIWbewMi75JA3scaMuxvFon9eRQW2Nix5loMDo0362st2IaRVRirPZBv1WdXT8TIFWWmlQCizZQ"     
-    },     
-    "conversation": {         
-        "isGroup": true,         
-        "id": "19:efa9296d959346209fea44151c742e73@thread.skype"     
-    },     
-    "recipient": {         
-        "id": "28:f5d48856-5b42-41a0-8c3a-c5f944b679b0",         
-        "name": "SongsuggesterBot"     
-    },     
-    "channelData": {         
-        "channel": {             
-            "id": "19:e4039002cc994705b37783c98abb109a@thread.skype",             
-            "name": "PhotographyUpdates"         
-        },         
-        "team": {             
-            "id": "19:efa9296d959346209fea44151c742e73@thread.skype"         
-        },         
-        "eventType": "channelRenamed",         
-        "tenant": {             
-            "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"         
-        }     
-    } 
+...
+"channelData": {         
+    "channel": {             
+        "id": "19:6d97d816470f481dbcda38244b98689a@thread.skype",             
+        "name": "PhotographyUpdates"         
+    },         
+    "team": {             
+        "id": "19:efa9296d959346209fea44151c742e73@thread.skype"         
+    },         
+    "eventType": "channelRenamed",         
+    "tenant": {             
+        "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"         
+    }     
 } 
+...
 ```
 
-## Channel Deleted (new) 
-
-Your bot will be notified of any channel deletion that occurs in a team it is a part of.
- 
-### Schema example
-```json 
-{     
-    "type": "conversationUpdate",     
-    "timestamp": "2017-02-23T19:35:32.847Z",     
-    "id": "f:32277cde",     
-    "channelId": "msteams",     
-    "serviceUrl": "https://smba.trafficmanager.net/amer-client-ss.msg/",     
-    "from": {         
-        "id": "29:1I9Is_Sx0OIy2rQ7Xz1lcaPKlO9eqmBRTBuW6XzkFtcjqxTjPaCMij8BVMdBcL9L_RwWNJyAHFQb0TRzXgyQvA"     
-    },     
-    "conversation": {         
-        "isGroup": true,         
-        "id": "19:efa9296d959346209fea44151c742e73@thread.skype"     
-    },     
-    "recipient": {         
-        "id": "28:f5d48856-5b42-41a0-8c3a-c5f944b679b0",         
-        "name": "SongsuggesterBot"     
-    },     
-    "channelData": {         
-        "channel": {             
-            "id": "19:6d97d816470f481dbcda38244b98689a@thread.skype",             
-            "name": "12sss"         
-        },         
-        "team": {             
-            "id": "19:efa9296d959346209fea44151c742e73@thread.skype"         
-        },         
-        "eventType": "channelDeleted",         
-        "tenant": {             
-            "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"         
-        }     
-    } 
+### Schema snippet - channelData for channelDeleted 
+```json     
+...
+"channelData": {         
+    "channel": {             
+        "id": "19:6d97d816470f481dbcda38244b98689a@thread.skype",               
+        "name": "PhotographyUpdates"       
+    },         
+    "team": {             
+        "id": "19:efa9296d959346209fea44151c742e73@thread.skype"         
+    },         
+    "eventType": "channelDeleted",         
+    "tenant": {             
+        "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"         
+    }     
 } 
- ```
+...
+```
 
 
