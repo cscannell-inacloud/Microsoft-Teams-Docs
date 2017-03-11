@@ -1,0 +1,132 @@
+# Custom Bots
+
+## Overview
+
+Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.
+
+## Creating a custom bot
+
+To create a custom bot, click View Team and then navigate to the Bots tab.
+
+!["View team"](images/tab_view_team.png)
+
+Click on the Create a custom bot link at the bottom of the page.
+ 
+!["Create a custom bot entry point"](images/sideloadentrypoint.png)
+
+In the dialog, you can configure how your bot appears in channels:
+* **Name** is what will show up as the bot’s title and is also how users will @mention the bot
+* **Callback URL** is the endpoint that will receive messages from Teams
+* **Description** is an optional detailed string that what will show up in the profile card and in the team-level App dashboard
+* **Avatar** is the optional display picture of the custom bot
+
+!["Create a custom bot dialog"](images/createcustombot.png)
+ 
+Upon clicking Create, the custom bot will be available in the team – it will not be available in any other team. The next dialog will then display the shared secret that you can use to authenticate calls from Microsoft Teams. **Make sure to copy this value in a secure location. You will not be able to retrieve it again without recreating the custom bot.**
+ 
+!["Custom bot shared secret"](images/custombotsharedsecret.png)
+
+## Interacting with the custom bot
+
+Once you add a custom bot to the team, it looks and behaves just like a regular bot, so it’s easy for users to interact with them. They listen to messages that @mention the bot name and can respond with rich messages, including images and cards.
+
+
+## Receiving and replying to messages
+
+### Receiving messages
+
+Your service will receive messages in the standard Microsoft bot messaging schema, as documented here on the [Microsoft Bot Framework](https://docs.botframework.com/en-us/restapi/connector/).
+
+You can optionally use the existing Bot Framework client SDKs to simplify parsing and handling messages.
+
+Currently, users must mention the custom bot for it to receive messages.
+
+### Example inbound message
+```json
+{
+    "type": "message",
+    "id": "1485983408511",
+    "timestamp": "2017-02-01T21:10:07.437Z",
+    "serviceUrl": "https://smba.trafficmanager.net/amer-client-ss.msg/",
+    "channelId": "msteams", 
+    "from": {
+        "id": "29:1XJKJMvc5GBtc2JwZq0oj8tHZmzrQgFmB39ATiQWA85gQtHieVkHilBZ9XHoq9j7Zaqt7CZ-NJWi7me2kHTL3Bw",
+        "name": "Tim Jones"
+    },
+    "conversation": {
+        "id": "19:253b1f341670408fb6fe51050b6e5ceb@thread.skype;messageid=1485983194839"
+    },
+    "recipient": {
+        "id": "null", 
+        "name": "null"
+    },
+    "textFormat": "plain",
+    "text": "<at>MyCustomBot</at> Hello <at>Larry Brown</at>",
+    "attachments": [{
+        "contentType": "text/html",
+        "content": "<div><span contenteditable=\"false\" itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">MyCustomBot </span> Hello <span contenteditable=\"false\" itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Larry Brown </span></div>"
+    }],
+    "entities": [{
+        "type": "mention",
+        "mentioned": {
+            "id": "28:c9e8c047-2a74-40a2-b28a-b162d5f5327c", 
+            "name": "MyCustomBot"
+        },
+        "text": "<at>MyCustomBot</at>"
+    }, {
+        "type": "mention",
+        "mentioned": {
+            "id": "29:1jnFbZYs0qXMLH-O4S9-sDLNc3NVEIMWMnC-q0tVdEa-8BRosfojI35QdNoB-yW8iutWLJzHUm_mqEZSSU8si0Q",
+            "name": "Larry Brown"
+        },
+        "text": "<at>Larry Brown</at>"
+    }, {
+        "type": "clientInfo",
+        "locale": "en-US",
+        "country": "US",
+        "platform": "Windows"
+    }],
+    "channelData": {
+        "teamsChannelId": "19:253b1f341670408fb6fe51050b6e5ceb@thread.skype",
+        "teamsTeamId": "19:712c61d0ef384e5fa681ba90ca943398@thread.skype"
+    } 
+}
+```
+
+### Authenticating the caller
+
+You should always authenticate that Microsoft Teams is the service calling your URL. To guarantee the legitimacy of the client, Microsoft Teams will provide the HMAC in the HTTP hmac header.
+
+Your code should always verify the HMAC signature included in the request:
+1)	Generate the hmac from the request body of the message. There are standard libraries on most platforms. Microsoft Teams uses standard SHA256 HMAC cryptography. You will need to convert the body to a byte array in UTF8.
+2)	To compute the hash, provide the byte array of the shared secret.
+3)	Convert the hash to a String using UTF8 encoding.
+4)	Compare the string value of the generated hash with the value provided in the HTTP request.
+
+
+#### Code example (C#)
+
+*** To do ***
+
+### Sending a reply
+
+As with regular bots, replies from your custom bot will appear in the same reply chain as the original message. You can send a reply message that takes advantage of any of the Bot Framework’s activities, including rich cards and image attachments.
+
+Your custom bot will need to reply asynchronously to the HTTP request from Microsoft Teams. It will have 5 seconds  to reply to the message before the connection is terminated.
+
+#### Example reply message
+```json
+{
+    "type": "message",
+    "text": "This is a reply!",
+}
+```
+
+## Limitations
+
+* Custom bots do not have access to non-messaging APIs, such as team roster membership.
+* Custom bots cannot post into channels asynchronously, i.e. not as a reply to a user message.
+
+## Turn your custom bot into an App for Microsoft Teams
+
+If you’re ready to share your custom bot with others or make it publicly available, you can submit your bot to Microsoft Teams for consideration in the bot gallery. Click [here](https://aka.ms/microsoftteamsdeveloperpreviewinterestform) to learn more.

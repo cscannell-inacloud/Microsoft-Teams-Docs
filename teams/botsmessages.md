@@ -26,9 +26,8 @@ Microsoft Teams supports the following formatting options
 
 ### Welcome messages
 
-To send a welcome message to a user listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
+To send a welcome message, listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
 
-> **Note:** At this time, a user must first send a message to your bot in order to trigger the conversationUpdate event.
 
 ### Picture messages
 
