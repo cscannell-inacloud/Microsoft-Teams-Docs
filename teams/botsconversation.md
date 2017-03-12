@@ -7,9 +7,9 @@ Bots in Microsoft Teams allow private conversations with a single user or a grou
 Microsoft Teams currently supports three methods for conversation:
 * One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
 * In Channel Response - A bot can also be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
-* In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.  
+* In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.
 
-Note that neither One-on-One message creation, Group Respond, noor Group Conversation Creation are not currently supported
+Note that bots in private group chats are currently not supported.
 
 
 ## One-on-One conversations
