@@ -114,6 +114,7 @@ Properties are the same as for the hero or thumbnail card.
 Buttons are shown stacked at the bottom of the card. Button text is always on a single line and will be truncated if the text exceeds the button width. Any additional buttons beyond the maximum number supported by the card will not be shown.
 
 **Action Types supported by Teams**
+
 | Property | Type  | Description |                                                           
 |:-------|:-------|:------------|
 | type | String | Required field. Teams supports openURL, imBack, and invoke |
