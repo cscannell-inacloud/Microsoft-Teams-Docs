@@ -2,7 +2,7 @@
 
 ## Overview
 
-Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.
+Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.  With custom bots, too, you have effective way of ensuring your service is accessible only by authorized users, as the shared secret used by your custom bot will only be scoped to the team in which it has been added.
 
 ## Creating a custom bot
 
@@ -17,7 +17,7 @@ Click on the Create a custom bot link at the bottom of the page.
 In the dialog, you can configure how your bot appears in channels:
 * **Name** is what will show up as the bot’s title and is also how users will @mention the bot
 * **Callback URL** is the endpoint that will receive messages from Teams
-* **Description** is an optional detailed string that what will show up in the profile card and in the team-level App dashboard
+* **Description** is a detailed string that what will show up in the profile card and in the team-level App dashboard
 * **Avatar** is the optional display picture of the custom bot
 
 !["Create a custom bot dialog"](images/createcustombot.png)
@@ -41,7 +41,7 @@ You can optionally use the existing Bot Framework client SDKs to simplify parsin
 
 Currently, users must mention the custom bot for it to receive messages.
 
-### Example inbound message
+#### Example inbound message
 ```json
 {
     "type": "message",
@@ -105,7 +105,7 @@ Your code should always verify the HMAC signature included in the request:
 
 
 #### Code example (C#)
-```C#
+```csharp
     /// <summary>
     /// Encapsulates auth results.
     /// </summary>
@@ -232,6 +232,7 @@ Your code should always verify the HMAC signature included in the request:
         }
     }
 ```
+
 ### Sending a reply
 
 As with regular bots, replies from your custom bot will appear in the same reply chain as the original message. You can send a reply message that takes advantage of any of the Bot Framework’s activities, including rich cards and image attachments.
@@ -250,6 +251,10 @@ Your custom bot will need to reply asynchronously to the HTTP request from Micro
 
 * Custom bots do not have access to non-messaging APIs, such as team roster membership.
 * Custom bots cannot post into channels asynchronously, i.e. not as a reply to a user message.
+
+## Sample Custom bot 
+
+For sample code illustrating a custom bot, please see our sample located [here](https://github.com/OfficeDev/microsoft-teams-sample-custombot)
 
 ## Turn your custom bot into an App for Microsoft Teams
 
