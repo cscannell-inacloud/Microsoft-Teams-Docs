@@ -116,7 +116,7 @@ Buttons are shown stacked at the bottom of the card. Button text is always on a 
 **Action Types supported by Teams**
 | Property | Type  | Description |                                                           
 |:-------|:-------|:------------|
-| type | String | Required field. Teams supports: openURL, imBack, and invoke |
+| type | String | Required field. Teams supports openURL, imBack, and invoke |
 | title | String | Text description that appears on the button |
 | value | String |  The payload of the action, which will vary based on the event (see below) |
 
