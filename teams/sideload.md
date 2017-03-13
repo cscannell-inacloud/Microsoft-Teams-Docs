@@ -2,13 +2,15 @@
 
 In order to test your bot or tab within teams, you'll need to sideload your app using the instructions below.  This adds the bot or tab to the team you've selected, and you and other team users can interact with it like an end user.
 
+> **Note** For bots designed only for 1:1 contexts, see [here](botsadd.md) for an alternate way to add for testing.
+
 > **Note** During the developer preview, tabs that you load will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type will be removed from the team's channels.  Follow the instructions below to re-upload your tab to the team and re-add the tab to channels.
 
 ## Create your side load package
 
 For development, you must create a sideloadable package which contains the information to describe your experience.  The package, a zip file, contains the application manifest and optional icons (for tabs) that uniquely describes your experience.  This process should only be used for testing / development as there are limitions to sideloaded packages during preview.
 
-To create the packages, please review the full documentation [here](createpackage.md).
+To create the package, please review the full documentation [here](createpackage.md).
 
 ## Load your package into a team
 
