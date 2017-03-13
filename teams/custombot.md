@@ -1,5 +1,7 @@
 # Custom Bots
 
+> New feature
+
 ## Overview
 
 Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.  With custom bots, too, you have effective way of ensuring your service is accessible only by authorized users, as the shared secret used by your custom bot will only be scoped to the team in which it has been added.

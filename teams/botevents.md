@@ -1,5 +1,7 @@
 # Team update events 
 
+> New features
+
 Teams will send events to your bot based on changes that happen in contexts where they are active.  The following enumerate the events that your bot can receive and take action on.
 
 ## Adding and removing members

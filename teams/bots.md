@@ -10,11 +10,13 @@ At this time, Microsoft Teams bots support 1:1 and channel chats. They do not ye
 
 Bots appear in Teams with a hexagonal avatar.  They always appear online and do not have a mood message.
 
+You can also take advantage of Team's rich tabs web canvas view, to create a tab for your bot.  Use this to show information like FAQs, help, or other information that helps your user best interact with your experience.  See [here]() for more information.
+
 ## Overview of building a Microsoft Teams bot
 
 Microsoft Teams supports much of the common BotFramework functionality.  Follow these steps to build a great Teams bot:
 
-- Design a great bot: Microsoft Teams is the place for group and team collaboration.  Consider what functionality your bot can bring to this collaboration environment, via both 1:1 conversations, or when added as part of a channel conversation.  A great bot on Teams will also find ways to leverage the unique Tabs feature.
+- Design a great bot: Microsoft Teams is the place for group and team collaboration.  Consider what functionality your bot can bring to this collaboration environment, via both 1:1 conversations, or when added as part of a channel conversation.  A great bot on Teams will also find ways to leverage the unique Tabs feature, via a [configurable channel tab](tabs.md), or a [pinned bot tab]().
 - [Create and register your bot in the BotFramework](botscreate.md):  Take advantage of the great tools, documentation, and community provided by the BotFramework team.
 - [Develop your bot](botsconversation.md): Add basic conversation flow and leverage channel-specific functionality. 
 - Test your bot:  [Create a sideloadable bot package](createpackage.md) and [sideload it to a team](sideload.md) to see it in action.
