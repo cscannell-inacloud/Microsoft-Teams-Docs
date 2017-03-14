@@ -37,7 +37,7 @@ For a bot in a channel, in addition to the [regular message schema](https://docs
 * `channelData` - see [below](#teams-specific-functionality).
 * `conversationData.id` - this value is the reply chain ID, consisting of channel id plus the id of the first message in the reply chain. 
 * `conversationData.isGroup` - this value will be set to `true` for bot messages in channels
-* `entities` - this object may contain one or more Mention objects (see [below](#Mentions))
+* `entities` - this object may contain one or more Mention objects (see [below](#mentions))
 
 Please note that channelData should be used as the definitive information for team and channel Ids, for your use in cacheing and utilizing as key local storage.
 
