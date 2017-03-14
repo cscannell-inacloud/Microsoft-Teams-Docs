@@ -21,5 +21,6 @@
 ### [Sideload your bot for testing](sideload.md)
 ### [Start a conversation](botsconversation.md)
 ### [Sending and receiving messages](botsmessages.md)
+## [Custom bots](custombot.md)
 ## [Office 365 Connectors](connectors.md)
 ## [Submit feedback](feedback.md)
