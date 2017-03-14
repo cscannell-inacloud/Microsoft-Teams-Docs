@@ -1,7 +1,5 @@
 ﻿# Create the package for your Microsoft Teams (preview) tab or bot
 
-> New
-
 For your tab or bot to be available within Microsoft Teams, you need to create a sideload package and upload it to a team. The package is a zip file containing:
 
 - A manifest file named `manifest.json`, which specifies attributes of your tab or bot and points to required resources for your experience, such the location of its tabs configuration page or bot id.
@@ -74,6 +72,8 @@ The current manifest schema is [here](schema.md).  Note that you must create a m
 > **Note**: the pinnedTabs section is optional.  It's only required if your bot displays tabs alongside its 1:1 conversations with users.
 
 ### Sample tab manifest:
+
+> Tip: [Download the example zip file](https://github.com/OfficeDev/microsoft-teams-sample-get-started/blob/master/package/MapsTab.zip) that contains the example manifest shown here.
 
 ```json
 {

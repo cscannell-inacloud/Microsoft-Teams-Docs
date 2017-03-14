@@ -65,7 +65,7 @@ Since this event is sent in both cases, you should parse out the `membersAdded` 
 
 ### Adding a bot for 1:1 context only
 
-Your bot will also receive a `conversationUpdate` with `membersAdded` when a users adds it directly for 1:1 chat.  In this case, the payload that your bot receives will not contain the `channelData.teams` object.  You should use this as a filter in case you wish your bot to offer a different Welcome depending on 1:1 or team addition.
+Your bot will also receive a `conversationUpdate` with `membersAdded` when a users adds it directly for 1:1 chat.  In this case, the payload that your bot receives will not contain the `channelData.team` object.  You should use this as a filter in case you wish your bot to offer a different Welcome depending on 1:1 or team addition.
 
 ### Removing a team member
 
@@ -111,7 +111,7 @@ The `conversationUpdate` event with the `membersRemoved` object in the payload w
 
 ## Team updates
 
-Your bot will be notified when the team its in has been renamed.  It will recieve a `conversationUpdate` event with  `"eventType.teamRenamed"` in the `channelData` object.  Please note that there is no notification for team creation or deletion, since bots only exist as part of teams and have no visibility outside the scope in which they have been added.
+Your bot will be notified when the team it is in has been renamed.  It will receive a `conversationUpdate` event with  `"eventType.teamRenamed"` in the `channelData` object.  Please note that there are no notifications for team creation or deletion, since bots only exist as part of teams and have no visibility outside the scope in which they have been added.
 
 #### Schema example - Team renamed
 ```json

@@ -1,6 +1,6 @@
 ﻿# Getting Started with Bots for Microsoft Teams (preview)
 
-Build and connect intelligent bots to interact with Microsoft Teams users naturally through chat.  Or bring your existing bot from another channel, and add Teams-specific support to make your experience shine.  Or if you are just looking for a way to simply extend your team with basic messaging / control flow, check out our new Custom Bots feature. 
+Build and connect intelligent bots to interact with Microsoft Teams users naturally through chat.  Or bring your existing bot from another channel, and add Teams-specific support to make your experience shine.  Or if you are just looking for a way to simply extend your team by integrating with custom tools and services in a secure manner, check out our new Custom Bots feature. 
 
 > **Don't have Microsoft Teams? Get a free Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).**
 
