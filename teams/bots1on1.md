@@ -1,23 +1,48 @@
 ﻿# Bots in One-on-One conversations
 
+Microsoft Teams allows users to engage in direct conversations with bots built on the [Microsoft Bot Framework](https://docs.botframework.com/en-us/).  Users can find bots in the Bots Gallery, and add them to their Teams experience.  Team owners and users with the appropriate permissions can also add bots as full team members (see [bots in channels](botsinchannels.md)), which not only makes them available in that team's channels, but for 1:1 chat for all of those users as well.
 
+## Designing a great bot in a Microsoft Teams channel
+
+A great bot in Microsoft Teams helps users get the information they need, all within the context of the Teams experience.  Conversations with a bot are private exchanges between a bot and its user, and is a great way to provide information specific and relevant to that user in the 1-on-1 context.  Whereas a bot in a channel might provide information specific for that team or channel's work, a bot in 1-on-1 is really a dialog between your service and the individual.  
+
+Note that depending on your experience, the bot might be entirely relevant in both contexts as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever contexts you choose to support.
+
+Please note that while all bots need not provide a channel experience, your bot must be responsive in one-on-one.
+
+## Develop your bot
+
+In general, developing a bot for Teams is the same as developing for any other channel in the Bot Framework.  See [here](botscreate.md) for more information on getting started creating a bot for Teams.
 
 ### Receiving messages
 
 For a 1:1 conversation with a bot, the regular [Activity](https://docs.botframework.com/en-us/core-concepts/reference/#activity) message schema will apply. 
+
 Of note:
-* channelId is "msteams"
-* From user id in "from" -> "id" - This is a unique and encrypted id for that user for your bot, and is suitable as a key should your app wish to store user data.  Note, though, that this is unique for your bot and cannot be directly used outside your bot instance in any meaningful way to identify that user.
+* `channelId` - the channel identifier will always be `msteams`
+* `from.id` - this is a unique and encrypted id for that user for your bot, and is suitable as a key should your app wish to store user data.  Note, though, that this is unique for your bot and cannot be directly used outside your bot instance in any meaningful way to identify that user.
+* `channelData.tenant.id` - this is the tenant id for the user
 
 ### Replying to message
 In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
 If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint.  
 
+Please note that in your outbound schema, you should alwas use the same `serviceUrl` as the one you received.
+
+Also note: at this time, it is not possible for a bot to directly initiate a conversation with a user.  The user must first add the bot and/or send it a message before it has the appropriate user information to reply back to the individual user.
+
+### Receiving events
+
+For one-on-one chats, the main event you should be aware of is the `conversationUpdate` event, which your bot receives when a user first adds it for 1:1 conversation.  Bots added to channels receive additional information - more information, see [Bot Events](botevents.md).
+
+#### Best Practice - Welcome message
+
+For bots that are added directly to by a user, and not already part of any of the user's teams, it is a best practice to send a Welcome Message, to introduce it to all users of the team, and tell a bit about its functionality.  To do this, make sure your bot responds to the `conversationUpdate` message, with the `teamsAddMembers` eventType in the `channelData` object.
 
 
 
-## Full inbound Schema example (bot in a channel)
+## Full inbound Schema example 
 ```json
 {
     "type": "message",
@@ -30,61 +55,26 @@ If you choose to use the REST API, you can also call the [/conversations/{conver
         "name": "Richard Moe"
     },
     "conversation": {
-        "id": "19:253b1f341670408fb6fe51050b6e6ceb@thread.skype;messageid=1485983194839"
+        "id": "a:17I0kl9EkpE1O9PH5TWrzrLNwnWWcfrU7QZjKR0WSfOpzbfcAg2IaydGElSo10tVr4C7Fc6GtieTJX663WuJCc1uA83n4CSrHSgGBj5XNYLcVlJAs2ZX8DbYBPck201w-"
     },
     "recipient": {
-        "id": "28:c9e8c047-2a74-40a2-b28b-b262d5f5327c",
+        "id": "28:c9e8c047-2a74-40a2-b28a-b162d5f5327c",
         "name": "Teams TestBot"
     },
     "textFormat": "plain",
-    "text": "<at>Teams TestBot</at> Hello <at>Jingjing Xia</at>",
-    "attachments": [
-    {
-        "contentType": "text/html",
-        "content": "<div><span contenteditable=\"false\" itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"0\">Teams TestBot</span> Hello <span contenteditable=\"false\" itemscope=\"\" itemtype=\"http://schema.skype.com/Mention\" itemid=\"1\">Jingjing Xia</span></div>"
-    }
-    ],
+    "text": "Hello Teams TestBot",
     "entities": [
-    {
-        "type": "mention",
-        "mentioned": {
-            "id": "28:c9e8c047-2a74-40a2-b28b-b262d5f5327c",
-            "name": "Teams TestBot"
-        },
-        "text": "<at>Teams TestBot</at>"
-    },
-    {
-    "type": "mention",
-    "mentioned": {
-            "id": "29:1jnFbZYs0qXMLH-O4S9-sDLNc3NVEIMWWnC-q0tVdEa-8BRosfojI35QdNoB-yW8iutWLJzHUm_mqEZSSU8si0Q",
-            "name": "Jingjing Xia"
-        },
-        "text": "<at>Jingjing Xia</at>"
-    },
-    {
-        "type": "clientInfo",
-        "locale": "en-US",
-        "country": "US",
-        "platform": "Windows"
-    }
+        {
+            "type": "clientInfo",
+            "locale": "en-US",
+            "country": "US",
+            "platform": "Windows"
+        }
     ],
     "channelData": {
-        "teamsChannelId": "19:253b1f352670408fb6fe51050b6e5ceb@thread.skype",
-        "teamsTeamId": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype",
-        "channel": {
-            "id": "19:253b1f352670408fb6fe51050b6e5ceb@thread.skype"
-        },
-        "team": {
-            "id": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype"
-        },
-        "onBehalfOf": "[]",
         "tenant": {
             "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
         }
     }
 }
 ```
-
-
-
-

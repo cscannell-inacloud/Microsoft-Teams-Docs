@@ -19,8 +19,8 @@ Developing a bot in a channel, at its core, is the same as developing a bot for 
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
 
 * Teams-specific channel data - see [below](#teams-channel-data).
-* Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the “conversation” -> “id” property.
-* Detailed info about the mentioned bots/users – That will be included in the “entities” section with "type" = "mention". The “text” will match the mentioned text in the top level “text”, which will be wrapped with <at></at>.
+* Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the `conversation.id` property.
+* Detailed info about the mentioned bots/users – That will be included in the `entities` section with `type` = `mention`. The `text` will match the mentioned text in the top level `text`, which will be wrapped with <at></at>.
 
 #### Teams channel data
 
