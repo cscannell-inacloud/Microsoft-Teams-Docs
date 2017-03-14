@@ -41,10 +41,14 @@ Microsoft Teams supports the following cards which may have several properties a
 
 * Hero card
 * Thumbnail card
-* Carousel card (with hero or thumbnail cards)
-* List card
+* Signin card
 
-> **Note:** Microsoft Teams cards currently only support openUrl and imBack actions. Receipt cards are not supported at this time.
+> **Note:** Receipt cards are not supported at this time.
+
+Additionally, we support the following layouts:
+* Horizontal carousel layout
+* Vertical list layout
+Both layouts support hero and thumbnail cards.
 
 ### Inline card images
 
