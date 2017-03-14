@@ -26,9 +26,8 @@ Microsoft Teams supports the following formatting options
 
 ### Welcome messages
 
-To send a welcome message to a user listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
+To send a welcome message, listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
 
-> **Note:** At this time, a user must first send a message to your bot in order to trigger the conversationUpdate event.
 
 ### Picture messages
 
@@ -36,16 +35,20 @@ Pictures are sent by adding attachments to a message.
 
 Pictures can be PNG, JPEG or GIF up to 20Mb.
 
-## Cards and buttons
+## Cards 
 
 Microsoft Teams supports the following cards which may have several properties and attachments. You can find information on how to use cards in the [.NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#richcards) and [Node.js SDK](https://docs.botframework.com/en-us/node/builder/guides/examples/#demo-skype-calling) docs.
 
 * Hero card
 * Thumbnail card
-* Carousel card (with hero or thumbnail cards)
-* List card
+* Signin card
 
-> **Note:** Microsoft Teams cards currently only support openUrl and imBack actions. Receipt cards are not supported at this time.
+> **Note:** Receipt cards are not supported at this time.
+
+Additionally, we support the following layouts:
+* Horizontal carousel layout
+* Vertical list layout
+Both layouts support hero and thumbnail cards.
 
 ### Inline card images
 
@@ -60,17 +63,6 @@ Images must be at most 1024x1024 and 1MB in size, and in either PNG or JPEG form
 | url | URL | HTTPS URL to the image |
 | alt | String | Accessible description of the image |
 
-### Buttons
-
-Buttons are shown stacked at the bottom of the card. Button text is always on a single line and will be truncated if the text exceeds the button width. Any additional buttons beyond the maximum number supported by the card will not be shown.
-
-### Actions
-
-| Property | Type  | Description |                                                           
-|:-------|:-------|:------------|
-| type | String | Required field. One of openURL (opens the given URL) or imBack (posts a message in the chat to the bot that sent the card) |
-| title | String | Text description that appears on the button |
-| value | String |  For openURL is a URL, and for imBack is a user defined string |
 
 ### Hero card
 
@@ -121,3 +113,94 @@ Properties are the same as for the hero or thumbnail card.
 
 > **Note:** Some combinations of list cards may not be supported yet on iOS and Android.
 
+## Buttons
+
+Buttons are shown stacked at the bottom of the card. Button text is always on a single line and will be truncated if the text exceeds the button width. Any additional buttons beyond the maximum number supported by the card will not be shown.
+
+**Action Types supported by Teams**
+
+| Property | Type  | Description |                                                           
+|:-------|:-------|:------------|
+| type | String | Required field. Teams supports openURL, imBack, and invoke |
+| title | String | Text description that appears on the button |
+| value | String |  The payload of the action, which will vary based on the event (see below) |
+
+### Action - openUrl
+
+This action type specifies a URL to launch, in the default browser.  Note that your bot does not receive any notice on which button was clicked.
+
+The `value` field must contain a full and properly formed URL.
+
+```json
+{
+    "type": "openUrl",
+    "title": "Tabs in Teams",
+    "value": "https://msdn.microsoft.com/en-us/microsoft-teams/tabs"
+}
+```
+
+### Action - imBack
+
+This action basically trigger a return message to your bot, as if the user typed it in a normal chat message.  Thus, your user, and all other users if in a channel, will see that button response.
+
+The `value` field should contain the text string echoed in the chat and therefore sent back to the bot.  This is the message text you will process in your bot to perform the desired logic.  Note: this field is a simple string - there is support for formatting or hidden characters.
+
+```json
+{
+    "type": "imBack",
+    "title": "More",
+    "value": "Show me more"
+}
+```
+
+### Action - invoke (New)
+
+The new invoke message type silently sends a JSON payload that you define to your bot.  This is useful if you want to send more detailed information back to your bot without having to send via a simple imBack text string.  Note that the user, in 1:1 or in channel, sees no notification as a result of their click.
+
+The `value` field will contain a stringified JSON object.  You can include identifiers or any other context necessary to carry out the operation.
+
+```json
+{
+    "type": "invoke",
+    "title": "Option 1",
+    "value": "{\"option\": \"opt1\"}"
+}
+```
+
+Your bot will receive the message with `"type": "invoke"` instead of `"message"`, and `value` will contain the stringified JSON object.
+
+
+
+#### Invoke schema example
+```json
+{
+    "type": "invoke",
+    "value": {
+        "option": "opt1"
+    },
+    "timestamp": "2017-02-10T04:11:19.614Z",
+    "id": "f:6894910862892785420",
+    "channelId": "msteams",
+    "serviceUrl": "https://smba.trafficmanager.net/amer-client-ss.msg/",
+    "from": {
+        "id": "29:1Eniglq0-uVL83xNB9GU6w_G5a4SZF0gcJLprZzhtEbel21G_5h-
+    NgoprRw45mP0AXUIZVeqrsIHSYV4ntgfVJQ"
+    },
+    "conversation": {
+        "id": "19:97b1ec61-45bf-453c-9059-6e8984e0cef4_8d88f59b-ae61-4300-bec0-
+    caace7d28446@unq.gbl.spaces"
+    },
+    "recipient": {
+        "id": "28:8d88f59b-ae61-4300-bec0-caace7d28446",
+        "name": "MyBot"
+    },
+    "entities": [
+        {
+            "locale": "en-US",
+            "country": "US",
+            "platform": "Web",
+            "type": "clientInfo"
+        }
+    ]
+}
+```

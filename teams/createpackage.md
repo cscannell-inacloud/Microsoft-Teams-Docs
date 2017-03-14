@@ -73,6 +73,8 @@ The current manifest schema is [here](schema.md).  Note that you must create a m
 
 ### Sample tab manifest:
 
+> Tip: [Download the example zip file](https://github.com/OfficeDev/microsoft-teams-sample-get-started/blob/master/package/MapsTab.zip) that contains the example manifest shown here.
+
 ```json
 {
   "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 

@@ -7,9 +7,9 @@ Bots in Microsoft Teams allow private conversations with a single user or a grou
 Microsoft Teams currently supports three methods for conversation:
 * One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
 * In Channel Response - A bot can also be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
-* In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.  
+* In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.
 
-Note that neither One-on-One message creation, Group Respond, noor Group Conversation Creation are not currently supported
+Note that bots in private group chats are currently not supported.
 
 
 ## One-on-One conversations
@@ -31,9 +31,9 @@ If you choose to use the REST API, you can also call the [/conversations/{conver
 
 ### Receiving messages
 
-For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity) , your bot will also receive the following properties:
-* Teams ID - The id for the team is in the "channelData" -> "teamsTeamId" property.
-* Channel ID – The id for the team channel is in the “channelData” -> “teamsChannelId” property.  
+For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
+
+* Teams-specific channel data - see [below](#teams-specific-functionality).
 * Reply chain ID – That’s the channel id plus the id of the first message in the reply chain. It’s represented in the “conversation” -> “id” property.
 * Detailed info about the mentioned bots/users – That will be included in the “entities” section with "type" = "mention". The “text” will match the mentioned text in the top level “text”, which will be wrapped with <at></at>.
 
@@ -43,13 +43,15 @@ Please note that channelData should be used as the definitive information for te
 Replying to a message in a channel is the same as in 1:1.  Note that replying to a message in a channel shows as a reply to the initiating reply chain - for bots in channels, the conversationId contains channel and the top level message id.  While the BotFramework takes care of the details, you may cache that conversationId for future replies to that conversation thread as needed.
 
 
-### Mentions
+## Mentions
+
+### Retrieving mentions
 
 You can retrieve all mentions in the message by calling the `GetMentions()` function in the BotFramework C# SDK.  This should return an array of all the @mentions sent in the "entities" section of the schema.
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
-```
+```c#
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
 
@@ -62,6 +64,53 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
+### Constructing mentions
+
+Your bot can @mention other users in messages posted into channels. To do this, your message must:
+* Include <at>@username</at> in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message or from an external lookup, e.g. Azure ActiveDirectory
+* Include the mention object inside the entities collection
+
+#### Schema example
+
+```json
+{ 
+    "type": "message", 
+    "text": "Hey <at>Larry Jin</at> check out this message", 
+    "timestamp": "2016-10-29T00:51:05.9908157Z", 
+    "serviceUrl": "https://skype.botframework.com", 
+    "channelId": "msteams", 
+    "from": { 
+        "id": "28:9e52142b-5e5e-4d7b-bb3e- e82dcf620000", 
+        "name": "SchemaTestBot" 
+    }, 
+    "conversation": { 
+        "id": "19:aebd0ad4d6ab42c8b9ed19c251c2fc37@thread.skype;messageid=1481567603816" 
+    }, 
+    "recipient": { 
+        "id": "8:orgid:6aebbad0-e5a5-424a-834a-20fb051f3c1a", 
+        "name": "stlrgload100" 
+    }, 
+    "attachments": [ 
+        { 
+            "contentType": "image/png", 
+            "contentUrl": "https://upload.wikimedia.org/wikipedia/en/a/a6/Bender_Rodriguez.png", 
+            "name": "Bender_Rodriguez.png" 
+        } 
+    ], 
+    "entities": [ 
+        { 
+            "type":"mention", 
+            "mentioned":{ 
+                "id":"29:08q2j2o3jc09au90eucae",
+                "name":"Larry Jin" 
+            }, 
+            "text": "<at>@Larry Jin</at>"
+        } 
+    ], 
+    "replyToId": "3UP4UTkzUk1zzeyW" 
+}
+```
+
 ## Channel Conversation Creation
 
 Once your bot has been added to the team, it can also post into a channel to create a new reply chain.  With the BotBuilder SDK, call  `CreateConversation()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  
@@ -70,8 +119,8 @@ Alternatively, you can issue a POST request to the [`/conversations/{conversatio
 
 Note: at this point, bots in Microsoft Teams cannot initiate 1:1 / direct or 1:many / group conversations.
 
-### Example
-```
+### Example (C#)
+```c#
 var channelData = new Dictionary<string, string>();
 channelData["teamsChannelId"] = yourTeamsChannelID;
 IMessageActivity newMessage = Activity.CreateMessageActivity();
@@ -87,10 +136,47 @@ ConversationParameters conversationParams = new ConversationParameters(
 var result = await connector.Conversations.CreateConversationAsync(conversationParams);
 ```
 
-## Fetching the team roster
-Your bot application can now query for the list of team members. With the BotBuilder SDK, call  `GetConversationMembersAsync()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of userIds for the `teamId` retrieved from the `channelData` of the inbound schema.
+## Teams-specific functionality
 
+Bots in Teams have channel-specific data and functionality that you can leverage to differentiate your bot experience in Teams.  This includes such functionality as retrieving team and channel information, as well as [channel events](botevents.md) sent to your bot by Teams.
+
+### Teams channel data
+
+Teams-specific information is sent and received in the `channelData` object, which has been updated since Preview launch.
+
+####Example channelData object (channelCreated event)
+```json
+"channelData": {
+    "channel": {
+        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype",
+        "name": "My New Channel"
+    },
+    "eventType": "channelCreated",
+    "team": {
+        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype"
+    },
+    "tenant": {
+        "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    }
+}
 ```
+
+`channelData` objects:
+* `channel` - this object is passed only in channel contexts, when the bot is @mentioned or for events in channels in teams where the bot has been added.
+    - `id` - the GUID for the channel.
+    - `name` - the channel name, passed only in cases of [channel modification events](botevents.md). 
+* `eventType` - Teams event type - passed only in cases of [channel modification events](botevents.md).
+* `team` - this object is passed only in channel contexts, not 1:1.
+    - `id` - the GUID for the channel.
+    - Note: there is no name value being passed at this time
+* `tenant.id` - the O365 tenant id on which Teams is running.  This is passed in all contexts.
+
+>**Note:** the payload also contains `channelData.teamsTeamId` and `channelData.teamsChannelId` properties for backwards compatibility.
+
+## Fetching the team roster
+Your bot can query for the list of team members. With the BotBuilder SDK, call  `GetConversationMembersAsync()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of userIds for the `team.id` retrieved from the `channelData` of the inbound schema.
+
+```c#
 ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
 
 replyMessage.Text = "These are the member userids returned by the GetConversationMembers() function";
@@ -107,7 +193,7 @@ Currently, this only returns the userIds but we will be including profile inform
 
 
 ## Full inbound Schema example (bot in a channel)
-```
+```json
 {
     "type": "message",
     "id": "1485983408511",
@@ -159,7 +245,17 @@ Currently, this only returns the userIds but we will be including profile inform
     ],
     "channelData": {
         "teamsChannelId": "19:253b1f352670408fb6fe51050b6e5ceb@thread.skype",
-        "teamsTeamId": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype"
+        "teamsTeamId": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype",
+        "channel": {
+            "id": "19:253b1f352670408fb6fe51050b6e5ceb@thread.skype"
+        },
+        "team": {
+            "id": "19:712c61d0ef393e5fa681ba90ca943398@thread.skype"
+        },
+        "onBehalfOf": "[]",
+        "tenant": {
+            "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+        }
     }
 }
 ```

@@ -22,6 +22,12 @@ Build and connect intelligent bots to interact with Microsoft Teams users natura
 
 !["Example of a bot assisting a user"](images/bot_example.png)
 
+## Custom Bots
+
+Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.  
+
+[Get started with custom bots](custombot.md)
+
 ## Connectors
 
 Office 365 Connectors are a great way to get useful information and content into Microsoft Teams. Any user can connect their group to services like Trello, Bing News, Twitter, etc., and get notified of the team's activity in that service. From tracking a team's progress in Trello, to following important hashtags in Twitter, Office 365 Connectors make it easier for teams to stay in sync and get more done.
