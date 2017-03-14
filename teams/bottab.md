@@ -1,12 +1,10 @@
 # Create a tab for your bot
 
-> New feature
-
 You may have more information about your bot or supported product than can be handled in a bot's conversation flow.  Or there might be persistant information that may make sense to have always available to the user, regardless of their bot conversation state.  With Microsoft Team's rich web-canvas tabs, you can now keep that information alongside your bot in the same context your user interacts with it.
 
 Like our Team help bot T-Bot, you can add one or more tabs in your bot conversation channel.  This is simply web content that you host, relevant for your experience, like FAQs, help or other general information for users of your experience.
 
-![Tabs in a bot](images\tabs_in_bot.png)
+![Tabs in a bot](images/tabs_in_bot.png)
 
 ## Creating tab content
 

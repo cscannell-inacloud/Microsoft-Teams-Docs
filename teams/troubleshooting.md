@@ -1,8 +1,8 @@
-# Troubleshooting the Microsoft Teams (Preview) tabs
+# Troubleshooting Microsoft Teams tabs and bots
 
 ## Tabs disappear
 
-During the developer preview, any tabs that you create, and upload to a team, will expire after 29 days.  Your tab will no longer be available in the tab gallery, and any tabs of this type that you, or the team, have added to channels will be removed from the team's channels.  
+During the developer preview, any tabs that you created, and uploaded to a team, may have expired after 29 days.  This expiration issue has since been addressed, but you will have to [sideload](sideload.md) the tab again for it to appear in your Tab Gallery.  
 
 Tabs may also disappear during the roll out of a new process for side-loading tabs.  Please check [here](sideload.md) to determine if you need to use this process.
 

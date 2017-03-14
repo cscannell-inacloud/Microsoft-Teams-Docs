@@ -2,7 +2,7 @@
 
 Much but not all of the functionality supported by the Bot Framework is supported in Bots on Microsoft Teams.  For more information about core messaging functionality of the Bot Framework, please review the [documentation](https://docs.botframework.com/en-us/core-concepts/messages/#navtitle).
 
-##Messages
+## Messages
 Your bot can send rich text, pictures and cards. Users can send rich text and pictures to your bot. You can specify the type of content your bot can handle in the Microsoft Teams settings page for your bot.
 
 | Format | From user to bot  | From bot to user |  Notes |                                                           
@@ -26,7 +26,7 @@ Microsoft Teams supports the following formatting options
 
 ### Welcome messages
 
-To send a welcome message, listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.
+To send a welcome message, listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.  For more information, see [Team update events](botevents.md).
 
 
 ### Picture messages
@@ -48,6 +48,7 @@ Microsoft Teams supports the following cards which may have several properties a
 Additionally, we support the following layouts:
 * Horizontal carousel layout
 * Vertical list layout
+
 Both layouts support hero and thumbnail cards.
 
 ### Inline card images
@@ -143,7 +144,7 @@ The `value` field must contain a full and properly formed URL.
 
 This action basically trigger a return message to your bot, as if the user typed it in a normal chat message.  Thus, your user, and all other users if in a channel, will see that button response.
 
-The `value` field should contain the text string echoed in the chat and therefore sent back to the bot.  This is the message text you will process in your bot to perform the desired logic.  Note: this field is a simple string - there is support for formatting or hidden characters.
+The `value` field should contain the text string echoed in the chat and therefore sent back to the bot.  This is the message text you will process in your bot to perform the desired logic.  Note: this field is a simple string - there is no support for formatting or hidden characters.
 
 ```json
 {
@@ -171,7 +172,7 @@ Your bot will receive the message with `"type": "invoke"` instead of `"message"`
 
 
 
-#### Invoke schema example
+#### Invoke inbound schema example
 ```json
 {
     "type": "invoke",

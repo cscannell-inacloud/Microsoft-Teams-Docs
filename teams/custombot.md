@@ -1,9 +1,5 @@
 # Custom Bots
 
-> New feature
-
-## Overview
-
 Custom bots are an easy way of extending your team with Teams interactivity without having to go through the full process of creating a bot via the Microsoft Bot Framework.  You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. With custom bots, too, you have effective way of ensuring your service is accessible only by authorized users, as the shared secret used by your custom bot will only be scoped to the team in which it has been added.
 
 ## Creating a custom bot
@@ -100,10 +96,10 @@ Currently, users must mention the custom bot for it to receive messages.
 You should always authenticate that Microsoft Teams is the service calling your URL. To guarantee the legitimacy of the client, Microsoft Teams will provide the HMAC in the HTTP hmac header.
 
 Your code should always verify the HMAC signature included in the request:
-1)	Generate the hmac from the request body of the message. There are standard libraries on most platforms. Microsoft Teams uses standard SHA256 HMAC cryptography. You will need to convert the body to a byte array in UTF8.
-2)	To compute the hash, provide the byte array of the shared secret.
-3)	Convert the hash to a String using UTF8 encoding.
-4)	Compare the string value of the generated hash with the value provided in the HTTP request.
+1.	Generate the hmac from the request body of the message. There are standard libraries on most platforms. Microsoft Teams uses standard SHA256 HMAC cryptography. You will need to convert the body to a byte array in UTF8.
+2.	To compute the hash, provide the byte array of the shared secret.
+3.	Convert the hash to a String using UTF8 encoding.
+4.	Compare the string value of the generated hash with the value provided in the HTTP request.
 
 
 #### Code example (C#)
@@ -239,13 +235,13 @@ Your code should always verify the HMAC signature included in the request:
 
 As with regular bots, replies from your custom bot will appear in the same reply chain as the original message. You can send a reply message that takes advantage of any of the Bot Framework’s activities, including rich cards and image attachments.
 
-Your custom bot will need to reply asynchronously to the HTTP request from Microsoft Teams. It will have 5 seconds  to reply to the message before the connection is terminated.
+Your custom bot will need to reply asynchronously to the HTTP request from Microsoft Teams. It will have 5 seconds to reply to the message before the connection is terminated.
 
 #### Example reply message
 ```json
 {
     "type": "message",
-    "text": "This is a reply!",
+    "text": "This is a reply!"
 }
 ```
 
