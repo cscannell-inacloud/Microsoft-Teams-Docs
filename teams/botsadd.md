@@ -6,7 +6,7 @@ For published bots, end users will be able to access via the Bot gallery accessa
 
 > **During Preview, your tenant administrator will need to enable side-loading of bots for your organization. [Here's how](setup.md).**
 
-## Adding a bot to a team - (bots in channels)
+## Adding a bot to a team to use it in channels
 
 To add a bot to a team, so it is usable in the team channel by all team members, you must [create an app package](createpackage.md) and [sideload it](sideload.md) to the appropriate team.  This process makes the bot available both in all channels within the team (when @mentioned) and for all users in 1:1 context.  Please note that the bot will not be available in other teams without being explicitly added to it.
 
@@ -37,19 +37,19 @@ There are two ways to test load your bot for 1:1 conversations in Microsoft Team
 
 When a bot has been added via the above, it will not be addressable in channel conversations.
 
-Like bot in channels, Teams will send the `conversationUpdate` event, but without the teams information in the `channelData` object.
+Like bot in channels, Teams will send the `conversationUpdate` event, but without team information in the `channelData` object.
 
 ## Disabling or removing a bot from a team
 
-Users may delete the bot by clicking the trashcan on the Bots list in their teams view.  Note that this only removes the bot from that team's use - individual users will still be able to interact in 1:1 context.
+Users may delete the bot by clicking the trashcan on the Bots list in their teams view.  Note that this only removes the bot from that team's use - individual users will still be able to interact in 1:1 chat.
 
-Bots in 1:1 cannot be disabled or removed by a user, short of completely removing the bot from Teams use.  See below for more.
+Bots in 1:1 chat cannot be removed by a user, but they can be blocked/disabled, which prevents further messages from being sent to that user.
 
-## Disabling a bot in Teams
+## Disabling a bot
 
 To stop your bot receiving messages and remove it from directories go to your Bot Dashboard and edit the Microsoft Teams channel. Disable the bot in settings.  Note that this will not remove the bot from other users' Teams instance.  
 
-## Removing a bot from Teams
+## Removing a bot from showing up in Teams
 
 To remove your bot completely from Team use, go to your Bot Dashboard and edit the Microsoft Teams channel. Select the **Delete** button at the bottom.  Note that this will not remove the bot from other users' Teams instance.  
 
