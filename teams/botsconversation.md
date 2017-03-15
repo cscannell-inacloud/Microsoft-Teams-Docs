@@ -25,8 +25,7 @@ Of note:
 ### Replying to message
 In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
-If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint.  
-
+If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
 
 ## One to Many - Bots in Channels
 
@@ -42,8 +41,7 @@ For a bot in a channel, in addition to the [regular message schema](https://docs
 Please note that channelData should be used as the definitive information for team and channel Ids, for your use in cacheing and utilizing as key local storage.
 
 ### Replying to message
-Replying to a message in a channel is the same as in 1:1.  Note that replying to a message in a channel shows as a reply to the initiating reply chain - for bots in channels, the conversationId contains channel and the top level message id.  While the BotFramework takes care of the details, you may cache that conversationId for future replies to that conversation thread as needed.
-
+Replying to a message in a channel is the same as in 1:1.  Note that replying to a message in a channel shows as a reply to the initiating reply chain - for bots in channels, the conversationId contains channel and the top level message id.  While the BotFramework takes care of the details, you may cache that conversationId for future replies to that conversation thread as needed.  
 
 ## Mentions
 
