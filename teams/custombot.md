@@ -249,6 +249,7 @@ Your custom bot will need to reply asynchronously to the HTTP request from Micro
 
 * Custom bots do not have access to non-messaging APIs, such as team roster membership.
 * Custom bots cannot post into channels asynchronously, i.e. not as a reply to a user message.
+* While custom bots can use rich cards, they cannot leverage button actions like "imBack" or "invoke".
 
 ## Sample Custom bot 
 
