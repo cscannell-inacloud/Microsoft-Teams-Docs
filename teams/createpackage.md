@@ -123,4 +123,4 @@ Icons are are only used for tabs.  For bots, your Bot Framework icon will be use
 
 Once you've created your manifest and image files, compress them into a zip file.  Your manifest must be at the **top** level of the zip.
 
-Upload your zip file to a team to make your app available, via the sideloading process found[here](sideload.md).
+Upload your zip file to a team to make your app available, via the sideloading process found [here](sideload.md).
