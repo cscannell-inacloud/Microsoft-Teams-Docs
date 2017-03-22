@@ -146,6 +146,8 @@ This action basically trigger a return message to your bot, as if the user typed
 
 The `value` field should contain the text string echoed in the chat and therefore sent back to the bot.  This is the message text you will process in your bot to perform the desired logic.  Note: this field is a simple string - there is no support for formatting or hidden characters.
 
+> **Note:** imBack is not recommended for bots in channels as the button click will notify each thread participant each time.  Please see "invoke" below for the preferred solution.
+
 ```json
 {
     "type": "imBack",
@@ -164,7 +166,9 @@ The `value` field will contain a stringified JSON object.  You can include ident
 {
     "type": "invoke",
     "title": "Option 1",
-    "value": "{\"option\": \"opt1\"}"
+    "value": { 
+        "option": "opt1" 
+    } 
 }
 ```
 
