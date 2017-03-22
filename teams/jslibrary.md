@@ -259,6 +259,11 @@ Notifies that the underlying resource has been created and the settings may be s
 #### `contentUrl: string`
 Sets the url to use for the content of this instance.
 
+#### `entityId: string`
+_Introduced in v0.4_
+
+The developer-defined unique id for the entity this content points to.
+
 #### `customSettings?: string`
 The custom settings for this content instance. The developer may use this for generic storage specific to this instance, for example a JSON blob describing the previously selected options used to pre-populate the UI. The string must be less than 1kb.
 
