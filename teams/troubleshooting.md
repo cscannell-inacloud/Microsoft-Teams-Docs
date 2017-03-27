@@ -6,9 +6,15 @@ During the developer preview, any tabs that you created, and uploaded to a team,
 
 Tabs may also disappear during the roll out of a new process for side-loading tabs.  Please check [here](sideload.md) to determine if you need to use this process.
 
+## Can't add bots in general
+
+Bots must be enabled by the O365 Tenant admin for them to be loaded by end users.  Note that in some cases, the O365 Tenant may have multiple SKUs associated with it, and for bots to work in any, they must be enabled in all SKUs.  See [here](https://msdn.microsoft.com/en-us/microsoft-teams/setup#enable-sideloading-of-bots-and-tabs) for more information.
+
+
 ## Can't add bot as a member of a team
 
 We have rolled out a change that means you can no longer load a bot by adding it as a team member, but by sideloading a bot definition package instead.  Please check [here](sideload.md) for more information on this process.
+
 
 ## Error while reading manifest.json
 
