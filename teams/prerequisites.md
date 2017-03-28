@@ -6,7 +6,7 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Make sure that the page can be hosted in an iframe. By default web pages can be iframed by anyone. You may optionally set these headers if you wish to only allow your page to be iframed by Microsoft Teams for extra security:
 	
-	* Set header `Content-Security-Policy: frame-ancestors *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
+	* Set header `Content-Security-Policy: frame-ancestors teams.microsoft.com *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
 
 		* For Internet Explorer 11 compatability, Set X-Content-Security-Policy as well.
 

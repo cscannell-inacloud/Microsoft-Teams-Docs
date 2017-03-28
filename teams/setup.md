@@ -1,4 +1,4 @@
-﻿# Setting up Microsoft Teams (preview) for development
+# Setting up Microsoft Teams (preview) for development
 
 Microsoft Teams is a service within Office 365. To get started developing extensions for Microsoft Teams, you'll first need an Office 365 account. You'll then need to turn on the Microsoft Teams service for your Office 365 organization. Lastly, you'll need to turn on bots and enable side-loading of bots and tabs for testing.
 
