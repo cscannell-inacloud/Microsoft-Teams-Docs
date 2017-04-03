@@ -20,6 +20,7 @@
 ### [Create a bot](botscreate.md)
 ### [Add your bot for testing](botsadd.md)
 ### [Build a bot sideload package](createpackage.md)
+### [Add a tab to your bot](bottab.md)
 ### [Start a conversation](botsconversation.md)
 ### [Sending and receiving messages](botsmessages.md)
 ### [Responding to events](botevents.md)

@@ -7,14 +7,14 @@ Your bot can send rich text, pictures and cards. Users can send rich text and pi
 
 | Format | From user to bot  | From bot to user |  Notes |                                                           
 |:-------|:-------|:------------|:-------|
-| Rich text | ✔ | ✔ | No emoticons |  
+| Rich text | ✔ | ✔ |  |  
 | Pictures | ✔ | ✔ | PNG, JPEG or GIF up to 20Mb |
-| Cards | ✘ | ✔ |  |
+| Cards | ✘ | ✔ | Teams currently support Hero and Thumbnail cards  |
 
 ### Message format
 You can set the optional [TextFormat](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html) property to control how your message's text content will be rendered.
 
-Microsoft Teams supports the following formatting options
+Microsoft Teams supports the following formatting options:
 
 | TextFormat Value | Description |
 |:----------------------|:------------------|
@@ -24,14 +24,9 @@ Microsoft Teams supports the following formatting options
 
 > **Note:** On hero and thumbnail cards, message format is only supported on the text property. Formatting is not supported on the title and subtitle properties at this time.
 
-### Welcome messages
-
-To send a welcome message, listen for the [conversationUpdate](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html#conversationUpdate) activity.  For more information, see [Team update events](botevents.md).
-
-
 ### Picture messages
 
-Pictures are sent by adding attachments to a message.
+Pictures are sent by adding attachments to a message.  You can find more information on attachments in the [Bot Framework documentation.](https://docs.botframework.com/en-us/core-concepts/attachments/) 
 
 Pictures can be PNG, JPEG or GIF up to 20Mb.
 
@@ -41,9 +36,13 @@ Microsoft Teams supports the following cards which may have several properties a
 
 * Hero card
 * Thumbnail card
-* Signin card
 
-> **Note:** Receipt cards are not supported at this time.
+Supported with modifications:
+* Signin card - the "signin" action is not supported.  You can replace the button action with "openUrl" to get the desired result.
+
+Not supported:
+* Receipt card
+* Media cards (Animation, Audio, Video)
 
 Additionally, we support the following layouts:
 * Horizontal carousel layout
