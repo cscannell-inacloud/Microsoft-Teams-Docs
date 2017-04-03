@@ -52,6 +52,8 @@ Bots have the ability to be retrieve and construct @mentions in a message, and t
 * **`mentioned.name`** - the name of the user.  Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message or from an external lookup, e.g. Azure ActiveDirectory
 * **`text`** - the @mention text in the body of the message itself, which may or may not be the full name of that user due to Teams' ability to shorten (hit *backspace* when doing @mention name support).  Note that the text here, like in the body of the message, will be wrapped with the <at></at> tag.
 
+>**Note**: At this time, team and channel @mentions are not supported.
+
 #### Example Entities object
 
 ```json
@@ -62,7 +64,7 @@ Bots have the ability to be retrieve and construct @mentions in a message, and t
             "id":"29:08q2j2o3jc09au90eucae",
             "name":"Larry Jin" 
         }, 
-        "text": "<at>@Larry Jin</at>"
+        "text": "<at>Larry Jin</at>"
     } 
 ] 
 ```
@@ -93,8 +95,10 @@ for (int i = 0;i < m.Length;i++)
 ### Constructing mentions
 
 Your bot can @mention other users in messages posted into channels. To do this, your message must:
-* Include <at>@username</at> in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message or from an external lookup, e.g. Azure ActiveDirectory
+* Include <at>@username</at> in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message or maintain your own key/value store to map Teams userids to names you have already collected.
 * Include the `mention` object inside the `entities` collection
+
+>**Note**: At this time, team and channel @mentions are not supported.
 
 #### Schema example
 
@@ -130,7 +134,7 @@ Your bot can @mention other users in messages posted into channels. To do this, 
                 "id":"29:08q2j2o3jc09au90eucae",
                 "name":"Larry Jin" 
             }, 
-            "text": "<at>@Larry Jin</at>"
+            "text": "<at>Larry Jin</at>"
         } 
     ], 
     "replyToId": "3UP4UTkzUk1zzeyW" 
