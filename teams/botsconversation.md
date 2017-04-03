@@ -62,7 +62,7 @@ Bots have the ability to be retrieve and construct @mentions in a message, and t
             "id":"29:08q2j2o3jc09au90eucae",
             "name":"Larry Jin" 
         }, 
-        "text": "<at>@Larry Jin</at>"
+        "text": "<at>Larry Jin</at>"
     } 
 ] 
 ```
@@ -130,7 +130,7 @@ Your bot can @mention other users in messages posted into channels. To do this, 
                 "id":"29:08q2j2o3jc09au90eucae",
                 "name":"Larry Jin" 
             }, 
-            "text": "<at>@Larry Jin</at>"
+            "text": "<at>Larry Jin</at>"
         } 
     ], 
     "replyToId": "3UP4UTkzUk1zzeyW" 
