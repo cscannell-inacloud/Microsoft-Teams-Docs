@@ -26,7 +26,7 @@ Of note:
 ### Replying to message
 In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
-If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
+If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
 
 ### Direct Message Creation (1:1)
 
