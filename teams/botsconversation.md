@@ -23,7 +23,7 @@ Of note:
 * `from.id` - This is a unique and encrypted id for that user for your bot, and is suitable as a key should your app wish to store user data.  Note, though, that this is unique for your bot and cannot be directly used outside your bot instance in any meaningful way to identify that user.
 
 ### Replying to message
-In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
+In order to reply to an existing message, you simply need to call the [`ReplyToActivity()` in C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or [`session.send` in Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
 If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
 
@@ -76,6 +76,7 @@ You can retrieve all mentions in the message by calling the `GetMentions()` func
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
+#### C# ####
 ```c#
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
@@ -85,9 +86,26 @@ for (int i = 0;i < m.Length;i++)
     if (m[i].Mentioned.Id == sourceMessage.Recipient.Id)
     {
         //Bot is in the @mention list.  
-        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included.  Note that the Text object will contain the full bot name, if applicable.
+        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included.
+        //Note that the Text object will contain the full bot name, if applicable.
         if (m[i].Text != null)
             messageText = messageText.Replace(m[i].Text, "");
+    }
+}
+```
+
+#### Node ####
+```javascript
+function(session) {
+    var entities = session.message.entities;
+    var i;
+    for (i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.type === 'mention' && entity.mentioned.name === 'MyTestBot') {
+            // The bot is mentioned.
+            // Do some thing here
+            session.send("What's up?");
+        }
     }
 }
 ```
