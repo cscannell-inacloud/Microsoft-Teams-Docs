@@ -4,8 +4,9 @@ Bots in Microsoft Teams allow private conversations with a single user or a grou
 
 ## Initiating conversation
 
-Microsoft Teams currently supports three methods for conversation:
+Microsoft Teams currently supports four methods for conversation:
 * One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
+* One-on-One Direct messages - Your bot can create 1:1 conversations with users.  This will allow your bot to proactively notify them.
 * In Channel Response - A bot can also be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
 * In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.
 
@@ -23,9 +24,93 @@ Of note:
 * `from.id` - This is a unique and encrypted id for that user for your bot, and is suitable as a key should your app wish to store user data.  Note, though, that this is unique for your bot and cannot be directly used outside your bot instance in any meaningful way to identify that user.
 
 ### Replying to message
-In order to reply to an existing message, you simply need to call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or 'session.send' in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
+In order to reply to an existing message, you simply need to call the [`ReplyToActivity()` in C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or [`session.send` in Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
-If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
+If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint. Please note:  if you are constructing the outgoing payload yourself, always use the `serviceUrl` received in the inbound messages as your outbound `serviceUrl`.
+
+### Direct Message Creation (1:1)
+
+Bots can now create 1:1 conversations with Microsoft Teams users. This will allow your bot to proactively notify them. For instance, if your bot was added to a team, it could query the team roster and send users individual messages in the private 1:1 chat, or a user could @mention another user to trigger the bot to send that user a direct message.
+
+You can create the 1:1 chat with a user as long as you have the user’s unique ID and tenant ID. Typically, this information is obtained from a team context, either by obtaining the team roster or when a user interacts with your bot in a channel.
+
+To create the Conversation ID, which you can then use for future direct messages to the user, you can call [`CreateConversation()` for C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  Note that at this point, [`CreateDirectConverstion()` for C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) is not supported.
+
+Alternatively, you can issue a POST request to the [`/conversations/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_CreateConversation) resource.
+
+The call to create a chat, either via the SDK or the API request, returns a Conversation ID which is used to send the message itself, for example via  [SendToConversation() in C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#sendtoconversation).  This ID will be consistant for that user, so you can store it for future direct messages.
+
+Because your bot is able to proactively message users, you should use this capability sparingly and consider the user experience. Make sure not to spam end users and send only the minimum amount of information and number of messages needed to complete your scenario.
+
+#### API Request
+
+```json
+POST /v3/conversations 
+{
+  "bot": {
+    "id": "28:10j12ou0d812-2o1098-c1mjojzldxcj-1098028n ",
+    "name": "The Bot"
+  },
+  "members": [
+    {
+      "id": "29:012d20j1cjo20211"
+    }
+  ],
+  "channelData": {
+    "tenant": {
+      "id": "197231joe-1209j01821-012kdjoj"
+    }
+  }
+}
+```
+
+You must supply the user ID and the tenant ID.  If the call successed, the API will return with the following response object:
+
+```json
+{
+  "id":"a:1qhNLqpUtmuI6U35gzjsJn7uRnCkW8NiZALHfN8AMxdbprS1uta2aT-jytfIlsZR3UZeg3TsIONNInBHsdjzj3PtfHuhkxxvS1jZZ61UAbw8fIdXcNSJyTJm7YvHFOgxo"
+}
+```
+This ID is the unique 1:1 chat's conversation ID.  Please store this value and reuse it for future interactions with the user.
+
+
+#### C# example
+
+Note: the Microsoft.Bot.Builder must be at least 3.5.3:
+
+```c#
+//Helper classes:
+public class ChannelData
+{
+    public string TeamsChannelId { get; set; }
+    public string TeamsTeamId { get; set; }
+    public Tenant Tenant { get; set; }
+}
+
+public class Tenant
+{
+    public string Id { get; set; }
+}
+...
+var parameters = new ConversationParameters
+  {
+    Bot = new ChannelAccount(YourBotID, YourBotName),
+    Members = new ChannelAccount[] { new ChannelAccount(userId) },
+    ChannelData = new ChannelData { Tenant = new Tenant { Id = tenantId } }
+  };
+var conversationResource = await connector.Conversations.CreateConversationAsync(parameters);
+
+if (conversationResource != null)
+{
+    IMessageActivity message = Activity.CreateMessageActivity();
+    message.From = new ChannelAccount(YourBotID, YourBotName);
+    message.Conversation = new ConversationAccount(id: conversationResource.Id);
+    message.Text = "Hello";
+    message.Locale = "en-Us";
+    await connector.Conversations.SendToConversationAsync((Activity)message);
+}
+```
+
 
 ## One to Many - Bots in Channels
 
@@ -76,6 +161,7 @@ You can retrieve all mentions in the message by calling the `GetMentions()` func
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
+#### C# ####
 ```c#
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
@@ -85,9 +171,26 @@ for (int i = 0;i < m.Length;i++)
     if (m[i].Mentioned.Id == sourceMessage.Recipient.Id)
     {
         //Bot is in the @mention list.  
-        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included.  Note that the Text object will contain the full bot name, if applicable.
+        //The below example will strip the bot name out of the message, so you can parse it as if it wasn't included.
+        //Note that the Text object will contain the full bot name, if applicable.
         if (m[i].Text != null)
             messageText = messageText.Replace(m[i].Text, "");
+    }
+}
+```
+
+#### Node ####
+```javascript
+function(session) {
+    var entities = session.message.entities;
+    var i;
+    for (i = 0; i < entities.length; i++) {
+        var entity = entities[i];
+        if (entity.type === 'mention' && entity.mentioned.name === 'MyTestBot') {
+            // The bot is mentioned.
+            // Do some thing here
+            session.send("What's up?");
+        }
     }
 }
 ```
@@ -145,9 +248,9 @@ Your bot can @mention other users in messages posted into channels. To do this, 
 
 Once your bot has been added to the team, it can also post into a channel to create a new reply chain.  With the BotBuilder SDK, call  `CreateConversation()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  
 
-Alternatively, you can issue a POST request to the [`/conversations/{conversationId}/activities/`]() resource.
+Alternatively, you can issue a POST request to the [`/conversations/{conversationId}/activities/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_SendToConversation) resource.
 
-Note: at this point, bots in Microsoft Teams cannot initiate 1:1 / direct or 1:many / group conversations.
+Note: at this point, bots in Microsoft Teams cannot initiate 1:many / group conversations.
 
 ### Example (C#)
 ```csharp
@@ -165,6 +268,8 @@ ConversationParameters conversationParams = new ConversationParameters(
     channelData: channelData);
 var result = await connector.Conversations.CreateConversationAsync(conversationParams);
 ```
+
+
 
 ## Teams-specific functionality
 
