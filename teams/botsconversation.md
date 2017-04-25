@@ -12,7 +12,6 @@ Microsoft Teams currently supports four methods for conversation:
 
 Note that bots in private group chats are currently not supported.
 
-
 ## One-on-One conversations
 
 ### Receiving messages
@@ -116,6 +115,8 @@ if (conversationResource != null)
 
 ### Receiving messages
 
+Bot in channels will only receive messages in which they are @mentioned.  Therefore you should look for and strip out the bot name in any message you receive.
+
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
 
 * `channelData` - see [below](#teams-specific-functionality).
@@ -161,8 +162,8 @@ You can retrieve all mentions in the message by calling the `GetMentions()` func
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
-#### C# ####
-```c#
+#### .NET SDK - Strip Bot Name ####
+```csharp
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
 
@@ -269,7 +270,41 @@ ConversationParameters conversationParams = new ConversationParameters(
 var result = await connector.Conversations.CreateConversationAsync(conversationParams);
 ```
 
+## Dynamic message updates (New)
 
+Rather than have your messages be static snapshots of data, your bot can now dynamically update messages inline after sending them to users. You can use dynamic message updates for scenarios such as poll updates, modifying available actions after a button press, or any other asynchronous state change.
+
+The new message need not match the original in type. For instance, if the original message contained an attachment, the new message can be a simple text message.
+
+### Rest API
+
+To issue a message update, simply perform a PUT request against the `/v3/conversations/<conversationId>/activities/<activityId>/` endpoint using a given activity ID. To complete this scenario, you should cache the activity ID returned by the original POST call.
+
+#### Request example
+```
+PUT /v3/conversations/19:ja0cu120i1jod12j@skype.net/activities/012ujdo0128
+{
+  “type”: “message”,
+  “text”: “This message has been updated”
+}
+```
+
+### .NET SDK
+You can use the UpdateActivityAsync method in the Bot Framework SDK to update an existing message.
+
+```csharp
+public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
+{
+   if (activity.Type == ActivityTypes.Message)
+   {
+      ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+      Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters");
+      var msgToUpdate = await connector.Conversations.ReplyToActivityAsync(reply);
+      Activity updatedReply = activity.CreateReply($"This is an updated message");
+      await connector.Conversations.UpdateActivityAsync(reply.Conversation.Id, msgToUpdate.Id, updatedReply);
+   }
+}
+```
 
 ## Teams-specific functionality
 
