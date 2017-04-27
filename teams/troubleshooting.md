@@ -27,11 +27,6 @@ Common reasons for manifest read errors:
 * Invalid json. Use an IDE such as [Visual Studio Code](https://code.visualstudio.com) or [Visual Studio](https://www.visualstudio.com/vs/) that automatically validates the json syntax.
 * Encoding issues. Use UTF-8 for the manifest.json file. Other encodings, specifically with the BOM, may not be readable.
 
-## Another extension with same id "&lt;id&gt;" exists
-If you're attempting to re-upload an updated package with the same id, use the 'Replace' icon at the end of the tab's table row rather than the 'Upload' button again.
-
-If you're not re-uploading an updated package, ensure the id is unique.
-
 ## The Save button isn't enabled on the settings dialog
 Be sure to call `microsoftTeams.setValidityState(true)` once the user has input or selected all required data on your settings page to enable the save button.
 
