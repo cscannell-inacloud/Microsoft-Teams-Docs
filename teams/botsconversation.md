@@ -116,6 +116,8 @@ if (conversationResource != null)
 
 ### Receiving messages
 
+>Note: Bots in channels will only receive messages in which they are @mentioned.  Therefore you should look for and strip out the bot name in any message you receive.
+
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
 
 * `channelData` - see [below](#teams-specific-functionality).
@@ -171,7 +173,7 @@ public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
 
 ## Mentions
 
-Bots have the ability to be retrieve and construct @mentions in a message, and to be triggered in channel have to be @mentioned themselves to receive a message.  The users in question, including the bot itself in channels, are passed in the `entities` object, with the following properties:
+Bots have the ability to retrieve and construct @mentions in a message, and have to be @mentioned themselves to receive messages in teams where they have been added. The users mentioned, including the bot itself in channels, are passed in the `entities` object, with the following properties:
 
 * **`type`** - the string "mention"
 * **`mentioned.id`** - the GUID for the user, which is unique for your bot
@@ -202,7 +204,7 @@ You can retrieve all mentions in the message by calling the `GetMentions()` func
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
-#### .NET SDK
+#### .NET SDK example - strip bot name
 ```csharp
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
@@ -220,7 +222,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-#### Node.JS
+#### Node.JS example
 ```javascript
 function(session) {
     var entities = session.message.entities;
