@@ -73,7 +73,7 @@ You must supply the user ID and the tenant ID.  If the call successed, the API w
 This ID is the unique 1:1 chat's conversation ID.  Please store this value and reuse it for future interactions with the user.
 
 
-#### C# example
+#### .NET SDK example
 
 Note: the Microsoft.Bot.Builder must be at least 3.5.3:
 
@@ -131,7 +131,7 @@ Replying to a message in a channel is the same as in 1:1.  Note that replying to
 
 ## Mentions
 
-Bots have the ability to be retrieve and construct @mentions in a message, and to be triggered in channel have to be @mentioned themselves to receive a message.  The users in question, including the bot itself in channels, are passed in the `entities` object, with the following properties:
+Bots have the ability to retrieve and construct @mentions in a message, and have to be @mentioned themselves to receive message in teams where they have been added.  The users in question, including the bot itself in channels, are passed in the `entities` object, with the following properties:
 
 * **`type`** - the string "mention"
 * **`mentioned.id`** - the GUID for the user, which is unique for your bot
@@ -180,7 +180,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-#### Node ####
+#### Node.js example ####
 ```javascript
 function(session) {
     var entities = session.message.entities;
@@ -253,7 +253,7 @@ Alternatively, you can issue a POST request to the [`/conversations/{conversatio
 
 Note: at this point, bots in Microsoft Teams cannot initiate 1:many / group conversations.
 
-### Example (C#)
+### .NET SDK Example
 ```csharp
 var channelData = new Dictionary<string, string>();
 channelData["teamsChannelId"] = yourTeamsChannelID;
@@ -346,6 +346,7 @@ Teams-specific information is sent and received in the `channelData` object, whi
 ### Fetching the team roster
 Your bot can query for the list of team members. With the BotBuilder SDK, call  `GetConversationMembersAsync()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of userIds for the `team.id` retrieved from the `channelData` of the inbound schema.
 
+#### .NET SDK Example
 ```csharp
 ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
 
