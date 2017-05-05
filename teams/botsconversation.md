@@ -74,11 +74,11 @@ You must supply the user ID and the tenant ID.  If the call successed, the API w
 This ID is the unique 1:1 chat's conversation ID.  Please store this value and reuse it for future interactions with the user.
 
 
-#### C# example
+#### .NET SDK example
 
 Note: the Microsoft.Bot.Builder must be at least 3.5.3:
 
-```c#
+```csharp
 //Helper classes:
 public class ChannelData
 {
@@ -116,6 +116,8 @@ if (conversationResource != null)
 
 ### Receiving messages
 
+>Note: Bots in channels will only receive messages in which they are @mentioned.  Therefore you should look for and strip out the bot name in any message you receive.
+
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
 
 * `channelData` - see [below](#teams-specific-functionality).
@@ -128,9 +130,50 @@ Please note that channelData should be used as the definitive information for te
 ### Replying to message
 Replying to a message in a channel is the same as in 1:1.  Note that replying to a message in a channel shows as a reply to the initiating reply chain - for bots in channels, the conversationId contains channel and the top level message id.  While the BotFramework takes care of the details, you may cache that conversationId for future replies to that conversation thread as needed.  
 
+
+## Updating Conversations 
+
+>New feature
+
+Rather than have your messages be static snapshots of data, your bot can now dynamically update messages inline after sending them to users. You can use dynamic message updates for scenarios such as poll updates, modifying available actions after a button press, or any other asynchronous state change.
+
+The new message need not match the original in type. For instance, if the original message contained an attachment, the new message can be a simple text message.
+
+### Rest API
+
+To issue a message update, simply perform a PUT request against the `/v3/conversations/<conversationId>/activities/<activityId>/` endpoint using a given activity ID. To complete this scenario, you should cache the activity ID returned by the original POST call.
+
+#### Request example
+
+```json
+PUT /v3/conversations/19:ja0cu120i1jod12j@skype.net/activities/012ujdo0128
+{
+    "type": "message",
+    "text": "This message has been updated"
+}
+```
+
+### .NET SDK
+
+You can use the `UpdateActivityAsync` method in the Bot Framework SDK to update an existing message.
+
+```csharp
+public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
+{
+  if (activity.Type == ActivityTypes.Message)
+  {
+    ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+    Activity reply = activity.CreateReply($"You sent {activity.Text} which was {activity.Text.Length} characters");
+    var msgToUpdate = await connector.Conversations.ReplyToActivityAsync(reply);
+    Activity updatedReply = activity.CreateReply($"This is an updated message");
+    await connector.Conversations.UpdateActivityAsync(reply.Conversation.Id, msgToUpdate.Id, updatedReply);
+  }
+}
+````
+
 ## Mentions
 
-Bots have the ability to be retrieve and construct @mentions in a message, and to be triggered in channel have to be @mentioned themselves to receive a message.  The users in question, including the bot itself in channels, are passed in the `entities` object, with the following properties:
+Bots have the ability to retrieve and construct @mentions in a message, and have to be @mentioned themselves to receive messages in teams where they have been added. The users mentioned, including the bot itself in channels, are passed in the `entities` object, with the following properties:
 
 * **`type`** - the string "mention"
 * **`mentioned.id`** - the GUID for the user, which is unique for your bot
@@ -161,8 +204,8 @@ You can retrieve all mentions in the message by calling the `GetMentions()` func
 
 Note that bots in a channel only respond if @mentioned and therefore the body of the text message will always include the @Bot name.  Ensure your message parsing excludes that.  For example:
 
-#### C# ####
-```c#
+#### .NET SDK example - strip bot name
+```csharp
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
 
@@ -179,7 +222,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-#### Node ####
+#### Node.JS example
 ```javascript
 function(session) {
     var entities = session.message.entities;
@@ -252,7 +295,7 @@ Alternatively, you can issue a POST request to the [`/conversations/{conversatio
 
 Note: at this point, bots in Microsoft Teams cannot initiate 1:many / group conversations.
 
-### Example (C#)
+### .NET SDK Example
 ```csharp
 var channelData = new Dictionary<string, string>();
 channelData["teamsChannelId"] = yourTeamsChannelID;
