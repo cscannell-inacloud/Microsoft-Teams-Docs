@@ -12,7 +12,7 @@ The app bar provides a quick and easy way to access and discover apps to help us
 
 ![Microsoft Teams App bar](images/appbar_apps_flyout.png)
 
-## Context in teams - Scopes
+## Context in Team Apps
 
 Your experience can choose which context, or "scopes", it supports in Microsoft Teams.  "Personal" scoped apps appear in an individual context, via the app bar or with bots in one-on-one conversations.  "Team" scoped apps appear within team channels, for example with configurable tabs or bots as team members.  You designate which scopes your app supports via the `scopes` object for each capability in your app's [manifest file](schema.md).
 
