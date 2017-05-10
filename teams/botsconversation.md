@@ -140,7 +140,7 @@ function sendCardUpdate(bot, session, originalMessage, address) {
 
 You can create a new message to either a user (Direct Message) or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without prompting.  For more information see:
 * [Creating a direct message for 1:1](bots1on1.md#creating-direct-messages)
-* [Creating a new channel message](botsinchannels.me#creating-new-channel-messages)
+* [Creating a new channel message](botsinchannels.md#creating-new-channel-messages)
 
 ## Deleting messages
 

@@ -21,7 +21,7 @@ If you bot is the star, be sure to take advantage of the [static tabs](statictab
 
 Microsoft Teams supports much of the common [Bot Framework](https://dev.botframework.com/) functionality.  Follow these steps to build a great Teams bot:
 
-- [Design a great bot](design.md#building-a-great-bot): Microsoft Teams is the place for group and team collaboration.  Consider what functionality your bot can bring to this collaboration environment, via both 1:1 conversations, or when added as part of a channel conversation.  A great bot on Teams will also find ways to leverage the unique Tabs feature, via a [configurable channel tab](tabs.md), or a [static bot tab](bottab.md).
+- [Design a great bot](design.md#building-a-great-bot): Microsoft Teams is the place for group and team collaboration.  Consider what functionality your bot can bring to this collaboration environment, via both 1:1 conversations, or when added as part of a channel conversation.  A great bot on Teams will also find ways to leverage the unique Tabs feature, via a [configurable channel tab](tabs.md), or a [static bot tab](statictab.md).
 - [Create and register your bot in the Bot Framework](botscreate.md):  Take advantage of the great tools, documentation, and community provided by the Bot Framework team.
 - [Develop your bot](botsconversation.md): Add basic conversation flow and leverage channel-specific functionality. 
 - Test your bot:  [Add your bot](botsadd.md) for 1:1 or team conversations to see it in action.

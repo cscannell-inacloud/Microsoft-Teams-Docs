@@ -20,7 +20,7 @@ All tab content, including configuration, content and tab removal pages must mee
 
 * Once your page has successfully loaded, call `microsoftTeams.initialize()` to display your page. Microsoft Teams will not display your page unless you do so.
 
-* All domains for pages you display in your tab(s) must be listed in the manifest's `validDomains` list.  See [here](schema.md#validDomains) for more information.
+* All domains for pages you display in your tab(s) must be listed in the manifest's `validDomains` list.  See [here](schema.md#validdomains) for more information.
 
 > Hitting problems?  See the [troubleshooting guide](troubleshooting.md).
 
