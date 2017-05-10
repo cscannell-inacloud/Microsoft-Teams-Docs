@@ -28,7 +28,7 @@ In the Seller Dashboard:
 * **Release date** - by default, the date here will be today's.  This means that your app would be eligible to be published as soon as it passed validation.  If you wish to delay publication to a future date, you can specify that here.  Please note: validation times vary and there is no guarantee the validation process will be done by the specificed date
 * **Category** - You can select up to three categories in which to appear in the Office Store.  Please select ones which best match your experience.
 * **Testing notes** - Plese ensure you provide enough information for our validation team to successfully load and test your experience.  This includes providing login instructions and test accounts, as well as any other notes that might assist in the review of your product.
-* **My app calls, support, contains, or users cryptology or encryption** - This checkbox ensures 
+* **My app calls, support, contains, or users cryptology or encryption** - This checkbox ensures your product is not using cryptography in a way that would prohibit Store distribution.  See [here](https://docs.microsoft.com/en-us/windows/uwp/security/export-restrictions-on-cryptography) for a detailed explanation.
 * **App logo** - please upload the same 96x96 color icon you use in the manifest
 * **Support document link** - please supply a URL to support content for your experience
 * **Privacy document link** - please use the same URL from your manifest

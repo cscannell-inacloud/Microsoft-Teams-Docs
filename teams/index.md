@@ -37,7 +37,7 @@ While bots can take advantage of the rich natural language processing provided b
 
 !["Example of a bot assisting a user"](images/bot_example.png)
 
-## Compose Extentions
+## Compose Extensions
 
 Leverage the power of your web service to provide a quick and easy way for your users to insert your content into the chat stream.
 

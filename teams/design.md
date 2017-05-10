@@ -40,7 +40,7 @@ In general, you bot must respond to every message, especially common questions l
 
 Leverage the [bot event messages](botevents.md) to make sure your bot introduces itself when added to a team, or first accessed in one-on-one.  This is an opportunity to tell the user what value you bring to their workday.
 
-# Building a great Compose Extensions
+# Building a great Compose Extension
 
 Compose extensions allow you to share rich cards in a conversation. A card can hold instructions to complete a complex task or a simple GIF. Microsoft Teams comes equipped with several compose extensions already. If you look below the compose box, you’ll see a "GIF" icon. Click it, and you’ll see a menu with options to select a featured GIF or search for a specific one—that’s a compose extension! These extensions are one of the best ways to create shareable content and serve information quickly.
 
