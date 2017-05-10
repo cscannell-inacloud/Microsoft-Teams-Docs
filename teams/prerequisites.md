@@ -1,10 +1,12 @@
-﻿# Prerequisites for Microsoft Teams (preview) tabs app pages
+﻿# Requirements for Microsoft Teams tabs app pages
 
-For the UI of your tab - its configuration, content, and (optionally) tab removal pages - to be displayed within Microsoft Teams, they need to meet the following requirements. 
+> Please note: use of the Microsoft Teams tab SDK is subject to the [Terms of Use](https://aka.ms/bf-terms), [Privacy Statement](https://aka.ms/bf-privacy), and [Code of Conduct](https://aka.ms/bf-conduct) for the Microsoft Bot Framework (Preview).
 
-* Host the page on a secure https:// endpoint.  Microsoft Teams will not display insecure http:// content.
+All tab content, including configuration, content and tab removal pages must meet the following requirements:
 
-* Make sure that the page can be hosted in an iframe. By default web pages can be iframed by anyone. You may optionally set these headers if you wish to only allow your page to be iframed by Microsoft Teams for extra security:
+* Pages must be hosted on a secure https:// endpoint.  Microsoft Teams will not display insecure http:// content.
+
+* Your content must work in an iframe. By default web pages can be iframed by anyone. You may optionally set these headers if you wish to only allow your page to be iframed by Microsoft Teams for extra security:
 	
 	* Set header `Content-Security-Policy: frame-ancestors teams.microsoft.com *.teams.microsoft.com *.skype.com`. Most modern browsers support this.
 
@@ -14,17 +16,12 @@ For the UI of your tab - its configuration, content, and (optionally) tab remova
 
 * Include the [Microsoft Teams Tab library](jslibrary.md) in your page as a script source.
 
-	`<script src="https://statics.teams.microsoft.com/sdk/v0.4/js/MicrosoftTeams.min.js" />`
+	`<script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js" />`
 
 * Once your page has successfully loaded, call `microsoftTeams.initialize()` to display your page. Microsoft Teams will not display your page unless you do so.
+
+* All domains for pages you display in your tab(s) must be listed in the manifest's `validDomains` list.  See [here](schema.md#validDomains) for more information.
 
 > Hitting problems?  See the [troubleshooting guide](troubleshooting.md).
 
 >**Tip:** For developers using TypeScript, Microsoft Teams provides a [definition file](https://statics.teams.microsoft.com/sdk/v0.4/types/MicrosoftTeams.d.ts) to enable IntelliSense or similar support from your code editor as well as compile-type type checking as part of your build.
-
-## Next steps
-
-* [Create the tab package](createpackage.md)
-* [Create the configuration page](createconfigpage.md)
-* [Create the tab content](createcontentpage.md)
-* [Update or remove a tab](updateremove.md)

@@ -1,6 +1,6 @@
-# Authenticating a user in your Microsoft Teams (preview) tab pages
+# Authenticating a user in your Microsoft Teams pages
 
-The tab [configuration](createconfigpage.md) and [content](createcontentpage.md) pages run in iframes.  Azure Azure Active Directory (Azure AD), and other identity providers that you may use, do not usually allow their sign in and consent pages to be hosted within an iframe.
+The tab [configuration](createconfigpage.md) and [content](createcontentpage.md) pages run in iframes.  Azure Active Directory (Azure AD), and other identity providers that you may use, do not usually allow their sign in and consent pages to be hosted within an iframe.
 
 >**Note:** you can [obtain user context information](getusercontext.md) to simplify the sign in experience and to help build authentication requests and URLs.
 
@@ -9,7 +9,7 @@ The tab [configuration](createconfigpage.md) and [content](createcontentpage.md)
 If your app uses Azure AD as its identity provider, you may be able to authenticate the user silently within the iframe.  To do this, you must be sure that the existing Azure AD session cookies (from the user having already signed in to Microsoft Teams) will be sufficient.  For example, if you are using a redirect flow, you must be sure that when you redirect to Azure AD, it will redirect straight back with the tokens you need, and will not attempt to display anything to the user.
 
 This will likely only be true if your tenant admin has configured your app in Azure AD so that it does **not** require:
-* any additional authentication beyond that needed for Microsoft Teams: for example, does need additional two-factor authentication
+* any additional authentication beyond that needed for Microsoft Teams: for example, does not need additional two-factor authentication
 * any consent by the user.
 
 >**Please Note:** Silent authentication may not work currently in the Desktop.  This is a known issue.

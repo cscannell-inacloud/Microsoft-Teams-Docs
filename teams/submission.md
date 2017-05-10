@@ -1,76 +1,62 @@
-# Submit Team Experiences for the Tab and Bots Gallery
+# Submit your solutions to the Office Store
 
-Microsoft Teams provides a Tab and Bot gallery to showcase experiences you deliver to end users. Here's how to submit your Teams tab or bot for consideration for inclusion in the appropriate gallery.
+>Note: While we have enabled the ability for Microsoft Teams apps to be published in the Office Store, the in-app discovery experience will be available at a future date.
 
->**Note** At this time, Teams tab and bot submission is a closed program, by invitation only.  If you have a great idea for a Teams experience, submit your proposal [here](https://aka.ms/microsoftteamsdeveloperpreviewinterestform).
+Microsoft Teams Apps can now be published in the Office Store.  Teams will soon provide an in-app gallery for users to find or discover great Teams extensibility options powered by the Office store.  To have you solution available in this gallery, you must publish your solution through the Office Store process.  
 
-## Create a Microsoft Seller Dashboard account (optional)
+The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other  Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Office extensibility types.
 
-As Microsoft Teams migrates to the Office Store for Teams tabs and bots distribution later this year, all submissions will go through the [Microsoft Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  If you have not already done so, you should create a developer account, which will allow you to submit apps and add-ins to Microsoft marketplaces, including Windows Store, Office Store, Azure Marketplace, and more to come.  This process ensures you establish your identity in the Microsoft Marketplace ecosystem, and triggers the appropriate validation checks by our Marketplace team to ensure you are who you say you are.
+## Register as an app developer
 
-Identity in the Microsoft Store ecosystem relies on your [Microsoft Account](https://account.microsoft.com/account).  You'll need to create a new Microsoft account or use an existing one.  Note that this identity will be the main administrator of the Store experience.  For more information, please review the [Developer program FAQ](https://developer.microsoft.com/en-us/store/register/faq).
+If you have not already done so, you should create a developer account in [Microsoft Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  This account create process ensures you establish your identity in the Microsoft Marketplace ecosystem, and triggers the appropriate checks by our Marketplace team to validate your identity.
 
-For general information on Office Add-ins on the Office Store, see: [Submit Office and SharePoint Add-ins and Office 365 web apps to the Office Store](https://msdn.microsoft.com/en-us/library/office/jj220037.aspx)
+Account management in the Microsoft Store ecosystem relies on your [Microsoft Account](https://account.microsoft.com/account).  You'll need to create a new Microsoft account or use an existing one.  Note that this identity will be the main administrator of the Store experience.  For more information, please review the [Developer program FAQ](https://developer.microsoft.com/en-us/store/register/faq).
 
-## Review our [Teams Tab Developer Agreement](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/developeragreement.pdf)
+>Tip: Use an account specifically for your Store experience.  This is the main adminstrator account, and will be used for portal log in and report notification.  While you can add additional users as administrators, ensure you have a single account that can exist outside of an individual's account.  This also means you should not use any O365 Test tenant identities as these are time limited.
 
-By submitting your tab or bot for inclusion in the Teams gallery, you accept the Agreement, and you agree to be bound by its terms.
+## Register in the Seller Dashboard to submit to the Office Store
 
-## Send us your Teams submission 
+There is a second approval process that happens after your Dev Center account has been created:  you need to create your identity in the Office Seller Dashboard.  While the content here should be similar to your Dev Center details, this extra step ensures the Office Store has all the required information and your identity in that storefront accurately reflects your business.
 
-### 1. Create and test your bot or tab
+To click off the process, click on the "Continue" button under Office.
 
-You should make sure you're in our developer ring (ask us if you're not)
+![Office Seller Dashboard entry point](images/submission/SellerDashboardOfficeEntry.PNG)
 
-General documentation for the platform is [here](index.md).  There are also additional features for bots: the [new Invoke action type](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/Invoke.pdf) and [Bots In Channels](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/earlypreview/BotsInChannels.pdf).
+## Use the Seller Dashboard to submit to the Office Store
+After your account is approved, you can submit your solution to the Seller Dashboard.  Add a new Application of type Team App to initiate the submission process.
 
-To test your bot or tab, you need to [create a sideload package](createpackage.md) and [sideload it into Microsoft Teams](sideload.md).
+![Office Seller Dashboard add an app](images/submission/SellerDashboardAddApp.PNG)
 
-### 2. Fill out the [Test Submission form](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/TeamsAppSubmission.docx)
+You will need to upload a Submission Package and provide the required metadata for the product listing page, including information such as app logo, description, screenshots and other information.  Please review our [Package and Submission checklist](submissionchecklist.md) for more information.
 
-This simple document is used to inform our validation team what your experience does and how best to test it.  We will look at the experience from the perspective of a new user - does it work, what value does it provide, is it clear how to create any necessary accounts? We would also like to experience your tab or bot as an experienced user. If applicable, please create a test user account, ideally with appropriate data to highlight your key scenarios.  Should the test account require two-factor authentication, please include instructions for how the tester may fully validate.  Please do not assume any prior familiarity with your experience.  
+Note that all information in the package manifest must match the metadata information you enter into the product listing.
 
-### 3. Provide supplemental marketing materials
+For more Teams-specific help, see [here](submissionguidance.md).
 
-Per the terms of our agreement, we may use your Publisher Marks and offer information for marketing and promotional purposes.  In order to best facilitate this, please provide us the following:
-* Hi-res logo of your product
-* Hi-res logo of your company logo
-* Marketing / promotional copy of your experience (1-3 sentences, please use text box in the Test Submission form)
+## Teams app approval process
 
-### 4. Build the Submission Package
+Teams app approval is a free service provided by the Office Store that validates that your app works as described, contains all appropriate metadata, and provides content that would be valuable to an end user.
 
-Create a zip file containing: 
-* manifest.json
-* Your 44x44 and 88x88 icons (PNG format)
-  * Only needed if you're submitting a tab, and not referencing its icons via a publicly accessible URL
-  * Icon must be less than ~1.5KB, transparent, with a single white/light foreground color
-* The Test Submission form
-* All supplemental marketing material.  
-
-You must use the following naming convention: _date_-_pubname_-_appname_-_versionnum_.zip  
-
-Please note: this Submission Package should be properly formed for, and may be used as, a sideloadable package for testing.  Ensure the manifest is at the top level of the Package.
-
-### 5. Send it to us
-
-Email the Submission Package to: TeamsSubSupport@microsoft.com
-
-
-## Teams tab and bot approval process
-
-In order for your Teams tab or bot to be approved:
+In order for your Teams app to be approved:
 * It must not contain inadmissible or offensive material.
 * It must be stable and functional.
 * Any material that you associate with your experience, such as descriptions and support documentation, must be accurate. Use correct spelling, capitalization, punctuation, and grammar in your descriptions and materials.
-* It must pass all [Validation policies for Teams tabs and bots](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/TeamsAppValidation.pdf), which is based off of the Office Store validation policies found [here](https://msdn.microsoft.com/en-us/library/office/jj220035.aspx).  Please note, like the Office Store validation policies, these are subject to change.
+* It must pass all [Office Store validation policies for Teams tabs and bots](https://msdn.microsoft.com/en-us/library/office/jj220035.aspx).  Please note that these policies are subject to change.
+* For tabs, it must provide value in to users outside of what is possible by simply pinning your website into Teams.  This means at minimum, it must remove extraneous chrome and disallow navigating outside the configured context. See [here](https://aka.ms/microsoftteamsdesignguidelines) for more guidance.
 
-When the validation process is complete, you will receive a message to let you know that either your Teams experience is approved, or it fails one of the stated policies.  
+When the validation process is complete, you will receive a message to let you know that either your Teams experience is approved, or it fails one of the stated policies.  You can also follow these steps to check the approval status in the Seller Dashboard:
+1. Sign in to the Seller Dashboard.
+2. On the manage tab, your submission status appears under the submission name.
+* If the status is pending approval, your submission is still being verified. When it is in this state, you can't update or resubmit it.
+* If the status is approved, your submission is approved to be listed in the appropriate marketplaces.
+ 
+>Note: After your submission is approved in the Seller Dashboard, there might be a delay before it is published in a store. After approval, a submission typically appears in the store within 24 hours.
 
-For approved tabs and bots, no more action is needed on your side; your solution will be considered for Gallery placement.  Note that as your solution is a service that you host, you are free to continue to work and improve your product, to the extent that it remains in compliance with the Validation policies.  We reserve the right to spot-check and/or respond to customer complaints on issues that arise after approval and per our Developer Agreement, may de-list your product until any issues are resolved.
+* If the status is changes requested, your submission needs changes in order to be approved. Choose your submission, and then on the summary page, choose "View the add-in report" for details about the required changes.
 
-Failures will be explained and have appropriate policy violation references. All failures must be addressed before resubmission.  For resubmission, please follow the above process.  Do not change version number, but do change the date in the file name.
+Failures will be explained and have appropriate policy violation references. All failures must be addressed before resubmission.
 
->**Note** If you make changes to an approved Teams experience, specifically as it relates to core functionality or the Manifest, it must go through the approval process again.  For all other changes to your service, for example addressing issues or adding new features, resubmission is not required.
+>**Note** If you make changes to an approved Teams experience, specifically as it relates to core functionality or the manifest, it must go through the approval process again.  For all other changes to your service, for example addressing issues or adding new features, resubmission is not required.
 
 ## Tips for rapid approval
 
@@ -79,6 +65,6 @@ Failures will be explained and have appropriate policy violation references. All
 * If your product requires additional purchases to properly function, list that in the description.
 * For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
 * Check your manifest for completeness and accuracy.  Then check it again.
-* Follow the file naming conventions and package contents from above.
-* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations.
-* Provide the requisite Terms and Privacy policy links in the manifest, that properly resolve to the correct documentation.
+* Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations as needed.  If your bot does not provide meaningful context within the personal or teams scope, [disable that via the manifest](Link to bot manifest stuff).
+* Provide the requisite Terms and Privacy policy links in the manifest and the Seller Dashboard, that properly resolve to the correct documentation.  For bots, you must provide this same information in the Bot Framework registration page under the Submission section.
+* Ensure all metadata in the manifest matches metadata in the Seller Dashboard, and for Bots, the Bot Framework registration.

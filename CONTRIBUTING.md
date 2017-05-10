@@ -19,14 +19,14 @@ You can contribute to [Microsoft Teams developer documentation](https://msdn.mic
 * Report documentation bugs via [GitHub Issues](https://github.com/OfficeDev/microsoft-teams-docs/issues)
 * Add documentation requests to the [Microsoft Teams developer UserVoice](https://aka.ms/microsoftteamsplatformsuggestions)
 
-##Before we can accept your pull request
+## Before we can accept your pull request
 
-###Minor corrections
+### Minor corrections
 
 Minor corrections or clarifications you submit for documentation and code examples in this repository do not require a Contribution License Agreement (CLA). Submissions are taken in the form of pull requests. We will do our best to review pull requests within ten business days.
 
 
-###Larger submissions
+### Larger submissions
 
 If you submit new or significant changes to documentation and code examples, you need to send a signed Contribution License Agreement (CLA) before we can accept your pull request if you are in one of these groups:
 

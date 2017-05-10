@@ -1,126 +1,50 @@
-﻿# Create the package for your Microsoft Teams tab or bot
+﻿# Create the package for your Microsoft Teams app
 
-To test your tab or bot, you need to create a sideload package and upload it to a team. The package is a zip file containing:
+App experiences in Teams are defined by their app manifest, and bundled in an app package for use in sideloading or Store submission.  You'll need an app package to test your experience in Teams, via the sideloading process documented [here](sideload.md).
 
-- A manifest file named "manifest.json", which specifies attributes of your tab or bot and points to required resources for your experience, such the location of its tabs configuration page or bot id.
-- For tabs, image files, to be used as icons.  These must be transparent PNG files, with white or light-colored foreground in both small (44 by 44 pixels) and large (88 by 88 pixels) sizes.  (The accompanying background or 'accent color' is specified in the manifest.)
+A Teams app package is a zip file containing:
+* A manifest file named "manifest.json", which specifies attributes of your app and points to required resources for your experience, such the location of its tabs configuration page or bot id.
+* A transparent "outline" icon and a full "color" icon.  See [below](#icons) for more information.
 
-## Creating a manifest for your tab or bot
+## Creating a manifest
 
-Your manifest file must be named "manifest.json" and be at the top level of the sideload package.
-
-The current manifest schema is [here](schema.md).  Note that you must create a manifest for both tabs and bots.
+Your manifest file must be named "manifest.json" and be at the top level of the sideload package.  Note that manifests and packages built previously might support an older version of the schema.  For Teams apps and especially Store submission, you must use the current manifest schema, documented [here](schema.md). 
 
 > **Tip:** Specify the schema at the beginning of your manifest to enable IntelliSense or similar support from your code editor:
 > 
-> `"$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",`
+> `"$schema": "https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json",`
 
+## Icons
 
-### Sample simple bot manifest
-```json
-{
-  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json",
-  "manifestVersion": "0.4",
-  "id": "%BOT-FRAMEWORK-APP-ID-HERE%",
-  "version": "1.0",
-  "developer": {
-    "name": "%NAME-OF-PUBLISHER%",
-    "websiteUrl": "https://website.com/",
-    "privacyUrl": "https://website.com/privacy",
-    "termsOfUseUrl": "https://website.com/app-tos"
-  },
-  "bots": [
-    {
-      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%"
-    }
-  ],
-  "needsIdentity": true
-}
-```
+Microsoft Teams requires two icons for your app experience, to be used within the product.  Icons must be included in the package, and referenced via relative path in the manifest.
 
-### Sample bot with pinned tab manifest
+### color
 
-```json
-{
-  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 
-  "manifestVersion": "0.4",
-  "version": "1.0",
-  "developer": {
-    "name": "%NAME-OF-PUBLISHER%",
-    "websiteUrl": "https://website.com/",
-    "privacyUrl": "https://website.com/privacy",
-    "termsOfUseUrl": "https://website.com/app-tos"
-  },
-  "bots": [
-    {
-      "mri": "%BOT-FRAMEWORK-APP-ID-HERE%", 
-      "pinnedTabs": [
-        {
-          "id": "%USER-DEFINED-ID%",  
-          "definitionId": "%USER-DEFINED-ENTITY-ID%",
-          "displayName": "%TAB-NAME%",
-          "url": "http://taburl.com/teamsview",  
-          "websiteUrl": "http://taburl.com/webview" 
-        }
-      ]
-    }
-  ],
-  "needsIdentity": true
-}
-```
+The `color` icon is used throughout Microsoft Teams, for example in app and tab galleries, bots, flyouts, etc.  This icon should be 96x96 pixels.  If it has transparency, the `accentColor` will be used as the background.
 
-> **Note**: the pinnedTabs section is optional.  It's only required if your bot displays tabs alongside its 1:1 conversations with users. See [more](bottab.md).
+>**NOTE**:  Currently your color icon must be less than 2k in size.
 
-### Sample tab manifest:
+### outline
 
-> Tip: [Download the example zip file](https://github.com/OfficeDev/microsoft-teams-sample-get-started/blob/master/package/MapsTab.zip) that contains the example manifest shown here.
+The `outline` icon will be used in three specific places:  the App Bar, Pinnned Compose Extensions, and chiclets.  This icon must be 20x20; it needs to be a trace image using white, and use a transparent background.  Here are a few good examples:
 
-```json
-{
-  "$schema": "https://statics.teams.microsoft.com/sdk/v0.4/manifest/MicrosoftTeams.schema.json", 
-  "manifestVersion": "0.4",
-  "version": "1.0",
-  "developer": {
-    "name": "%NAME-OF-PUBLISHER%",
-    "websiteUrl": "https://website.com/",
-    "privacyUrl": "https://website.com/privacy",
-    "termsOfUseUrl": "https://website.com/app-tos"
-  },
-  "tabs": [
-    {
-      "id": "%UNIQUE-GUID%",  
-      "name": "%TAB-APP-NAME%",
-      "description": {
-        "short": "Short description of your Tab",
-        "full": "Richer description of your Tab - 256 characters."
-      },
-      "icons": {
-        "44": "%URL-OR-FILENAME-44x44px%", 
-        "88": "%URL-OR-FILENAME-88x88px%", 
-      },
-      "accentColor": "%HEX-COLOR%",
-      "configUrl": "https://taburl.com/config.html",
-      "canUpdateConfig": true
-    }
-  ],
-  "needsIdentity": true,
-  "validDomains": [
-     "*.taburl.com",
-     "*.otherdomains.com"
-  ]
-}
-```
+!["Sample Outline icons"](images/icons/sample20x20s.png)
 
+For example, say your company is Contoso.  You'd submit two icons:
 
-## Create or reference icons for your tab
+!["Sample Contoso icons"](images/icons/contosoicons.png)
 
-Icons are are only used for tabs.  For bots, your Bot Framework icon will be used.
-* Your manifest must specify 44x44 and 88x88 icons as files included inside your package (that are smaller than ~1.5KB) or via URLs on a publicly accessible server.
-* The icons must be transparent PNGs, with a single white/light foreground color.
-* The icon itself will render over the "accentColor" provided in the manifest.
+Here's how the icons would appear in the UI:
+#### Bot and chiclet in Channel view
 
-## Create and uploading your package to Microsoft Teams
+!["Bot and chiclet UX"](images/icons/botandchiclet.png)
 
-Once you've created your manifest and image files, compress them into a zip file.  Your manifest must be at the **top** level of the zip.
+#### Flyout
 
-Upload your zip file to a team to make your app available, via the sideloading process found [here](sideload.md).
+!["Sample Contoso icons"](images/icons/flyout.png)
+
+#### App bar and home screen
+
+!["Sample Contoso icons"](images/icons/appbarhomescreen.png)
+ 
+> Hitting problems?  See the [troubleshooting guide](troubleshooting.md).

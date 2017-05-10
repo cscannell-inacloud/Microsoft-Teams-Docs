@@ -1,6 +1,6 @@
-﻿# Create the configuration page for your Microsoft Teams (preview) tab
+﻿# Create the configuration page for your Microsoft Teams configurable tab
 
-The configuration page is an HTML page that you host. When a user chooses to add - or update - your tab, Microsoft Teams will load the 'configUrl' (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
+The configuration page is an HTML page that you host. When a user chooses to add - or update - your tab, Microsoft Teams will load the `configUrl` (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
 
 In this page, you present options and gather information from the user about what they want in your tab. For example, you may let the user select existing app resources (such as files or task lists) or even create new such resources just for this tab.
 
@@ -38,7 +38,7 @@ microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
     var radios = document.getElementsByName("maptype");
     if (radios[0].checked) {
        microsoftTeams.settings.setSettings({
-         entityId: "bing"
+         entityId: "bing",
          contentUrl: "https://www.bing.com/maps/embed",
          suggestedDisplayName: "Bing Map",
          websiteUrl: "https://www.bing.com/maps",
@@ -46,7 +46,7 @@ microsoftTeams.settings.registerOnSaveHandler(function(saveEvent){
       });
     } else {
        microsoftTeams.settings.setSettings({
-         entityId: "google"
+         entityId: "google",
          contentUrl: "https://www.google.com/maps/embed",
          suggestedDisplayName: "Google Map",
          websiteUrl: "https://www.google.com/maps",
@@ -89,12 +89,12 @@ By default, the **Save** button on the configuration dialog box is disabled. Whe
 Use `microsoftTeams.settings.setSettings({entityId, contentUrl, suggestedTabName, websiteUrl, removeUrl})` to specify the URL of the [content page](createcontentpage.md) Microsoft Teams should host in the tab. Things to keep in mind:
 
 * This call may be made at any time the configuration page is displayed, including before or after the user selects the **Save** button (see below).
-* The `entityID` uniquely identifies the item that is displayed in the tab.
+* The `entityId` uniquely identifies the entity that is displayed in the tab.
   * Microsoft Teams uses this when creating [deep links to your tab](deeplinks.md).
   * You can also use it to help obtain context when [displaying your content page](createcontentpage.md) or when [updating or removing a tab](updateremove.md).
-  * You can use the the same value as the `contentUrl` if you wish.
+  * You can use the `contentUrl` as the `entityId` if you wish.
 * The `contentUrl` is a required field which specifies the URL of the content Microsoft Teams should host in the tab.
-  * If `contentUrl` resides in a different domain from the configuration page, make sure you have added that domain to the `validDomains` element in the tab manifest file. For more information, see [Microsoft Teams tab schema](schema.md) and [Redirecting across domains within a Microsoft Teams tab](crossdomain.md).
+  * Make sure you have added the `contentUrl` domain to the `validDomains` element in the tab manifest file. For more information, see [Microsoft Teams tab schema](schema.md) and [Redirecting across domains within a Microsoft Teams tab](crossdomain.md).
 *  The other parameters further customize how your tab works in Microsoft Teams:
 	* The optional `suggestedTabName` parameter sets the initial tab name. Users can rename the tab. The default value is the name specified in the manifest.
 	* The optional `websiteUrl` parameter sets where the user is taken if they click the **Go to website** button. Typically, this is a link to the same content as displayed on the tab, but within your main web app with its regular chrome and navigation.
@@ -112,7 +112,3 @@ You can return the settings asynchronously if, for example, the user has request
 Finally, in your save handler registered previously, call `saveEvent.notifySuccess()` or `saveEvent.notifyFailure()` to notify Microsoft Teams on the outcome of the configuration. If you have no save handler registered, the outcome will immediately and implicitly be success.
 
 > Hitting problems?  See the [troubleshooting guide](troubleshooting.md).
-
-## Next Step
-
-* [Create the content page for your Microsoft Teams tab](createcontentpage.md)
