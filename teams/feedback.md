@@ -3,7 +3,7 @@
 
 > Hitting a problem?  Have you looked at the [troubleshooting guide](troubleshooting.md)?
 
-The Microsoft Team (preview) product team responds to the developer community across several channels. Please tell us about your:
+The Microsoft Team product team responds to the developer community across several channels. Please tell us about your:
 
 - **General questions:** Please send mail to [Microsoft Teams developer support](mailto:microsoftteamsdev@microsoft.com).
 

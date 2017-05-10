@@ -1,4 +1,4 @@
-﻿# Get context for use in your Microsoft Team (preview) tab
+﻿# Get context for use in your Microsoft Team tab
 
 Your tab may require contextual information in order to display the necessary content.
 
@@ -42,7 +42,7 @@ For example, suppose in your tab manifest you set the `configURL` attribute to:
 And the signed-in user has the following attributes:
 
 * Their username is 'user@example.com'
-* Their company tenancy ID is 'e2653c-etc'
+* Their company tenant ID is 'e2653c-etc'
 * They are a member of the Office 365 group named 'test' 
 
 When they select your tab, they will be navigated to:
@@ -54,4 +54,21 @@ When they select your tab, they will be navigated to:
 
 You can also retrieve the information listed above using the [Microsoft Teams Tab library](jslibrary.md), by calling `microsoftTeams.getContext(function(context) { /* ... */ })`.
 
+The context variable will look like:
+```json
+{
+    "teamId": "The team ID in the format 19:[id]@thread.skype",
+    "channelId": "The channel ID in the format 19:[id]@thread.skype",
+    "locale": "Lowercase lang-locale",
+    "theme": "default | dark | contrast",
+    "entityId": "The entity id you set up on your config page",
+    "subEntityId": "The sub entity id you set up on your config page",
+    "upn": "The user identifier in email format",
+    "tid": "Guid identifying the current Tenant ID",
+    "groupId": "Guid identifying the current O365 Group ID"
+}
+```
+
 In addition, you can also register your app to be told if the theme changes by calling `microsoftTeams.registerOnThemeChangeHandler(function(theme) { /* ... */ })`.
+
+Theme will be a string set to `default`, `dark`, or `contrast`

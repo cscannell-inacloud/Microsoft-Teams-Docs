@@ -1,4 +1,4 @@
-﻿# Sample applications for the Microsoft Teams Developer Platform (preview)
+﻿# Sample applications for the Microsoft Teams Developer Platform
 
 There are Microsoft Teams samples in our GitHub repositories for you to clone or download:
 

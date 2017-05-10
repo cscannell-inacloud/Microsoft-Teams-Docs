@@ -1,12 +1,14 @@
-# Creating deep links to a Microsoft Teams (preview) tab
+# Creating deep links to a Microsoft Teams tab
 
 For every tab, Microsoft Teams adds a 'Copy link to tab' menu action.  This generates a deep link that points to this tab, which users can share.
 
+>**Note:** This deeplink is in a different format than the one you can generate yourself
+
 You can also enable team members to create and share links to items _within_ your tab - such as an individual task within a tab that contains a task list.  When clicked, the link will navigate to your tab, which focuses on the specific item.  To implement this, you add a 'copy link' action to each item, in whatever way best suits your UI.  When the user takes this action, you call `shareDeepLink()` that displays a dialog containing a link that the user can copy to the clipboard.  When you make this call, you also pass in an ID for your item, which you get back in the [context](getusercontext.md) when the link is followed and your tab is reloaded.
 
-Further, you can generate deeplinks programmatically, using the format specified below.  You may want to use these in [bot](bots.md) and [connector](connectors.md) messages that inform users about changes to your tab, or to items within it.
+Further, you can generate deeplinks programmatically, using the format specified below.  You may want to use these in [bot](bots.md) and [connector](connectors.md) messages that inform users about changes to your tab, or to items within it. 
 
->**Note:** Deep links only work properly if the tab was configured using the v0.4 library and thus has an entity ID. Deep links to tabs without entity IDs will still navigate to the tab but not be able to provide the sub-entity ID to the tab.
+>**Note:** Deep links only work properly if the tab was configured using the v0.4 or greater library and thus has an entity ID. Deep links to tabs without entity IDs will still navigate to the tab but not be able to provide the sub-entity ID to the tab.
 
 ## Showing a dialog that contains a deep link to an item within your tab
 
@@ -32,11 +34,13 @@ The query parameters are:
     * `canvasUrl` - the URL to load in the tab.  This should be the same as the `contentUrl` you provided when [configuring the tab](createconfigpage.md).  Note that this field is  required but not currently used - it is reserved for future use.  For example, "https://tab.tasklist.example.com/123"
     * `channelId` - the Microsoft Teams channel ID.  Note that you can get this from the tab [context](getusercontext.md).  For example, "19:cbe3683f25094106b826c9cada3afbe0@thread.skype"
 
+>**Note:** Make sure `appId`, `entityId`, `entityWebUrl`, `subEntityWebUrl`, `entityLabel`, `subEntityLabel`, and `context` are all URI Encoded
+
 Examples:
 
-* Link to the tab itself: `https://teams.microsoft.com/l/entity/fe4a8eba-2a31-4737-8e33-e5fae6fee194/tasklist123?webUrl=https%3A%2F%2Ftasklist.example.com%2F123&label=Task+List+123&context=%7B%22canvasUrl%22%3A+%22https%3A%2F%2Ftab.tasklist.example.com%2F123%22%2C%22channelId%22%3A+%2219%3Acbe3683f25094106b826c9cada3afbe0%40thread.skype%22%7D`
+* Link to the tab itself: `https://teams.microsoft.com/l/entity/fe4a8eba-2a31-4737-8e33-e5fae6fee194/tasklist123?webUrl=https://tasklist.example.com/123&label=Task List 123&context={"canvasUrl": "https://tab.tasklist.example.com/123","channelId": "19:cbe3683f25094106b826c9cada3afbe0@thread.skype"}`
 
-* Link to a task item within the tab: `https://teams.microsoft.com/l/entity/fe4a8eba-2a31-4737-8e33-e5fae6fee194/tasklist123?webUrl=https%3A%2F%2Ftasklist.example.com%2F123%2F456&label=Task+456&context=%7B%22subEntityId%22%3A+%22task456%22%2C%22canvasUrl%22%3A+%22https%3A%2F%2Ftab.tasklist.example.com%2F123%22%2C%22channelId%22%3A+%2219%3Acbe3683f25094106b826c9cada3afbe0%40thread.skype%22%7D`
+* Link to a task item within the tab: `https://teams.microsoft.com/l/entity/fe4a8eba-2a31-4737-8e33-e5fae6fee194/tasklist123?webUrl=https://tasklist.example.com/123/456&label=Task 456&context={"subEntityId": "task456","canvasUrl": "https://tab.tasklist.example.com/123","channelId": "19:cbe3683f25094106b826c9cada3afbe0@thread.skype"}`
 
 ## Consuming a deep link from a tab
 
