@@ -68,7 +68,7 @@ In the app manifest, each command item is an object with the following structure
 ```json
 {
   "$schema":
-  "https://statics.teams.microsoft.com/sdk/v0.5/manifest/MicrosoftTeams.schema.json",
+  "https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json",
   "manifestVersion": "1.0",
   "version": "1.0",
   "id": "ef9c57b6-7a92-4ae5-99cd-139f9a76bff0",
@@ -89,7 +89,7 @@ In the app manifest, each command item is an object with the following structure
     "88": "https://pbs.twimg.com/profile_images/aceaeaojo18201/zlVaaEoG.jpg"
   },
   "accentColor": "#ff6a00",
-  "inputExtensions": [
+  "composeExtensions": [
     {
       "botId": "57a3c29f-1fc5-4d97-a142-35bb662b7b23",
       "scopes": [
@@ -101,6 +101,7 @@ In the app manifest, each command item is an object with the following structure
         "title": "Search",
         "parameters": [{
           "name": "keyword",
+          "title": "keyword",
           "description": "Web search keywords",
         }]
       }]
@@ -166,10 +167,14 @@ Note: You should authenticate any request to your service. Visit this [link](htt
     "commandId": "insertWikipedia",
     "parameters": [
       {
-        "name": "searchKeyword",
-        "value": "lakers"
+        "name": "searchCmd",
+        "value": "test keyword"
       }
-    ]
+    ],
+    "queryOptions":{  
+       "skip":0,
+       "count":25
+    }
   },
   "type": "invoke",
   "timestamp": "2017-04-10T22:57:00.958Z",
@@ -222,10 +227,10 @@ Your service should respond with the results matching the user query. The respon
 
 |Property name|Purpose|
 |---|---|
-|`inputExtension`|Top-level response envelope|
-|`inputExtension.type`|Should be of value `result`|
-|`inputExtension.attachmentLayout`|`list`: list of card objects containing thumbnail, title, and text fields.<br>`grid`: grid of media objects, showing preview thumbnail for each one.|
-|`inputExtension.attachments`|Array of valid bot attachment objects. Currently the following types are supported:<br>`application/vnd.microsoft.card.thumbnail` <br>`application/vnd.microsoft.card.hero`<br>`application/vnd/microsoft.teams.card.o365connector`|
+|`composeExtension`|Top-level response envelope|
+|`composeExtension.type`|Should be of value `result`|
+|`composeExtension.attachmentLayout`|`list`: list of card objects containing thumbnail, title, and text fields.<br>`grid`: grid of media objects, showing preview thumbnail for each one.|
+|`composeExtension.attachments`|Array of valid bot attachment objects. Currently the following types are supported:<br>`application/vnd.microsoft.card.thumbnail` <br>`application/vnd.microsoft.card.hero`<br>`application/vnd/microsoft.teams.card.o365connector`|
 
 ### Response card types and previews
 
@@ -284,8 +289,6 @@ The result list is displayed in the Microsoft Teams UI with a preview of each it
           }
         }
       }
-    ],
-    "suggestedActions":[
     ]
   }
 }
@@ -339,7 +342,7 @@ For now, to receive and handle queries with the Bot Framework .NET SDK, you can 
 ```csharp
 public HttpResponseMessage Post(JObject activity) {
 HttpResponseMessage response;
-if (activity["type"].ToString() == "invoke" && activity["name"].ToString() == "inputExtension/query") {
+if (activity["type"].ToString() == "invoke" && activity["name"].ToString() == "composeExtension/query") {
 
     // your code here
 
