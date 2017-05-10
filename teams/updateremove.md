@@ -1,6 +1,6 @@
-﻿# Update or remove a Microsoft Teams (preview) tab
+﻿# Update or remove a Microsoft Teams tab
 
-You can enable users to update a tab after it's been added and to choose what happens to tab content if a tab is removed.
+You can enable users to update a tab after it has been added and to choose what happens to tab content if a tab is removed.
 
 ## Updating an existing tab instance
 

@@ -1,10 +1,16 @@
-# Troubleshooting Microsoft Teams tabs and bots
+# Troubleshooting Microsoft Teams Apps
 
 ## Tabs disappear
 
 During the developer preview, any tabs that you created, and uploaded to a team, may have expired after 29 days.  This expiration issue has since been addressed, but you will have to [sideload](sideload.md) the tab again for it to appear in your Tab Gallery.  
 
 Tabs may also disappear during the roll out of a new process for side-loading tabs.  Please check [here](sideload.md) to determine if you need to use this process.
+
+## Blank tab screen
+
+If you are not seeing your content in the tab view, it could be:
+* your content cannot be iFramed.
+* the content domain is not in the [`validDomains`](schema.md#validdomains) list in the manifest.
 
 ## Can't add bots in general
 
@@ -27,6 +33,11 @@ Common reasons for manifest read errors:
 * Invalid json. Use an IDE such as [Visual Studio Code](https://code.visualstudio.com) or [Visual Studio](https://www.visualstudio.com/vs/) that automatically validates the json syntax.
 * Encoding issues. Use UTF-8 for the manifest.json file. Other encodings, specifically with the BOM, may not be readable.
 
+## Another extension with same id "&lt;id&gt;" exists
+If you're attempting to re-upload an updated package with the same id, use the 'Replace' icon at the end of the tab's table row rather than the 'Upload' button again.
+
+If you're not re-uploading an updated package, ensure the id is unique.
+
 ## The Save button isn't enabled on the settings dialog
 Be sure to call `microsoftTeams.setValidityState(true)` once the user has input or selected all required data on your settings page to enable the save button.
 
@@ -46,3 +57,6 @@ Common problems with the settings object:
 * `settings.entityID` is missing. This field is required.
 * `settings.contentUrl` is missing. This field is required.
 * `settings.contentUrl` or the optional `settings.removeUrl`, or `settings.websiteUrl` are provided but not valid. The urls must be https urls and also must either be the same domain as the settings page or specified in the manifest's `validDomains` list.
+
+## Can't authorize the user in your tab
+Unless you are doing silent authentication, you must follow the authentication process provided by the [Microsoft Teams Tab Library](jslibrary.md).  For more information about authentication, please see [Authenticating a user in your Microsoft Teams pages](auth.md).
