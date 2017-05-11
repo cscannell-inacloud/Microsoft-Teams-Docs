@@ -9,63 +9,63 @@ For quick one-off integration of your existing webhook, you can take advantage o
 > Don't have Microsoft Teams? Get a free Office 365 developer subscription or activate it for your existing Office 365 account. [Here's how](setup.md).
 
 
-# Apps in Microsoft Teams
+## Apps in Microsoft Teams
 
 Apps in Microsoft Teams allow you to make your service available to users within Teams in contexts that make sense, all through one Teams App package that users can acquire through our in-product app gallery, via the Office Store, or sideloaded directly by your team.  Whether assisting in chat with a bot or compose extension, or creating a rich web view of the content channel members care about, Teams provides a single packaging option for you to create new or leverage existing functionality within the Teams experiences.
 
 Here is a list of some the capabilities your experience can leverage today.
 
-## Tabs
+### Tabs
 
 Tabs allow team members to access your service on a dedicated canvas, within a channel or in user's personal app space. You can leverage your existing web app to create a great tab experience within Teams.
 
-Tabs in channels ("configurable tabs") allow teams to work directly with the tools and data you provide, in the channel's context, and to have conversations about them. Examples of tabs include dashboards and data visualization, documents and notes, group task management and shared design canvases.
+Configurable tabs allow teams to work directly with the tools and data you provide, in the channel's context, and to have conversations about them. Examples of configurable tabs include dashboards and data visualization, documents and notes, group task management and shared design canvases.
 
-Personal tabs ("static tabs") provide information for individual users, in their own dedicated app space.  Use these tabs to surface information catering to the individual such as personal task lists or dashboards, or provide help, support forum information.
+Static tabs provide information for individual users, in their own dedicated app space.  Use these tabs to surface information catering to the individual such as personal task lists or dashboards, help content, or support information.
 
-[Get started with tabs](tabs.md)
+[Get started with tabs.](tabs.md)
 
 !["Example of a tab showing data, alongside a conversation about the tab data"](images/tab_example.png)
 
-## Bots
+### Bots
 
 Build and connect intelligent bots to interact with Microsoft Teams users naturally through chat. Bots can answer natural language questions and perform lightweight tasks such as querying bug information or kicking off a build.​ Any bot you've created using the [Microsoft Bot Framework](https://dev.botframework.com/) can easily be made to work in Microsoft Teams.
 
-While bots can take advantage of the rich natural language processing provided by the Bot Framework, your bot can also serve as the command line interface of your experience.  Or you can choose to make a notification-only bot, serving only to serve up information relevant to your users.
+While bots can take advantage of the rich natural language processing provided by the Bot Framework, your bot can also act as the command line interface of your experience.  Or you can choose to make a notification-only bot, to push information relevant to your users directly to them in a channel or direct message.
 
-[Get started with bots](bots.md)
+[Get started with bots.](bots.md)
 
 !["Example of a bot assisting a user"](images/bot_example.png)
 
-## Compose Extensions
+### Compose Extensions
 
 Leverage the power of your web service to provide a quick and easy way for your users to insert your content into the chat stream.
 
 !["Example of a compose extension"](images/ComposeExtension/CEOverviewExample.png)
 
-## Connectors
+### Connectors
 
 Office 365 Connectors are a great way to get useful information and content into Microsoft Teams. Any user can connect their group to services like Trello, Bing News, Twitter, etc., and get notified of the team's activity in that service. From tracking a team's progress in Trello, to following important hashtags in Twitter, Office 365 Connectors make it easier for teams to stay in sync and get more done.
 
 You can integrate your service by posting rich Connector cards into custom incoming webhooks.
 
-[Get started with connectors](connectors.md)
+[Get started with connectors.](connectors.md)
 
 !["Gallery of connectors"](images/connector_example.png)
 
 
-# Custom Bots
+## Custom Bots
 
 Custom bots provide a way for you to easily extend your team. You can easily get up and running with a bot that responds to messages within a team. You can use them for custom workflows and commands, such as kicking off a build or checking the latest set of livesite issues. Custom bots are an easy way of creating interactive bots without having to go through the full process of creating a bot via the Microsoft Bot Framework.  
 
-[Get started with custom bots](custombot.md)
+[Get started with custom bots.](custombot.md)
 
 
 
 
 ## Submit your questions, bugs, feature requests, and contributions
 
-We listen to the developer community across a [several channels](feedback.md).
+We listen to the developer community across [several channels](feedback.md).
 
 
 	
