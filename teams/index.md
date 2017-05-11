@@ -1,6 +1,6 @@
 ﻿# Overview of Microsoft Teams Developer Platform
 
-Microsoft Teams is a chat-based workspace in Office 365 that integrates with apps and services that teams use to get work done together.  The Microsoft Teams Developer platform makes it easy for you to integrate your own service, whether you develop custom apps for your enterprise or SaaS applications for teams around the world.
+Microsoft Teams is a chat-based workspace in Office 365 that integrates with the apps and services teams use to get work done together.  The Microsoft Teams Developer platform makes it easy for you to integrate your own service, whether you develop custom apps for your enterprise or SaaS applications for teams around the world.
 
 For the best and most extensible option for adding your service into Teams, create a Microsoft Teams app.  A Microsoft Teams app is a package of services that you host, that can be distributed through the Teams product or sideloaded by teams.
 
