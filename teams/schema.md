@@ -2,7 +2,7 @@
 
 >Note: for help on migrating your v0.4 manifest to v1.0, see [here](schemamigrate.md).
 
-The Microsoft Teams manifest describes how the app integrates into the Microsoft Teams product. Your manifest must conform to the schema hosted at: `https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json`.  The following is an example with all extensibility options:
+The Microsoft Teams manifest describes how the app integrates into the Microsoft Teams product. Your manifest must conform to the schema hosted at: [`https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json`](https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json).  The following is an example with all extensibility options:
 
 ```json
 {
@@ -27,13 +27,13 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
   },
   "icons": {
     "outline": "%FILENAME-20x20px%", 
-    "color": "%FILENAME-96x96px", 
+    "color": "%FILENAME-96x96px" 
   },
   "accentColor": "%HEX-COLOR%",
   "configurableTabs": [
     {
       "configurationUrl": "https://taburl.com/config.html",
-      "canUpdateConfig": true,
+      "canUpdateConfiguration": true,
       "scopes": [ "team" ]
     }
   ],
@@ -102,7 +102,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
             {
               "name": "keyword",
               "title": "Search keywords",
-              "description": "Enter the keywords to search for",
+              "description": "Enter the keywords to search for"
             }
           ]
         }
