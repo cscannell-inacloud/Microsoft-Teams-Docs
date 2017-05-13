@@ -41,6 +41,8 @@ While bots can take advantage of the rich natural language processing provided b
 
 Leverage the power of your web service to provide a quick and easy way for your users to insert your content into the chat stream.
 
+[Get started with compose extensions.](composeextensions.md)
+
 !["Example of a compose extension"](images/ComposeExtension/CEOverviewExample.png)
 
 ### Connectors
