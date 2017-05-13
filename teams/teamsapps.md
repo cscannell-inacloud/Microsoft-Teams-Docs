@@ -2,15 +2,15 @@
 
 Apps in Microsoft Teams allow you to make your services available to users in contexts that make sense, all through one Teams App package that users can acquire through our in-product gallery, via the Office Store, or sideloaded directly by a team.  Whether assisting in chat with a bot or compose extension, or creating a rich web view of the content channel members care about, Teams provides a single packaging option for you to create new or leverage existing functionality within the Microsoft Teams experiences.
 
-## App bar
+## Apps bar
 
 >New feature
 
-The app bar is the area on the left side of Microsoft Teams where your Activity (feed), Chat, Teams, Meetings, and Files buttons live. We designed the app bar to serve as a central container giving users quick access to the features that they use the most.
+The Apps button on the left-hand navagation bar launches the Apps bar. We designed the Apps bar to serve as a central container giving users quick access to the features that they use the most.  Users can also discover and add new Microsoft Teams apps through the "Discover apps" button.  
 
-The app bar provides a quick and easy way to access and discover apps to help users and their teams be more productive in Microsoft Teams.  All apps added by a user or included in a user's team(s) can be accessed from this one central location. This allows users to get quick access to their personal contexts as well as provide a quick way to jump to the channels where the app may be pinned.
+All apps added by a user or included in any of their teams can be accessed from this one central location. This allows users to get quick access to their personal contexts with that app, showing for example their 1:1 conversations with the application's bot or static tabs.
 
-![Microsoft Teams App bar](images/appbar_apps_flyout.png)
+![Microsoft Teams Apps bar](images/appbar_apps_flyout.png)
 
 ## Context in Team Apps
 
@@ -20,20 +20,20 @@ Please note that these are non-exclusive options - one or both can be chosen, an
 
 For advice on providing a great Microsoft Teams app experience in either or both scopes, please review our [design guidelines](design.md).
 
-# Building a Microsoft Teams app
+## Building an app
 
-Ready to get started adding your experience into Teams?  Here's how:
+Ready to get started adding your experience into Teams?  Follow these steps:
 
-## Build your app's rich capabilities
+### Build your app's rich capabilities
 * [Set up for development](setup.md).
 * Define [capabilities](appcapabilities.md).
 * Code your app.
 
-## Package & test your app within Teams
+### Package & test your app within Teams
 * [Create package](createpackage.md).
 * [Side load](sideload.md) in Teams.
 * Test functionality.
 
-## Publish your app & drive engagement
+### Publish your app & drive engagement
 * [Register and publish](submission.md) to Office Store.
 * Embed deep link on website.

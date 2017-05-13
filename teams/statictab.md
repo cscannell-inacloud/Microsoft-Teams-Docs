@@ -12,11 +12,14 @@ Content pages in Teams, regardless of scope or type, should follow [these guidel
 
 ## Adding your tabbed content to your app package
 
-Define your static tab experience in the [manifest file](schema.md) in the `staticTabs` object.  Note that at this point, team-scoped static tabs are not supported.  These will only show up in the personal context.  For more information on creating your manifest and schema, see [here](createpackage.md)
+Define your static tab experience in the [manifest file](schema.md) in the `staticTabs` object.  Note that at this point, `team`-scoped static tabs are not supported.  These will only show up in the `personal` context, accessible via the [Apps bar](teamsapps.md#apps-bar) or alongside your app's bot conversation.
+
+For more information on creating your app package, see [here](createpackage.md)
 
 #### Manifest snippet - static tabs
 
 ```json
+...
 "staticTabs": [
   {
     "entityId": "TestAppAbout",
@@ -33,7 +36,7 @@ Define your static tab experience in the [manifest file](schema.md) in the `stat
     "scopes": [ "personal" ]
   }
 ]
-
+...
 ```
 
 The `staticTabs` object allows you to specify one or more tabs, up to 16, with the following required elements:

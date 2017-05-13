@@ -1,4 +1,4 @@
-﻿# Microsoft Teams  manifest schema reference
+﻿# Microsoft Teams manifest schema reference
 
 >Note: for help on migrating your v0.4 manifest to v1.0, see [here](schemamigrate.md).
 

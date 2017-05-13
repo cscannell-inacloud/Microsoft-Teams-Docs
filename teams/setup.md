@@ -18,6 +18,8 @@ If you don't currently have an Office 365 account, you can sign up for the [Offi
 
 ## 2. Turn on Microsoft Teams for your organization
 
+>For general information on administrator settings for Microsoft Teams, see [here](https://support.office.com/article/Administrator-settings-for-Microsoft-Teams-3966a3f5-7e0f-4ea9-a402-41888f455ba2).
+
 The O365 Administrator may have to enable Microsoft Teams for your organization.  Please note all users must have a valid license assigned to access the product.  
 
 1. [Sign in to Office 365](https://portal.office.com) with your administrator account.
