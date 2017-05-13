@@ -2,6 +2,8 @@
 
 Microsoft Teams places content in the middle of everyday conversations.  Take a look at some ideas you can use to showcase your brand within Microsoft Teams.
 
+>For more details and full guidance, complete with style guides and examples, please review our full [Design guidelines site](http://aka.ms/microsoftteamsdesignguidelines).
+
 # Building a great Tab 
 
 Tabs give your app a dedicated canvas at the center of a team’s workflow, allowing teams to jump between conversations and your experience.  While it's relatively easy to adapt a web app to become a Microsoft Teams tab, you should consider which experiences and functionality in your app will work most effectively.

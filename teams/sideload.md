@@ -34,7 +34,7 @@ With your package created, you can now load it into a team of your choosing.  Th
 
 5.	You will see your sideloaded app in the list.
 
-   !["Example of bot in list of side-loaded bots"](images/botinlist.jpg)
+   !["Example of bot in list of sideloaded bots"](images/botinlist.jpg)
 
 
 ## Accessing your sideloaded configurable tab
