@@ -9,12 +9,12 @@ Tabs may also disappear during the roll out of a new process for sideloading tab
 ## Blank tab screen
 
 If you are not seeing your content in the tab view, it could be:
-* your content cannot be iFramed.
+* your content cannot be displayed in an `<iframe>`.
 * the content domain is not in the [`validDomains`](schema.md#validdomains) list in the manifest.
 
 ## Can't add bots in general
 
-Bots must be enabled by the O365 Tenant admin for them to be loaded by end users.  Note that in some cases, the O365 Tenant may have multiple SKUs associated with it, and for bots to work in any, they must be enabled in all SKUs.  See [here](https://msdn.microsoft.com/en-us/microsoft-teams/setup#enable-sideloading-of-bots-and-tabs) for more information.
+Apps must be enabled by the Office 365 Tenant admin for them to be loaded by end users.  Note that in some cases, the O365 Tenant may have multiple SKUs associated with it, and for bots to work in any, they must be enabled in all SKUs.  See [here](https://msdn.microsoft.com/en-us/microsoft-teams/setup#enable-sideloading-of-bots-and-tabs) for more information.
 
 
 ## Can't add bot as a member of a team
