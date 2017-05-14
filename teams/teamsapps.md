@@ -6,9 +6,9 @@ Apps in Microsoft Teams allow you to make your services available to users in co
 
 >New feature
 
-The Apps button on the left-hand navagation bar launches the Apps bar. We designed the Apps bar to serve as a central container giving users quick access to the features that they use the most.  Users can also discover and add new Microsoft Teams apps through the "Discover apps" button.  
+The Apps button on the left-hand navagation bar launches the Apps bar. We designed the Apps bar to serve as the central location giving users quick access to the features that they use the most.  Users can also discover and add new Microsoft Teams apps through the "Discover apps" button.  
 
-All apps added by a user or included in any of their teams can be accessed from this one central location. This allows users to get quick access to their personal contexts with that app, showing for example their 1:1 conversations with the application's bot or static tabs.
+All apps added by a user or included in any of their teams can be accessed from this one central location. This allows users to get quick access to their personal contexts with that app, showing, for example, their 1:1 conversations with the application's bot or static tabs.
 
 ![Microsoft Teams Apps bar](images/appbar_apps_flyout.png)
 

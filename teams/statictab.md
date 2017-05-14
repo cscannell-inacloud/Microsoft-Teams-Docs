@@ -43,8 +43,8 @@ The `staticTabs` object allows you to specify one or more tabs, up to 16, with t
 
 * `entityId` - this is a user-defined ID that uniquely identifies the tab.  This is analogous to the entityId used in [configurable tab deep linking](deeplinks.md).
 * `name` - the name shown on the tab
-* `contentUrl` - the content url to show in the tab
-* `websiteUrl` - the url to the full chrome content to display in the default browser
+* `contentUrl` - the content URL to show in the tab
+* `websiteUrl` - the URL to the full chrome content to display in the default browser
 * `scopes` - at this point, static tabs are only used in the `personal` context
 
 ## Add static tab URLs to validDomains
