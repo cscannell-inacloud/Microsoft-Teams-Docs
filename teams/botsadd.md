@@ -4,7 +4,7 @@ To test your bot in Microsoft Teams, you must follow one of the sideloading proc
 
 For published bots, end users will be able to access via the discover apps gallery accessable via the Discover Bots access points in the product.
 
-> **Note: your tenant administrator will need to enable sideloading of bots for your organization. [Here's how](setup.md).**
+> **Note: your tenant administrator will need to enable sideloading of apps for your organization. [Here's how](setup.md).**
 
 ## Adding a bot to a team for use in channels
 
