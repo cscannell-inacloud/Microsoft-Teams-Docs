@@ -1,15 +1,20 @@
 ﻿# Bot APIs
-Your bot can access additional context about the team or chat.  This information can be used to enrich your bot's functionality.
+
+Your bot can access additional context about the team or chat, such as user profile.  This information can be used to enrich your bot's functionality and provide a more personalized experience.
 
 
 ## Fetching the team roster
+
 Your bot can query for the list of team members. With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `team.id` retrieved from the `channelData` of the inbound schema.
 
 #### REST API sample
+
 You can directly issue a GET request to [`/conversations/{teamId}/members/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_GetConversationMembers) resource using the `teamId` as the parameter in the API call.
 
 ```json
 GET /v3/conversations/19:ja0cu120i1jod12j@skype.net/members
+
+Response body
 [{
     "id": "29:1GcS4EyB_oSI8A88XmWBN7NJFyMqe3QGnJdgLfFGkJnVelzRGos0bPbpsfJjcbAD22bmKc4GMbrY2g4JDrrA8vM06X1-cHHle4zOE6U4ttcc",
     "objectId": "9d3e08f9-a7ae-43aa-a4d3-de3f319a8a9c",
@@ -69,18 +74,23 @@ var conversationId = session.message.address.conversation.id;
 ```
 
 ## Fetching user profile in 1:1 chat
+
 You can also make the same API call for any 1:1 chat to obtain the profile information of the user chatting with your bot.
 
 The API call and SDK methods are identical to fetching team roster, as is the response object. The only different is that you pass the 1:1 `conversationId` instead of the `teamId`.
 
 ## Fetching the list of channels in a team
-Your bot can query the list of channels in a team. Note: right now 
+
+Your bot can query the list of channels in a team. Note: right now the `General` channel is not returned in the list. You can reuse the team's ID as the channel ID.
 
 #### REST API sample
+
 You can directly issue a GET request to `/conversations/{teamId}/channels/` resource.
 
 ```json
 GET /v3/conversations/19:ja0cu120i1jod12j@skype.net/channels
+
+Response body
 {
     "conversations": [{
         "id": "19:skypespaces_24bb9d6ac6264999b353ba860ecd4044@thread.skype",

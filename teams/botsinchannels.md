@@ -196,3 +196,6 @@ session.send(generalMessage);
     "replyToId": "3UP4UTkzUk1zzeyW" 
 }
 ```
+
+### Accessing team context
+Your bot can do more than send and receive messages in teams. Visit the section on the [bot APIs](botapis.md) to learn more.
