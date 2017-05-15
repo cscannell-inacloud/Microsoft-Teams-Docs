@@ -1,4 +1,4 @@
-﻿# Overview of sending Messages
+﻿# Sending and receiving messages
 
 Bots in Microsoft Teams allow sending messages in either personal conversations with a single user or a group conversation in a Teams channel.  
 
@@ -75,8 +75,8 @@ Teams-specific information is sent and received in the `channelData` object:.
 * `eventType` - Teams event type - passed only in cases of [channel modification events](botevents.md).
 * `team` - this object is passed only in channel contexts, not 1:1.
     - `id` - the GUID for the channel.
-    - Note: there is no name value being passed at this time
-* `tenant.id` - the O365 tenant id on which Teams is running.  This is passed in all contexts.
+    - `name` - the name of the team.
+* `tenant.id` - the Azure ActiveDirectory tenant id.  This is passed in all contexts.
 
 >**Note:** the payload also contains `channelData.teamsTeamId` and `channelData.teamsChannelId` properties for backwards compatibility.  These should be considered deprecated.
 
@@ -178,9 +178,9 @@ function sendCardUpdate(bot, session, originalMessage, address) {
 }
 ```
 
-## Creating a new personal conversation
+## Creating a new conversation
 
-You can create a new message to either a user or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without prompting.  For more information see:
+You can create a new 1:1 conversation with a user or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without having them first initiate contact with your bot.  For more information see:
 * [Creating a new 1:1 conversation](bots1on1.md#Starting-a-1:1-conversation)
 * [Creating a new channel conversation](botsinchannels.md#creating-new-channel-conversations)
 
