@@ -2,11 +2,7 @@
 
 A static tab is a [content page](createcontentpage.md) that is declared directly in your manifest and - unlike a configurable tab - does not require a 'configuration page' to set it up.
 
-You can add one or more static tabs to your app's 
-
-With Microsoft Team's rich web canvas tabs, your app can display web site information to users in a personal context.  While the configurable tabs options allows team owners to configure and pin the exact information required to help team members best interact with your experience, static tabs can be used to display non-configurable or even personal content outside the channel construct.
-
-Like our Team help bot T-Bot, you can add one or more tabs in your bot conversation channel.  This is simply web content that you host, relevant for your experience, like FAQs, help or other general information for users of your experience.
+Currently, you can add one or more static tabs to your app's "personal scope" experience, accessed via the [app bar](teamsapps.md) or alongside your app's bot conversation.
 
 ![Static Tabs example](images/tabs_in_bot.PNG)
 
@@ -16,7 +12,7 @@ Content pages in Teams, regardless of scope or type, should follow [these guidel
 
 ## Adding your tabbed content to your app package
 
-Define your static tab experience in the [manifest file](schema.md) in the `staticTabs` object.  Note that at this point, `team`-scoped static tabs are not supported.  These will only show up in the `personal` context, accessible via the [Apps bar](teamsapps.md#apps-bar) or alongside your app's bot conversation.
+Define your static tab experience in the [manifest file](schema.md) in the `staticTabs` object.  
 
 For more information on creating your app package, see [here](createpackage.md)
 
@@ -29,19 +25,21 @@ For more information on creating your app package, see [here](createpackage.md)
     "entityId": "TestAppAbout",
     "name": "About",
     "contentUrl": "https://teams-specific-webview.website.com/about",
-    "websiteUrl": "http://fullwebsite.website.com",
+    "websiteUrl": "http://fullwebsite.website.com/about",
     "scopes": [ "personal" ]
   },
   {
     "entityId": "TestAppMyTasks",
     "name": "My Tasks",
     "contentUrl": "https://teams-specific-webview.website.com/mytasks",
-    "websiteUrl": "http://fullwebsite.website.com",
+    "websiteUrl": "http://fullwebsite.website.com/mytasks",
     "scopes": [ "personal" ]
   }
 ]
 ...
 ```
+
+<!-- TODO get this from sample app -->
 
 The `staticTabs` object allows you to specify one or more tabs, up to 16, with the following required elements:
 

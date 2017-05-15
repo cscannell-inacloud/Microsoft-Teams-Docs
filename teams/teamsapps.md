@@ -20,13 +20,13 @@ Users can access personal experiences from your app via the app bar, such as hol
 
 <!-- TODO screenshot of personal UIs bot and tab  -->
 
-## Interacting in channel (team scope)
+## Interacting in channels (team scope)
 
 Users can access team experiences from your app in a channel, such as @mentioning your app's bot, configuring notififcations via a Connector, or interacting with team data in a tab.  
 
 <!-- TODO screenshot of team UIs, bot and tab -->
 
-## Building an app
+## Building your app
 
 Ready to get started adding your experience into Teams?  Follow these steps:
 
