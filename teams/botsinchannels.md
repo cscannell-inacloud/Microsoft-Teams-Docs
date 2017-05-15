@@ -2,7 +2,7 @@
 
 Microsoft Teams allows users to bring bots into their channel conversations.  By adding a bot as a team member, all users of the team can take advantage of the bot functionality right in the channel conversation.  You can also access Teams-specific functionality within your bot like querying team information and @mentioning users.
 
-# Designing a great teams bot
+# Designing a great bot for channels
 
 Bots added to a team become another team member, who can be @mentioned as part of the conversation.  In fact, bots only receive messages when they are @mentioned, so other conversations on the channel are not sent to the bot.
 
@@ -10,9 +10,9 @@ A bot in a channel should provide information relevant and appropriate for all m
 
 Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Teams](teamsapps.md#context-in-team-apps).
 
-# Develop your bot
+# Building your bot
 
-Developing a bot in a channel, at its core, is the same as developing a bot for 1:1 conversation.  There are additional events and data in the payload that provide Teams context.  Those differences, as well as key differences in common functionality are enumerated below.
+Developing a bot that works in channels reuses much of the same functionality from 1:1 conversation.  There are additional events and data in the payload that provide Teams context.  Those differences, as well as key differences in common functionality are enumerated below.
 
 ## Receiving messages
 
@@ -31,7 +31,7 @@ If you choose to use the REST API, you can also call the [/conversations/{conver
 
 Note that replying to a message in a channel shows as a reply to the initiating reply chain.  The `conversationId` contains the channel and the top level message id.  While the Bot Framework takes care of the details, you may cache that `conversationId` for future replies to that conversation thread as needed.
 
-## Creating new channel messages
+## Creating new channel conversation
 
 Your team-added bot can post into a channel to create a new reply chain.  With the BotBuilder SDK, call  `CreateConversation()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  
 
@@ -229,75 +229,4 @@ session.send(generalMessage);
     ], 
     "replyToId": "3UP4UTkzUk1zzeyW" 
 }
-```
-
-
-## Fetching the team roster
-Your bot can query for the list of team members. With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `team.id` retrieved from the `channelData` of the inbound schema.
-
-#### .NET SDK sample
-
-```csharp
-ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
-
-replyMessage.Text = "These are the member userids returned by the GetConversationMembers() function:";
-
-for (int i = 0; i < members.Length; i++)
-{
-    replyMessage.Text += "<br />" + members[i].Id; //Not currently supported: members[i].Name;
-}
-```
-
-#### Node SDK sample
-
-Note: this sample uses [the new Microsoft Teams Node.js SDK](https://www.npmjs.com/package/botbuilder-teams):
-
-```js
-var conversationId = session.message.address.conversation.id;
-  connector.fetchMemberList(
-    (<builder.IChatConnectorAddress>session.message.address).serviceUrl,
-    conversationId,
-    teams.TeamsMessage.getTenantId(session.message),
-    (err, result) => {
-      if (err) {
-        session.endDialog('There is some error');
-      }
-      else {
-        session.endDialog('%s', JSON.stringify(result));
-      }
-    }
-);
-```
-
-Alternatively, you can issue a GET request to the [`/conversations/{teamId}/members/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_GetConversationMembers) resource, using `teamId` in the `conversationId` field in the API call.
-
-## Fetching the list of channels in a team
-Your bot can query the list of channels in a team using the FetchChannelList method.
-
-#### .NET SDK sample
-
-Note: This sample uses the [new Microsoft Teams .NET SDK](https://www.nuget.org/packages/Microsoft.Bot.Connector.Teams):
-
-```csharp
- ConversationList channels = client.GetTeamsConnectorClient().Teams.FetchChannelList(activity.GetChannelData<TeamsChannelData>().Team.Id);
-```
-
-#### Node SDK sample
-
-Note: this sample uses [the new Microsoft Teams Node.js SDK](https://www.npmjs.com/package/botbuilder-teams):
-
-```javascript
-var teamId = session.message.sourceEvent.team.id;
-  connector.fetchChannelList(
-    (<builder.IChatConnectorAddress>session.message.address).serviceUrl,
-    teamId,
-    (err, result) => {
-      if (err) {
-        session.endDialog('There is some error');
-      }
-      else {
-        session.endDialog('%s', JSON.stringify(result));
-      }
-    }
-);
 ```

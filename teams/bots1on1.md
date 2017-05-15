@@ -8,7 +8,7 @@ A great bot in Microsoft Teams helps users get the information they need, all wi
 
 Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Team Apps](teamsapps.md#context-in-team-apps).
 
-## Creating direct messages
+## Starting a 1:1 conversation
 
 Bots can create new conversations with an individual Microsoft Teams user, as long as your bot has user information obtained through previous addition in a personal or team scope. This will allow your bot to proactively notify them. For instance, if your bot was added to a team, it could query the team roster and send users individual messages in the private 1:1 chat, or a user could @mention another user to trigger the bot to send that user a direct message.
 

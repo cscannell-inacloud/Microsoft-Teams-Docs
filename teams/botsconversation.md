@@ -1,6 +1,6 @@
-﻿# Bot Conversation Overview
+﻿# Overview of sending Messages
 
-Bots in Microsoft Teams allow private conversations with a single user or a group conversation in a Teams channel.  
+Bots in Microsoft Teams allow sending messages in either personal conversations with a single user or a group conversation in a Teams channel.  
 
 ## Initiating a conversation
 
@@ -136,11 +136,11 @@ function sendCardUpdate(bot, session, originalMessage, address) {
 }
 ```
 
-## Creating a new message
+## Creating a new personal conversation
 
-You can create a new message to either a user (Direct Message) or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without prompting.  For more information see:
-* [Creating a direct message for 1:1](bots1on1.md#creating-direct-messages)
-* [Creating a new channel message](botsinchannels.md#creating-new-channel-messages)
+You can create a new message to either a user or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without prompting.  For more information see:
+* [Creating a new 1:1 conversation](bots1on1.md#Starting-a-1:1-conversation)
+* [Creating a new channel conversation](botsinchannels.md#creating-new-channel-conversations)
 
 ## Deleting messages
 
