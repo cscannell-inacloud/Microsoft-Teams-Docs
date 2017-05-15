@@ -1,5 +1,9 @@
 # Create a static tab
 
+A static tab is a [content page](createcontentpage.md) that is declared directly in your manifest and - unlike a configurable tab - does not require a 'configuration page' to set it up.
+
+You can add one or more static tabs to your app's 
+
 With Microsoft Team's rich web canvas tabs, your app can display web site information to users in a personal context.  While the configurable tabs options allows team owners to configure and pin the exact information required to help team members best interact with your experience, static tabs can be used to display non-configurable or even personal content outside the channel construct.
 
 Like our Team help bot T-Bot, you can add one or more tabs in your bot conversation channel.  This is simply web content that you host, relevant for your experience, like FAQs, help or other general information for users of your experience.
