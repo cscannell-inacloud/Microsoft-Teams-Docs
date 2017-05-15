@@ -19,12 +19,13 @@ This will likely only be true if your tenant admin has configured your app in Az
 If your app cannot silently authenticate the user against Azure AD, or if your app uses a identity provider other than Azure AD, it will need to authenticate the user in a pop up window.  You must use the [Microsoft Teams Tab Library](jslibrary.md) to do this, so that it works successfully in both the web and desktop apps for Microsoft Teams.  
 
 1. Add UI to your configuration or content page to enable the user to sign in when necessary.
-2. When the user selects to sign in, call `microsoftTeams.authentication.authenticate({url: <auth URL>, width: <width>, height: <height>, successCallback: <successCallback>, failureCallback: <failureCallback>})`.
+2. Add the domain of your auth URL to the [`validDomains`](schema.md#validdomains) section of the manifest.  Failure to do so may result in an empty pop up.
+3. When the user selects to sign in, call `microsoftTeams.authentication.authenticate({url: <auth URL>, width: <width>, height: <height>, successCallback: <successCallback>, failureCallback: <failureCallback>})`.
 	
 	This launches the pop-up window for the specified identity provider, so the user can sign in. Once the user has completed their authentication, the pop-up window will be redirected to the callback page you specified for your app. 
-3. In your app's callback page, call `microsoftTeams.authentication.notifySuccess()` or `microsoftTeams.authentication.notifyFailure()`.
+4. In your app's callback page, call `microsoftTeams.authentication.notifySuccess()` or `microsoftTeams.authentication.notifyFailure()`.
 	
 	This will result in a callback to the successCallback or failureCallback function that you registered in step two, inside the original configuration or content page.  
-4. If successful, you can now refresh or reload the page and show the configuration or content relevant to the now-authenticated user. If authentication fails, display an error message.
+5. If successful, you can now refresh or reload the page and show the configuration or content relevant to the now-authenticated user. If authentication fails, display an error message.
 
 
