@@ -40,6 +40,7 @@ Alternatively, you can issue a POST request to the [`/conversations/{conversatio
 Note: at this point, bots in Microsoft Teams cannot initiate 1:many / group conversations.
 
 ### Example (.NET SDK)
+
 ```csharp
 //Helper class:
 public class ChannelData
@@ -82,6 +83,7 @@ Mentions are returned in the `entities` object in payload, and contain both the 
 Per above, all messages your bot receives will have its name in the channel, and should accomodate that in its message parsing.
 
 #### Sample code - check for and strip @bot mention (.NET SDK)
+
 ```csharp
 Mention[] m = sourceMessage.GetMentions();
 var messageText = sourceMessage.Text;
@@ -99,6 +101,7 @@ for (int i = 0;i < m.Length;i++)
 ```
 
 #### Sample code - check for and stript @bot mention (Node.js)
+
 ```javascript
 
 var text = message.text;
@@ -198,4 +201,5 @@ session.send(generalMessage);
 ```
 
 ### Accessing team context
-Your bot can do more than send and receive messages in teams. Visit the section on the [bot APIs](botapis.md) to learn more.
+
+Your bot can do more than send and receive messages in teams. For instance, it can also fetch the list of team members, including their profile information, as well as the list of channels. Visit the section on the [bot APIs](botapis.md) to learn more.

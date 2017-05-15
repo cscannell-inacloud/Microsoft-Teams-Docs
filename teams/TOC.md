@@ -33,6 +33,7 @@
 ### [Submission guidance](submissionguidance.md)
 ### [Submission checklist](submissionchecklist.md)
 ## [Troubleshooting](troubleshooting.md)
+## [Rate limits](ratelimiting.md)
 # [Custom bots](custombot.md)
 # [JavaScript library API reference](jslibrary.md)
 # [FAQ](faq.md)
