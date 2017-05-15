@@ -71,40 +71,6 @@ You may also wish to send a 1:1 message to each member of the team when the bot 
 
 For more best practices, see our [design guidelines](design.md).
 
-## Teams channel data
-
-Teams-specific information is sent and received in the `channelData` object:.
-
-* `channel` - this object is passed only in channel contexts, when the bot is @mentioned or for events in channels in teams where the bot has been added.
-    - `id` - the GUID for the channel.
-    - `name` - the channel name, passed only in cases of [channel modification events](botevents.md). 
-* `eventType` - Teams event type - passed only in cases of [channel modification events](botevents.md).
-* `team` - this object is passed only in channel contexts, not 1:1.
-    - `id` - the GUID for the channel.
-    - Note: there is no name value being passed at this time
-* `tenant.id` - the O365 tenant id on which Teams is running.  This is passed in all contexts.
-
->**Note:** the payload also contains `channelData.teamsTeamId` and `channelData.teamsChannelId` properties for backwards compatibility.  These should be considered deprecated.
-
-Please note that `channelData` should be used as the definitive information for team and channel Ids, for your use in cacheing and utilizing as key local storage.
-
-#### Example channelData object (channelCreated event)
-```json
-"channelData": {
-    "channel": {
-        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype",
-        "name": "My New Channel"
-    },
-    "eventType": "channelCreated",
-    "team": {
-        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype"
-    },
-    "tenant": {
-        "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-    }
-}
-```
-
 ## Mentions
 
 Bots in a channel only respond when they themselves are @mentioned in a message.  That means every message received by a bot in a channel contains its own name, and you must make sure your message parsing handles that case (see below for sample).  In addition, bots can parse out other users @mentioned and @mention users as part of their message as well.

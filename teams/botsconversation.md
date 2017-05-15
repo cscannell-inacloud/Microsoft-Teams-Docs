@@ -65,6 +65,48 @@ Your bot will recieve a payload that contains the user message `Text` as well as
 ```
 >Note: the text field for inbound messages sometimes contains @ mentions. Make sure to properly check and strip those. For more info see the mentions section [here](botsinchannels.md)
 
+## Teams channel data
+
+Teams-specific information is sent and received in the `channelData` object:.
+
+* `channel` - this object is passed only in channel contexts, when the bot is @mentioned or for events in channels in teams where the bot has been added.
+    - `id` - the GUID for the channel.
+    - `name` - the channel name, passed only in cases of [channel modification events](botevents.md). 
+* `eventType` - Teams event type - passed only in cases of [channel modification events](botevents.md).
+* `team` - this object is passed only in channel contexts, not 1:1.
+    - `id` - the GUID for the channel.
+    - Note: there is no name value being passed at this time
+* `tenant.id` - the O365 tenant id on which Teams is running.  This is passed in all contexts.
+
+>**Note:** the payload also contains `channelData.teamsTeamId` and `channelData.teamsChannelId` properties for backwards compatibility.  These should be considered deprecated.
+
+Please note that `channelData` should be used as the definitive information for team and channel Ids, for your use in cacheing and utilizing as key local storage.
+
+#### Example channelData object (channelCreated event)
+```json
+"channelData": {
+    "channel": {
+        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype",
+        "name": "My New Channel"
+    },
+    "eventType": "channelCreated",
+    "team": {
+        "id": "19:693ecdb923ac4458a5c23661b505fc84@thread.skype"
+    },
+    "tenant": {
+        "id": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    }
+}
+```
+
+#### .NET SDK sample
+The Teams .NET SDK provides a specialized TeamsChannelData object, which exposes properties to access Teams-specific information.
+
+```csharp
+TeamsChannelData channelData = activity.GetChannelData<TeamsChannelData>();
+string tenantId = channelData.Tenant.Id;
+```
+
 ## Replying to messages
 In order to reply to an existing message, call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or `session.send` in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The Bot Framework SDK handles all the details.
 
