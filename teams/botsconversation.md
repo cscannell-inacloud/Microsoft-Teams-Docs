@@ -1,16 +1,8 @@
 ﻿# Sending and receiving messages
 
-Bots in Microsoft Teams allow sending messages in either personal conversations with a single user or a group conversation in a Teams channel.  
+Bots in Microsoft Teams allow sending messages in either personal conversations with a single user or a group conversation in a Teams channel.
 
-## Initiating a conversation
-
-Microsoft Teams currently supports four methods for conversation:
-* One-on-One Response - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
-* One-on-One Direct messages - Your bot can create 1:1 conversations with users.  This will allow your bot to proactively notify them.
-* In Channel Response - A bot can be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
-* In Channel Conversation Creation - A bot in a channel may also initiate a new conversation in a channel.
-
-Note that bots in private group chats are currently not supported.
+>Note: bots in private group chats are currently not supported.
 
 ## Conversation basics
 
@@ -20,6 +12,10 @@ For further review on the types of bot interaction supported by the Bot Framewor
 
 ### Receiving messages
 
+Depending on which scopes have been declared, your bot can receive messages in the following contexts:
+* 1:1 chat - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
+* Channels - A bot can be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
+
 For incoming messages, your bot will receive an [Activity](https://docs.botframework.com/en-us/core-concepts/reference/#activity) object, of type `message`.  While the Activity object may contain other types of information, like [channel events sent to your bot](botevents.md), the `message` type represents communication between bot and user.
 
 Your bot will recieve a payload that contains the user message `Text` as well as other information about the user, the source of the message and Teams information.  Of note:
@@ -28,7 +24,7 @@ Your bot will recieve a payload that contains the user message `Text` as well as
 * `channelData.tenant.id` - this is the tenant id for the user
 
 #### Full inbound Schema example
- 
+
 ```json
 {
     "type": "message",
@@ -185,7 +181,7 @@ function sendCardUpdate(bot, session, originalMessage, address) {
 ## Creating a new conversation
 
 You can create a new 1:1 conversation with a user or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without having them first initiate contact with your bot.  For more information see:
-* [Creating a new 1:1 conversation](bots1on1.md#Starting-a-1:1-conversation)
+* [Creating a new 1:1 conversation](bots1on1.md#starting-a-11-conversation)
 * [Creating a new channel conversation](botsinchannels.md#creating-new-channel-conversations)
 
 ## Deleting messages
