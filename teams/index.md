@@ -45,6 +45,8 @@ While bots can take advantage of the rich natural language processing provided b
 
 ### Compose Extensions
 
+>[Public Developer Preview only](publicpreview.md)
+
 Leverage the power of your web service to provide a quick and easy way for your users to insert your content into the chat stream.
 
 [Get started with compose extensions.](composeextensions.md)
@@ -53,7 +55,9 @@ Leverage the power of your web service to provide a quick and easy way for your 
 
 ### Connectors
 
-Office 365 Connectors are a great way to get useful information and content into Microsoft Teams. Any user can connect their group to services like Trello, Bing News, Twitter, etc., and get notified of the team's activity in that service. From tracking a team's progress in Trello, to following important hashtags in Twitter, Office 365 Connectors make it easier for teams to stay in sync and get more done.
+>[Public Developer Preview only](publicpreview.md)
+
+Office 365 Connectors are a great way to get useful information and content into Microsoft Teams.
 
 You can integrate your service by posting rich Connector cards into custom incoming webhooks.
 
