@@ -110,7 +110,7 @@ string tenantId = channelData.Tenant.Id;
 
 In order to reply to an existing message, call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or `session.send` in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The Bot Framework SDK handles all the details.
 
-If you choose to use the REST API, you can also call the [/conversations/{conversationId}/activities/{activityId}`](https://docs.botframework.com/en-us/restapi/connector/#/Conversations) endpoint.  
+If you choose to use the REST API, you can also call the `/conversations/{conversationId}/activities/{activityId}` [endpoint](https://docs.botframework.com/en-us/restapi/connector/#/Conversations).  
 
 The message content itself can contain simple text or some of the Bot Framework-supplied [cards and action types](botsmessages.md).
 
@@ -124,7 +124,7 @@ Rather than have your messages be static snapshots of data, your bot can now dyn
 
 The new message need not match the original in type. For instance, if the original message contained an attachment, the new message can be a simple text message.
 
-### Rest API
+### REST API
 
 To issue a message update, simply perform a PUT request against the `/v3/conversations/<conversationId>/activities/<activityId>/` endpoint using a given activity ID. To complete this scenario, you should cache the activity ID returned by the original POST call.
 
