@@ -8,7 +8,7 @@ Bots added to a team become another team member, who can be @mentioned as part o
 
 A bot in a channel should provide information relevant and appropriate for all members of the team.  While your bot can certainly provide any information relevant to the experience, keep in mind conversations with it are visible to all members of the channel.  Therefore, a great bot in a channel should add value to all users on the channel, and certainly not inadvertantly share information that would otherwise be more relevant in a personal context. 
 
-Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  See [here](teamsapps.md) for more information on scopes.
+Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Teams](teamsapps.md#context-in-teams-apps).
 
 # Develop your bot
 
@@ -233,19 +233,28 @@ session.send(generalMessage);
 
 
 ## Fetching the team roster
-Your bot can query for the list of team members. With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `team.id` retrieved from the `channelData` of the inbound schema.
+Your bot can query for the list of team members. With the BotBuilder-Teams SDK, call  [`GetTeamsConversationMembersAsync()` in the .NET SDK](https://www.nuget.org/packages/Microsoft.Bot.Connector.Teams/) or [`FetchMemberList()` in the Node SDK](https://www.npmjs.com/package/botbuilder-teams) to return a list of user Ids for the `team.id` retrieved from the `channelData` of the inbound schema.
 
 #### .NET SDK sample
 
 ```csharp
-ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
+// Fetch the members in the current conversation
+var connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+var members = await connector.Conversations.GetTeamsConversationMembersAsync(activity.Conversation.Id, activity.GetTenantId());
 
-replyMessage.Text = "These are the member userids returned by the GetConversationMembers() function:";
-
-for (int i = 0; i < members.Length; i++)
+// Concatenate information about all the members into a string
+var sb = new StringBuilder();
+foreach (var member in members)
 {
-    replyMessage.Text += "<br />" + members[i].Id; //Not currently supported: members[i].Name;
+    sb.AppendFormat(
+        "GivenName = {0}, Surname = {1}, Email = {2}, UserPrincipalName = {3}, AADObjectId = {4}, TeamsMemberId = {5}",
+        member.GivenName, member.Surname, member.Email, member.UserPrincipalName, member.ObjectId, member.Id);
+    
+    sb.AppendLine();
 }
+
+// Post the member info back into the conversation
+await context.PostAsync($"People in this conversation: {sb.ToString()}");
 ```
 
 #### Node SDK sample
