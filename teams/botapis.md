@@ -5,14 +5,17 @@ Your bot can access additional context about the team or chat, such as user prof
 
 ## Fetching the team roster
 
-Your bot can query for the list of team members. With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `team.id` retrieved from the `channelData` of the inbound schema.
+Your bot can query for the list of team members and their basic profile, which includes Teams user ID and Azure ActiveDirectory information such as name and objectId. You can use this information to correlate user identities, for example to check if a user logged into a tab through AAD credentials is a member of the team.
 
 #### REST API sample
 
 You can directly issue a GET request to [`/conversations/{teamId}/members/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_GetConversationMembers) resource using the `teamId` as the parameter in the API call.
 
+>Note: You must include the tenant ID in the X-MsTeamsTenantId HTTP request header. You can obtain the tenant ID from the `channelData` when your bot is first added to a team.
+
 ```json
 GET /v3/conversations/19:ja0cu120i1jod12j@skype.net/members
+X-MsTeamsTenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
 
 Response body
 [{
@@ -40,6 +43,8 @@ Response body
 ```
 
 #### .NET SDK sample
+
+With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `Team.Id` and `Tenant.Id` retrieved from the `channelData` of the inbound schema.
 
 ```csharp
 ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
