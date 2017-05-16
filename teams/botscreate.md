@@ -16,5 +16,5 @@ See the [Microsoft Bot Framework Overview](https://docs.botframework.com/en-us/)
 To make your bot experience Teams ready:
 
 5. [Create a sideloadable bot package](createpackage.md) and [sideload it to a team](sideload.md) to test it in action.
-6. [Add static tabs](statictab.md) or [other extensibility options](appcapabilities.md) to make your experience shine in Teams.
+6. [Add tabs](tabs.md) or [other extensibility options](index.md) to make your experience shine in Teams.
 7. [Submit your final app package](submission.md) for publication in the Office Store.

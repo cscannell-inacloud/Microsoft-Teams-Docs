@@ -3,20 +3,22 @@
 >Note: Activity feed support is available in [Public Developer Preview](publicpreview.md) only.  Additionally, many features in this document are under construction, and as such, subject to change.
 
 
-The Activity Feed in Microsoft Teams is a single inbox for all activity related to your activity across Teams.  It aggregates important content from:
+The Activity Feed in Microsoft Teams is the user's single inbox for all activity across Teams.  The feed aggregates important content from:
 * Teams/channels
 * Chats
 * Apps such as Files, Planner and your Teams app
 
-You can now create preview cards to summary app activity, and even surface quick actions such as approve/decline, mark as done, or any other task relevant for your experience.  Clicking on the card can also deep link the user straight to the message or object that triggered the notification, so you can see the full content of the activity.
+If your app posts cards and other messages into a channel, they'll automatically show up in the user's feed if he or she has followed that channel.
+
+Additionally, you can also send personal (1:1 chat) messages into the feed as preview cards summarizing your app's activity.  You can construct the message such that clicking on the card navigates the user straight to the message or object that triggered the notification, such as an entity in a tab.  This allows the user to see the full content of the activity.
 
 ## Sending content to the Activity Feed
 
-Activity feed notification leverages your bot, built for Microsoft Teams using the Bot Framework.  You can flag specific messages to generate notifications which appear in the Activity Feed. This allows generating higher levels of engagement by creating alerts on web/desktop and mobile apps.
+Activity feed notification leverages your existing integration with the Bot Framework APIs.  You can flag specific messages to generate notifications which appear in the Activity Feed. This allows generating higher levels of engagement by creating alerts on web/desktop and mobile apps.
 
 In addition to simply appearing in the feed, your app can also encode a deep link URL to an entity, such as your app’s tab. This drives user engagement to your app’s tab by allowing one-click navigation to that tab’s content.
 
-### Rest API
+### REST API
 
 For a message to be eligible to be included in the feed, simply mark an existing bot message with a special property, which indicates it should generate a notification:
 
@@ -60,8 +62,8 @@ POST /v3/conversations/a%3A1pL6i0oY3C0K8oAj8/activities/1493070356924
 
 ## Deep linking
 
-To deep link to content within a tab, your message must include an attachment with a tap action. This tap action should be of type `OpenUrl` and have a value that follows the [Microsoft Teams deep linking format](deeplinks.md).
+To navigate the user to content within your tab, your message must include an attachment with a tap action. This tap action should be of type `OpenUrl` and have a value that follows the [Microsoft Teams deep linking format](deeplinks.md).
 
-Note: if the deep link does not follow the Teams format, then clicking on the notification in the Feed will navigate the user first to the chat with the bot. From there, the user can engage the attachment’s tap action to navigate to an external website.
+>Note: if the deep link does not follow the Teams format, then clicking on the notification in the Feed will navigate the user first to the chat with the bot. From there, the user can engage the attachment’s tap action to navigate to an external website.
 
 

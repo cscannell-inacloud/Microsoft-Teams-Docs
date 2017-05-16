@@ -1,33 +1,39 @@
 # Apps in Microsoft Teams
 
-Apps in Microsoft Teams allow you to make your services available to users in contexts that make sense, all through one Teams App package that users can acquire through our in-product gallery, via the Office Store, or sideloaded directly by a team.  Whether assisting in chat with a bot or compose extension, or creating a rich web view of the content channel members care about, Teams provides a single packaging option for you to create new or leverage existing functionality within the Microsoft Teams experiences.
+Apps in Microsoft Teams allow you to make your service available to users in the contexts - or "scopes" - that make the most sense.
 
-## Apps bar
+* You can use most app capabilities (such as bots, tabs, etc) in most scopes. 
+
+* You offer these capabilities via a single Teams app package that users can acquire through our in-product app gallery, via the Office Store, or sideloaded directly by your team.
+
+* You declare precisely which capabilities you support, in which scopes, via your app package's [manifest file](schema.md).
+
+## App bar (personal scope)
 
 >New feature
 
-The Apps button on the left-hand navagation bar launches the Apps bar. We designed the Apps bar to serve as the central location giving users quick access to the features that they use the most.  Users can also discover and add new Microsoft Teams apps through the "Discover apps" button.  
-
-All apps added by a user or included in any of their teams can be accessed from this one central location. This allows users to get quick access to their personal contexts with that app, showing, for example, their 1:1 conversations with the application's bot or static tabs.
+The app bar is the area on the left side of Microsoft Teams where the user's activity feed, chat, teams, files, and meetings buttons live. We designed the app bar to serve as a central container giving users quick access to the features that they use the most.
 
 ![Microsoft Teams Apps bar](images/appbar_apps_flyout.png)
 
-## Context in Team Apps
+Users can access personal experiences from your app via the app bar, such as holding personal conversations with your app's bot or interacting with personal data in the a tab.
 
-Teams apps are context-aware, and you can control which contexts, or "scopes", your experience will support.  "Personal" scoped apps appear in an individual context, via the app bar or with bots in one-on-one conversations.  "Team" scoped apps appear within team channels, for example with configurable tabs or bots as team members.  You designate which scopes your app supports via the `scopes` object for each capability in your app's [manifest file](schema.md).
+<!-- TODO screenshot of personal UIs bot and tab  -->
 
-Please note that these are non-exclusive options - one or both can be chosen, and can be independently set for each capability type.  Also note that not all capability types support both scopes, so please review the [capability](appcapabilities.md) information for more on scope behavior.
+## Interacting in channels (team scope)
 
-For advice on providing a great Microsoft Teams app experience in either or both scopes, please review our [design guidelines](design.md).
+Users can access team experiences from your app in a channel, such as @mentioning your app's bot, configuring notififcations via a Connector, or interacting with team data in a tab.  
 
-## Building an app
+<!-- TODO screenshot of team UIs, bot and tab -->
+
+## Building your app
 
 Ready to get started adding your experience into Teams?  Follow these steps:
 
 ### Build your app's rich capabilities
 * [Set up for development](setup.md).
-* Define [capabilities](appcapabilities.md).
-* Code your app.
+* [Design your app](design.md).
+* Code your app's [tab](tabs.md), [bot](bots.md), [Connector](connectors.md), [compose extension](composeextensions.md) and [activity feed integration](activityfeed.md).
 
 ### Package & test your app within Teams
 * [Create package](createpackage.md).

@@ -50,7 +50,7 @@ For full details on the available options on cards, see [Office 365 Connectors A
 
 # Publish your Connector
 
-With Microsoft Teams apps, you can distribute your [Connector Developer Portal](https://go.microsoft.com/fwlink/?LinkID=780623) registered Connector as part of your app package.  Whether as a standalone solution, or one of several [capabilities](appcapabilities.md) your experience enables in Teams, you can [package](createpackage.md) and [submit](submission.md) your Connector as part of your Store submission, or provide to users directly for sideload within teams.
+With Microsoft Teams apps, you can distribute your [Connector Developer Portal](https://go.microsoft.com/fwlink/?LinkID=780623) registered Connector as part of your app package.  Whether as a standalone solution, or one of several [capabilities](index.md) your experience enables in Teams, you can [package](createpackage.md) and [submit](submission.md) your Connector as part of your Store submission, or provide to users directly for sideload within teams.
 
 To add your Connector as part of your Teams app package, include the `connector` block in your manifest.json file:
 ```json

@@ -8,6 +8,8 @@ In this page, you present the main function of your tab, following the [design r
 
 ![Tab with iframed content highlighted.](images/tab_content.png)
 
+<!-- TODO: fix to use latest sample app, and remove note when done --> 
+
 ## Prerequisites for content displayed in your tab
 
 For your content to display within a Microsoft Teams tab, make sure it meets the [requirements for tab pages](prerequisites.md).
