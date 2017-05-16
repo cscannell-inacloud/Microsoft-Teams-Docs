@@ -20,7 +20,7 @@ Activity feed notification leverages your existing integration with the Bot Fram
 
 In addition to simply appearing in the feed, your app can also encode a deep link URL to an entity, such as your app’s tab. This drives user engagement to your app’s tab by allowing one-click navigation to that tab’s content.
 
-### Rest API
+### REST API
 
 For a message to be eligible to be included in the feed, simply mark an existing bot message with a special property, which indicates it should generate a notification:
 
