@@ -197,7 +197,7 @@ Note: You should authenticate any request to your service.  Visit this [link](ht
   },
   "recipient": {
     "id": "28:b4922ea1-5315-4fd0-9b21-d941ab06e39f",
-    "name": "YouTubeComposeExtensionDev"
+    "name": "TheComposeExtensionDev"
   },
   "entities": [
     {
