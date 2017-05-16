@@ -2,9 +2,11 @@
 
 Tabs in Microsoft Teams allow you to display rich interactive web content.  You can build a Microsoft Teams tab from scratch or by adapting your existing web app experience.
 
-Microsoft Teams supports tabs in two different contexts:
-* Configurable Tabs, for use in channels, allow teams to configure the content of your tab experience when the tab is first added to a channel.
-* Static Tabs, for use in individual contexts, allow users to interact with your experience privately, outside the context of a team.
+Microsoft Teams supports tabs in two different [scopes](teamsapps.md):
+* Team scope: Tabs in channels allow teams to interact with your shared experience.  Currently, all tabs in channels are "configurable tabs" where a user configures the content of your tab experience when the tab is first added to a channel.
+* Personal scope: Personal tabs allow users to interact with your experience privately, via the app bar.  Currently, all personal tabs are "static tabs" that are always present and cannot be added or removed.
+
+<!-- TODO screenshot of team and personal task lists from sample app -->
 
 ## Overview of building a Microsoft Teams tab
 
@@ -21,5 +23,5 @@ Follow these steps to build a tab:
 	* You can enable users to create and share [deep links to items within your tab](deeplinks.md) - such as links an individual task within a tab that contains a task list.
 
 ### For Static Tabs
-*  [Create your static tab app identity](statictab.md): Static tabs host web content you already provide, and is great for a personal user-focused view of your app experience.  These tabs will show up in user's personal context.
+*  [Create your static tab app identity](statictab.md): Static tabs are declared directly in your app package's manifest.
 *  [Create the content page:](createcontentpage.md) Microsoft Teams displays this content page when the user visits your tab. Content in a Static tab is subject to the same constraints as a Configurable tab.

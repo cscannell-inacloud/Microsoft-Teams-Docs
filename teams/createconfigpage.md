@@ -20,6 +20,8 @@ On save, the code determines which radio button was checked, and sets the variou
 
 With this as a simple example, let's walk through the steps your configuration page needs to perform to load your tab content.
 
+<!-- TODO: fix to use latest sample app --> 
+
 ```HTML
 <html>
 <body>

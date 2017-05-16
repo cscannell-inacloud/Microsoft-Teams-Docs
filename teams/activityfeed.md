@@ -8,7 +8,7 @@ The Activity Feed in Microsoft Teams is a single inbox for all activity related 
 * Chats
 * Apps such as Files, Planner and your Teams app
 
-You can now create preview cards to summary app activity, and even surface quick actions such as approve/decline, mark as done, or any other task relevant for your experience.  Clicking on the card can also deep link the user straight to the message or object that triggered the notification, so you can see the full content of the activity.
+You can now create preview cards to summarize app activity, and even surface quick actions such as approve/decline, mark as done, or any other task relevant for your experience.  Clicking on the card can also deep link the user straight to the message or object that triggered the notification, so you can see the full content of the activity.
 
 ## Sending content to the Activity Feed
 
