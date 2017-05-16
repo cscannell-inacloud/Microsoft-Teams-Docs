@@ -182,7 +182,7 @@ function sendCardUpdate(bot, session, originalMessage, address) {
 
 You can create a new 1:1 conversation with a user or start a new reply chain in a channel for your team bot.  This allows you to message your user(s) without having them first initiate contact with your bot.  For more information see:
 * [Creating a new 1:1 conversation](bots1on1.md#starting-a-11-conversation)
-* [Creating a new channel conversation](botsinchannels.md#creating-new-channel-conversations)
+* [Creating a new channel conversation](botsinchannels.md#creating-new-channel-conversation)
 
 ## Deleting messages
 
