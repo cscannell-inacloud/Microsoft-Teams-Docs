@@ -100,7 +100,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-#### Sample code - check for and stript @bot mention (Node.js)
+#### Sample code - check for and strip @bot mention (Node.js)
 
 ```javascript
 
