@@ -61,12 +61,13 @@ In the app manifest, each command item is an object with the following structure
 | Property name | Purpose | Required? |
 |---|---|---|
 | `id` | Unique ID that you assign to this command.  The user request will include this ID | Y |
-| `title` | Command name.  This should be a user-friendly value | Y |
-| `description` | String that appears to users to indicate the purpose of this command | Y |
+| `title` | Command name.  This value appears in the UI. | Y |
+| `description` | Help text indicating what this command does. This value appears in the UI. | Y |
 | `initialRun` | If set to true, indicates this command should be executed as soon as the user chooses this command in the UI | N |
 | `parameters` | List of parameters | Y |
-| `parameter.name` | The name of the parameter as it appears in the client.  This is included in the user request. | Y |
-| `parameter.description` | User-friendly string that describes this parameter’s purposes. | Y |
+| `parameter.name` | The name of the parameter.  This is sent to your service in the user request. | Y |
+| `parameter.description` | Describes this parameter’s purposes or example of the value that should be provided. This value appears in the UI. | Y |
+| `parameter.title` | Short user-friendly parameter title or label | Y |
 
 #### Complete app manifest example
 ```json
@@ -107,9 +108,9 @@ In the app manifest, each command item is an object with the following structure
           "title": "Search",
           "initialRun": "true",
           "parameters": [{
-	      "name": "searchKeyword",
-	      "description": "Search keywords",
-             "title": "Search keywords"
+            "name": "searchKeyword",
+            "description": "Enter your search keywords",
+            "title": "Keywords"
           }]
         }
       ]
@@ -382,7 +383,7 @@ At this point, the window will be closed and control is passed to the Teams clie
 {
     "name": "composeExtension/query",
     "value": {
-        "commandId": "insertWikipedia",
+        "commandId": "insertWiki",
         "parameters": [{
             "name": "searchKeyword",
             "value": "lakers"
