@@ -20,7 +20,9 @@ Building a compose extension involves implementing familiar Microsoft Teams deve
 
 At its core, a compose extension is a cloud-hosted service that listens to user requests and responds with either structured data (cards) or rich media.  You integrate your service with Microsoft Teams via the bot framework APIs, which establishes the protocol for receiving and replying to user requests.
 
+
 !["Compose extension message flow diagram."](images/ComposeExtension/CEFlow.png)
+
 
 ## Register in the Bot Framework
 
