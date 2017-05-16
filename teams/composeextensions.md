@@ -35,6 +35,7 @@ As with bots and tabs, you will update your app’s [manifest]() to include the 
 To add a compose extension, simply include a new top-level JSON structure in your manifest with the `inputExtensions` property.  As with other app capabilities, this is an array that takes one or more capability definitions.
 
 Each extension definition is an object that has the following structure:
+
 | Property name | Purpose | Required? |
 |---|---|---|
 | `botId` | Bot framework app ID | Y |
@@ -54,6 +55,7 @@ The Teams UI will also surface the commands and suggest them via type-down when 
 !["Compose extension UI pop-up, showing the search results / suggestions."](images/ComposeExtension/CESuggest.png)
 
 In the app manifest, each command item is an object with the following structure:
+
 | Property name | Purpose | Required? |
 |---|---|---|
 | `id` | Unique ID that you assign to this command.  The user request will include this ID | Y |
@@ -140,21 +142,21 @@ In addition to the standard bot activity properties, the payload will contain th
 
 |Property name|Purpose|
 |---|---|
-|`type`|Will be `invoke`|
-|`name`|Type of command that is issued to your service.  For now, the only valid value will be `composeExtension/query`|
-|`from.id`|ID of the user that sent the request|
-|`from.name*`|Name of the user that sent the request|
-|`channelData.tenant.id*`|Azure ActiveDirectory tenant ID|
-|`channelData.channel.id*`|If the request was made in a channel, this will be the channel ID|
-|`channelData.team.id*`|If the request was made in a channel, this will be the team ID|
-|`clientInfo`|entity Additional metadata about the user’s client, such as locale/language and the type of client|
+|`type`| Will be `invoke` |
+|`name`| Type of command that is issued to your service.  For now, the only valid value will be `composeExtension/query` |
+|`from.id`| ID of the user that sent the request |
+|`from.name`| Name of the user that sent the request |
+|`channelData.tenant.id`| Azure ActiveDirectory tenant ID |
+|`channelData.channel.id`| If the request was made in a channel, this will be the channel ID |
+|`channelData.team.id`| If the request was made in a channel, this will be the team ID |
+|`clientInfo`| entity Additional metadata about the user’s client, such as locale/language and the type of client |
 
 
 The request parameters itself will be found in the value object, which includes the following properties:
 
 | Property name | Purpose |
 |---|---|
-| `commandId` |T he name of the command invoked by the user, matching one of declared commands in the app manifest |
+| `commandId` | The name of the command invoked by the user, matching one of declared commands in the app manifest |
 | `parameters` | Array of parameters.  Each parameter object contains the parameter name, along with the parameter value provided by the user |
 | `queryOptions` | Pagination parameters: <br>`skip`: skip count for this query<br>`count`: number of elements to return |
 
