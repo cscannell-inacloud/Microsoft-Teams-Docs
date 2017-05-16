@@ -54,7 +54,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
       "scopes": [ "team", "personal" ],
       "commandLists": [
         {
-          "properties": "team",
+          "scopes": ["team"],
           "commands": [
             {
               "title": "Command 1",
@@ -67,7 +67,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
           ]
         },
         {
-          "properties": "personal",
+          "scopes": ["personal"],
           "commands": [
             {
               "title": "Personal command 1",
