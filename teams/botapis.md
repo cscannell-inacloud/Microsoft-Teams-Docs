@@ -44,17 +44,26 @@ Response body
 
 #### .NET SDK sample
 
-With the BotBuilder SDK, call  [`GetConversationMembersAsync()` in the .NET SDK](https://docs.botframework.com/en-us/csharp/builder/sdkreference/d7/d08/class_microsoft_1_1_bot_1_1_connector_1_1_conversations_extensions.html#a0a665865891d485956e52c64bce84d4b) to return a list of user Ids for the `Team.Id` and `Tenant.Id` retrieved from the `channelData` of the inbound schema.
+With the new Teams .NET SDK, call `GetTeamsConversationMembersAsync()` using `Team.Id` and `Tenant.Id` obtained from `channelData` to return a list of user Ids.
 
 ```csharp
-ChannelAccount[] members = connector.Conversations.GetConversationMembers(sourceMessage.Conversation.Id);
+// Fetch the members in the current conversation
+var connector = new ConnectorClient(new Uri(activity.ServiceUrl));
+var members = await connector.Conversations.GetTeamsConversationMembersAsync(activity.Conversation.Id, activity.GetTenantId());
 
-replyMessage.Text = "These are the member userids returned by the GetConversationMembers() function:";
-
-for (int i = 0; i < members.Length; i++)
+// Concatenate information about all the members into a string
+var sb = new StringBuilder();
+foreach (var member in members)
 {
-    replyMessage.Text += "<br />" + members[i].Id; //Not currently supported: members[i].Name;
+    sb.AppendFormat(
+        "GivenName = {0}, Surname = {1}, Email = {2}, UserPrincipalName = {3}, AADObjectId = {4}, TeamsMemberId = {5}",
+        member.GivenName, member.Surname, member.Email, member.UserPrincipalName, member.ObjectId, member.Id);
+    
+    sb.AppendLine();
 }
+
+// Post the member info back into the conversation
+await context.PostAsync($"People in this conversation: {sb.ToString()}");
 ```
 
 #### Node SDK sample
