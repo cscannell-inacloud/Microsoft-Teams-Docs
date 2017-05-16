@@ -12,9 +12,9 @@ Other than their hexagonal avatar icon, bots appear just like any other team mem
 
 Bots in Teams can surface in a 1:1 context ("personal scope"), as a member of a team ("team scope"), or both.  For the latter, they only take part in a conversation when you @mention them.  For the former, you can address them via the conversation interface, or access them in the apps personal experience from the app bar flyout.
 
-With Microsoft Teams apps, you can choose make the bot the star of your experience, or just a helper.  They will be distributed as part of your broader app package, which may include other [capabilities](appcapabilities.md) such as tabs or compose extensions.
+With Microsoft Teams apps, you can choose make the bot the star of your experience, or just a helper.  They will be distributed as part of your broader app package, which may include other capabilities such as tabs or compose extensions.
 
-If you bot is the star, be sure to take advantage of the [static tabs](statictab.md) capability as well. Use this rich web view to show information about your bot, such as FAQs, help or other information that helps your users best interact with your service.
+If you bot is the star, be sure to take advantage of the [tabs](tabs.md) capability as well. Use this rich web view to surface accompanying experiences and information that helps your users best interact with your service.
 
 
 ## Overview of building a Microsoft Teams bot

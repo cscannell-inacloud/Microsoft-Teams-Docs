@@ -202,4 +202,5 @@ session.send(generalMessage);
 
 ### Accessing team context
 
+
 Your bot can do more than send and receive messages in teams. For instance, it can also fetch the list of team members, including their profile information, as well as the list of channels. Visit the section on the [bot APIs](botapis.md) to learn more.
