@@ -56,7 +56,7 @@ POST /v3/conversations/a%3A1pL6i0oY3C0K8oAj8/activities/1493070356924
     "name": "User"
   },
   "text": "John Phillips assigned you a weekly todo",
-  "summary": "Don\'t forget to meet with Marketing next week",
+  "summary": "Don't forget to meet with Marketing next week",
   "channelData": {
     "notification": {
       "alert": true
