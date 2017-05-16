@@ -8,7 +8,7 @@ Bots added to a team become another team member, who can be @mentioned as part o
 
 A bot in a channel should provide information relevant and appropriate for all members of the team.  While your bot can certainly provide any information relevant to the experience, keep in mind conversations with it are visible to all members of the channel.  Therefore, a great bot in a channel should add value to all users on the channel, and certainly not inadvertantly share information that would otherwise be more relevant in a personal context. 
 
-Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Teams](teamsapps.md#context-in-team-apps).
+Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Teams](teamsapps.md).
 
 # Building your bot
 
@@ -68,7 +68,7 @@ var result = await connector.Conversations.CreateConversationAsync(conversationP
 
 When your bot is first added to the team, it is a best practice to send a Welcome Message to the team, to introduce it to all users of the team, and tell a bit about its functionality.  To do this, make sure your bot responds to the `conversationUpdate` message, with the `teamsAddMembers` eventType in the `channelData` object.  Note that you must ensure that the `memberAdded` id is the Bot id itself, as the same event is sent when a new user is added to a team.  See [here](botevents.md#team-member-or-bot-addition) for more details.
 
-You may also wish to send a 1:1 message to each member of the team when the bot is added.  To do this, you could [query the team roster](botsinchannels.md#fetching-the-team-roster) and send each user a [direct messages](bots1on1.md#creating-direct-messages).
+You may also wish to send a 1:1 message to each member of the team when the bot is added.  To do this, you could [query the team roster](botsinchannels.md#fetching-the-team-roster) and send each user a [direct messages](bots1on1.md#starting-a-11-conversation).
 
 For more best practices, see our [design guidelines](design.md).
 
@@ -100,7 +100,7 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
-#### Sample code - check for and stript @bot mention (Node.js)
+#### Sample code - check for and strip @bot mention (Node.js)
 
 ```javascript
 
