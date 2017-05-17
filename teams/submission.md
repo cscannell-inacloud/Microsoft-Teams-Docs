@@ -4,26 +4,30 @@
 
 Microsoft Teams Apps can now be published in the Office Store.  Teams will soon provide an in-app gallery for users to find or discover great Teams extensibility options powered by the Office store.  To have you solution available in this gallery, you must publish your solution through the Office Store process.  
 
-The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other  Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Office extensibility types.
+The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other  Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
 
 ## Register as an app developer
 
-If you have not already done so, you should create a developer account in [Microsoft Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  This account create process ensures you establish your identity in the Microsoft Marketplace ecosystem, and triggers the appropriate checks by our Marketplace team to validate your identity.
+Microsoft Store participation is based on registration within the [Microsoft/Windows Dev Center](https://developer.microsoft.com/).  If you have already registered in the Microsoft Store ecosystem, either by distributing a Windows UWA via the Windows Store or an Office or Sharepoint Add-in via the Office Store, you should use this account to distribute your Microsoft Teams app.  Otherwise, you must first [register as an app developer](https://developer.microsoft.com/en-us/store/register) to create your publisher identity in the Microsoft Store ecosystem.  Account registration allows you to secure your identity and triggers validation checks by the Microsoft Store team to ensure your are who you say you are.
 
-Account management in the Microsoft Store ecosystem relies on your [Microsoft Account](https://account.microsoft.com/account).  You'll need to create a new Microsoft account or use an existing one.  Note that this identity will be the main administrator of the Store experience.  For more information, please review the [Developer program FAQ](https://developer.microsoft.com/en-us/store/register/faq).
+Account management in the Microsoft Store ecosystem relies on your [Microsoft Account](https://account.microsoft.com/account) or Azure Active Directory account.  You'll need to create a new Microsoft account or use an existing one.  Note that this identity will be the main administrator of the Store experience.  For more information, please review the [Developer program FAQ](https://developer.microsoft.com/en-us/store/register/faq).
 
->Tip: Use an account specifically for your Store experience.  This is the main adminstrator account, and will be used for portal log in and report notification.  While you can add additional users as administrators, ensure you have a single account that can exist outside of an individual's account.  This also means you should not use any O365 Test tenant identities as these are time limited.
+>Tip: Use your Azure Active Directory (AAD) account to manage your account, or create a new one for free.  By leveraging the power of AAD, you can not only add additional users to your account, but also control what roles and products they have access to.  This is a great way to allow not only your release team access to updating your Store apps, but gives your business team access to reporting and other Dev Center information.  Note that you can easily add this functionality to an existing account too, so accounts created with an MSA can add an AAD management account to take advantage of this feature. For more information, see [Manage account users](https://docs.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+
+>**Important - If you've developed with a trial developer O365 account, do not use this for your Store identity.**  Create a new AAD account or use an Microsoft account instead.
 
 ## Register in the Seller Dashboard to submit to the Office Store
 
-There is a second approval process that happens after your Dev Center account has been created:  you need to create your identity in the Office Seller Dashboard.  While the content here should be similar to your Dev Center details, this extra step ensures the Office Store has all the required information and your identity in that storefront accurately reflects your business.
+There is a second approval process that happens after your Dev Center account has been created:  you need to create your identity in the Office Seller Dashboard.  While the content here should be similar to your Dev Center details, this extra step ensures the Office Store has all the required information, and your identity in that storefront accurately reflects your business.
 
-To click off the process, click on the "Continue" button under Office.
+If you've already submitted other product types for Office Store, this additional registration may not be necessary.
+
+To start the process, click on the "Continue" button under Office.
 
 ![Office Seller Dashboard entry point](images/submission/SellerDashboardOfficeEntry.PNG)
 
 ## Use the Seller Dashboard to submit to the Office Store
-After your account is approved, you can submit your solution to the Seller Dashboard.  Add a new Application of type Team App to initiate the submission process.
+After your account is approved, you can submit your solution to the [Seller Dashboard](http://go.microsoft.com/fwlink/?LinkId=248605).  Add a new Application of type Team App to initiate the submission process.
 
 ![Office Seller Dashboard add an app](images/submission/SellerDashboardAddApp.PNG)
 
@@ -31,7 +35,7 @@ You will need to upload a Submission Package and provide the required metadata f
 
 Note that all information in the package manifest must match the metadata information you enter into the product listing.
 
-For more Teams-specific help, see [here](submissionguidance.md).
+For more general information on the Seller Dashboard, see [Use the Seller Dashboard to submit your solution to the Office Store](https://dev.office.com/officestore/docs/use-the-seller-dashboard-to-submit-to-the-office-store).  For more Teams-specific help, see [Submitting your Microsoft Teams app in the Seller Dashboard](submissionguidance.md).
 
 ## Teams app approval process
 
@@ -60,11 +64,12 @@ Failures will be explained and have appropriate policy violation references. All
 
 ## Tips for rapid approval
 
-* Make sure you include detailed testing notes and a valid working test account with appropriate prepopulated data.
+* Don't use "Teams" or "Microsoft" in your app name, as in all contexts that extra clarification is superfluous.
 * If your product requires an account on your or another service, list that in the description.
 * If your product requires additional purchases to properly function, list that in the description.
 * For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
-* Check your manifest for completeness and accuracy.  Then check it again.
 * Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations as needed.  If your bot does not provide meaningful context within the personal or teams scope, [disable that scope via the manifest](schema.md#bots).
 * Provide the requisite Terms and Privacy policy links in the manifest and the Seller Dashboard, that properly resolve to the correct documentation.  For bots, you must provide this same information in the Bot Framework registration page under the Submission section.
 * Ensure all metadata in the manifest matches metadata in the Seller Dashboard, and for Bots, the Bot Framework registration.
+* Check your manifest for completeness and accuracy.  Then check it again.
+* Make sure you include detailed testing notes and a valid working test account with appropriate prepopulated data.
