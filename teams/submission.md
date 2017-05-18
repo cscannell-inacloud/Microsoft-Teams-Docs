@@ -2,7 +2,7 @@
 
 >Note: While we have enabled the ability for Microsoft Teams apps to be published in the Office Store, the in-app discovery experience will be available at a future date.
 
-Microsoft Teams Apps can now be published in the Office Store.  Teams will soon provide an in-app gallery for users to find or discover great Teams extensibility options powered by the Office store.  To have you solution available in this gallery, you must publish your solution through the Office Store process.  
+The submission process has recently changed. Microsoft Teams Apps should now be published in the Office Store, whether it is a new app or an update to an existing Store app.  Teams will soon provide an in-app gallery for users to find or discover great Teams extensibility options powered by the Office store.  To have your solution available in this gallery, you must publish your solution through the Office Store process.  
 
 The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other  Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
 
