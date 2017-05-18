@@ -31,7 +31,7 @@ If you haven't done so already, you must first register a bot with the Microsoft
 Record your bot’s app ID – you will need to supply this value in your app manifest.
 
 ## Update your app manifest
-As with bots and tabs, you will update your app’s [manifest]() to include the compose extension properties. These properties govern how your compose extension appear and behave in the Microsoft Teams client. Compose Extensions are only supported in v1.0 and above of the manifest.
+As with bots and tabs, you will update your app’s [manifest](schema.md) to include the compose extension properties. These properties govern how your compose extension appear and behave in the Microsoft Teams client. Compose Extensions are only supported in v1.0 and above of the manifest.
 
 ### Declare your compose extension
 To add a compose extension, simply include a new top-level JSON structure in your manifest with the `composeExtensions` property.  As with other app capabilities, this is an array that takes one or more capability definitions.
