@@ -31,10 +31,10 @@ If you haven't done so already, you must first register a bot with the Microsoft
 Record your bot’s app ID – you will need to supply this value in your app manifest.
 
 ## Update your app manifest
-As with bots and tabs, you will update your app’s [manifest]() to include the compose extension properties. These properties govern how your compose extension appear and behave in the Microsoft Teams client. Compose Extensions are only supported in v1.0 and above of the manifest.
+As with bots and tabs, you will update your app’s [manifest](schema.md) to include the compose extension properties. These properties govern how your compose extension appear and behave in the Microsoft Teams client. Compose Extensions are only supported in v1.0 and above of the manifest.
 
 ### Declare your compose extension
-To add a compose extension, simply include a new top-level JSON structure in your manifest with the `inputExtensions` property.  As with other app capabilities, this is an array that takes one or more capability definitions.
+To add a compose extension, simply include a new top-level JSON structure in your manifest with the `composeExtensions` property.  As with other app capabilities, this is an array that takes one or more capability definitions.
 
 Each extension definition is an object that has the following structure:
 
@@ -61,12 +61,13 @@ In the app manifest, each command item is an object with the following structure
 | Property name | Purpose | Required? |
 |---|---|---|
 | `id` | Unique ID that you assign to this command.  The user request will include this ID | Y |
-| `title` | Command name.  This should be a user-friendly value | Y |
-| `description` | String that appears to users to indicate the purpose of this command | Y |
-| `initialRun` | If set to true, indicates this command should be executed with empty parameters as soon as the user chooses this command in the UI | N |
+| `title` | Command name.  This value appears in the UI. | Y |
+| `description` | Help text indicating what this command does. This value appears in the UI. | Y |
+| `initialRun` | If set to true, indicates this command should be executed as soon as the user chooses this command in the UI | N |
 | `parameters` | List of parameters | Y |
-| `parameter.name` | The name of the parameter as it appears in the client.  This is included in the user request. | Y |
-| `parameter.description` | User-friendly string that describes this parameter’s purposes. | Y |
+| `parameter.name` | The name of the parameter.  This is sent to your service in the user request. | Y |
+| `parameter.description` | Describes this parameter’s purposes or example of the value that should be provided. This value appears in the UI. | Y |
+| `parameter.title` | Short user-friendly parameter title or label | Y |
 
 #### Complete app manifest example
 ```json
@@ -107,9 +108,9 @@ In the app manifest, each command item is an object with the following structure
           "title": "Search",
           "initialRun": "true",
           "parameters": [{
-	      "name": "searchKeyword",
-	      "description": "Search keywords",
-             "title": "Search keywords"
+            "name": "searchKeyword",
+            "description": "Enter your search keywords",
+            "title": "Keywords"
           }]
         }
       ]
@@ -128,11 +129,13 @@ In the app manifest, each command item is an object with the following structure
  
 ## Test via side loading
  
-You can test your compose extension by side loading your app.  To do this, navigate to a team and its Apps dashboard.  Click on the "Sideload a bot or tab" link in the bottom right of the page.  Browse to the .zip file containing your app’s manifest.
+You can test your compose extension by side loading your app.  To do this, navigate to a team and its Apps dashboard.  Click on the "Sideload an app" link in the bottom right of the page.  Browse to the .zip file containing your app’s manifest.
 
 If the manifest is loaded correctly, your app will appear in the list of that team’s installed apps. 
 
 To invoke the compose extension, navigate to any of your chats or channels.  Click on the "..." below the message compose box.  Your compose extension’s commands should now appear in the list within the dialog.  Click on any command to bring up the search page.
+
+>Note: your app will only appear in channels if you have declared the `team` scope. Similarly, it will only appear in your chats if it supports the `personal` scope.
 
 # Receive and respond to queries
 Now that you’ve got your app up and running, it’s time to add some functionality.  Every request to your compose extension is done via an `Activity` that is posted to your callback URL.  The request will contain information about the user command, such as ID and parameter values.  The request will also supply metadata about the context in which your extension was invoked, including user and tenant ID, along with chat ID or channel and team IDs.
@@ -195,7 +198,7 @@ Note: You should authenticate any request to your service.  Visit this [link](ht
   },
   "recipient": {
     "id": "28:b4922ea1-5315-4fd0-9b21-d941ab06e39f",
-    "name": "YouTubeComposeExtensionDev"
+    "name": "TheComposeExtensionDev"
   },
   "entities": [
     {
@@ -335,10 +338,10 @@ The sequence is as follows:
 2.	Your service checks if the user has first authenticated by inspecting the Teams user ID.
 3.	If the user has not authenticated, send back a `login` action including the authentication URL.
 4.	Microsoft Teams client will launch a popup window hosting your webpage using the given authentication URL.
-5.	Once the user logs in, you should close your window and send a security code to the Teams client.
-6.	The Teams client will then reissue the query your service, which includes the security code passed in step #5.
+5.	Once the user logs in, you should close your window and send an "authentication code" to the Teams client.
+6.	The Teams client will then reissue the query your service, which includes the authentication code passed in step #5.
 
-Your service should check that the security code received in step #6 matches the one from step #5.  This ensures that a malicious user does not try to spoof or compromise the login flow.  This effectively "closes the loop" to finish the secure authentication sequence.
+Your service should check that the authentication code received in step #6 matches the one from step #5.  This ensures that a malicious user does not try to spoof or compromise the login flow.  This effectively "closes the loop" to finish the secure authentication sequence.
 
 ## Responding with a login action
 To prompt an unauthenticated user to log in, respond with a suggested action which includes the authentication URL.
@@ -350,12 +353,9 @@ To prompt an unauthenticated user to log in, respond with a suggested action whi
     "type":"auth",
     "channelData":{
     },
-    "attachmentLayout":"list",
-    "attachments":[
-    ],
     "suggestedActions":[
       {
-        "type": "login",
+        "type": "openApp",
         "value": "https://loginpage.com/auth",
         "title": "Log into this app"
       }
@@ -369,7 +369,7 @@ To prompt an unauthenticated user to log in, respond with a suggested action whi
 ## Starting the login flow
 Your login experience should be responsive and fit within a popup window. It should integrate with the Microsoft Teams JavaScript library, which uses message passing – read the full documentation [here](jslibrary.md).
 
-As with other embedded experiences running inside Microsoft Teams, your code inside the window needs to first call `microsoftTeams.initialize()`. Your code should then call `microsoftTeams.getContext()` to get information about the user that performed the login. If your code needs to perform an OAuth flow, it should pass the user ID through the call.
+As with other embedded experiences running inside Microsoft Teams, your code inside the window needs to first call `microsoftTeams.initialize()`.  If your code performs an OAuth flow, you should pass the Teams user ID into your window, which also then gets passed to the OAuth login URL.
 
 ## Completing the login flow
 When the login request completes and redirects back to your page, it should perform the following steps
@@ -383,7 +383,7 @@ At this point, the window will be closed and control is passed to the Teams clie
 {
     "name": "composeExtension/query",
     "value": {
-        "commandId": "insertWikipedia",
+        "commandId": "insertWiki",
         "parameters": [{
             "name": "searchKeyword",
             "value": "lakers"
@@ -470,24 +470,59 @@ public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
 ```
 
 ## Node.JS SDK
-> Under development
-
-A companion SDK is under development. For now, to receive and handle queries, you will need to register an Invoke action handler.
+The Teams Node SDK provides helper objects and methods to simplify receiving, processing, and responding to compose extension requests.
 
 #### Example code
 ```js
-const builder = require("botbuilder");
+require('dotenv').config();
 
-var c = new builder.ChatConnector({
-    appId: <your appId>,
-    appPassword: <your app password>
-});
+import * as restify from 'restify';
+import * as builder from 'botbuilder';
+import * as teamBuilder from 'botbuilder-teams';
 
-c.onInvoke((msg, callback) => {
-    // your code here
-    // This is needed in order to return any data.
-    
-    // Response is a json object as described above
-    callback(error, response);
-});
+class App {
+    run() {
+        const server = restify.createServer();
+        let teamChatConnector = new teamBuilder.TeamsChatConnector({
+            appId: process.env.MICROSOFT_APP_ID,
+            appPassword: process.env.MICROSOFT_APP_PASSWORD
+        });
+
+        // Command Id mush match what's defined in manifest
+        teamChatConnector.onQuery('<%= commandId %>',
+            (event: builder.IEvent,
+            query: teamBuilder.ComposeExtensionQuery,
+            callback: (err: Error, result: teamBuilder.IComposeExtensionResponse, statusCode: number) => void) => {
+                // Check for intialRun, i.e. when you should return default results
+                // if (query.parameters[0].name === 'initialRun') {}
+
+                // Check query.queryOptions.count and query.queryOptions.skip for paging
+
+                // Return auth response
+                // let response = teamBuilder.ComposeExtensionResponse.auth().actions([
+                //     builder.CardAction.openUrl(null, 'https://authUrl', 'Please sign in')
+                // ]).toResponse();
+
+                // Return config response
+                // let response = teamBuilder.ComposeExtensionResponse.config().actions([
+                //     builder.CardAction.openUrl(null, 'https://configUrl', 'Please sign in')
+                // ]).toResponse();
+
+                // Return result response
+                let response = teamBuilder.ComposeExtensionResponse.result('list').attachments([
+                    new builder.ThumbnailCard()
+                        .title('Test thumbnail card')
+                        .text('This is a test thumbnail card')
+                        .images([new builder.CardImage().url('https://bot-framework.azureedge.net/bot-icons-v1/bot-framework-default-9.png')])
+                        .toAttachment()
+                ]).toResponse();
+                callback(null, response, 200);
+            });
+        server.post('/api/composeExtension', teamChatConnector.listen());
+        server.listen(process.env.PORT, () => console.log(`listening to port:` + process.env.PORT));
+    }
+}
+
+const app = new App();
+app.run();
 ```
