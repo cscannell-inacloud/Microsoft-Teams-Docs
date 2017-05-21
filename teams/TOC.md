@@ -10,6 +10,7 @@
 ### [Updating or removing a tab](updateremove.md)
 ### [Getting user context for a tab](getusercontext.md)
 ### [Authenticating within a tab page](auth.md)
+### [Using the Microsoft Graph within a tab page](graph.md)
 ### [Redirecting a tab across domains](crossdomain.md)
 ### [Creating deep links to a tab](deeplinks.md)
 ## [Bots](bots.md)
