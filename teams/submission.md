@@ -2,9 +2,9 @@
 
 >Note: While we have enabled the ability for Microsoft Teams apps to be published in the Office Store, the in-app discovery experience will be available at a future date.
 
-Microsoft Teams Apps can now be published in the Office Store.  Teams will soon provide an in-app gallery for users to find or discover great Teams extensibility options powered by the Office store.  To have you solution available in this gallery, you must publish your solution through the Office Store process.  
+Microsoft Teams Apps can now be published in the Office Store.  Teams will soon provide an in-app gallery for users to find or discover [high-quality Teams apps](http://aka.ms/microsoftteamsdesignguidelines) powered by the Office store.  To have you solution available in this gallery, you must publish your solution through the Office Store process.  
 
-The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other  Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
+The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
 
 ## Register as an app developer
 
@@ -31,7 +31,7 @@ After your account is approved, you can submit your solution to the [Seller Dash
 
 ![Office Seller Dashboard add an app](images/submission/SellerDashboardAddApp.PNG)
 
-You will need to upload a Submission Package and provide the required metadata for the product listing page, including information such as app logo, description, screenshots and other information.  Please review our [Package and Submission checklist](submissionchecklist.md) for more information.
+You will need to upload a [Submission Package](createpackage.md) and provide the required metadata for the product listing page, including information such as app logo, description, screenshots and other information.  Please review our [Submission and Manifest Metadata Checklist](submissionchecklist.md) for more information.
 
 Note that all information in the package manifest must match the metadata information you enter into the product listing.
 
