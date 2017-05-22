@@ -22,7 +22,7 @@ Users can access personal experiences from your app via the app bar, such as hol
 
 ## Interacting in channels (team scope)
 
-Users can access team experiences from your app in a channel, such as @mentioning your app's bot, configuring notififcations via a Connector, or interacting with team data in a tab.  
+Users can access team experiences from your app in a channel, such as @mentioning your app's bot, configuring notifications via a Connector, or interacting with team data in a tab.  
 
 <!-- TODO screenshot of team UIs, bot and tab -->
 
