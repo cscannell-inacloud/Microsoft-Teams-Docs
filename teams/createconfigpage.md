@@ -1,6 +1,6 @@
 ﻿# Create the configuration page for your Microsoft Teams configurable tab
 
-The configuration page is an HTML page that you host. When a user chooses to add - or update - your tab, Microsoft Teams will load the `configUrl` (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
+The configuration page is an HTML page that you host. When a user chooses to add or update your tab, Microsoft Teams will load the `configurationUrl` (that you [provided in your manifest](createpackage.md)) within an iframe inside the **Add Tab** dialog.
 
 In this page, you present options and gather information from the user about what they want in your tab. For example, you may let the user select existing app resources (such as files or task lists) or even create new such resources just for this tab.
 
@@ -30,7 +30,7 @@ With this as a simple example, let's walk through the steps your configuration p
   <input type="radio" name="maptype" value="google" onclick="onClick()"> Google Maps
 </form> 
 
-<script src="https://statics.teams.microsoft.com/sdk/v0.4/js/MicrosoftTeams.min.js"></script>
+<script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js"></script>
  
 <script type="text/javascript">  
 
