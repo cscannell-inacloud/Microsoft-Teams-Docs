@@ -15,7 +15,7 @@ Context about the user, team or company can be especially useful when:
 
 >**Important:** While this user information can help provide a smooth user experience, you should **not** use it as proof of identity. For example, an attacker could you load your page in a 'bad browser' and provide it with any information they want.
 
-To obtain this identifying information about the user, team or company, you must add `identity` to the `permissions` object in your [manifest](schema#permissions). Doing so will prompt the user for their consent when they add your tab.  
+To obtain this identifying information about the user, team or company, you must add `identity` to the `permissions` object in your [manifest](schema.md#permissions). Doing so will prompt the user for their consent when they add your tab.  
 
 ## Accessing context
 
