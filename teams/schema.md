@@ -1,9 +1,12 @@
 ﻿# Microsoft Teams manifest schema reference
 
->Note: for help on migrating your v0.4 manifest to v1.0, see [here](schemamigrate.md).
+>Note: for help on migrating your v0.4 manifest to v1.0, see [our migration guide](schemamigrate.md).
 
 The Microsoft Teams manifest describes how the app integrates into the Microsoft Teams product. Your manifest must conform to the schema hosted at: [`https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json`](https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json).  The following is an example with all extensibility options:
 
+>**Tip** Download our sample [Simple Bot Package](SimpleBotPackage.zip) or [Full App Package](FullAppPackage.zip) to get started.
+
+## Sample full schema
 ```json
 {
   "$schema": "https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json", 
@@ -129,11 +132,16 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
 
 The schema defines the following properties:
 
-## manifestVersion
+## ManifestVersion 
+
+**Required** - String
+
 
 The version of the manifest schema this manifest is using.  Should be "1.0".
 
 ## version
+
+**Required** - String
 
 This is the version of the specific app. If you update something in your manifest, the version must be incremented as well. This way, when the new manifest is installed, it will overwrite the existing one and the user will get the new functionality. If this app was submitted to the store, the new manifest will have to be re-submitted and re-validated. Then, users of this app will get the new updated manifest automatically in a few hours, after it is approved.
 
@@ -143,14 +151,20 @@ This version string must follow the [semver](http://semver.org/) standard (MAJOR
 
 ## id
 
+**Required** - GUID
+
 This is a unique identifier for this app, and must be a GUID.  For a Bot, you may use the Bot Framework Id.  For a tab or other capability type, you can use this [online tool](https://guidgenerator.com/) to generate a GUID, or use one of your choosing.
 
 
 ## packageName
 
+**Required** - String
+
 This is a unique identifier for this app in reverse domain notation. E.g: com.example.myapp
 
 ## developer
+
+**Required**
 
 The developer element specifies information about your company.  For Store-submitted apps, these values must match the information in your Store entry.
 
@@ -164,6 +178,8 @@ The developer element specifies information about your company.  For Store-submi
 
 ## name
 
+**Required**
+
 This is the name of your app experience, displayed to users in the Teams experience.  For Store-submitted apps, these values must match the information in your Store entry.
 
 |Name| Type| Maximum Size | Required | Description|
@@ -173,6 +189,8 @@ This is the name of your app experience, displayed to users in the Teams experie
 
 
 ## description
+
+**Required**
 
 These values describe your app to users.  For Store-submitted apps, these values must match the information in your Store entry.
 
@@ -187,6 +205,8 @@ Please note that you should make your description accurately describes your expe
 
 ## icons
 
+**Required**
+
 Icons are used within the Teams app, and must be included as part of the sideload package.  See [here](createpackage.md#icons) for more information.
 
 |Name| Type| Maximum Size | Required | Description|
@@ -194,13 +214,17 @@ Icons are used within the Teams app, and must be included as part of the sideloa
 |`outline`|String|2048|✔|A relative file path to a transparent 20x20 PNG outline icon.|
 |`color`|String|2048|✔|A relative file path to a full color 96x96 PNG icon.|
 
-## accentColor (string, required)
+## accentColor
+
+**Required**
 
 A color to use in conjunction with and as a background for your outline icons.
 
 The value must be a valid HTML color code starting with '#', for example `#4464ee`.
 
 ## configurableTabs
+
+*Optional*
 
 The configurableTabs block is used in cases where your app experience has a team channel tab experience that requires extra configuration before it is added.  Configurable tabs are only supported in the teams scope, and currently only one per app is supported.
 
@@ -214,6 +238,8 @@ The object is an array with all elements of the type `object`.  This block is on
 
 
 ## staticTabs
+
+*Optional*
 
 The staticTabs block defines a set of tabs that may be "pinned" by default, without the user adding the manually.  Static tabs declared in `personal` scope are always pinned to the app's personal experience.  Static tabs declared in the `team` scope are currently not supported. 
 
@@ -229,6 +255,8 @@ The object is an array (max: 16) with all elements of the type `object`.  This b
 
 
 ## bots
+
+*Optional*
 
 The bots block defines a bot solution, along with additional optional information like default command properties.
 
@@ -255,6 +283,9 @@ You can provide an optional list of commands that your bot can recommend to user
 
 ## connectors
 
+
+*Optional*
+
 >[Public Developer Preview only](publicpreview.md)
 
 The connectors block defines an Office365 connector for the app.  
@@ -267,6 +298,8 @@ The object is an array (max:1) with all elements of type `object`.  This block i
 |`scopes`|Array of enum|1|✔|Specifies whether the connector offers an experience in the context of a channel in a `team`, or an experience scoped to an individual user alone (`personal`). Currently, only the `team` scope is supported.|
 
 ## composeExtensions
+
+*Optional*
 
 >[Public Developer Preview only](publicpreview.md)
 
@@ -299,6 +332,8 @@ Each command item is an object with the following structure:
 
 ## permissions
 
+*Optional*
+
 The permissions array specifics which permissions the extensions are requesting, which lets end users know how the extension will perform.  The following options are non-exclusive:
 
 * `identity` - requires user identity information
@@ -306,6 +341,9 @@ The permissions array specifics which permissions the extensions are requesting,
 
 
 ## validDomains
+
+
+*Optional*, **Required** for apps with Tabs.
 
 A list of valid domains from which the extension expects to load any content. Domain listings can include wildcards, for example `*.example.com`. If your tab configuration or content UI needs to navigate to any other domain besides the one use for tab configuration, that domain must be specified here.
 
