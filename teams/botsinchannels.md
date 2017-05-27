@@ -118,7 +118,7 @@ if (message.entities) {
 ### Constructing mentions
 
 Your bot can @mention other users in messages posted into channels. To do this, your message must:
-* Include <at>@username</at> in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message, cached data, or from an external lookup, e.g. Azure ActiveDirectory
+* Include `<at>@username</at>` in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message, cached data, or from an external lookup, e.g. Azure ActiveDirectory
 * Include the `mention` object inside the entities collection
 
 >**Note**: At this time, team and channel @mentions are not supported.
