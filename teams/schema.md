@@ -4,7 +4,7 @@
 
 The Microsoft Teams manifest describes how the app integrates into the Microsoft Teams product. Your manifest must conform to the schema hosted at: [`https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json`](https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json).  The following is an example with all extensibility options:
 
->**Tip** Download our sample [Simple Bot Package](SimpleBotPackage.zip) or [Full App Package](FullAppPackage.zip) to get started.
+>**Tip** Download our sample [Simple Bot Package](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/SimpleBotPackage.zip) or [Full App Package](https://github.com/OfficeDev/Microsoft-teams-docs/blob/master/teams/FullAppPackage.zip) to get started.
 
 ## Sample full schema
 ```json
