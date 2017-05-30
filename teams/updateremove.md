@@ -4,7 +4,7 @@ You can enable users to update a tab after it has been added and to choose what 
 
 ## Updating an existing tab instance
 
-You can enable users to update, or reconfigure, a tab by setting the `canUpdateConfig` attribute in your tab manifest to `true`. For more information, see [Microsoft Teams tab package schema reference](schema.md). When you do so, Microsoft Teams adds a **Settings** option to the right-click menu for your tab.  When the user selects this option, Microsoft Teams will re-load the [configuration page](createconfigpage.md) within an iframe inside an **Update Tab** dialog - similarly to the **Add Tab** dialog.
+You can enable users to update, or reconfigure, a tab by setting the `canUpdateConfiguration` attribute in your tab manifest to `true`. For more information, see [Microsoft Teams tab package schema reference](schema.md). When you do so, Microsoft Teams adds a **Settings** option to the right-click menu for your tab.  When the user selects this option, Microsoft Teams will re-load the [configuration page](createconfigpage.md) within an iframe inside an **Update Tab** dialog - similarly to the **Add Tab** dialog.
 
 !["Screenshot of a tab with the right-click menu open to show the Settings menu option."](images/tab_settings.png)
 
@@ -43,7 +43,7 @@ With this as a simple example, let's walk through the steps your removal page ne
 	<a href='https://maps.bing.com' target='_blank'>https://maps.bing.com</a>
 </form> 
 
-<script src="https://teamspacewusprodms.blob.core.windows.net/tabframework/0.4/MicrosoftTeams.min.js">
+<script src="https://statics.teams.microsoft.com/sdk/v1.0/js/MicrosoftTeams.min.js">
 </script>
  
 <script type="text/javascript">  

@@ -8,7 +8,7 @@ If you are just looking for a way to simply extend your team by integrating with
 
 > At this time, Microsoft Teams bots support 1:1 chats and channel conversations. They do not yet support group chats. 
 
-Other than their hexagonal avatar icon, bots appear just like any other team member you interact with, in a team or in 1:1 conversation.  They are always online, and not have a mood message.
+Other than their hexagonal avatar icon, bots appear just like any other team member you interact with, in a team or in 1:1 conversation.  They are always online, and do not have a mood message.
 
 Bots in Teams can surface in a 1:1 context ("personal scope"), as a member of a team ("team scope"), or both.  For the latter, they only take part in a conversation when you @mention them.  For the former, you can address them via the conversation interface, or access them in the apps personal experience from the app bar flyout.
 
