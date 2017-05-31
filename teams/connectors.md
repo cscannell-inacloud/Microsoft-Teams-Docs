@@ -19,7 +19,7 @@ And then select a connector from the list and select **Add**:
 
 There are two options for posting messages via Connectors:
 1. Set up a simple custom incoming webhook integration if you want an integration just for your team.
-2. Register a Connector and submit it as a Microsoft Teams app if you want others to it.
+2. Register a Connector and submit it as a Microsoft Teams app if you want others to use it.
 
 Both options involve posting a simple JSON payload to an HTTP webhook to create the [Connector message](https://dev.outlook.com/Actions/getting-started) within Microsoft Teams. You can also use the markup to include rich actions, such as text entry, multi-select, or picking a date and time. The code that generates the card and posts to the incoming webhook API can be running on any hosted service.
 
@@ -133,7 +133,7 @@ For this part of the exercise, you'll need [cURL](https://curl.haxx.se/). It's a
 
 With Microsoft Teams apps, you can distribute your registered Connector as part of your app package.  Whether as a standalone solution, or one of several [capabilities](index.md) your experience enables in Teams, you can [package](createpackage.md) and [submit](submission.md) your Connector as part of your Store submission, or provide to users directly for sideload within teams.
 
-To distribute your Connector, you'll first need to register using the [Connector Developer Portal](https://go.microsoft.com/fwlink/?LinkID=780623). To have your connector work in Microsoft Teams, you will need to check the box under **Enable this integration for**.
+To distribute your Connector, you'll first need to register using the [Connector Developer Portal](https://go.microsoft.com/fwlink/?LinkID=780623). To have your connector work in Microsoft Teams, you will need to check the Microsoft Teams box under **Enable this integration for**.
 
 You can download the auto-generated Teams app manifest from the portal. This manifest.json file contains the basic elements needed to test and submit your app.
 
@@ -190,6 +190,6 @@ You can now launch the configuration experience. In Microsoft Teams, this flow w
 
 ## Publishing your app
 
->Note: Currently, we do not support users configuring your connector externally via the "Connect to O365" button. End users will need to visit Teams first in order to add a connector.
+>Note: Currently, we do not support users configuring your connector externally via the "Connect to O365" button. End users will need to visit Microsoft Teams first in order to add a connector.
 
 Once your app is ready for submission, follow the same process for submitting your app to the [Office Store](https://msdn.microsoft.com/en-us/microsoft-teams/submission).
