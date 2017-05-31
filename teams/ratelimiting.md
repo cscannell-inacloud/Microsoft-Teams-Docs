@@ -5,7 +5,7 @@ As a general principle, your application should limit the number of messages it 
 To protect Microsoft Teams, the bot APIs rate limit incoming requests.  Apps that go over this limit will receive and `HTTP 429 Too Many Requests` error status.  All requests are subject to the same rate limiting policy, including sending messages, channel enumeration, and roster fetches.
 Because the exact values of rate limits are subject to change, we recommend your application implement the right back-off behavior when Teams API returns `HTTP 429 Too Many Requests`.
 
-### Hitting rate limits
+### Handling rate limits
 
 When issuing a bot framework SDK operation, you can handle  `Microsoft.Rest.HttpOperationException` and check for the status code.
 ```csharp
@@ -28,7 +28,7 @@ In general, you should take simple precautions to avoid hitting `HTTP 429` respo
 
 Using an exponential backoff with a random jitter is the recommended way to handle 429s.  This would ensure that multiple requests do not introduce collisions on retries. Following are some of the ways you can handle transient errors.
 
-### Example backoff algorithm 1
+### Example: detecting transient exceptions
 Here is a sample using exponential backoff via Transient Fault Handling Application Block 
 
 You can perform backoff and retries using [Transient Fault Handling libraries](https://msdn.microsoft.com/en-us/library/hh680901(v=pandp.50).aspx).  Add the Transient Fault Handling Application Block to Your Solution – follow the msdn guidelines for obtaining and installing the [Nuget package](https://msdn.microsoft.com/en-us/library/hh680891(v=pandp.50).aspx).
@@ -53,8 +53,8 @@ public class BotSdkTransientExceptionDetectionStrategy : ITransientErrorDetectio
 }
 ```
 
-### Example backoff algorithm 2
-Here is another example that Performing an exponential backoff with a randomized jitter.
+### Example: backoff
+In addition to detecting rate limits, you can also perform an exponential backoff.
 
 ```csharp
 /**
@@ -74,7 +74,7 @@ await retryPolicy.ExecuteAsync(() => connector.Conversations.ReplyToActivityAsyn
 ```
 
 You can also perform a `System.Action` method execution with the retry policy described above.  The library mentioned also allows you for specifying a fixed interval or a linear backoff mechanism. 
-You can also have the value and strategy read from a configuration file to make it easy to fine tune and tweak values in runtime. 
+We recommend storing the value and strategy in a configuration file to fine tune and tweak values in runtime. 
 
 Check out this [handy guide](https://docs.microsoft.com/en-us/azure/architecture/patterns/retry) on various retry patterns.
 
