@@ -103,7 +103,7 @@ Both options involve posting a simple JSON payload to an HTTP webhook to create 
 
 This produces the following card in the channel.
 
-![Screenshot of a connector card](images/Connectors/connector_message.PNG)
+![Screenshot of a connector card](images/Connectors/connector_message.png)
 
 For full details on the available options on cards, see [Office 365 Connectors API Reference](https://dev.outlook.com/Connectors/Reference).
 
@@ -137,7 +137,7 @@ To distribute your Connector, you'll first need to register using the [Connector
 
 You can download the auto-generated Teams app manifest from the portal. This manifest.json file contains the basic elements needed to test and submit your app.
 
-![Screenshot of enabling the connector for Microsoft Teams](images/Connectors/connector_developer_portal.PNG)
+![Screenshot of enabling the connector for Microsoft Teams](images/Connectors/connector_developer_portal.png)
 
 #### Example manifest.json with connector (replace connectorId with your connector's GUID)
 ```json
@@ -184,7 +184,7 @@ To test your Connector, side load it to a team as you normally would with any ot
 
 Once you've side loaded the app, open the Connector dialog from any channel. Scroll to the bottom to see your app now under the **Sideloaded** section.
 
-![Screenshot of side loaded section in the Connector dialog](images/Connectors/connector_dialog_sideloaded.PNG)
+![Screenshot of side loaded section in the Connector dialog](images/Connectors/connector_dialog_sideloaded.png)
 
 You can now launch the configuration experience. In Microsoft Teams, this flow will take place entirely within the product through a popup window.
 
