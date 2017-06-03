@@ -40,7 +40,7 @@ To connect your bot to Teams, you will need to: 
 
 You’ve successfully deployed your app! Test your app in your Teams channel as described in the sample README.
 
->For more information on testing your bot, see [Testing your bot](hbotsadd.md).
+>For more information on testing your bot, see [Testing your bot](botsadd.md).
 
 Further samples are coming soon.
 
