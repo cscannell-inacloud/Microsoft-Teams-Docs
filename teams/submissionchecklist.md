@@ -21,7 +21,7 @@ Please Note:  In the future, Teams will support localized content for the follow
 |App Name|String|30|`name.short`|✔|The name for your application as it should appear in the storefront and in product.|
 |Long App Name|String|30|`name.full`|✔|The name for your application as it should appear in the storefront and in product.|
 |Short description|String|80|`description.short`|✔|Short description of your app.|
-|Long description|String|4000|`description.full`|✔|A more detailed description of your app, for use on the app details page.|
+|Long description|String|4000|`description.full`|✔|A more detailed description of your app.  In the manifest file, an accurate summary is adequate.  In the Seller Dashboard, you may use a richer and formatted description for the Store product page.|
 |Screenshots (1..5)|.png,.jpg,.gif|1366w x 768h, less than 1024KB||✔|At least one screenshot that shows your app experience.  For use on the app details page.|
 
 ## Submission extras for Bots

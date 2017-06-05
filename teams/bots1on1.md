@@ -2,7 +2,7 @@
 
 Microsoft Teams allows users to engage in direct conversations with bots built on the [Microsoft Bot Framework](https://docs.botframework.com/en-us/).  Users can find bots in the Bots Gallery, and add them to their Teams experience for 1:1 conversations.  Team owners and users with the appropriate permissions can also add bots as full team members (see [bots in channels](botsinchannels.md)), which not only makes them available in that team's channels, but for 1:1 chat for all of those users as well.
 
-# Designing a great personal (1:1) bot
+## Designing a great personal (1:1) bot
 
 A great bot in Microsoft Teams helps users get the information they need, all within the context of the Teams experience.  One-on-one conversations with a bot are private exchanges between a bot and its user, and are a great way to provide information specific and relevant to that user in the 1-on-1 context.  Whereas a bot in a channel might provide information specific for that team or channel's work, a bot in 1-on-1 is really a dialog between your service and the individual.  
 
@@ -111,7 +111,7 @@ bot.beginDialog(address, '/');
 ```
 
 
-### Best Practice - Welcome message
+## Best Practice - Welcome message
 
 For bots that are added directly to by a user, and not already part of any of the user's teams, it is a best practice to send a Welcome Message, to introduce it to all users of the team, and tell a bit about its functionality.  To do this, make sure your bot responds to the `conversationUpdate` message, with the `teamsAddMembers` eventType in the `channelData` object.
 
