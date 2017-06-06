@@ -2,7 +2,9 @@
 
 Microsoft Teams allows users to bring bots into their channel conversations.  By adding a bot as a team member, all users of the team can take advantage of the bot functionality right in the channel conversation.  You can also access Teams-specific functionality within your bot like querying team information and @mentioning users.
 
-# Designing a great bot for channels
+To add a bot to a team, you'll need to follow the [packaging](createpackage.md) and [sideloading](sideload.md) instructions.
+
+## Designing a great bot for channels
 
 Bots added to a team become another team member, who can be @mentioned as part of the conversation.  In fact, bots only receive messages when they are @mentioned, so other conversations on the channel are not sent to the bot.
 
@@ -10,11 +12,11 @@ A bot in a channel should provide information relevant and appropriate for all m
 
 Note that depending on your experience, the bot might be entirely relevant in both scopes (personal and team) as is, and in fact, no significant extra work is required to allow your bot to work in both.  In Microsoft Teams, there is no expectation that your bot function in all contexts, but you should ensure your bot makes sense, and provides user value, in whichever scope you choose to support.  For more information on scopes, see [Context in Teams](teamsapps.md).
 
-# Building your bot
+## Building your bot
 
-Developing a bot that works in channels reuses much of the same functionality from 1:1 conversation.  There are additional events and data in the payload that provide Teams context.  Those differences, as well as key differences in common functionality are enumerated below.
+Developing a bot that works in channels uses much of the same functionality from 1:1 conversation.  There are additional events and data in the payload that provide Teams channel information.  Those differences, as well as key differences in common functionality are enumerated below.
 
-## Receiving messages
+### Receiving messages
 
 For a bot in a channel, in addition to the [regular message schema](https://docs.botframework.com/en-us/core-concepts/reference/#activity), your bot will also receive the following properties:
 
@@ -23,7 +25,7 @@ For a bot in a channel, in addition to the [regular message schema](https://docs
 * `conversationData.isGroup` - this value will be set to `true` for bot messages in channels
 * `entities` - this object may contain one or more Mention objects (see [below](#mentions))
 
-## Replying to messages
+### Replying to messages
 
 In order to reply to an existing message, call the `ReplyToActivity()` in [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#replying) or `session.send` in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/session/#sending-messages).  The BotFramework SDK handles all the details.
 
@@ -31,7 +33,7 @@ If you choose to use the REST API, you can also call the [/conversations/{conver
 
 Note that replying to a message in a channel shows as a reply to the initiating reply chain.  The `conversationId` contains the channel and the top level message id.  While the Bot Framework takes care of the details, you may cache that `conversationId` for future replies to that conversation thread as needed.
 
-## Creating new channel conversation
+### Creating new channel conversation
 
 Your team-added bot can post into a channel to create a new reply chain.  With the BotBuilder SDK, call  `CreateConversation()` for [C#](https://docs.botframework.com/en-us/csharp/builder/sdkreference/routing.html#conversationmultiple) or utilize Proactive Messaging techniques (`bot.send()` and `bot.beginDialog()`) in [Node.JS](https://docs.botframework.com/en-us/node/builder/chat/UniversalBot/#proactive-messaging).  
 
@@ -39,21 +41,13 @@ Alternatively, you can issue a POST request to the [`/conversations/{conversatio
 
 Note: at this point, bots in Microsoft Teams cannot initiate 1:many / group conversations.
 
-### Example (.NET SDK)
+#### Example (.NET SDK)
 
 ```csharp
-//Helper class:
-public class ChannelData
-{
-    public string TeamsChannelId { get; set; }
-    public string TeamsTeamId { get; set; }
-    public Tenant Tenant { get; set; }
-}
-...
-var channelData = new ChannelData { TeamsChannelId = yourTeamsChannelID };
+var channelData = new TeamsChannelData { Channel = new ChannelInfo(yourChannelId) };
 IMessageActivity newMessage = Activity.CreateMessageActivity();
 newMessage.Type = ActivityTypes.Message;
-newMessage.Text = answer;
+newMessage.Text = "Hello, on a new thread";
 ConversationParameters conversationParams = new ConversationParameters(
     isGroup: true,
     bot: null,
@@ -64,9 +58,9 @@ ConversationParameters conversationParams = new ConversationParameters(
 var result = await connector.Conversations.CreateConversationAsync(conversationParams);
 ```
 
-#### Best Practice - Welcome message
+### Best Practice - Welcome message
 
-When your bot is first added to the team, it is a best practice to send a Welcome Message to the team, to introduce it to all users of the team, and tell a bit about its functionality.  To do this, make sure your bot responds to the `conversationUpdate` message, with the `teamsAddMembers` eventType in the `channelData` object.  Note that you must ensure that the `memberAdded` id is the Bot id itself, as the same event is sent when a new user is added to a team.  See [here](botevents.md#team-member-or-bot-addition) for more details.
+When your bot is first added to the team, it is a best practice to send a Welcome Message to the team, to introduce it to all users of the team, and tell a bit about its functionality.  To do this, make sure your bot responds to the `conversationUpdate` message, with the `teamsAddMembers` eventType in the `channelData` object.  Note that you must ensure that the `memberAdded` id is the Bot id itself, as the same event is sent when a new user is added to a team.  See [Team member or Bot addition](botevents.md#team-member-or-bot-addition) for more details.
 
 You may also wish to send a 1:1 message to each member of the team when the bot is added.  To do this, you could [query the team roster](botsinchannels.md#fetching-the-team-roster) and send each user a [direct messages](bots1on1.md#starting-a-11-conversation).
 
@@ -78,7 +72,7 @@ Bots in a channel only respond when they themselves are @mentioned in a message.
 
 ### Retrieving mentions
 
-Mentions are returned in the `entities` object in payload, and contain both the unique ID of the user and in most cases, the name of user mentioned.  You can retrieve all mentions in the message by calling the `GetMentions()` function in the BotFramework .NET SDK.  This should return an array of Mentioned objects.
+Mentions are returned in the `entities` object in payload, and contain both the unique ID of the user and in most cases, the name of user mentioned.  You can retrieve all mentions in the message by calling the `GetMentions()` function in the BotFramework .NET SDK.  This should return an array of `Mentioned` objects.
 
 Per above, all messages your bot receives will have its name in the channel, and should accomodate that in its message parsing.
 
@@ -100,6 +94,8 @@ for (int i = 0;i < m.Length;i++)
 }
 ```
 
+>Note: you may also use the Teams Extension function: `GetTextWithoutMentions()` which will strip out all mentions, including the bot.
+
 #### Sample code - check for and strip @bot mention (Node.js)
 
 ```javascript
@@ -114,12 +110,15 @@ if (message.entities) {
     text = text.trim();
 }
 ```
+>Note: you may also use the Teams Extension function: `getTextWithoutMentions()` which will strip out all mentions, including the bot.
 
 ### Constructing mentions
 
 Your bot can @mention other users in messages posted into channels. To do this, your message must:
-* Include `<at>@username</at>` in the message text. Note, at this time because we do not provide an API to return profile information, you can either obtain this value from a received message, cached data, or from an external lookup, e.g. Azure ActiveDirectory
+* Include `<at>@username</at>` in the message text.
 * Include the `mention` object inside the entities collection
+
+The Teams Extension SDK provides functionality to easily accomodate this.  See below.
 
 >**Note**: At this time, team and channel @mentions are not supported.
 
@@ -152,7 +151,7 @@ var toMention: builder.IIdentity = {
 
 // Create a new message and add mention to it
 var msg = new teams.TeamsMessage(session).text(teams.TeamsMessage.getTenantId(session.message));
-var mentionedMsg = (<teams.TeamsMessage>msg).addMentionToText(toMention);
+var mentionedMsg = msg.addMentionToText(toMention);
 
 // Post the message
 var generalMessage = mentionedMsg.routeReplyToGeneralChannel();
@@ -200,6 +199,6 @@ session.send(generalMessage);
 }
 ```
 
-### Accessing team context
+## Accessing team context
 
 Your bot can do more than send and receive messages in teams. For instance, it can also fetch the list of team members, including their profile information, as well as the list of channels. Visit the section on the [bot APIs](botapis.md) to learn more.

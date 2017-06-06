@@ -20,7 +20,7 @@ If you don't currently have an Office 365 account, you can sign up for the [Offi
 
 >See general information on [administrator settings](https://support.office.com/article/Administrator-settings-for-Microsoft-Teams-3966a3f5-7e0f-4ea9-a402-41888f455ba2) for Microsoft Teams.
 
-The O365 Administrator may have to enable Microsoft Teams for your organization.  Please note all users must have a valid license assigned to access the product.  
+The Office 365 Administrator might have to enable Microsoft Teams for your organization.  Note that all users must have a valid license assigned to access the product.  
 
 1. [Sign in to Office 365](https://portal.office.com) with your administrator account.
 2. Select **Admin** to go to the Office 365 Admin Center.
@@ -53,10 +53,10 @@ To develop and test apps, you need to enable them in Microsoft Teams, and also e
 
 For more information on sideloading, see [Sideloading your app in a team](sideload.md).
 
-## (Optional) 4. Enable Public Developer Preview for your tenant
+## 4. Enable Public Developer Preview for your tenant (Optional) 
 
 We'll be rolling out extensibility features for developers to try before they roll out to end users.  It's easy to opt-in or -out, on demand.  See [Public Developer Preview](publicpreview.md) for more information.
 
-Please note: this is an optional feature and not required for app development.
+This is an optional feature and is not required for app development.
 
-> Hitting problems?  See the [troubleshooting guide](troubleshooting.md).
+> Running into problems?  See the [troubleshooting guide](troubleshooting.md).

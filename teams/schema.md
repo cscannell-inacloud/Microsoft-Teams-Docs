@@ -199,7 +199,9 @@ Please note that you should make your description accurately describes your expe
 |Name| Type| Maximum Size | Required | Description|
 |---|---|---|---|---|
 |`short`|String|80|✔|A short description of your app experience, used when space is limited.|
-|`full`|String|4000|✔|The full description of your app.|
+|`full`|String|4000*|✔|The full description of your app.|
+
+>**NOTE** - There is currently an issue with >256 character full descriptions.  You may use a longer description in your Seller Dashboard app submission.
 
 
 

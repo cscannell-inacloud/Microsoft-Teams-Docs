@@ -8,6 +8,8 @@ Microsoft Teams Apps can now be published in the Office Store.  Teams will soon 
 
 The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
 
+>**Note**: by developing and submitting a Microsoft Teams app, you are subject to the Bot Developer Framework [Terms of Use](https://aka.ms/bf-terms), [Privacy Policy](https://aka.ms/bf-privacy), and [Code of Conduct](https://aka.ms/bf-conduct) for bot, tab, and compose extension functionality within your app.  If your app contains O365 Connector functionality, separate terms may also apply as part of your Connector Registration on the [Connector Developer Portal](https://aka.ms/publishconnector).
+
 ## Register as an app developer
 
 Microsoft Store participation is based on registration within the [Microsoft/Windows Dev Center](https://developer.microsoft.com/).  If you have already registered in the Microsoft Store ecosystem, either by distributing a Windows UWA via the Windows Store or an Office or Sharepoint Add-in via the Office Store, you should use this account to distribute your Microsoft Teams app.  Otherwise, you must first [register as an app developer](https://developer.microsoft.com/en-us/store/register) to create your publisher identity in the Microsoft Store ecosystem.  Account registration allows you to secure your identity and triggers validation checks by the Microsoft Store team to ensure your are who you say you are.
@@ -69,9 +71,9 @@ Failures will be explained and have appropriate policy violation references. All
 * Don't use "Teams" or "Microsoft" in your app name, as in all contexts that extra clarification is superfluous.
 * If your product requires an account on your or another service, list that in the description.
 * If your product requires additional purchases to properly function, list that in the description.
-* For your Tab config, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
+* For your Tab config page, make sure you provide About links and proper guidance - this page will be the first thing the user sees, so make sure a new user understands what to do.
 * Make sure your Bot provides appropriate responses when @mentioned in a channel as well as in 1:1 conversations as needed.  If your bot does not provide meaningful context within the personal or teams scope, [disable that scope via the manifest](schema.md#bots).
 * Provide the requisite Terms and Privacy policy links in the manifest and the Seller Dashboard, that properly resolve to the correct documentation.  For bots, you must provide this same information in the Bot Framework registration page under the Submission section.
-* Ensure all metadata in the manifest matches metadata in the Seller Dashboard, and for Bots, the Bot Framework registration.
+* Ensure metadata in the manifest roughly matches metadata in the Seller Dashboard, and for Bots, the Bot Framework registration.  Note: your Seller Dashboard should contain a more detailed and formatted description for use in the Office Store product page.
 * Check your manifest for completeness and accuracy.  Then check it again.
 * Make sure you include detailed testing notes and a valid working test account with appropriate prepopulated data.
