@@ -8,7 +8,7 @@ Microsoft Teams Apps can now be published in the Office Store.  Teams will soon 
 
 The Office Store provides a convenient location for you to upload your Microsoft Teams app, as well as other Office 365 extensibility types such as Office Add-ins and Sharepoint Add-ins.  To include you solution in the Office Store, you submit it to the Seller Dashboard.  You will need to create an individual or company account if you have not already done so for other Windows apps or Office extensibility types.
 
->**Note**: by developing and submitting a Microsoft Teams app, you are subject to the Bot Developer Framework [Terms of Use](https://aka.ms/bf-terms), and [Code of Conduct](https://aka.ms/bf-conduct) for all capabilities types, including tabs.
+>**Note**: by developing and submitting a Microsoft Teams app, you are subject to the Bot Developer Framework [Terms of Use](https://aka.ms/bf-terms), [Privacy Policy](https://aka.ms/bf-privacy), and [Code of Conduct](https://aka.ms/bf-conduct) for bot, tab, and compose extension functionality within your app.  If your app contains O365 Connector functionality, separate terms may also apply as part of your Connector Registration on the [Connector Developer Portal](https://aka.ms/publishconnector).
 
 ## Register as an app developer
 

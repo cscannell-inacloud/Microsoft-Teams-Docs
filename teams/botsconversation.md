@@ -70,7 +70,7 @@ Teams-specific information is sent and received in the `channelData` object. A t
 * `tenant.id` - the Azure ActiveDirectory tenant id.  This is passed in all contexts.
 * `team` - this object is passed only in channel contexts, not 1:1.
     - `id` - the GUID for the channel.
-    - `name` - the name of the team.
+    - `name` - the name of the team, passed only in cases of [team rename events](botevents.md).
 * `channel` - this object is passed only in channel contexts, when the bot is @mentioned or for events in channels in teams where the bot has been added.
     - `id` - the GUID for the channel.
     - `name` - the channel name, passed only in cases of [channel modification events](botevents.md). 

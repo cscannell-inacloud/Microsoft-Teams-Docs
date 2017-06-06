@@ -99,10 +99,10 @@ Your bot can query the list of channels in a team. Note: right now the `General`
 
 #### REST API sample
 
-You can directly issue a GET request to `/conversations/{teamId}/channels/` resource.
+You can directly issue a GET request to `/teams/{teamId}/conversations/` resource.
 
 ```json
-GET /v3/conversations/19:ja0cu120i1jod12j@skype.net/channels
+GET /v3/teams/19:ja0cu120i1jod12j@skype.net/conversations
 
 Response body
 {
