@@ -12,7 +12,7 @@ Note that depending on your experience, the bot might be entirely relevant in bo
 
 Bots can create new conversations with an individual Microsoft Teams user, as long as your bot has user information obtained through previous addition in a personal or team scope. This will allow your bot to proactively notify them. For instance, if your bot was added to a team, it could query the team roster and send users individual messages in the private 1:1 chat, or a user could @mention another user to trigger the bot to send that user a direct message.
 
-You can create the 1:1 chat with a user as long as you have the user’s unique ID and tenant ID. Typically, this information is obtained from a team context, either by obtaining the [team roster](botsinchannels.md#fetching-the-team-roster) or when a user interacts with your [bot in a channel](botsinchannels.md).  For bots already added to the user's personal scope, you may already have cached user information via the [add user event](botevents.md#team-member-or-bot-addition).
+You can create the 1:1 chat with a user as long as you have the user’s unique ID and tenant ID. Typically, this information is obtained from a team context, either by obtaining the [team roster](botapis.md#fetching-the-team-roster) or when a user interacts with your [bot in a channel](botsinchannels.md).  For bots already added to the user's personal scope, you may already have cached user information via the [add user event](botevents.md#team-member-or-bot-addition).
 
 Because your bot is able to proactively message users, you should use this capability sparingly and consider the user experience. Make sure not to spam end users and send only the minimum amount of information and number of messages needed to complete your scenario.
 
