@@ -1,5 +1,22 @@
 # Authenticating a user in your Microsoft Teams pages
 
+>**NOTE: Upcoming breaking change for Tab authentication:**
+>
+> To address a security concern, we'll be making a breaking change to tabs:
+>
+>Currently, we are incorrectly allowing tabs to pop up auth windows to any arbitrary domain and listening to messages from that window as if they came from the domain of the tab content frame. This will no longer work in the near future.
+> 
+>We've seen developers commonly use the unintentional behavior to do things like launch an auth popup directly to AAD, redirect back to their tab content's domain, then call notifySuccess. While this is a legitimate scenario, it can also allow a pop-up to a phishing site.
+> 
+>The recommended approach instead is to direct the auth popup to a page on your domain, redirect to AAD (or whatever login provider), then as normal have that redirect back to your domain. Basically the auth popup has to start and end on your domain.
+>
+>Since `navigateCrossDomain` isn't supported in the auth window, we recommend your auth start and end domains be the same as your content domain, and listed in the manifest's `validDomains` list.  Note that in the future, we will make changes to allow the auth start and end domains be separate from the content, but for future compatibility, we recommand you put all on the same domain.
+
+
+---
+
+
+
 The tab [configuration](createconfigpage.md) and [content](createcontentpage.md) pages run in iframes.  Azure Active Directory (Azure AD), and other identity providers that you may use, do not usually allow their sign in and consent pages to be hosted within an iframe.  Because of this, your app will need to authenticate the user in a pop up window.  You must use the [Microsoft Teams Tab Library](jslibrary.md) to do this, so that it works successfully in both the web and desktop apps for Microsoft Teams.  
 
 1. Add UI to your configuration or content page to enable the user to sign in when necessary.  You should not drive the authentication pop up without user action, since this is likely to trigger the browser's pop-up blocker.

@@ -27,9 +27,9 @@ In the Seller Dashboard:
 * **Version** - autopopulated from the manifest
 * **Release date** - by default, the date here will be today's.  This means that your app would be eligible to be published as soon as it passed validation.  If you wish to delay publication to a future date, you can specify that here.  Please note: validation times vary and there is no guarantee the validation process will be done by the specificed date
 * **Category** - You can select up to three categories in which to appear in the Office Store.  Please select ones which best match your experience.
-* **Testing notes** - Plese ensure you provide enough information for our validation team to successfully load and test your experience.  This includes providing login instructions and test accounts, as well as any other notes that might assist in the review of your product.
+* **Testing notes** - Please ensure you provide enough information for our validation team to successfully load and test your experience.  This includes providing login instructions and test accounts, as well as any other notes that might assist in the review of your product.
 * **My app calls, support, contains, or users cryptology or encryption** - This checkbox ensures your product is not using cryptography in a way that would prohibit Store distribution.  See [here](https://docs.microsoft.com/en-us/windows/uwp/security/export-restrictions-on-cryptography) for a detailed explanation.
-* **App logo** - please upload the same 96x96 color icon you use in the manifest
+* **App logo** - Due to current limitations, your 96x96 icon in the manifest must be < 2k.  Feel free to use a larger file-size 96x96 color icon instead of the exact file from your manifest.
 * **Support document link** - please supply a URL to support content for your experience
 * **Privacy document link** - please use the same URL from your manifest
 * **Video link** - this optional field can be used to show a video of your experience.  This video will appear on your product listing page in the Office Store.
@@ -44,7 +44,7 @@ Select the "Next" button when all required information has been filled in.
 * **Language** - Select the language your app supports.  Please note: currently there is no way to provide an app with multiple languages.  You may submit your app in one language only.
 * **App Name** - This field would hold your localized name, but for now this should be the same as your app name in the manifest.
 * **Short Description** - Please use your short description from the manifest.
-* **Long Description** - Please use your long description from the manifest.
+* **Long Description** - This description is your opportunity to present your experience to end users, and will be shown in the app discovery flow in Microsoft Teams.  While you may use your long description from the manifest, feel free to add more content and take advantage of all the formatting options available to you.
 * **Screenshots** - You must include at least one 1366x768 screenshot.  Please note that your screenshot must accurately reflect your Microsoft Teams app experience.
 
 Click the "Next" button when all required information has been filled in.

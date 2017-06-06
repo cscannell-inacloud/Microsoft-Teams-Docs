@@ -24,7 +24,7 @@ Microsoft Teams requires two icons for your app experience, to be used within th
 
 The `color` icon is used throughout Microsoft Teams, for example in app and tab galleries, bots, flyouts, etc.  This icon should be 96x96 pixels.  If it has transparency, the `accentColor` will be used as the background.
 
->**NOTE**:  Currently your color icon must be less than 2k in size.
+>**NOTE**:  Currently your color icon must be less than 2k in size.  This same limitation does not apply for the icon used as part of your Seller Dashboard submission.
 
 ### outline
 
