@@ -21,7 +21,7 @@ The tab [configuration](createconfigpage.md) and [content](createcontentpage.md)
 
 1. Add UI to your configuration or content page to enable the user to sign in when necessary.  You should not drive the authentication pop up without user action, since this is likely to trigger the browser's pop-up blocker.
 2. Add the domain of your auth URL to the [`validDomains`](schema.md#validdomains) section of the manifest.  Failure to do so may result in an empty pop up.
-3. You can [obtain user context information](getusercontext.md) to help build authentication requests and URLs.  For example, you can use the user's name (upn) as the 'login_hint' for Azure AD sign in, which means the user may need to type less, or even that sign in will complete with no user action at all.  Note that you should **not** use this context directly as proof of identity. For example, an attacker could you load your page in a 'bad browser' and provide it with any information they want.
+3. You can [obtain user context information](getusercontext.md) to help build authentication requests and URLs.  For example, you can use the user's name (upn) as the 'login_hint' for Azure AD sign in, which means the user may need to type less, or even that sign in will complete with no user action at all.  Note that you should **not** use this context directly as proof of identity. For example, an attacker could load your page in a 'malicious browser' and provide it with any information they want.
 
 4. When the user selects to sign in, call `microsoftTeams.authentication.authenticate({url: <auth URL>, width: <width>, height: <height>, successCallback: <successCallback>, failureCallback: <failureCallback>})`.
 	
