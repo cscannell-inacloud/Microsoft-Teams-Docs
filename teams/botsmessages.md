@@ -76,7 +76,7 @@ Images must be at most 1024x1024 and 1MB in size, and in either PNG or JPEG form
 
 The [hero card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#herocard) renders a title, subtitle, text, large image and buttons.
 
-!["Example of a hero-card"](images/cards/hero.png)
+!["Example of a hero-card"](images/Cards/hero.png)
 
 | Property | Type  | Description |                                                           
 |:-------|:-------|:------------|
@@ -91,7 +91,7 @@ The [hero card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/
 
 The [thumbnail card](https://docs.botframework.com/en-us/csharp/builder/sdkreference/attachments.html#thumbnailcard) renders a title, subtitle, text, small thumbmail image and buttons.
 
-!["Example of a thumbnail-card"](images/cards/thumbnail.png)
+!["Example of a thumbnail-card"](images/Cards/thumbnail.png)
 
 | Property | Type  | Description |                                                           
 |:-------|:-------|:------------|
@@ -106,7 +106,7 @@ The [thumbnail card](https://docs.botframework.com/en-us/csharp/builder/sdkrefer
 
 The O365Connector card provides a more flexible layout with multiple sections, images, and fields.
 
-!["Example of a O365Connector card"](images/cards/o365connector.png)
+!["Example of a O365Connector card"](images/Cards/o365connector.png)
 
 Please review the documentation [here](https://docs.microsoft.com/en-us/outlook/actionable-messages/card-reference) for details about all the supported properties.
 
@@ -116,7 +116,7 @@ You may utilize the O365ConnectorCard class in BotBuilder-MicrosoftTeams SDK ([.
 
 The [carousel layout](https://docs.botframework.com/en-us/csharp/builder/sdkreference/activities.html) can be used to show a carousel of cards, with associated action buttons.
 
-!["Example of a carousel of cards"](images/cards/carousel.png)
+!["Example of a carousel of cards"](images/Cards/carousel.png)
 
 Properties are the same as for the hero or thumbnail card.
 
@@ -124,7 +124,7 @@ Properties are the same as for the hero or thumbnail card.
 
 The list layout can be used to show a vertically stacked list of cards.
 
-!["Example of a list of cards"](images/cards/list.png)
+!["Example of a list of cards"](images/Cards/list.png)
 
 Properties are the same as for the hero or thumbnail card.
 
