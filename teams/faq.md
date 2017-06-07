@@ -2,7 +2,7 @@
 
 ## Setting up
 
-### What languages can I build my bot or tab in?
+### What technology should I use to build my bot or tab?
 
 As tabs are web content you build and deploy, you may use any technology you wish.  
 
@@ -11,10 +11,6 @@ As bots must be built with the Bot Framework, we recommend you use one of the la
 ### Where do I sign up to start building Teams apps?
 
 There are no prerequisites or additional development accounts to start building app for Microsoft Teams.  While you must have access to Microsoft Teams via an Office 365 subscription, no other sign-up or program access is required.  You do need to create accounts for the Bot Framework should you build a bot, and create a Dev Center account should you submit your app for publication.
-
-### What email should I use to register my bot / create a Dev Center account?
-
-In general we recommend you use a Microsoft Account (MSA) specifically created for this purpose, as opposed to a personal account.  If you are building and testing on a O365 Developer tenant, **do not** use an email from this account for any registration as the Developer tenant is subject to expiration.
 
 ## Bots
 
@@ -30,11 +26,11 @@ Microsoft Teams apps can be distributed to end users via the Office Store and in
 
 Microsoft Teams app packages can be manually distributed to your colleagues or other end users, and sideloaded by them via the [sideloading process](sideload.md).  Please note that apps distributed in this format are not tested, validated, or trusted by Microsoft. 
 
-### What account do I use to create an Office Store / DevCenter account?
+### What account do I use to create an Office Store / Dev Center account?
 
 Microsoft Store developer accounts are based off of a [Microsoft Account (MSA)](https://account.microsoft.com/account), so you should use an existing MSA or create a new one for this purpose.  
 
-You can also use your Azure Active Directory (AAD) account to manage your DevCenter, or create a new one for free.  By leveraging the power of AAD, you can not only add additional users to your account, but also control what roles and products they have access to.  This is a great way to allow not only your release team access to updating your Store apps, but gives your business team access to reporting and other Dev Center information.  Note that you can easily add this functionality to an existing account too, so accounts created with an MSA can add an AAD management account to take advantage of this feature. For more information, see [Manage account users](https://docs.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+You can also associate your Azure Active Directory (AAD) account with your Dev Center account, or create a new AAD account for free.  By leveraging the power of AAD, you can not only add additional users to your account, but also control what roles and products they have access to.  This is a great way to allow not only your release team access to updating your Store apps, but gives your business team access to reporting and other Dev Center information.  For more information, see [Manage account users](https://docs.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
 
 ---
 >Not seeing your question?  Submit your own - we listen to the developer community across a [several channels](feedback.md).
