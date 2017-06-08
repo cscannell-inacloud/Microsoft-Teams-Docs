@@ -30,7 +30,7 @@ Microsoft Teams app packages can be manually distributed to your colleagues or o
 
 Microsoft Store developer accounts are based off of a [Microsoft Account (MSA)](https://account.microsoft.com/account), so you should use an existing MSA or create a new one for this purpose.  
 
-You can also associate your Azure Active Directory (AAD) account with your Dev Center account, or create a new AAD account for free.  By leveraging the power of AAD, you can not only add additional users to your account, but also control what roles and products they have access to.  This is a great way to allow not only your release team access to updating your Store apps, but gives your business team access to reporting and other Dev Center information.  For more information, see [Manage account users](https://docs.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+If you already have a Microsoft Store developer account, you must use the original owner MSA for the Seller Dashboard experience.  While the Windows Store portal allows AAD association, the Seller Dashboard is a separate system that only works with your original MSA.
 
 ---
 >Not seeing your question?  Submit your own - we listen to the developer community across a [several channels](feedback.md).
