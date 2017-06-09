@@ -95,7 +95,7 @@ The API call and SDK methods are identical to fetching team roster, as is the re
 
 ## Fetching the list of channels in a team
 
-Your bot can query the list of channels in a team. Note: right now the `General` channel is not returned in the list. You can reuse the team's ID as the channel ID.
+Your bot can query the list of channels in a team. Note: right now the `General` channel is returned with `null` as the name, as this default channel allows for localization.
 
 #### REST API sample
 
@@ -107,7 +107,11 @@ GET /v3/teams/19:ja0cu120i1jod12j@skype.net/conversations
 Response body
 {
     "conversations": [{
-        "id": "19:skypespaces_24bb9d6ac6264999b353ba860ecd4044@thread.skype",
+    {
+        "id": "19:033451497ea84fcc83d17ed7fb08a1b6@thread.skype",
+        "name": null
+    }, {
+        "id": "19:cc25e4aae50746ecbb11473bba24c70a@thread.skype",
         "name": "Materials"
     }, {
         "id": "19:b7b84cba410c406ba671dbbf5e0a3519@thread.skype",
