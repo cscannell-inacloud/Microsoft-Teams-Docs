@@ -8,4 +8,3 @@ There are Microsoft Teams samples in our GitHub repositories for you to clone or
 >For information on loading your samples, see [Sideloading your app](sideload.md).
 
 Further samples are coming soon.
-
