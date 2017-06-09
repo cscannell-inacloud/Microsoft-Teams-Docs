@@ -488,7 +488,7 @@ class App {
             appPassword: process.env.MICROSOFT_APP_PASSWORD
         });
 
-        // Command Id mush match what's defined in manifest
+        // Command Id must match what's defined in manifest
         teamChatConnector.onQuery('<%= commandId %>',
             (event: builder.IEvent,
             query: teamBuilder.ComposeExtensionQuery,
