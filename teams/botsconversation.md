@@ -124,6 +124,8 @@ Rather than have your messages be static snapshots of data, your bot can now dyn
 
 The new message need not match the original in type. For instance, if the original message contained an attachment, the new message can be a simple text message.
 
+>Note: Currently, you can only update content sent in single-attachment messages and carousels. Posting updates to messages with multiple attachments in list layout will be supported soon.
+
 ### REST API
 
 To issue a message update, simply perform a PUT request against the `/v3/conversations/<conversationId>/activities/<activityId>/` endpoint using a given activity ID. To complete this scenario, you should cache the activity ID returned by the original POST call.

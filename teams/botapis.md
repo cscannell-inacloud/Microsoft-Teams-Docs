@@ -65,7 +65,7 @@ foreach (var member in members)
 await context.PostAsync($"People in this conversation: {sb.ToString()}");
 ```
 
->Note: GetTeamsConversationMembersAsync(teamId, tenantId) is still implemented in the SDK but is deprecated. You should migrate your code to use the single-argument method.
+>Note: GetTeamsConversationMembersAsync(teamId, tenantId) override is now deprecated. You should migrate your code to use GetTeamsConversationMembersAsync(teamId).
 
 #### Node SDK sample
 
