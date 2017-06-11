@@ -5,17 +5,16 @@ Your bot can access additional context about the team or chat, such as user prof
 
 ## Fetching the team roster
 
+>New: with a recent update you no longer need to include the tenant ID in the X-MsTeamsTenantId HTTP request header.
+
 Your bot can query for the list of team members and their basic profile, which includes Teams user ID and Azure ActiveDirectory information such as name and objectId. You can use this information to correlate user identities, for example to check if a user logged into a tab through AAD credentials is a member of the team.
 
 #### REST API sample
 
 You can directly issue a GET request to [`/conversations/{teamId}/members/`](https://docs.botframework.com/en-us/restapi/connector/#!/Conversations/Conversations_GetConversationMembers) resource using the `teamId` as the parameter in the API call.
 
->Note: You must include the tenant ID in the X-MsTeamsTenantId HTTP request header. You can obtain the tenant ID from the `channelData` when your bot is first added to a team.
-
 ```json
 GET /v3/conversations/19:ja0cu120i1jod12j@skype.net/members
-X-MsTeamsTenantId: 72f988bf-86f1-41af-91ab-2d7cd011db47
 
 Response body
 [{
@@ -44,12 +43,12 @@ Response body
 
 #### .NET SDK sample
 
-With the new Teams .NET SDK, call `GetTeamsConversationMembersAsync()` using `Team.Id` and `Tenant.Id` obtained from `channelData` to return a list of user Ids.
+With the new Teams .NET SDK, call `GetTeamsConversationMembersAsync()` using `Team.Id` obtained from `channelData` to return a list of user Ids.
 
 ```csharp
 // Fetch the members in the current conversation
 var connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-var members = await connector.Conversations.GetTeamsConversationMembersAsync(activity.Conversation.Id, activity.GetTenantId());
+var members = await connector.Conversations.GetTeamsConversationMembersAsync(activity.Conversation.Id);
 
 // Concatenate information about all the members into a string
 var sb = new StringBuilder();
@@ -66,6 +65,8 @@ foreach (var member in members)
 await context.PostAsync($"People in this conversation: {sb.ToString()}");
 ```
 
+>Note: GetTeamsConversationMembersAsync(teamId, tenantId) is still implemented in the SDK but is deprecated. You should migrate your code to use the single-argument method.
+
 #### Node SDK sample
 
 Note: this sample uses [the new Microsoft Teams Node.js SDK](https://www.npmjs.com/package/botbuilder-teams):
@@ -75,7 +76,6 @@ var conversationId = session.message.address.conversation.id;
   connector.fetchMemberList(
     (<builder.IChatConnectorAddress>session.message.address).serviceUrl,
     conversationId,
-    teams.TeamsMessage.getTenantId(session.message),
     (err, result) => {
       if (err) {
         session.endDialog('There is some error');
