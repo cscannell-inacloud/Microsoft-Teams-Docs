@@ -128,7 +128,7 @@ In the app manifest, each command item is an object with the following structure
 ```
  
 ## Test via side loading
- 
+
 You can test your compose extension by side loading your app.  To do this, navigate to a team and its Apps dashboard.  Click on the "Sideload an app" link in the bottom right of the page.  Browse to the .zip file containing your app’s manifest.
 
 If the manifest is loaded correctly, your app will appear in the list of that team’s installed apps. 
@@ -221,7 +221,7 @@ Your service should respond with the results matching the user query.  The respo
 |---|---|
 |`composeExtension`|Top-level response envelope|
 |`composeExtension.type`|Should be of value `result`|
-|`composeExtension.attachmentLayout`|`list`: list of card objects containing thumbnail, title, and text fields.<br>`grid`: grid of media objects, showing preview thumbnail for each one.|
+|`composeExtension.attachmentLayout`|`list`: list of card objects containing thumbnail, title, and text fields. This is currently the only supported layout type, with more coming soon.|
 |`composeExtension.attachments`|Array of valid bot attachment objects.  Currently the following types are supported:<br>`application/vnd.microsoft.card.thumbnail` <br>`application/vnd.microsoft.card.hero`<br>`application/vnd/microsoft.teams.card.o365connector`|
 
 ### Response card types and previews
