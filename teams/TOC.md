@@ -39,4 +39,5 @@
 # [FAQ](faq.md)
 # [Features in Public Developer Preview](previewfeatures.md)
 # [Samples](samples.md)
+# [Changelog](changelog.md)
 # [Submit feedback](feedback.md)
