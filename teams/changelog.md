@@ -9,3 +9,4 @@ This changelog covers what's changed in the Microsoft Teams Developer platform a
 |Bots|Fetch Channel API call now returning General channel id.|[Fetching the list of channels in a team](botapis.md#fetching-the-list-of-channels-in-a-team)|
 |Submission|Clarify Dev Center / Seller Dashboard account requirements.|[Register as an app developer](submission.md#register-as-an-app-developer)|
 |Tabs|Update on Tab authentication implementation - **breaking change**|[Authenticating a user in your Microsoft Teams pages](auth.md)|
+|Packaging| Remove 2k limit on icon sizes that prevented sideloading - no restrictions on size now. | [Icons](createpackage.md#icons)

@@ -88,6 +88,7 @@ If you change manifest information, you must first remove the solution and re-ad
 
 ## Troubleshooting Notes
 
-> * If the manifest doesn't load, please double-check you've followed all the instructions [here](createpackage.md).  In particular, for tabs, note the size limitations on icons included in your sideload package (each under 1.5k)
+> * If the manifest doesn't load, please double-check you've followed all the instructions [here](createpackage.md) and validated your manifest against the [schema](schema.md).
+
 
 > * Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).
