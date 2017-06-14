@@ -95,19 +95,18 @@ The API call and SDK methods are identical to fetching team roster, as is the re
 
 ## Fetching the list of channels in a team
 
-Your bot can query the list of channels in a team. Note: right now the `General` channel is returned with `null` as the name, as this default channel allows for localization.
+Your bot can query the list of channels in a team. Note: right now the `General` channel is returned with `null` as the name, as this default channel allows for localization.  Also note: the `General` channel id always matchs the team Id.
 
 #### REST API sample
 
 You can directly issue a GET request to `/teams/{teamId}/conversations/` resource.
 
 ```json
-GET /v3/teams/19:ja0cu120i1jod12j@skype.net/conversations
+GET /v3/teams/19:033451497ea84fcc83d17ed7fb08a1b6@thread.skype/conversations
 
 Response body
 {
     "conversations": [{
-    {
         "id": "19:033451497ea84fcc83d17ed7fb08a1b6@thread.skype",
         "name": null
     }, {
@@ -125,7 +124,7 @@ Response body
 
 #### .NET SDK sample
 
-Note: This sample uses the [new Microsoft Teams .NET SDK](https://www.nuget.org/packages/Microsoft.Bot.Connector.Teams):
+Note: This sample uses the [new Microsoft Teams .NET SDK `FetchChannelList` call](https://www.nuget.org/packages/Microsoft.Bot.Connector.Teams):
 
 ```csharp
  ConversationList channels = client.GetTeamsConnectorClient().Teams.FetchChannelList(activity.GetChannelData<TeamsChannelData>().Team.Id);
@@ -133,16 +132,16 @@ Note: This sample uses the [new Microsoft Teams .NET SDK](https://www.nuget.org/
 
 #### Node SDK sample
 
-Note: this sample uses [the new Microsoft Teams Node.js SDK](https://www.npmjs.com/package/botbuilder-teams):
+Note: this sample uses [the new Microsoft Teams Node.js SDK `fetchChannelList` call](https://www.npmjs.com/package/botbuilder-teams):
 
 ```javascript
 var teamId = session.message.sourceEvent.team.id;
   connector.fetchChannelList(
-    (<builder.IChatConnectorAddress>session.message.address).serviceUrl,
+    (session.message.address).serviceUrl,
     teamId,
     (err, result) => {
       if (err) {
-        session.endDialog('There is some error');
+        session.endDialog('There is an error');
       }
       else {
         session.endDialog('%s', JSON.stringify(result));
