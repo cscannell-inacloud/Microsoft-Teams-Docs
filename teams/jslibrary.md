@@ -47,7 +47,7 @@ For consuming a deep link, see [`Context.subEntityId`](#Context).
 ## `microsoftTeams.authentication`
 
 ### `authenticate(authenticateParameters: `[`AuthenticateParameters`](#authentication.AuthenticateParameters)`): void`
-Initiates an authentication request which pops up a new windows with the specified settings.
+Initiates an authentication request which pops up a new window with the specified settings.
 
 #### Parameters
 * `authenticateParameters: `[`AuthenticateParameters`](#authentication.AuthenticateParameters)
