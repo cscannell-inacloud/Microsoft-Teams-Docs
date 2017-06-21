@@ -1,6 +1,6 @@
 ﻿# Getting Started with Bots for Microsoft Teams
 
-Build and connect intelligent bots to interact with Microsoft Teams users naturally through chat.  Or provide a simple commands-based bot, to used as your "command-line" interface for your broader Teams app experience.  You can even bring your existing bot from another channel, and add Teams-specific support to make your experience shine. 
+Build and connect intelligent bots to interact with Microsoft Teams users naturally through chat.  Or provide a simple commands-based bot, to be used as your "command-line" interface for your broader Teams app experience.  You can even bring your existing bot from another channel, and add Teams-specific support to make your experience shine. 
 
 If you are just looking for a way to simply extend your team by integrating with custom tools and services in a secure manner, check out our new [Custom Bots](custombot.md) feature. 
 
