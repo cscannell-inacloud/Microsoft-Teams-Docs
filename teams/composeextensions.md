@@ -34,29 +34,23 @@ Record your bot’s app ID – you will need to supply this value in your app ma
 As with bots and tabs, you will update your app’s [manifest](schema.md) to include the compose extension properties. These properties govern how your compose extension appear and behave in the Microsoft Teams client. Compose Extensions are only supported in v1.0 and above of the manifest.
 
 ### Declare your compose extension
-To add a compose extension, simply include a new top-level JSON structure in your manifest with the `composeExtensions` property.  As with other app capabilities, this is an array that takes one or more capability definitions.
+To add a compose extension, simply include a new top-level JSON structure in your manifest with the `composeExtensions` property.  Currently, you are limited to creating a single compose extension for your app.
 
-Each extension definition is an object that has the following structure:
+The extension definition is an object that has the following structure:
 
 | Property name | Purpose | Required? |
 |---|---|---|
 | `botId` | Bot framework app ID | Y |
 | `scopes` | Array declaring whether this extension can be added to `personal` or `team` scopes | Y |
-| `commands` | Array of commands that this compose extension supports | Y |
+| `commands` | Array of commands that this compose extension supports.  Note that currently this is limited to one command. | Y |
 
 
 ### Define commands
-Your compose extension should declare one or more commands. Each command appears in Microsoft Teams as a potential interaction from the UI-based entry point.
-
-!["Compose extension entry point."](images/ComposeExtension/CEEntry.png)
+Your compose extension should declare one command, which will appear then the user selects your app from the `...` option in the chat window. 
 
 !["Compose extension UI pop-up, showing the search option."](images/ComposeExtension/CESearch.png)
 
-The Teams UI will also surface the commands and suggest them via type-down when users invoke your app from the compose box.
-
-!["Compose extension UI pop-up, showing the search results / suggestions."](images/ComposeExtension/CESuggest.png)
-
-In the app manifest, each command item is an object with the following structure:
+In the app manifest, your command item is an object with the following structure:
 
 | Property name | Purpose | Required? |
 |---|---|---|
