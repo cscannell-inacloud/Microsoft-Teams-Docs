@@ -2,7 +2,10 @@
 
 In order to test your app experience within teams, you'll need to sideload your app using the instructions below.  This adds the app to the team you've selected, and you and your team members can interact with it like an end user.
 
-> **Note** For bots designed only for 1:1 contexts, see [here](botsadd.md) for an alternate way to access for testing purposes.
+For bots designed only for 1:1 contexts, see [here](botsadd.md) for an alternate way to access for testing purposes.
+
+> **Note** Sideloading an updated package for an existing App with a Bot may not show Tab changes when viewed through the Conversations window.  We recommend you access via the Apps fly-out, or test on a clean test environment.
+
 
 ## Create your sideload package
 
