@@ -4,7 +4,7 @@ All bots created using the Microsoft Bot Framework are configured and ready to w
 
 See the [Microsoft Bot Framework Overview](https://docs.botframework.com/en-us/) to learn how to:
 
-1. [Register the bot with the Microsoft Bot Framework](https://dev.botframework.com/), and make sure you add Microsoft Teams as a channel. 
+1. [Register the bot with the Microsoft Bot Framework](https://dev.botframework.com/), making sure that you add Microsoft Teams as a channel and that you re-use any Microsoft App ID you generated if you've already created your app package/manifest.
 
 ![Bot Framework Registration page](images/Bot/BFRegister.PNG)
 

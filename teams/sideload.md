@@ -61,7 +61,7 @@ When you add a bot to the team, it should be usable by anyone on that team, insi
 
 For a teams-enabled bot, you can start by invoking your bot by @mentioning the name of the bot, which should autocomplete.
 
-To test direct chats with your bot, you can either access it via the App home, @mentione it in a channel, or search for it in the 'New Chat` window. 
+To test direct chats with your bot, you can either access it via the App home, @mention it in a channel, or search for it in the 'New Chat` window. 
 
 ## Accessing your sideloaded connector
 
@@ -85,7 +85,7 @@ A sideloaded app with a compose extension will automatically show in the **...**
 
 Should you wish to remove your app, select the trash can icon next to the app name in the View Teams bots list.  
 
-If you change manifest information, you must first remove the solution and re-add the new package per above.  Note that in general, code changes on your service do not require you to re-sideload your manifest, unless those changes require manifest updates (e.g. URL or bot id changes). 
+If you change manifest information, you must first remove the solution and re-add the new package per above.  Note that in general, code changes on your service do not require you to re-sideload your manifest, unless those changes require manifest updates (e.g. changes to the URL or the Microsoft app ID for its bot). 
 
 > **Note**: there is currently no way to completely remove a bot from 1:1 context.
 
