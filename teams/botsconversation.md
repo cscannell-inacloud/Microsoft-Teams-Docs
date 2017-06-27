@@ -13,7 +13,7 @@ For further review on the types of bot interaction supported by the Bot Framewor
 ### Receiving messages
 
 Depending on which scopes have been declared, your bot can receive messages in the following contexts:
-* 1:1 chat - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or Bot ID in the To: box on a new chat.
+* 1:1 chat - Users can interact in a private conversation with a bot by simply selecting the added bot in the chat history, or typing its name or app ID in the To: box on a new chat.
 * Channels - A bot can be @mentioned in a channel if it has been added to the team.  Note that additional replies to a bot in a channel require @mentioning the bot - it will not respond to replies where it is not @mentioned.
 
 For incoming messages, your bot will receive an [Activity](https://docs.botframework.com/en-us/core-concepts/reference/#activity) object, of type `message`.  While the Activity object may contain other types of information, like [channel events sent to your bot](botevents.md), the `message` type represents communication between bot and user.
