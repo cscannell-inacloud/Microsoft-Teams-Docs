@@ -23,5 +23,5 @@ Follow these steps to build a tab:
 	* You can enable users to create and share [deep links to items within your tab](deeplinks.md) - such as links an individual task within a tab that contains a task list.
 
 ### For Static Tabs
-*  [Create your static tab app identity](statictab.md): Static tabs are declared directly in your app package's manifest.
+*  [Declare your static tab identity](statictab.md): Static tabs are declared directly in your app package's manifest.
 *  [Create the content page:](createcontentpage.md) Microsoft Teams displays this content page when the user visits your tab. Content in a Static tab is subject to the same constraints as a Configurable tab.

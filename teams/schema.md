@@ -12,7 +12,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
   "$schema": "https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json", 
   "manifestVersion": "1.0",
   "version": "1.0.0",
-  "id": "%UNIQUE-GUID%", 
+  "id": "%MICROSOFT-APP-ID%", 
   "packageName": "com.example.myapp",
   "developer": {
     "name": "Publisher Name",
@@ -51,7 +51,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
   ],
   "bots": [
     {
-      "botId": "%GUID-FROM-BOT-FRAMEWORK%",
+      "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
       "needsChannelSelector": "true",
       "isNotificationOnly": "false",
       "scopes": [ "team", "personal" ],
@@ -93,7 +93,7 @@ The Microsoft Teams manifest describes how the app integrates into the Microsoft
   ],
   "composeExtensions": [
     {
-      "botId": "%GUID-FOR-COMPOSE-EXTENSION-BOT-FROM-BOT-FRAMEWORK",
+      "botId": "%MICROSOFT-APP-ID-REGISTERED-WITH-BOT-FRAMEWORK%",
       "scopes": ["team", "personal"],
       "commands": [
         {
@@ -151,10 +151,9 @@ This version string must follow the [semver](http://semver.org/) standard (MAJOR
 
 ## id
 
-**Required** - GUID
+**Required** - Microsoft app ID
 
-This is a unique identifier for this app, and must be a GUID.  For a Bot, you may use the Bot Framework Id.  For a tab or other capability type, you can use this [online tool](https://guidgenerator.com/) to generate a GUID, or use one of your choosing.
-
+This is the unique Microsoft-generated identifier for this app.  If you have registered a bot via the Microsoft Bot Framework, or your tab's web app already signs in with Microsoft, then you should already have such an ID and should enter it here. Otherwise, you should generate a new ID at the [Microsoft App registration portal](https://apps.dev.microsoft.com), enter it here, and then re-use it if/when you [add a bot](botscreate.md).
 
 ## packageName
 
@@ -266,7 +265,7 @@ The object is an array (max: 1 -- currently only one bot is allowed per app) wit
 
 |Name| Type| Maximum Size | Required | Description|
 |---|---|---|---|---|
-|`botId`|String|64 characters|✔|A unique identifier for the bot that matches its ID in the Bot Framework.|
+|`botId`|String|64 characters|✔|The unique Microsoft app ID for the bot as registered with the Bot Framework. This may well be the same as the overall [app ID](#id).|
 |`needsChannelSelector`|Boolean|||This value describes whether or not the bot utilizes a user hint to add the bot to a specific channel. Default: `false`|
 |`isNotificationOnly`|Boolean|||A flag which indicates whether a bot is a one-way notification only bot, as opposed to a conversational bot. Default: `false`|
 |`scopes`|Array of enum|2|✔|Specifies whether the bot offers an experience in the context of a channel in a `team`, or an experience scoped to an individual user alone (`personal`). These options are non-exclusive.|
@@ -311,7 +310,7 @@ The object is an array (max:1) with all elements of type `object`.  This block i
 
 |Name| Type| Maximum Size | Required | Description|
 |---|---|---|---|---|
-|`botId`|String|64|✔|A unique identifier for the bot which is backing the compose extension that matches its ID in the Bot Framework.|
+|`botId`|String|64|✔|The unique Microsoft app ID for the bot that backs the compose extension, as registered with the Bot Framework. This may well be the same as the overall [app ID](#id).|
 |`scopes`|Array of enum|2|✔|Specifies whether the bot offers an experience in the context of a channel in a `team`, or an experience scoped to an individual user alone (`personal`). These options are non-exclusive.|
 |`commands`|Array of object|1|✔|Array of commands the compose extension supports|
 

@@ -26,7 +26,7 @@ At its core, a compose extension is a cloud-hosted service that listens to user 
 
 ## Register in the Bot Framework
 
-If you haven't done so already, you must first register a bot with the Microsoft Bot Framework. Visit [this link](https://msdn.microsoft.com/en-us/microsoft-teams/botscreate) for instructions.  The bot app ID and callback endpoints defined here will be used in your compose extension to receive and respond to user requests.  Remember to enable the Microsoft Teams channel for your bot.
+If you haven't done so already, you must first register a bot with the Microsoft Bot Framework. Visit [this link](https://msdn.microsoft.com/en-us/microsoft-teams/botscreate) for instructions.  The Microsoft app ID and callback endpoints for your bot, as defined there, will be used in your compose extension to receive and respond to user requests.  Remember to enable the Microsoft Teams channel for your bot.
 
 Record your bot’s app ID – you will need to supply this value in your app manifest.
 
@@ -40,7 +40,7 @@ The extension definition is an object that has the following structure:
 
 | Property name | Purpose | Required? |
 |---|---|---|
-| `botId` | Bot framework app ID | Y |
+| `botId` | The unique Microsoft App ID for the bot as registered with the Bot Framework. This should typically be the same as the ID for your overall Teams app| Y |
 | `scopes` | Array declaring whether this extension can be added to `personal` or `team` scopes | Y |
 | `commands` | Array of commands that this compose extension supports.  Note that currently this is limited to one command. | Y |
 
@@ -69,7 +69,7 @@ In the app manifest, your command item is an object with the following structure
   "$schema": "https://statics.teams.microsoft.com/sdk/v1.0/manifest/MicrosoftTeams.schema.json",
   "manifestVersion": "1.0",
   "version": "1.0",
-  "id": "ef9c57b6-7a92-4ae5-99cd-139f9a76bff0",
+  "id": "57a3c29f-1fc5-4d97-a142-35bb662b7b23",
   "packageName": "com.microsoft.teams.samples.bing",
   "developer": {
     "name": "John Developer",
