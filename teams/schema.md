@@ -310,7 +310,7 @@ The object is an array (max:1) with all elements of type `object`.  This block i
 
 |Name| Type| Maximum Size | Required | Description|
 |---|---|---|---|---|
-|`botId`|String|64|✔|The unique Microsoft app ID for the bot that backs the compose exentsion, as registered with the Bot Framework. This may well be the same as the overall [app ID](#id).|
+|`botId`|String|64|✔|The unique Microsoft app ID for the bot that backs the compose extension, as registered with the Bot Framework. This may well be the same as the overall [app ID](#id).|
 |`scopes`|Array of enum|2|✔|Specifies whether the bot offers an experience in the context of a channel in a `team`, or an experience scoped to an individual user alone (`personal`). These options are non-exclusive.|
 |`commands`|Array of object|1|✔|Array of commands the compose extension supports|
 
