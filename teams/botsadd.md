@@ -35,7 +35,13 @@ There are two ways to test load your bot for 1:1 conversations in Microsoft Team
 	* Select your bot and send a message to initiate a conversation.
 	* Alternatively, you can paste your bot's app ID in the search box in the top left in Microsoft Teams. In the search results page, navigate to the People tab to see your bot and to start chatting with it. 
 
-When a bot has been added via the above, it will not be addressable in channel conversations.
+3.  Get or Create a deeplink to a bot from your own service:
+	* Using the Teams deeplink format, you can create a deeplink to launch Microsoft Teams directly with your bot's app ID.  The format is as follows:
+	**https://teams.microsoft.com/l/chat/0/0?users=28:_your-bot-app-id_**
+	* Optionally, in the Bot Framework's details Channels page, you can click "Get bot embed codes" and select the Microsoft Teams icon to get both the deep link and a Microsoft Teams-approved logo for use on your website.
+
+
+>**NOTE** - When a bot has been added through one of these methods, it will not be addressable in channel conversations.  Nor can you take advantage of other Microsoft Teams app capabilities like Tabs or Compose Extensions.
 
 As with bots added to a team, your bot will receive the `conversationUpdate` event, but without the team information in the `channelData` object.
 
