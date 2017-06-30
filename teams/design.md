@@ -32,7 +32,7 @@ Bots are conversational apps that perform a narrow or specific set of tasks. The
 
 ## Be responsive
 
-In general, you bot must respond to every message, especially common questions like "help" and "hello."  Your bot should also be able to handle the following types of queries and inputs: 
+In general, your bot must respond to every message, especially common questions like "help" and "hello."  Your bot should also be able to handle the following types of queries and inputs: 
 
 * Recognized questions - These are the “best case scenario” questions you’d anticipate from users.
 * Recognized non-questions - Queries about unsupported functionality, random pieces of information, or when someone wants to curse at your bot.
