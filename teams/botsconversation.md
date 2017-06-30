@@ -129,7 +129,7 @@ The new message need not match the original in type. For instance, if the origin
 To issue a message update, simply perform a PUT request against the `/v3/conversations/<conversationId>/activities/<activityId>/` endpoint using a given activity ID. To complete this scenario, you should cache the activity ID returned by the original POST call.
 
 ```json
-PUT /v3/conversations/19:ja0cu120i1jod12j@skype.net/activities/012ujdo0128
+PUT /v3/conversations/19%3Aja0cu120i1jod12j%40skype.net/activities/012ujdo0128
 {
     "type": "message",
     "text": "This message has been updated"

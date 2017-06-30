@@ -6,6 +6,7 @@ This changelog covers what's changed in the Microsoft Teams Developer platform a
 |**Category**|**Description**|**Link**|
 |-|-|-|
 |Bots|Fetch Channel API call now returning General channel id.|[Fetching the list of channels in a team](botapis.md#fetching-the-list-of-channels-in-a-team)|
+|Bots|Added note on creating a deep link to launch a bot in 1:1|[Adding a bot for 1:1 chat only](botsadd#adding-a-bot-for-11-chat-only)|
 |Compose Extensions| Updated supported layout types. | [Compose Extensions (Preview)](composeextensions.md)|
 |Compose Extensions| Update to call out that only one command is supported currently. | [Compose Extensions (Preview)](composeextensions.md)|
 |Packaging| Remove 2k limit on icon sizes that prevented sideloading - no restrictions on size now. | [Icons](createpackage.md#icons)|

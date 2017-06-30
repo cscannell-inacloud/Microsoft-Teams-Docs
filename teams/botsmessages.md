@@ -15,7 +15,7 @@ Most messages to and from your bot are of type `message`.  Your bot can send ric
 |:-------|:-------|:------------|:-------|
 | Rich text | ✔ | ✔ |  |  
 | Pictures | ✔ | ✔ | PNG, JPEG or GIF up to 20Mb |
-| Cards | ✘ | ✔ | Teams currently support Hero and Thumbnail cards  |
+| Cards | ✘ | ✔ | Teams currently support Hero, Thumbnail, and O365 Connector cards  |
 | Emojis | ✘ | ✔ | Teams currently supports emojis via UTF-16 (e.g. U+1F600 for grinning face)  |
 
 ## Message format
@@ -43,7 +43,7 @@ Microsoft Teams supports the following cards which may have several properties a
 
 * Hero card
 * Thumbnail card
-* O365Connector card
+* O365Connector card - Note:  O365 Connectors do not properly render in iOS
 
 Supported with modifications:
 * Signin card - the `signin` action is not supported.  You can replace the button action with `openUrl` to get the desired result.
