@@ -19,7 +19,7 @@ Apps in Microsoft Teams allow you to make your service available to users within
 
 [Learn more about app scopes and where you can surface your app](teamsapps.md)
 
-Here are the capabilitiess your app can leverage today.  You can offer all of them in the team scope, and most of them in the personal scope.
+Here are the capabilities your app can leverage today.  You can offer all of them in the team scope, and most of them in the personal scope.
 
 ### Tabs
 
