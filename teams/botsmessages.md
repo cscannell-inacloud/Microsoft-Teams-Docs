@@ -204,9 +204,9 @@ When a user clicks the button, your bot will receive the predefined `value` obje
 ```csharp
 var button = new CardAction()
 {
-    Title = "some button caption",
+    Title = "Option 1",
     Type = "invoke",
-    Value = anyObject
+    Value = "{\"option\": \"opt1\"}"
 };
 ```
 
