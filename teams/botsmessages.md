@@ -239,11 +239,11 @@ MessageBack provides the flexibility such that the action either leave a visible
 
 ### Action - imBack
 
+> **Note:** it is recommended that you use `messageBack` as the preferred action type.
+
 This action triggers a return message to your bot, as if the user typed it in a normal chat message.  Thus, your user, and all other users if in a channel, will see that button response.
 
 The `value` field should contain the text string echoed in the chat and therefore sent back to the bot.  This is the message text you will process in your bot to perform the desired logic.  Note: this field is a simple string - there is no support for formatting or hidden characters.
-
-> **Note:** imBack is not recommended for bots in channels as the button click will notify each thread participant each time.  Please see `invoke` below for the preferred solution.
 
 ```json
 {
@@ -254,6 +254,8 @@ The `value` field should contain the text string echoed in the chat and therefor
 ```
 
 ### Action - invoke
+
+> **Note:** it is recommended that you use `messageBack` as the preferred action type.
 
 The `invoke` message type silently sends a JSON payload that you define to your bot.  This is useful if you want to send more detailed information back to your bot without having to send via a simple `imBack` text string.  Note that the user, in 1:1 or in channel, sees no notification as a result of their click.
 
