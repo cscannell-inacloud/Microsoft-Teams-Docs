@@ -159,6 +159,79 @@ The `value` field must contain a full and properly formed URL.
 }
 ```
 
+### Action - messageBack
+
+>**NEW**
+
+This action type is meant to replace imBack and Invoke. With `messageBack`, you can create a fully customized action with the following properties:
+* The `title` which appears as the button label.
+* The `displayText` that is echoed by the user into the chat stream when the action is performed.
+* The `value` payload that is sent to your bot when the action is performed. This is where you can encode context for the action, such as unique identifiers.
+* The `text` that is sent to your bot when the action is performed. This property can be used to simplify bot development so that your code only has to check a single top-level property to dispatch bot logic.
+
+MessageBack provides the flexibility such that the action either leave a visible user message in the history or not, depending on your desired experience.
+
+```json
+{
+  ...
+  "buttons": [
+    {
+    "type": "messageBack",
+    "title": "My MessageBack button",
+    "displayText": "I clicked this button",
+    "text": "User just clicked the MessageBack button",
+    "value": "{\"property\": \"propertyValue\" }"
+    }
+  ]
+}
+```
+
+#### Inbound message schema example
+```json
+{
+   "text":"User just clicked the MessageBack button",
+   "value":{
+      "property":"propertyValue"
+   },
+   "type":"message",
+   "timestamp":"2017-06-22T22:38:47.407Z",
+   "id":"f:5261769396935243054",
+   "channelId":"msteams",
+   "serviceUrl":"https://smba.trafficmanager.net/amer-client-ss.msg/",
+   "from":{
+      "id":"29:102jd210jd010icsoaeclaejcoa9ue09u",
+      "name":"John Smith"
+   },
+   "conversation":{
+      "id":"19:dljaocuaje108182ojo@thread.skype;messageid=1498171086622"
+   },
+   "recipient":{
+      "id":"28:76096e45-119f-4736-859c-6dfff54395f7",
+      "name":"MyBot"
+   },
+   "entities":[
+      {
+         "locale":"en-US",
+         "country":"US",
+         "platform":"Windows",
+         "type":"clientInfo"
+      }
+   ],
+   "channelData":{
+      "channel":{
+         "id":"19:malejcou081i20ojmlcau0@thread.skype"
+      },
+      "team":{
+         "id":"19:12d021jdoijsaeoaue0u@thread.skype"
+      },
+      "tenant":{
+         "id":"bec8e231-67ad-484e-87f4-3e5438390a77"
+      }
+   }
+}
+
+```
+
 ### Action - imBack
 
 This action triggers a return message to your bot, as if the user typed it in a normal chat message.  Thus, your user, and all other users if in a channel, will see that button response.
@@ -176,8 +249,6 @@ The `value` field should contain the text string echoed in the chat and therefor
 ```
 
 ### Action - invoke
-
->New: the `invoke` action now sends the user `name` and `channelData` information, if applicable, as part of the payload.
 
 The `invoke` message type silently sends a JSON payload that you define to your bot.  This is useful if you want to send more detailed information back to your bot without having to send via a simple `imBack` text string.  Note that the user, in 1:1 or in channel, sees no notification as a result of their click.
 
