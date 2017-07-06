@@ -2,11 +2,11 @@
 
 A conversation is a series of messages sent between your bot and one or more users. Each message is an `Activity` object. When a user sends a message, the channel that they're communicating on posts the message to your bot (web service). Your bot examines the message to determine its type and responds accordingly. 
 
-Most content sent between a user and your bot uses `messageType: message`.  For event-style messages, please review [Microsoft Teams bot events](botevents.md).
+Most content sent between a user and your bot uses `messageType: message`.  For event-style messages, please review [Microsoft Teams bot events](botevents.md).  Note that Speech is currently not supported.
 
 For more information about core messaging functionality of the Bot Framework, please review the [documentation](https://docs.botframework.com/en-us/core-concepts/messages/#navtitle) and see BotBuilder samples [here](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/cards-RichCards).
 
-> **Note:** Botbuilder has a good repository of card samples: [Node](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/cards-RichCards), [C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/cards-RichCards)
+
 
 # Messages
 Most messages to and from your bot are of type `message`.  Your bot can send rich text, pictures and cards. Users can send rich text and pictures to your bot. You can specify the type of content your bot can handle in the Microsoft Teams settings page for your bot.
@@ -15,7 +15,7 @@ Most messages to and from your bot are of type `message`.  Your bot can send ric
 |:-------|:-------|:------------|:-------|
 | Rich text | ✔ | ✔ |  |  
 | Pictures | ✔ | ✔ | PNG, JPEG or GIF up to 20Mb |
-| Cards | ✘ | ✔ | Teams currently support Hero and Thumbnail cards  |
+| Cards | ✘ | ✔ | Teams currently support Hero, Thumbnail, and O365 Connector cards  |
 | Emojis | ✘ | ✔ | Teams currently supports emojis via UTF-16 (e.g. U+1F600 for grinning face)  |
 
 ## Message format
@@ -43,7 +43,7 @@ Microsoft Teams supports the following cards which may have several properties a
 
 * Hero card
 * Thumbnail card
-* O365Connector card
+* O365Connector card - Note:  O365 Connectors do not properly render in iOS
 
 Supported with modifications:
 * Signin card - the `signin` action is not supported.  You can replace the button action with `openUrl` to get the desired result.
@@ -57,6 +57,8 @@ Additionally, we support the following layouts:
 * Vertical list layout
 
 Both layouts support hero and thumbnail cards.
+
+> **Note:** Botbuilder has a good repository of card samples: [Node](https://github.com/Microsoft/BotBuilder-Samples/tree/master/Node/cards-RichCards), [C#](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/cards-RichCards)
 
 ### Inline card images
 
@@ -143,7 +145,10 @@ Teams supports the following [`CardAction`](https://docs.microsoft.com/en-us/bot
 | `imBack `| Text of the message to send to the bot (from the user who clicked the button or tapped the card). This message (from user to bot) will be visible to all conversation participants. |
 | `invoke` | Payload of message to send to the bot (from the user who clicked the button or tapped the card).  This message will not be visible. |
 
->Note: Teams does not support `postBack`, `signin` or other CardActions.
+>Notes:
+>* Teams does not support `postBack`, `signin` or other CardActions.
+>* Teams does not support SuggestedActions
+
 
 ### Action - openUrl
 

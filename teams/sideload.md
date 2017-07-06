@@ -2,7 +2,10 @@
 
 In order to test your app experience within teams, you'll need to sideload your app using the instructions below.  This adds the app to the team you've selected, and you and your team members can interact with it like an end user.
 
-> **Note** For bots designed only for 1:1 contexts, see [here](botsadd.md) for an alternate way to access for testing purposes.
+For bots designed only for 1:1 contexts, see [here](botsadd.md) for an alternate way to access for testing purposes.
+
+> **Note** Sideloading an updated package for an existing App with a Bot may not show Tab changes when viewed through the Conversations window.  We recommend you access via the Apps fly-out, or test on a clean test environment.
+
 
 ## Create your sideload package
 
@@ -58,7 +61,7 @@ When you add a bot to the team, it should be usable by anyone on that team, insi
 
 For a teams-enabled bot, you can start by invoking your bot by @mentioning the name of the bot, which should autocomplete.
 
-To test direct chats with your bot, you can either access it via the App home, @mentione it in a channel, or search for it in the 'New Chat` window. 
+To test direct chats with your bot, you can either access it via the App home, @mention it in a channel, or search for it in the 'New Chat` window. 
 
 ## Accessing your sideloaded connector
 
@@ -82,12 +85,13 @@ A sideloaded app with a compose extension will automatically show in the **...**
 
 Should you wish to remove your app, select the trash can icon next to the app name in the View Teams bots list.  
 
-If you change manifest information, you must first remove the solution and re-add the new package per above.  Note that in general, code changes on your service do not require you to re-sideload your manifest, unless those changes require manifest updates (e.g. URL or bot id changes). 
+If you change manifest information, you must first remove the solution and re-add the new package per above.  Note that in general, code changes on your service do not require you to re-sideload your manifest, unless those changes require manifest updates (e.g. changes to the URL or the Microsoft app ID for its bot). 
 
 > **Note**: there is currently no way to completely remove a bot from 1:1 context.
 
 ## Troubleshooting Notes
 
-> * If the manifest doesn't load, please double-check you've followed all the instructions [here](createpackage.md).  In particular, for tabs, note the size limitations on icons included in your sideload package (each under 1.5k)
+> * If the manifest doesn't load, please double-check you've followed all the instructions [here](createpackage.md) and validated your manifest against the [schema](schema.md).
+
 
 > * Encountering other problems?  See the [troubleshooting guide](troubleshooting.md).

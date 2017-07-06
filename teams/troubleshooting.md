@@ -37,6 +37,9 @@ Common problems with the settings object:
 ### Can't authorize the user in your tab
 Unless you are doing silent authentication, you must follow the authentication process provided by the [Microsoft Teams Tab Library](jslibrary.md).  For more information about authentication, please see [Authenticating a user in your Microsoft Teams pages](auth.md).
 
+### Static tabs not showing up
+There is a known issue where updating an existing bot app with a new or updated static tab will not show that tab change when accessing the app from a 1:1 bot conversation.  To see the change, you should test on a new user or test instance, or access the bot from the Apps flyout.
+
 ---
 ## Bots
 ###  Can't add my bot

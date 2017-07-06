@@ -5,7 +5,7 @@ The follow metadata is required in your manifest.json file and/or for Seller Das
 |Data|Type|Size|Manifest|Seller Dashboard|Description|
 |---|---|---|---|---|---|
 |App Package|Zip|||✔|This is the actually app package used for sideloading or Store submission in the App package field.|
-|App Logo|.png|96x96px|`icon.color`|✔|The icon to display in the product page listing in the Office Store / Teams gallery. This is your full color product icon.  Note that due to current limitations, your icon in the package must be less than 2k.  This limitation does not exist in the Seller Dashboard, though.|
+|App Logo|.png|96x96px|`icon.color`|✔|The icon to display in the product page listing in the Office Store / Teams gallery. This is your full color product icon.|
 |App Logo Outline|.png|20x20px|`icon.outline`||The icon to display in Teams, in the Teams chat channel and other locations.  This is your logo rendered a white outline with transparent background.|
 |Support Link|URL|||✔|A link to support material for end users.  May be http or https.|
 |Privacy Link|URL||`developer.privacyUrl`|✔|A link to your privacy policy (https).|

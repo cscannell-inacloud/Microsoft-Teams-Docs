@@ -21,7 +21,7 @@ To create a bot menu, add a new [`commandLists`](schema.md#bots-commandlists) ob
   ...
   "bots":[
     {
-      "botId":"[your bot id]",
+      "botId":"[Microsoft App ID for your bot]",
       "scopes": [
         "personal",
         "team"
@@ -65,7 +65,7 @@ To create a bot menu, add a new [`commandLists`](schema.md#bots-commandlists) ob
   ...
   "bots":[
     {
-      "botId":"[your bot id]",
+      "botId":"[Microsoft app ID for your bot]",
       "scopes": [
         "personal",
         "team"

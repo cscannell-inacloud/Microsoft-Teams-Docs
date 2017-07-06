@@ -29,11 +29,11 @@ In the Seller Dashboard:
 * **Category** - You can select up to three categories in which to appear in the Office Store.  Please select ones which best match your experience.
 * **Testing notes** - Please ensure you provide enough information for our validation team to successfully load and test your experience.  This includes providing login instructions and test accounts, as well as any other notes that might assist in the review of your product.
 * **My app calls, support, contains, or users cryptology or encryption** - This checkbox ensures your product is not using cryptography in a way that would prohibit Store distribution.  See [here](https://docs.microsoft.com/en-us/windows/uwp/security/export-restrictions-on-cryptography) for a detailed explanation.
-* **App logo** - Due to current limitations, your 96x96 icon in the manifest must be < 2k.  Feel free to use a larger file-size 96x96 color icon instead of the exact file from your manifest.
+* **App logo** - use your full color 96x96 icon
 * **Support document link** - please supply a URL to support content for your experience
 * **Privacy document link** - please use the same URL from your manifest
 * **Video link** - this optional field can be used to show a video of your experience.  This video will appear on your product listing page in the Office Store.
-* **End User License Agreement** - if you need a custom EULA, please upload a copy here.
+* **End User License Agreement** - if you need a custom EULA, please upload a copy here
 
 Select the "Next" button when all required information has been filled in.
 
