@@ -58,34 +58,6 @@ For .NET/C# projects, we leverage the "web.config" file to host environment vari
 * `TeamsAppId`
 * `BaseUri` 
 
-### Running the samples
-
-Microsoft Teams apps can contain one or more capabilities, and the ways to run or even host them may be different.  In general, for our samples, we have the following ways to run:
-* Purely local – For bots, you can test your experience in the Bot Emulator.  For other content, you can run locally and address content through `http://localhost`
-* Locally hosted, in Teams – This involves running locally with tunneling software, and creating a package to sideload into Teams.  This allows you to easily run and step-debug your app within the Teams experience.
-* Cloud hosted, in Teams – This truly simulates (or is) product level support for a Teams app experience.  It involves uploading your solution to your cloud provider of choice (we recommend Azure), and creating a package to sideload into Teams.
-
-Note that none of these testing solutions fully replicates the end user experience for a Store-distributed app, as the app installation process does some of the capability checks, like scope, at install time.
-
-#### Running locally
-
-For purely local or local Teams testing, you'll run the experience off of your own machine.  This allows you to actually compile and run within your IDE, and take full advantage of such techniques as break points and step debugging.
-
-All sample projects will use default port settings: 3978 for Node.js, 3979 for .NET.  Similarly, all sample projects will take advantage of environment variables per above.
-
-#### Purely local - running in the Bot Emulator
-
-Our bot samples are designed to run out of the box within the Bot Emulator.  This allows you to test some of the core 1:1 logic of the bot, see rough layout of messages and perform simple tests.  Here are the steps:
-* Run the code by selecting the pre-built "Launch - Emulator" debug configuration for Node.js, or use the default "web.config" values for .NET/C#.
-* Launch the Bot Emulator and set the URL to:
-    * `http://localhost:3978/api/messages` for Node.js, or :3979 for .NET/C#.
-* Leave the Microsoft App ID and Microsoft App Password blank, to match the default environment variables.
-
-#### Locally hosted
-
-As Microsoft Teams is an entirely cloud-based product, it requires all services it accesses to be available from the cloud.  Therefore, to enable our samples to work within Teams, you need to either publish the code to the cloud of your choice, or make our local running instance externally accessible.  We can do this with tunneling software.
-
-While you can use any tool of choice, we use and recommend Ngrok and will use this in our examples below.
 
 
 
