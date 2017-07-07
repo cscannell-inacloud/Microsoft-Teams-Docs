@@ -43,3 +43,9 @@ Please note that any time you change values in the manifest.json, you'll need to
 You may use any externally addressable service to host your development and production code.  There is no expectation that your capabilities reside on the same service - it's your project so it's up to you.  We do require that all domains being accessed from your Microsoft Teams apps do get added to the `validDomain` object in the manifest.json file.
 
 >Note: To ensure a secure environment, we urge you to be explicit on the exact domain and subdomains you reference, and those domains must be in your control.  E.g. *.azurewebsites.net would not be allowed, but contoso.azurewebsites.net would.
+
+## Loading and running
+
+In general, to load and run your experience within Microsoft Teams, you'll need to create a package and sideload it into Teams via the following guidance:
+* [Create the package for your Microsoft Teams app](createpackage.md)
+* [Sideloading your app in a team](sideload.md)

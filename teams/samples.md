@@ -58,9 +58,5 @@ For .NET/C# projects, we leverage the "web.config" file to host environment vari
 * `TeamsAppId`
 * `BaseUri` 
 
-
-
-
->For information on loading your samples, see [Sideloading your app](sideload.md).
-
-Further samples are coming soon.
+### Running and debugging
+For more information on running and debugging our samples, see our general [Running and Debugging Microsoft Teams apps](debugging.md) guidance.
