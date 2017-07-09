@@ -38,7 +38,7 @@ Ready to get started adding your experience into Teams?  Follow these steps:
 ### Package & test your app within Teams
 * [Create package](createpackage.md).
 * [Side load](sideload.md) in Teams.
-* Test functionality.
+* [Test functionality](debugging.md).
 
 ### Publish your app & drive engagement
 * [Register and publish](submission.md) to Office Store.

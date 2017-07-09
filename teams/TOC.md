@@ -26,6 +26,7 @@
 ## [Compose Extensions](composeextensions.md)
 ## [Office 365 Connectors](connectors.md)
 ## [Activity Feed](activityfeed.md)
+## [Running and debugging your app](debugging.md)
 ## [Sideloading your App](sideload.md)
 ## [Packaging](createpackage.md)
 ### [Manifest schema reference](schema.md)

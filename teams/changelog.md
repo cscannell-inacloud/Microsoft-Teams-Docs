@@ -2,6 +2,12 @@
 
 This changelog covers what's changed in the Microsoft Teams Developer platform and documentation, including updates to the APIs as well as new features and tools available to developers.
 
+## July 2017
+|**Category**|**Description**|**Link**|
+|-|-|-|
+|Debugging|Added a new page on debugging tools and techniques.|[Running and Debugging](debugging.md)|
+|Samples|Added more information on running samples, and added a new sample for running new Microsoft Teams Graph APIs.|[Sample applications](samples.md)|
+
 ## June 2017
 |**Category**|**Description**|**Link**|
 |-|-|-|
