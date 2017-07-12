@@ -27,7 +27,7 @@ With your package created, you can now load it into a team of your choosing.  Th
 
 > **Note** You must be the team owner, or the owner must allow users to add the appropriate app type(s) for this functionality to appear.
 
-3.	Select the Bot tab, then click on "Sideload a bot or tab" on the lower right.
+3.	Select the Apps tab, then click on "Sideload an app" on the lower right.
 
 > **Note** This same flow works not only for bots, but all other app extension types as well.
 
